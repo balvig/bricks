@@ -5,20 +5,21 @@
 #include <Bricks.PongAction.h>
 using namespace Bricks;
 
-const int ledPin = 14;
+const int ledPin = LED_BUILTIN;
 
 void ledOn(const uint8_t *macAddr, const Message message) {
-  digitalWrite(ledPin, HIGH);
+  digitalWrite(ledPin, LOW);
 }
 
 void ledOff(const uint8_t *macAddr, const Message message) {
-  digitalWrite(ledPin, LOW);
+  digitalWrite(ledPin, HIGH);
 }
 
 //Main
 void setup() {
   // Led
   pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, HIGH);
 
   // Logger and ESPNOW
   gBrick.init();
