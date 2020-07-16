@@ -31,7 +31,7 @@ void setup() {
   // M5.Lcd.setTextSize(1);
 
   // Logger and ESPNOW
-  gBrick.init();
+  gBrick.init(WIFI_AP_STA);
   // gBrick.init(&M5.Lcd);
   // Log.setPrefix(scrollScreen);
 

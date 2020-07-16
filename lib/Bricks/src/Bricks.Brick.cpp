@@ -1,14 +1,14 @@
 #include "Bricks.Brick.h"
 
 namespace Bricks {
-  void Brick::init(Print* logOutput) {
+  void Brick::init(const WiFiMode_t wifiMode, Print* logOutput) {
     // Configure Logging
     Serial.begin(115200);
     Log.begin(LOG_LEVEL_NOTICE, logOutput, false);
     Log.setSuffix(Brick::printNewline);
 
     // Configure Wi-Fi
-    WiFi.mode(WIFI_AP_STA);
+    WiFi.mode(wifiMode);
 
     // Connect ESPNOW
     if (WifiEspNow.begin()) {

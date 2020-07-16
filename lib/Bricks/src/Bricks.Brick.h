@@ -12,7 +12,7 @@
 namespace Bricks {
   class Brick {
     public:
-      void init(Print* logOutput = &Serial);
+      void init(const WiFiMode_t wifiMode = WIFI_AP, Print* logOutput = &Serial);
     private:
       static void printNewline(Print* logOutput);
   };
