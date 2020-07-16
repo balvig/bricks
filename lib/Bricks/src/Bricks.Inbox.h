@@ -17,6 +17,7 @@ namespace Bricks {
       Inbox() {}
       void init();
       void process(const uint8_t *macAddr, const Message message);
+      String listActions(); // The (supposedly) EVIL STRING?
       Action *actions[MAX_ACTIONS] = { new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action() }; // what the
     private:
       static void onDataReceived(const uint8_t macAddr[6], const uint8_t *data, size_t len, void *cbarg);

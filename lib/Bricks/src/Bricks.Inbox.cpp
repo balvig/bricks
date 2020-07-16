@@ -25,5 +25,20 @@ namespace Bricks {
     }
   }
 
+  String Inbox::listActions() {
+    String actionList = "";
+
+    for(int i = 0; i < MAX_ACTIONS; i++) {
+      if(strcmp(actions[i]->key, "") != 0) {
+        actionList += actions[i]->key;
+        actionList += " ";
+      }
+    }
+
+    actionList.trim();
+
+    return actionList;
+  }
+
   Inbox gInbox = Inbox();
 }
