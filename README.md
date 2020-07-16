@@ -3,11 +3,11 @@
 
 ## Todo
 
-- [ ] Reply with list of actions instead of name
+- [ ] Reply with de-duped list of actions instead of name
 - [ ] Find a way to make BRICKS_MQTT_TOPIC_PREFIX configurable
+- [ ] Look into garbled mac addresses
 - [ ] Encapsulate gateway mac store/retrieve flow
 - [ ] Isolate M5/Gateway code
-- [ ] Investigate flakiness in ESP8266 messages to ESP32 gateway
 - [ ] Organize libs, bricks, platformio.ini
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
@@ -49,7 +49,7 @@
 ## Supported platforms
 
 - ESP32
-- ESP8266 (some flakiness when sending messages)
+- ESP8266
 
 
 ## Installing

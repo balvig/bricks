@@ -6,6 +6,6 @@ namespace Bricks {
   }
 
   void PongAction::callback(const uint8_t *macAddr, const Message message) {
-    gOutbox.send(macAddr, "pong", name);
+    gOutbox.send(macAddr, "pong", gInbox.listActions().c_str());
   }
 }
