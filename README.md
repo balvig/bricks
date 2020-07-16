@@ -4,7 +4,6 @@
 ## Todo
 
 - [ ] Investigate flakiness in ESP8266 messages to ESP32 gateway
-- [ ] Check max d1 mini upload speed
 - [ ] Reply with list of actions instead of name?
 - [ ] Fix hardcoded strings
 - [ ] Encapsulate gateway mac store/retrieve flow
