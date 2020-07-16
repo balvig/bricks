@@ -36,14 +36,14 @@ void setup() {
   // Log.setPrefix(scrollScreen);
 
   // Connect mqtt event stream
-  gEvents.init(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD, BRICKS_MQTT_HOST, BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD, BRICKS_MQTT_TOPIC_PREFIX);
+  gEvents.init(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD, BRICKS_MQTT_HOST, BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD);
 
   // Enable receiving messages
   gInbox.init();
   gInbox.actions[0] = new PublishAction();
 
   // Announce self
-  // uint8_t macAddr[Bricks::Utils::MAC_ADDR_SIZE];
+  // uint8_t macAddr[MAC_ADDR_SIZE];
   // WiFi.softAPmacAddress(macAddr);
   // gEvents.publish(macAddr, "gateway", "online");
 }

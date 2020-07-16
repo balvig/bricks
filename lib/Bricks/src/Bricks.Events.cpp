@@ -1,11 +1,10 @@
 #include "Bricks.Events.h"
 
 namespace Bricks {
-  void Events::init(const char *wifiSSID, const char *wifiPassword, const char *mqttHost, const char *mqttClient, const char *mqttUser, const char *mqttPassword, const char *topicPrefix) {
+  void Events::init(const char *wifiSSID, const char *wifiPassword, const char *mqttHost, const char *mqttClient, const char *mqttUser, const char *mqttPassword) {
     this->mqttClient = mqttClient;
     this->mqttUser = mqttUser;
     this->mqttPassword = mqttPassword;
-    this->topicPrefix = topicPrefix;
 
     mqtt.setServer(mqttHost, 1883);
     mqtt.setBufferSize(1024); // Extract to global var
@@ -26,15 +25,13 @@ namespace Bricks {
   }
 
   void Events::publish(const uint8_t *macAddr, Message message) {
-    //TODO: Look into this for crashiness
     if (mqtt.connected()) {
-      char macStr[Bricks::Utils::MAC_STR_SIZE];
+      char macStr[MAC_STR_SIZE];
       Bricks::Utils::macToStr(macAddr, macStr);
       char topic[MAX_TOPIC_SIZE];
-      sprintf(topic, "%s/" BRICKS_MESSAGES_IN "/%s/%s", topicPrefix, macStr, message.key);
+      sprintf(topic, BRICKS_MESSAGES_IN "/%s/%s", macStr, message.key);
 
       Log.notice("Publishing %s: %s", topic, message.value);
-
       mqtt.publish(topic, message.value);
     }
     else {
@@ -50,16 +47,20 @@ namespace Bricks {
   }
 
   void Events::onEvent(char *topic, byte *bytes, unsigned int length) {
-    //TODO: Look into this for crashiness
     Log.notice("Event received: %s", topic);
 
     bytes[length] = '\0';
     char *value = (char *) bytes;
-    uint8_t macAddr[Bricks::Utils::MAC_ADDR_SIZE];
+    uint8_t macAddr[MAC_ADDR_SIZE];
     char key[20]; // TODO: Repeated from Bricks.Message.h
-    Bricks::Utils::parseTopic(topic, macAddr, key);
+    parseTopic(topic, macAddr, key);
 
     gOutbox.send(macAddr, key, value);
+  }
+
+  void Events::parseTopic(const char *topic, uint8_t *macAddr, char *key) {
+    sscanf(topic, BRICKS_MESSAGES_OUT "/" MAC_FORMAT "/%s",
+        &macAddr[0], &macAddr[1], &macAddr[2], &macAddr[3], &macAddr[4], &macAddr[5], key);
   }
 
   void Events::connectWiFi(const char *ssid, const char *password) {
@@ -79,10 +80,8 @@ namespace Bricks {
 
       if(mqtt.connect(mqttClient, mqttUser, mqttPassword)) {
         Log.notice("Connected");
-        char topic[MAX_TOPIC_SIZE];
-        sprintf(topic, "%s/" BRICKS_MESSAGES_OUT "/#", topicPrefix);
-        Log.notice("Subscribing %s", topic);
-        mqtt.subscribe(topic);
+        Log.notice("Subscribing to " BRICKS_MESSAGES_OUT "/#");
+        mqtt.subscribe(BRICKS_MESSAGES_OUT "/#");
       }
       else {
         Log.warning("Failed, rc= %s", mqtt.state());

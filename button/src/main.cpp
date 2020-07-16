@@ -5,6 +5,7 @@
 
 // Bricks
 #include <Bricks.Brick.h>
+#include <Bricks.Constants.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
 #include <Bricks.PongAction.h>
@@ -20,16 +21,16 @@ RBD::Button button(GPIO_NUM_17);
 uint8_t gatewayMac[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 void readGatewayMac() {
-  EEPROM.begin(Bricks::Utils::MAC_ADDR_SIZE);
+  EEPROM.begin(MAC_ADDR_SIZE);
   Log.notice("Reading gateway MAC");
-  for (int i = 0; i < Bricks::Utils::MAC_ADDR_SIZE; ++i) {
+  for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
     gatewayMac[i] = EEPROM.read(i);
   }
 }
 
 void storeGatewayMac(const uint8_t *macAddr, const Message message) {
   Log.notice("Storing gateway MAC");
-  for (int i = 0; i < Bricks::Utils::MAC_ADDR_SIZE; ++i) {
+  for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
     gatewayMac[i] = macAddr[i];
     EEPROM.write(i, macAddr[i]);
   }
@@ -49,7 +50,7 @@ void setup() {
   // Load existing gatewayMac if any
   readGatewayMac();
 
-  char macStr[Bricks::Utils::MAC_STR_SIZE];
+  char macStr[MAC_STR_SIZE];
   Bricks::Utils::macToStr(gatewayMac, macStr);
   Log.notice("Gateway MAC: %s", macStr);
 

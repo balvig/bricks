@@ -1,12 +1,13 @@
 #include <Arduino.h>
+#include <ArduinoLog.h>
 #include <unity.h>
-#include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.PongAction.h>
 using namespace Bricks;
 
 void setUp(void) {
-  gBrick.init();
+  Serial.begin(115200);
+  Log.begin(LOG_LEVEL_NOTICE, &Serial);
 }
 
 void test_process() {

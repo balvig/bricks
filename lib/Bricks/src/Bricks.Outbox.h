@@ -4,6 +4,7 @@
 #include <ArduinoLog.h>
 #include <WifiEspNow.h>
 
+#include <Bricks.Constants.h>
 #include <Bricks.Message.h>
 #include <Bricks.Utils.h>
 

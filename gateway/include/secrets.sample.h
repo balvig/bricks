@@ -7,4 +7,3 @@
 #define BRICKS_MQTT_CLIENT "bricks"
 #define BRICKS_MQTT_USER "user"
 #define BRICKS_MQTT_PASSWORD "password"
-#define BRICKS_MQTT_TOPIC_PREFIX "prefix"

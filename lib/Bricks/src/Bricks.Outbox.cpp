@@ -8,7 +8,7 @@ namespace Bricks {
     strcpy(message.key, key);
     strcpy(message.value, value);
 
-    char macStr[Bricks::Utils::MAC_STR_SIZE];
+    char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(macAddr, macStr);
     Log.notice("Sending message. <key: %s, value: %s, mac: %s>", message.key, message.value, macStr);
 
@@ -26,7 +26,7 @@ namespace Bricks {
       Log.notice("Already paired");
     }
     else {
-      char macStr[Bricks::Utils::MAC_STR_SIZE];
+      char macStr[MAC_STR_SIZE];
       Bricks::Utils::macToStr(macAddr, macStr);
       Log.notice("Pairing with %s", macStr);
 

@@ -9,7 +9,7 @@ namespace Bricks {
     Message message;
     memcpy(&message, data, sizeof(message));
 
-    char macStr[Bricks::Utils::MAC_STR_SIZE];
+    char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(macAddr, macStr);
     Log.notice("Received message. <key: %s, value: %s mac: %s>", message.key, message.value, macStr);
 
