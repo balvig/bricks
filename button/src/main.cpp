@@ -21,11 +21,16 @@ RBD::Button button(GPIO_NUM_17);
 uint8_t gatewayMac[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 void readGatewayMac() {
+  // Load from flash memory
   EEPROM.begin(MAC_ADDR_SIZE);
   Log.notice("Reading gateway MAC");
   for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
     gatewayMac[i] = EEPROM.read(i);
   }
+
+  char macStr[MAC_STR_SIZE];
+  Bricks::Utils::macToStr(gatewayMac, macStr);
+  Log.notice("Gateway MAC: %s", macStr);
 }
 
 void storeGatewayMac(const uint8_t *macAddr, const Message message) {
@@ -49,10 +54,6 @@ void setup() {
 
   // Load existing gatewayMac if any
   readGatewayMac();
-
-  char macStr[MAC_STR_SIZE];
-  Bricks::Utils::macToStr(gatewayMac, macStr);
-  Log.notice("Gateway MAC: %s", macStr);
 
   // Enable receiving messages
   gInbox.init();
