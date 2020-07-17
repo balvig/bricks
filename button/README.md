@@ -1,3 +1,11 @@
-## Bricks Buttonn
+## Bricks Button
 
-- Advertises then sleeps
+### Inbox
+- `ping`
+  - Responds with `pong`
+  - Saves Gateway MAC to flash
+
+### Outbox
+- `pong`
+- `pressed`
+- `released`

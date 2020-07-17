@@ -20,11 +20,11 @@
 - [ ] message out macros
 
 ## Nice to haves
-- [ ] Allow log level to be set
+- [ ] Properly scrollable m5 screen
 - [ ] Rename action "key" to name?
-- [ ] Reply with de-duped list of "capabilities" instead of name?
 - [ ] OTA updates
 - [ ] Organize libs, bricks, platformio.ini
+- [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 
 ## Bricks
 

@@ -3,7 +3,6 @@
 
 // Local
 #include <M5Stack.h>
-#include <ArduinoLog.h>
 
 // Bricks
 #include <Bricks.Brick.h>
@@ -22,11 +21,14 @@ void scrollScreen(Print* _logOutput) {
 
 // Main
 void setup() {
+  // Set up M5
   M5.begin();
   M5.Lcd.setTextWrap(true, true);
+  Log.begin(LOG_LEVEL_WARNING, &M5.Lcd, false);
   Log.setPrefix(scrollScreen);
 
-  gBrick.init(WIFI_AP_STA, &M5.Lcd);
+  // Bricks
+  gBrick.init(WIFI_AP_STA);
   gEvents.init(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD, BRICKS_MQTT_HOST, BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD);
   gInbox.init();
   gInbox.actions[0] = new PublishAction();

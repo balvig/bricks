@@ -17,11 +17,15 @@ void ledOff(const uint8_t *macAddr, const Message message) {
 
 //Main
 void setup() {
+  // Logging
+  Serial.begin(115200);
+  Log.begin(LOG_LEVEL_NOTICE, &Serial);
+
   // Led
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, HIGH);
 
-  // Logger and ESPNOW
+  // Configure ESPNOW
   gBrick.init();
 
   // Enable receiving messages

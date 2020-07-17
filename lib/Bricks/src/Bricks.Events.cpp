@@ -19,7 +19,7 @@ namespace Bricks {
       mqtt.loop();
     }
     else {
-      Log.warning("MQTT: disconnected");
+      Log.warning("MQTT: disconnected" CR);
       connectMQTT();
     }
   }
@@ -31,11 +31,11 @@ namespace Bricks {
       char topic[MAX_TOPIC_SIZE];
       sprintf(topic, BRICKS_MESSAGES_IN "/%s/%s", macStr, message.key);
 
-      Log.notice("MQTT: -> %s: %s", topic, message.value);
+      Log.notice("MQTT: -> %s: %s" CR, topic, message.value);
       mqtt.publish(topic, message.value);
     }
     else {
-      Log.error("MQTT: Publishing failed [disconnected]");
+      Log.error("MQTT: Publishing failed [disconnected]" CR);
     }
   }
 
@@ -53,7 +53,7 @@ namespace Bricks {
     char key[20]; // TODO: Repeated from Bricks.Message.h
     parseTopic(topic, macAddr, key);
 
-    Log.notice("MQTT: <- %s: %s", topic, value);
+    Log.notice("MQTT: <- %s: %s" CR, topic, value);
     gOutbox.send(macAddr, key, value);
   }
 
@@ -68,22 +68,23 @@ namespace Bricks {
 
     while(WiFi.status() != WL_CONNECTED) {
       delay(500);
-      Log.notice("WIFI: Still connecting...");
+      Log.notice(".");
     }
-    Log.notice("WIFI: Connected [%s]", WiFi.localIP().toString().c_str());
+    Log.notice(CR "WIFI: Connected [%s]" CR, WiFi.localIP().toString().c_str());
   }
 
   void Events::connectMQTT() {
+    Log.notice("MQTT: Connecting");
     while(!mqtt.connected()) {
-      Log.notice("MQTT: Connecting");
+      Log.notice(".");
 
       if(mqtt.connect(mqttClient, mqttUser, mqttPassword)) {
-        Log.notice("MQTT: Connected");
-        Log.notice("MQTT: Subscribing [" BRICKS_MESSAGES_OUT "/#]");
+        Log.notice(CR "MQTT: Connected" CR);
+        Log.notice("MQTT: Subscribing [" BRICKS_MESSAGES_OUT "/#]" CR);
         mqtt.subscribe(BRICKS_MESSAGES_OUT "/#");
       }
       else {
-        Log.warning("MQTT: Failed [%s]", mqtt.state());
+        Log.warning(CR "MQTT: Failed [%s]" CR, mqtt.state());
         Log.warning("MQTT: Retrying in 5 secs");
         delay(5000);
       }

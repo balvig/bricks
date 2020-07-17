@@ -23,18 +23,18 @@ uint8_t gatewayMac[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 void readGatewayMac() {
   // Load from flash memory
   EEPROM.begin(MAC_ADDR_SIZE);
-  Log.notice("Reading gateway MAC");
+  Log.notice("Reading gateway MAC" CR);
   for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
     gatewayMac[i] = EEPROM.read(i);
   }
 
   char macStr[MAC_STR_SIZE];
   Bricks::Utils::macToStr(gatewayMac, macStr);
-  Log.notice("Gateway MAC: %s", macStr);
+  Log.notice("Gateway MAC: %s" CR, macStr);
 }
 
 void storeGatewayMac(const uint8_t *macAddr, const Message message) {
-  Log.notice("Storing gateway MAC");
+  Log.notice("Storing gateway MAC" CR);
   for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
     gatewayMac[i] = macAddr[i];
     EEPROM.write(i, macAddr[i]);
@@ -49,7 +49,11 @@ bool gatewayKnown() {
 
 //Main
 void setup() {
-  // Logger and ESPNOW
+  // Logging
+  Serial.begin(115200);
+  Log.begin(LOG_LEVEL_NOTICE, &Serial);
+
+  // Configure ESPNOW
   gBrick.init();
 
   // Load existing gatewayMac if any

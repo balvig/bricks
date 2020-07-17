@@ -1,3 +1,8 @@
-## Bricks Buttonn
+## Bricks LED
 
-- Advertises then sleeps
+### Inbox
+- `on`
+- `off`
+
+### Outbox
+- `pong`

@@ -1,12 +1,7 @@
 #include "Bricks.Brick.h"
 
 namespace Bricks {
-  void Brick::init(const WiFiMode_t wifiMode, Print* logOutput) {
-    // Configure Logging
-    Serial.begin(115200);
-    Log.begin(LOG_LEVEL_NOTICE, logOutput, false);
-    Log.setSuffix(Brick::printNewline);
-
+  void Brick::init(const WiFiMode_t wifiMode) {
     // Configure Wi-Fi
     WiFi.mode(wifiMode);
 
@@ -14,17 +9,12 @@ namespace Bricks {
     if (WifiEspNow.begin()) {
       String macStr = WiFi.softAPmacAddress();
       macStr.toLowerCase();
-      Log.notice("ESPN: Initialized [%s]", macStr.c_str());
+      Log.notice("ESPN: Initialized [%s]" CR, macStr.c_str());
     }
     else {
-      Log.error("ESPN: Error initializing");
+      Log.error("ESPN: Error initializing" CR);
     }
   }
-
-  void Brick::printNewline(Print* logOutput) {
-    logOutput->print("\n");
-  }
-
 
   Brick gBrick = Brick();
 }

@@ -1,9 +1,6 @@
 // Configuration
 #include <secrets.h>
 
-// Local
-#include <ArduinoLog.h>
-
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Events.h>
@@ -15,7 +12,11 @@ using namespace Bricks;
 
 // Main
 void setup() {
-  // Logger and ESPNOW
+  // Logging
+  Serial.begin(115200);
+  Log.begin(LOG_LEVEL_NOTICE, &Serial);
+
+  // Configure ESPNOW
   gBrick.init(WIFI_AP_STA);
 
   // Connect mqtt event stream
