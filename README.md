@@ -1,15 +1,11 @@
 # Bricks (super WIP)
 <img src=logo.png width=300>
 
-## Today
-- [ ] BLE scanner
-- [ ] Matrix
-
 ## Todo
-- [ ] Find a way to make BRICKS_MQTT_TOPIC_PREFIX configurable
-- [ ] Look into garbled mac addresses
 - [ ] Encapsulate gateway mac store/retrieve flow
-- [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
+- [ ] Remove `/bricks/` prefix
+- [ ] Find a way to make BRICKS_MQTT_TOPIC_PREFIX configurable
+- [ ] Investigate random gateway crashes
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
 
@@ -21,9 +17,10 @@
 
 ## Nice to haves
 - [ ] Properly scrollable m5 screen
+- [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
 - [ ] Rename action "key" to name?
 - [ ] OTA updates
-- [ ] Organize libs, bricks, platformio.ini
+- [ ] Extract library files to library. Organize libs, bricks, platformio.ini
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 
 ## Bricks
@@ -31,6 +28,7 @@
 ### Tethered
 - [x] Button
 - [x] LED
+- [ ] RGB LED
 - [ ] BLE scanner
 - [ ] Matrix
 
