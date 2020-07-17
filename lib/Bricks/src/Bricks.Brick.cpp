@@ -12,10 +12,12 @@ namespace Bricks {
 
     // Connect ESPNOW
     if (WifiEspNow.begin()) {
-      Log.notice("ESP-NOW initialized. [%s]", WiFi.softAPmacAddress().c_str());
+      String macStr = WiFi.softAPmacAddress();
+      macStr.toLowerCase();
+      Log.notice("ESPN: Initialized [%s]", macStr.c_str());
     }
     else {
-      Log.error("Error initializing ESP-NOW");
+      Log.error("ESPN: Error initializing");
     }
   }
 

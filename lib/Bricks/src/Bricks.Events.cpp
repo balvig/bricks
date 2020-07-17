@@ -19,7 +19,7 @@ namespace Bricks {
       mqtt.loop();
     }
     else {
-      Log.notice("MQTT disconnected");
+      Log.warning("MQTT: disconnected");
       connectMQTT();
     }
   }
@@ -31,11 +31,11 @@ namespace Bricks {
       char topic[MAX_TOPIC_SIZE];
       sprintf(topic, BRICKS_MESSAGES_IN "/%s/%s", macStr, message.key);
 
-      Log.notice("Publishing %s: %s", topic, message.value);
+      Log.notice("MQTT: -> %s: %s", topic, message.value);
       mqtt.publish(topic, message.value);
     }
     else {
-      Log.warning("Attempted to publish but mqtt wasn't connected");
+      Log.error("MQTT: Publishing failed [disconnected]");
     }
   }
 
@@ -47,14 +47,13 @@ namespace Bricks {
   }
 
   void Events::onEvent(char *topic, byte *bytes, unsigned int length) {
-    Log.notice("Event received: %s", topic);
-
     bytes[length] = '\0';
     char *value = (char *) bytes;
     uint8_t macAddr[MAC_ADDR_SIZE];
     char key[20]; // TODO: Repeated from Bricks.Message.h
     parseTopic(topic, macAddr, key);
 
+    Log.notice("MQTT: <- %s: %s", topic, value);
     gOutbox.send(macAddr, key, value);
   }
 
@@ -64,28 +63,28 @@ namespace Bricks {
   }
 
   void Events::connectWiFi(const char *ssid, const char *password) {
-    Log.notice("Connecting to: %s", ssid);
+    Log.notice("WIFI: Connecting [%s]", ssid);
     WiFi.begin(ssid, password);
 
     while(WiFi.status() != WL_CONNECTED) {
       delay(500);
-      Log.notice("Still connecting...");
+      Log.notice("WIFI: Still connecting...");
     }
-    Log.notice("Connected. IP: %s", WiFi.localIP().toString().c_str());
+    Log.notice("WIFI: Connected [%s]", WiFi.localIP().toString().c_str());
   }
 
   void Events::connectMQTT() {
     while(!mqtt.connected()) {
-      Log.notice("Connecting MQTT");
+      Log.notice("MQTT: Connecting");
 
       if(mqtt.connect(mqttClient, mqttUser, mqttPassword)) {
-        Log.notice("Connected");
-        Log.notice("Subscribing to " BRICKS_MESSAGES_OUT "/#");
+        Log.notice("MQTT: Connected");
+        Log.notice("MQTT: Subscribing [" BRICKS_MESSAGES_OUT "/#]");
         mqtt.subscribe(BRICKS_MESSAGES_OUT "/#");
       }
       else {
-        Log.warning("Failed, rc= %s", mqtt.state());
-        Log.warning("Retrying in 5 secs");
+        Log.warning("MQTT: Failed [%s]", mqtt.state());
+        Log.warning("MQTT: Retrying in 5 secs");
         delay(5000);
       }
     }

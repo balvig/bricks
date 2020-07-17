@@ -1,12 +1,14 @@
 # Bricks (super WIP)
 <img src=logo.png width=300>
 
-## Todo
+## Today
+- [ ] BLE scanner
+- [ ] Matrix
 
+## Todo
 - [ ] Find a way to make BRICKS_MQTT_TOPIC_PREFIX configurable
 - [ ] Look into garbled mac addresses
 - [ ] Encapsulate gateway mac store/retrieve flow
-- [ ] Organize libs, bricks, platformio.ini
 - [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
@@ -19,11 +21,10 @@
 
 ## Nice to haves
 - [ ] Allow log level to be set
-- [ ] Reply with de-duped list of "capabilities" instead of name?
-- [ ] Clean up logs with CAPS
-- [ ] Downcase mac address shown at boot
 - [ ] Rename action "key" to name?
+- [ ] Reply with de-duped list of "capabilities" instead of name?
 - [ ] OTA updates
+- [ ] Organize libs, bricks, platformio.ini
 
 ## Bricks
 

@@ -11,7 +11,7 @@ namespace Bricks {
 
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(macAddr, macStr);
-    Log.notice("Received message. <key: %s, value: %s mac: %s>", message.key, message.value, macStr);
+    Log.notice("ESPN: <- %s [%s] [%s]", macStr, message.key, message.value);
 
     gInbox.process(macAddr, message);
   }
@@ -19,7 +19,7 @@ namespace Bricks {
   void Inbox::process(const uint8_t *macAddr, const Message message) {
     for(int i = 0; i < MAX_ACTIONS; i++) {
       if(actions[i]->respondsTo(message.key)) {
-        Log.notice("Responding to: %s", message.key);
+        Log.trace("BRIC: Action found [%s]", message.key);
         actions[i]->callback(macAddr, message);
       }
     }

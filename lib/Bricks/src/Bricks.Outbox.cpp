@@ -10,32 +10,32 @@ namespace Bricks {
 
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(macAddr, macStr);
-    Log.notice("Sending message. <key: %s, value: %s, mac: %s>", message.key, message.value, macStr);
+    Log.notice("ESPN: -> %s [%s] [%s]", macStr, message.key, message.value);
 
     bool ok = WifiEspNow.send(macAddr, reinterpret_cast<const uint8_t*>(&message), sizeof(message));
     if(ok) {
-      Log.notice("Sent");
+      Log.trace("ESPN: Sent message");
     }
     else {
-      Log.error("Error sending the data");
+      Log.error("ESPN: Error sending message");
     }
   }
 
   void Outbox::pair(const uint8_t *macAddr) {
     if(WifiEspNow.hasPeer(macAddr)) {
-      Log.notice("Already paired");
+      Log.trace("ESPN: Already paired");
+      return;
+    }
+
+    char macStr[MAC_STR_SIZE];
+    Bricks::Utils::macToStr(macAddr, macStr);
+    Log.trace("ESPN: Pairing [%s]", macStr);
+
+    if(WifiEspNow.addPeer(macAddr)) {
+      Log.trace("ESPN: Paired");
     }
     else {
-      char macStr[MAC_STR_SIZE];
-      Bricks::Utils::macToStr(macAddr, macStr);
-      Log.notice("Pairing with %s", macStr);
-
-      if(WifiEspNow.addPeer(macAddr)) {
-        Log.notice("Paired");
-      }
-      else {
-        Log.error("Pairing failed");
-      }
+      Log.error("ESPN: Pairing failed");
     }
   }
 
