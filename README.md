@@ -3,26 +3,27 @@
 
 ## Todo
 
-- [ ] Reply with de-duped list of actions instead of name
+- [ ] Isolate M5/Gateway code
 - [ ] Find a way to make BRICKS_MQTT_TOPIC_PREFIX configurable
 - [ ] Look into garbled mac addresses
 - [ ] Encapsulate gateway mac store/retrieve flow
-- [ ] Isolate M5/Gateway code
 - [ ] Organize libs, bricks, platformio.ini
+- [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
 
 ## NODE-RED
 
-- [ ] message in/out macros
 - [ ] Capture prefix somewhere
+  - Seems possible for `/out` but not for `/in`
+- [ ] message in macros (maybe tricky?)
+- [ ] message out macros
 
 ## Nice to haves
+- [ ] Reply with de-duped list of "capabilities" instead of name?
 - [ ] Clean up logs with CAPS
-- [ ] Downcase/upcase consistency for mac addresses
+- [ ] Downcase mac address shown at boot
 - [ ] Rename action "key" to name?
-- [ ] Maybe only set gateway to AP_STA? Set rest to STA?
-- [ ] Find out why/when gateway reboots
 - [ ] OTA updates
 
 ## Bricks

@@ -3,7 +3,6 @@
 
 #include <ArduinoLog.h>
 #include <Bricks.Action.h>
-#include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
 
 namespace Bricks {
