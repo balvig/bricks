@@ -2,6 +2,7 @@
 #include <secrets.h>
 
 // Local
+#include <M5Stack.h>
 #include <ArduinoLog.h>
 
 // Bricks
@@ -12,19 +13,22 @@
 #include <Bricks.PublishAction.h>
 using namespace Bricks;
 
+void scrollScreen(Print* _logOutput) {
+  if(M5.Lcd.getCursorY() >= M5.Lcd.height()) {
+    M5.Lcd.setCursor(0,0);
+    M5.Lcd.clear();
+  }
+}
 
 // Main
 void setup() {
-  // Logger and ESPNOW
-  gBrick.init(WIFI_AP_STA);
+  M5.begin();
+  M5.Lcd.setTextWrap(true, true);
+  Log.setPrefix(scrollScreen);
 
-  // Connect mqtt event stream
+  gBrick.init(WIFI_AP_STA, &M5.Lcd);
   gEvents.init(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD, BRICKS_MQTT_HOST, BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD);
-
-  // Enable receiving messages
   gInbox.init();
-
-  // Publish all received messages to mqtt
   gInbox.actions[0] = new PublishAction();
 }
 

@@ -26,7 +26,7 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init();
-  gInbox.actions[0] = new PongAction("led");
+  gInbox.actions[0] = new PongAction("LED");
   gInbox.actions[1] = new Action("on", &ledOn);
   gInbox.actions[2] = new Action("off", &ledOff);
 }
