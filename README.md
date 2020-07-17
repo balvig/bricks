@@ -1,14 +1,11 @@
 # Bricks (super WIP)
 <img src=logo.png width=300>
 
-## Today
-- [ ] BLE scanner
-- [ ] RGB LED
-
 ## Todo
+- [ ] Encapsulate gateway mac store/retrieve flow
 - [ ] Remove `/bricks/` prefix
 - [ ] Find a way to make BRICKS_MQTT_TOPIC_PREFIX configurable
-- [ ] Encapsulate gateway mac store/retrieve flow
+- [ ] Investigate random gateway crashes
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
 
