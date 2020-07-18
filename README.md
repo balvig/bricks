@@ -3,8 +3,8 @@
 
 ## Todo
 - [ ] Find a way to make `BRICKS_MQTT_TOPIC_PREFIX` configurable
-- [ ] Only symlink Brick libs
 - [ ] Investigate random gateway crashes
+- [ ] Basic docs
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
 
@@ -18,16 +18,16 @@
 - [ ] Properly scrollable m5 screen
 - [ ] Rename action "key" to name?
 - [ ] Extract library files to library?
-- [ ] OTA updates
-- [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 - [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
+- [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
+- [ ] OTA updates
 
 ## Bricks
 
 ### Tethered
 - [x] Button
 - [x] LED
-- [ ] RGB LED
+- [x] RGB LED
 - [ ] BLE scanner
 - [ ] Matrix
 

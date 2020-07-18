@@ -1,4 +1,4 @@
-## Bricks Scanner
+## Bricks Scanner (WIP)
 
 - Scans for Bluetooth advertisements
 - Posts as mqtt
