@@ -32,6 +32,8 @@
 - [ ] Matrix
 
 ### Battery-driven
+https://www.youtube.com/watch?v=nbMfb0dIvYc
+
 - [ ] Button
 - [ ] LED
 - [ ] Reed switch
@@ -39,7 +41,7 @@
 
 ## Physical
 
-- [ ] Cases
+- [ ] Cases (white)
 - [ ] Coin battery hookup
 
 
