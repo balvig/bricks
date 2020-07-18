@@ -2,7 +2,6 @@
 <img src=logo.png width=300>
 
 ## Todo
-- [ ] Encapsulate gateway mac store/retrieve flow
 - [ ] Remove `/bricks/` prefix
 - [ ] Find a way to make BRICKS_MQTT_TOPIC_PREFIX configurable
 - [ ] Investigate random gateway crashes
@@ -46,8 +45,8 @@
 
 ## Supported platforms
 
-- ESP32
-- ESP8266
+- ESP32: Supports sending messages to all via `FF::FF::FF::FF::FF::FF`. Recommended for gateway.
+- ESP8266: Only supports sending messages to specific MAC addresses.
 
 
 ## Installing

@@ -3,7 +3,7 @@
 ### Inbox
 - `ping`
   - Responds with `pong`
-  - Saves Gateway MAC to flash
+  - Saves Gateway MAC to flash for later usage
 
 ### Outbox
 - `pong`

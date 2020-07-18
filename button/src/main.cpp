@@ -1,5 +1,4 @@
 // Local
-#include <EEPROM.h>
 #include <RBD_Timer.h>
 #include <RBD_Button.h>
 
@@ -9,6 +8,7 @@
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
 #include <Bricks.PongAction.h>
+#include <Bricks.StoreGatewayAction.h>
 #include <Bricks.Utils.h>
 using namespace Bricks;
 
@@ -18,36 +18,8 @@ RBD::Button button(0);
 RBD::Button button(GPIO_NUM_17);
 #endif
 
-uint8_t gatewayMac[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+uint8_t gatewayMac[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}; // default to broadcasting to all
 
-void readGatewayMac() {
-  // Load from flash memory
-  EEPROM.begin(MAC_ADDR_SIZE);
-  Log.notice("Reading gateway MAC" CR);
-  for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
-    gatewayMac[i] = EEPROM.read(i);
-  }
-
-  char macStr[MAC_STR_SIZE];
-  Bricks::Utils::macToStr(gatewayMac, macStr);
-  Log.notice("Gateway MAC: %s" CR, macStr);
-}
-
-void storeGatewayMac(const uint8_t *macAddr, const Message message) {
-  Log.notice("Storing gateway MAC" CR);
-  for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
-    gatewayMac[i] = macAddr[i];
-    EEPROM.write(i, macAddr[i]);
-  }
-  EEPROM.commit();
-}
-
-bool gatewayKnown() {
-  // Figure out a way to know this
-  return true; //gatewayMac != defaultGatewayMac;
-}
-
-//Main
 void setup() {
   // Logging
   Serial.begin(115200);
@@ -56,13 +28,10 @@ void setup() {
   // Configure ESPNOW
   gBrick.init();
 
-  // Load existing gatewayMac if any
-  readGatewayMac();
-
-  // Enable receiving messages
+  // Enable receiving messages and store gateway mac on ping
   gInbox.init();
-  gInbox.actions[0] = new Action("ping", &storeGatewayMac);
-  gInbox.actions[1] = new PongAction("button");
+  gInbox.actions[0] = new PongAction("button");
+  gInbox.actions[1] = new StoreGatewayAction(gatewayMac);
 }
 
 void loop() {
