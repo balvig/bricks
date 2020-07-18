@@ -24,8 +24,10 @@ void setup() {
   // Set up M5
   M5.begin();
   M5.Lcd.setTextWrap(true, true);
-  Log.begin(LOG_LEVEL_WARNING, &M5.Lcd, false);
+  Log.begin(LOG_LEVEL_NOTICE, &M5.Lcd, false);
   Log.setPrefix(scrollScreen);
+  Log.notice("M5ST: Gateway online");
+  Log.setLevel(LOG_LEVEL_WARNING);
 
   // Bricks
   gBrick.init(WIFI_AP_STA);

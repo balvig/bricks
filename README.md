@@ -2,8 +2,8 @@
 <img src=logo.png width=300>
 
 ## Todo
-- [ ] Remove `/bricks/` prefix
-- [ ] Find a way to make BRICKS_MQTT_TOPIC_PREFIX configurable
+- [ ] Find a way to make `BRICKS_MQTT_TOPIC_PREFIX` configurable
+- [ ] Extract library files to library. Organize libs, bricks, platformio.ini
 - [ ] Investigate random gateway crashes
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
@@ -16,11 +16,10 @@
 
 ## Nice to haves
 - [ ] Properly scrollable m5 screen
-- [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
 - [ ] Rename action "key" to name?
 - [ ] OTA updates
-- [ ] Extract library files to library. Organize libs, bricks, platformio.ini
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
+- [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
 
 ## Bricks
 
