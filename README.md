@@ -15,7 +15,7 @@
 - [ ] message out macros
 
 ## Nice to haves
-- [ ] Properly scrollable m5 screen
+- [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?
 - [ ] Extract library files to library?
 - [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
