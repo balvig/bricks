@@ -1,4 +1,4 @@
-## Bricks Gateway
+# Bricks Gateway
 
 The Brick Brain.
 
@@ -8,6 +8,6 @@ vi include/secrets.h
 make upload serial
 ```
 
-### Inbox
+## Inbox
 - `* (ANY)`
   - Publishes received messages to MQTT

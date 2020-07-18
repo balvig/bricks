@@ -94,7 +94,7 @@ brick:
 - [x] Button
 - [x] LED
 - [x] RGB LED
-- [ ] BLE scanner
+- [x] BLE scanner
 - [ ] Matrix
 
 ### Battery-driven

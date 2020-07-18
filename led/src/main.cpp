@@ -1,7 +1,6 @@
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.Outbox.h>
 #include <Bricks.PongAction.h>
 using namespace Bricks;
 

@@ -1,9 +1,9 @@
-## Bricks LED
+# Bricks LED
 
-### Inbox
+## Inbox
 - `ping`
 - `on`
 - `off`
 
-### Outbox
+## Outbox
 - `pong`

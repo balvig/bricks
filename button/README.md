@@ -1,11 +1,11 @@
-## Bricks Button
+# Bricks Button
 
-### Inbox
+## Inbox
 - `ping`
   - Responds with `pong`
   - Saves Gateway MAC to flash for later usage
 
-### Outbox
+## Outbox
 - `pong`
 - `pressed`
 - `released`

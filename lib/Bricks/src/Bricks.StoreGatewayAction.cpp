@@ -13,6 +13,7 @@ namespace Bricks {
       EEPROM.write(i, macAddr[i]);
     }
     EEPROM.commit();
+    logMac();
   }
 
   void StoreGatewayAction::readMac() {
@@ -21,9 +22,12 @@ namespace Bricks {
     for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
       gatewayMac[i] = EEPROM.read(i);
     }
+    logMac();
+  }
 
+  void StoreGatewayAction::logMac() {
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(gatewayMac, macStr);
-    Log.notice("EEPR: Loaded gateway MAC [%s]" CR, macStr);
+    Log.notice("EEPR: Current gateway MAC [%s]" CR, macStr);
   }
 }

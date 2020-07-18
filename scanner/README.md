@@ -1,13 +1,11 @@
-## Bricks Scanner (WIP)
+# Bricks BLE Scanner
 
-- Scans for Bluetooth advertisements
-- Posts as mqtt
+Scans for BLE devices and responds with `found` for any named devices
+found.
 
-## Todo
+## Inbox
+- `ping`
+- `scan` Value: scan time in seconds. No value will make it scan forever.
 
-- [ ] Send data formatted as JSON
-- [ ] Name (still missing?
-- [ ] MAC address
-- [ ] Address type
-- [ ] Service data
-- [ ] RSSI
+## Outbox
+- `found`
