@@ -1,11 +1,10 @@
-## Bricks LED - RGB (WIP)
+## Bricks LED - RGB
 
 For https://docs.wemos.cc/en/latest/d1_mini_shiled/rgb_led.html
 
 ### Inbox
-- `color` Values: 0-2
-- `pattern` Values: 0-2
-TBD
+- `setColor` Values: 0-2
+- `setPattern` Values: 0-1
 
 ### Outbox
-TBD
+- `pong`

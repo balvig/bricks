@@ -21,7 +21,5 @@ class LedAnimator {
     // Animations
     void allBlack();
     void RGBLoop();
-    void rainbowCycle(int SpeedDelay);
-    byte * Wheel(byte WheelPos);
 };
 #endif

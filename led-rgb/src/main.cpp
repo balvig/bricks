@@ -22,7 +22,7 @@ void setPattern(const uint8_t *macAddr, const Message message) {
 void setup() {
   // Logging
   Serial.begin(115200);
-  Log.begin(LOG_LEVEL_TRACE, &Serial);
+  Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
   // Configure ESPNOW
   gBrick.init();
@@ -30,8 +30,8 @@ void setup() {
   // Enable receiving messages
   gInbox.init();
   gInbox.actions[0] = new PongAction("LED - RGB");
-  gInbox.actions[1] = new Action("color", &setColor);
-  gInbox.actions[2] = new Action("pattern", &setPattern);
+  gInbox.actions[1] = new Action("setColor", &setColor);
+  gInbox.actions[2] = new Action("setPattern", &setPattern);
 }
 
 void loop() {
