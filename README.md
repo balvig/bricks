@@ -1,19 +1,22 @@
 # Bricks (super WIP)
 <img src=logo.png width=200>
 
-Dabbling in the brave new world of IoT still feels a little _too_ hard.
+Dabbling in the brave new world of IoT still seems a little _too_ hard (or expensive!)
 
 The aim of Bricks is to make turning ideas (even silly ones) into
 reality a quick, easy, and fun activity.
 
+Think [Sony Mesh](https://meshprj.com/), but without the hefty price tag,
+running entirely on existing Arduino hardware and open source software.
+
 ## Setup
 
 ```
-NodeRED <-> MQTT <-> Gateway --> LED Brick
-                             --> LED RGB Brick
-                             <-- Button Brick
-                             <-> BLE Scanner Brick
-                             <-> Other Brick
+NodeRED <-> MQTT <-> Gateway <-> ESPNow --> LED Brick
+                                        --> LED RGB Brick
+                                        <-- Button Brick
+                                        <-> BLE Scanner Brick
+                                        <-> Other Brick
 ```
 
 
