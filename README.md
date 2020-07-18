@@ -107,5 +107,6 @@ https://www.youtube.com/watch?v=nbMfb0dIvYc
 
 ## Hardware
 
-- [ ] Cases (white)
-- [ ] Coin battery hookup
+- [ ] Cases (Mesh-like form factor?)
+- [ ] Batteries: Rechargable? Coin batteries? AAs?
+- [ ] Base chip
