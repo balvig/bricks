@@ -68,7 +68,6 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Figure out why `led-rgb` can't find local lib after moving to subfolder
 - [ ] Find a way to make `BRICKS_MQTT_TOPIC_PREFIX` configurable
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Investigate rare gateway crashes
