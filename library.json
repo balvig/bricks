@@ -1,0 +1,18 @@
+{
+  "name": "Bricks",
+  "keywords": "",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/balvig/bricks.git"
+  },
+  "dependencies": {
+    "ArduinoLog": "~1.0.3",
+    "EEPROM": ">0",
+    "PubSubClient": "~2.8",
+    "WifiEspNow": "~0.0.20190814"
+  },
+  "version": "0.0.1",
+  "frameworks": "arduino",
+  "platforms": ["espressif32", "espressif8266"]
+}

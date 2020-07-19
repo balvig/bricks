@@ -1,7 +1,7 @@
 # Bricks (super WIP)
 <img src=logo.png width=200>
 
-Dabbling in the brave new world of IoT still seems a little _too_ hard (or expensive!)
+Casual dabbling in the world of IoT still feels a little _too_ hard (or expensive!)
 
 The aim of Bricks is to make turning ideas (even silly ones) into
 reality a quick, easy, and fun activity.
@@ -9,41 +9,39 @@ reality a quick, easy, and fun activity.
 Think [Sony Mesh](https://meshprj.com/), but without the hefty price tag,
 running entirely on existing Arduino hardware and open source software.
 
-## Setup
+## How it works
 
-```
-NodeRED <-> MQTT <-> Gateway <-> ESPNow --> LED Brick
-                                        --> LED RGB Brick
-                                        <-- Button Brick
-                                        <-> BLE Scanner Brick
-                                        <-> Other Brick
-```
+**NodeRED** <-MQTT-> **Gateway Brick** <-ESPNow-> **Bricks**
 
-
-### Supported devices
-
-- **ESP32**: Supports sending messages to multiple devices via `FF::FF::FF::FF::FF::FF`. Recommended for gateway.
-- **ESP8266**: Only supports sending messages to specific MAC addresses. Can be used for bricks.
+## Usage
 
 ### 1. Set up MQTT, NodeRED
 
 Easiest way to get both is https://fred.sensetecnic.com/
 
-
 ### 2. Install a gateway
 
 ```bash
-cd gateway
-make upload ENV=... # check platformio.ini for supported devices
+cd examples/gateway
+make upload
 ```
 
 ### 3. Create some bricks
 
+Find a few [here](/examples).
+
 For example a button:
 
 ```bash
-cd button
-make upload ENV=... # check platformio.ini for supported devices
+cd examples/button
+make upload
+```
+
+and an LED:
+
+```bash
+cd examples/led
+make upload
 ```
 
 ### 4. Send out a ping
@@ -52,13 +50,14 @@ make upload ENV=... # check platformio.ini for supported devices
 bricks/out/ff:ff:ff:ff:ff:ff/ping
 ```
 
-This will connect all bricks to the gateway, each responding with a pong:
+This will configure all bricks to use the gateway,
+each responding with a "pong" containing their MAC address:
 
-```
+```mqtt
 bricks/in/ee:fa:bc:8e:89:1e/pong: button
 ```
 
-### 5. Hook things together in NodeRED
+### 5. Connect things in NodeRED
 
 Here is a simple example that allows a button brick to control an LED
 brick:
@@ -69,44 +68,18 @@ brick:
 ## Todo
 
 ### Next
+- [ ] Figure out why `led-rgb` can't find local lib after moving to subfolder
 - [ ] Find a way to make `BRICKS_MQTT_TOPIC_PREFIX` configurable
+- [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Investigate rare gateway crashes
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
-
-### NodeRED
-- [ ] Capture prefix somewhere
-  - Seems possible for `/out` but not for `/in` :/
-- [ ] message in macros (maybe tricky?)
-- [ ] message out macros
+- [ ] Bricks hardware
 
 ### Nice to haves
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?
-- [ ] Extract library files to library?
 - [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
+- [ ] Couple of exported NodeRED flows
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 - [ ] OTA updates
-
-## Planned Bricks
-
-### Tethered
-- [x] Button
-- [x] LED
-- [x] RGB LED
-- [x] BLE scanner
-- [ ] Matrix
-
-### Battery-driven
-https://www.youtube.com/watch?v=nbMfb0dIvYc
-
-- [ ] Button
-- [ ] LED
-- [ ] Reed switch
-- [ ] Servo
-
-## Hardware
-
-- [ ] Cases (Mesh-like form factor?)
-- [ ] Batteries: Rechargable? Coin batteries? AAs?
-- [ ] Base chip
