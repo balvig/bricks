@@ -11,7 +11,7 @@ running entirely on existing Arduino hardware and open source software.
 
 ## How it works
 
-**NodeRED** <-MQTT-> **Gateway Brick** <-ESPNow-> **Bricks**
+**NodeRED** ←MQTT→ **Gateway Brick** ←ESPNow→ **Bricks**
 
 ## Usage
 
@@ -23,6 +23,8 @@ Easiest way to get both is https://fred.sensetecnic.com/
 
 ```bash
 cd examples/gateway
+cp include/secrets.sample.h include/secrets.h
+vi include/secrets.h
 make upload
 ```
 
