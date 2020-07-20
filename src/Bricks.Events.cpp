@@ -3,8 +3,7 @@
 namespace Bricks {
   void Events::init() {
     mqtt.setServer(BRICKS_MQTT_HOST, 1883);
-    mqtt.setBufferSize(1024); // Extract to global var
-    mqtt.setCallback(Events::onEvent); // How to capture this?
+    mqtt.setCallback(Events::onEvent);
 
     connectWiFi();
     connectMQTT();
