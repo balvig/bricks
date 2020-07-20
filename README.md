@@ -25,7 +25,7 @@ Easiest way to get both is https://fred.sensetecnic.com/
 cd examples/gateway
 cp include/secrets.sample.h include/secrets.h
 vi include/secrets.h
-make upload
+platformio run --target upload
 ```
 
 ### 3. Create some bricks
@@ -36,14 +36,14 @@ For example a button:
 
 ```bash
 cd examples/button
-make upload
+platformio run --target upload
 ```
 
 and an LED:
 
 ```bash
 cd examples/led
-make upload
+platformio run --target upload
 ```
 
 ### 4. Send out a ping
