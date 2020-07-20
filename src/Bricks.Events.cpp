@@ -1,16 +1,12 @@
 #include "Bricks.Events.h"
 
 namespace Bricks {
-  void Events::init(const char *wifiSSID, const char *wifiPassword, const char *mqttHost, const char *mqttClient, const char *mqttUser, const char *mqttPassword) {
-    this->mqttClient = mqttClient;
-    this->mqttUser = mqttUser;
-    this->mqttPassword = mqttPassword;
-
-    mqtt.setServer(mqttHost, 1883);
+  void Events::init() {
+    mqtt.setServer(BRICKS_MQTT_HOST, 1883);
     mqtt.setBufferSize(1024); // Extract to global var
     mqtt.setCallback(Events::onEvent); // How to capture this?
 
-    connectWiFi(wifiSSID, wifiPassword);
+    connectWiFi();
     connectMQTT();
   }
 
@@ -62,9 +58,9 @@ namespace Bricks {
         &macAddr[0], &macAddr[1], &macAddr[2], &macAddr[3], &macAddr[4], &macAddr[5], key);
   }
 
-  void Events::connectWiFi(const char *ssid, const char *password) {
-    Log.notice("WIFI: Connecting [%s]", ssid);
-    WiFi.begin(ssid, password);
+  void Events::connectWiFi() {
+    Log.notice("WIFI: Connecting [%s]", BRICKS_WIFI_SSID);
+    WiFi.begin(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD);
 
     while(WiFi.status() != WL_CONNECTED) {
       delay(500);
@@ -78,7 +74,7 @@ namespace Bricks {
     while(!mqtt.connected()) {
       Log.notice(".");
 
-      if(mqtt.connect(mqttClient, mqttUser, mqttPassword)) {
+      if(mqtt.connect(BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD)) {
         Log.notice(CR "MQTT: Connected" CR);
         Log.notice("MQTT: Subscribing [" BRICKS_MESSAGES_OUT "/#]" CR);
         mqtt.subscribe(BRICKS_MESSAGES_OUT "/#");

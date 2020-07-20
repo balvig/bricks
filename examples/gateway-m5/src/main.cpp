@@ -1,6 +1,3 @@
-// Configuration
-#include <secrets.h>
-
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Events.h>
@@ -31,7 +28,7 @@ void setup() {
 
   // Bricks
   gBrick.init(WIFI_AP_STA);
-  gEvents.init(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD, BRICKS_MQTT_HOST, BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD);
+  gEvents.init();
   gInbox.init();
   gInbox.actions[0] = new PublishAction();
 }

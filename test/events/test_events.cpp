@@ -7,13 +7,13 @@
 
 void setUp(void) {
   Serial.begin(115200);
-  Log.begin(LOG_LEVEL_NOTICE, &Serial);
+  Log.begin(LOG_LEVEL_TRACE, &Serial);
 }
 
 void test_parse_topic() {
   uint8_t macAddr[MAC_ADDR_SIZE];
   char key[20]; // TODO: Repeated from Bricks.Message.h
-  const char *topic = "accounts/balvig/bricks/out/FF:FF:FF:FF:FF:FF/ping";
+  const char *topic = "accounts/name/bricks/out/FF:FF:FF:FF:FF:FF/ping";
 
   Bricks::Events::parseTopic(topic, macAddr, key);
 

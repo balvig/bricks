@@ -5,6 +5,4 @@
 #define MAC_ADDR_SIZE 6
 #define MAC_STR_SIZE 18
 
-// Find way to make this configurable
-#define BRICKS_MQTT_TOPIC_PREFIX "accounts/balvig/bricks"
 #endif

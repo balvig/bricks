@@ -14,6 +14,17 @@
 #include <Bricks.Outbox.h>
 #include <Bricks.Utils.h>
 
+// Define in secrets.h file
+#ifndef SECRETS_H
+#define BRICKS_WIFI_SSID "SSID"
+#define BRICKS_WIFI_PASSWORD "PASSWORD"
+#define BRICKS_MQTT_HOST "mqtt.host.com"
+#define BRICKS_MQTT_CLIENT "bricks"
+#define BRICKS_MQTT_USER "user"
+#define BRICKS_MQTT_PASSWORD "password"
+#define BRICKS_MQTT_TOPIC_PREFIX "accounts/name/bricks"
+#endif
+
 #define BRICKS_MESSAGES_IN BRICKS_MQTT_TOPIC_PREFIX "/in"
 #define BRICKS_MESSAGES_OUT BRICKS_MQTT_TOPIC_PREFIX "/out"
 
@@ -23,7 +34,7 @@ namespace Bricks {
 
     public:
       Events() : mqtt(wifi) {}
-      void init(const char *wifiSSID, const char *wifiPassword, const char *mqttHost, const char *mqttClient, const char *mqttUser, const char *mqttPassword);
+      void init();
       void loop();
       void publish(const uint8_t *macAddr, Message message);
       void publish(const uint8_t *macAddr, const char *key, const char *value = "");
@@ -32,10 +43,7 @@ namespace Bricks {
     private:
       WiFiClient wifi;
       PubSubClient mqtt;
-      const char *mqttClient;
-      const char *mqttUser;
-      const char *mqttPassword;
-      void connectWiFi(const char *ssid, const char *password);
+      void connectWiFi();
       void connectMQTT();
   };
 
