@@ -82,5 +82,5 @@ brick:
 - [ ] Rename action "key" to name?
 - [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
 - [ ] Couple of exported NodeRED flows
-- [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 - [ ] OTA updates
+- [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
