@@ -15,7 +15,9 @@ BLEScan *pBLEScan;
 class BLECallbacks: public BLEAdvertisedDeviceCallbacks {
   void onResult(BLEAdvertisedDevice* device) {
     if(device->haveName()) {
-      gOutbox.send(gatewayMac, "found", device->toString().c_str());
+      char value[100];
+      sprintf(value, "%s,%s,%d", device->getName().c_str(), device->getAddress().toString().c_str(), device->getRSSI());
+      gOutbox.send(gatewayMac, "found", value);
     }
   }
 };
@@ -38,7 +40,7 @@ void setup() {
   BLEDevice::init("");
   pBLEScan = BLEDevice::getScan();
   pBLEScan->setAdvertisedDeviceCallbacks(new BLECallbacks());
-  pBLEScan->setActiveScan(true);
+  pBLEScan->setActiveScan(true); // required to get names?
 
   // Configure ESPNOW
   gBrick.init();
