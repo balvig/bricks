@@ -9,11 +9,11 @@ void setUp(void) {
 }
 
 void test_mac_to_str() {
-  const uint8_t macAddr[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+  const uint8_t macAddr[] = {0xDE, 0x4F, 0x22, 0x01, 0xB1, 0xC0};
   char macStr[MAC_STR_SIZE];
   Bricks::Utils::macToStr(macAddr, macStr);
 
-  TEST_ASSERT_EQUAL_STRING("ff:ff:ff:ff:ff:ff", macStr);
+  TEST_ASSERT_EQUAL_STRING("de:4f:22:01:b1:c0", macStr);
 }
 
 void setup() {
