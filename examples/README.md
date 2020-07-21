@@ -5,12 +5,20 @@
 - [Button](button)
 - [LED](led)
 - [LED RGB](led-rgb)
+- [LED 8x8 Matrix](matrix)
 - [BLE Scanner](scanner)
 - [Gateway using m5stack LCD for logs](gateway-m5)
 
+## Creating a brick
+
+### Inbox/Outbox
+
+### Actions
+
+### "Pong"
+
 ## Planned Bricks
 
-- Matrix
 - Battery button (https://www.youtube.com/watch?v=nbMfb0dIvYc)
 - Battery LED
 - Battery reed switch

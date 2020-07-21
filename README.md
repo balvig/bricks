@@ -69,6 +69,7 @@ brick:
 ## Todo
 
 ### Next
+- [ ] Find out why published MAC address sometimes misses a digit
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Investigate rare gateway crashes
 - [ ] Look into permanency of MAC addresses
@@ -82,3 +83,4 @@ brick:
 - [ ] Couple of exported NodeRED flows
 - [ ] OTA updates
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
+- [ ] Idea: Move sender macAddr into message to reduce params to 1?

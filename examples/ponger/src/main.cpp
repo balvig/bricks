@@ -14,7 +14,7 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init();
-  gInbox.actions[0] = new PongAction("ponger");
+  gInbox.actions[0] = new PongAction("Test Brick");
 }
 
 void loop() {

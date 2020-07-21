@@ -45,7 +45,7 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init();
-  gInbox.actions[0] = new PongAction("Scanner");
+  gInbox.actions[0] = new PongAction("BLE Scanner");
   gInbox.actions[1] = new StoreGatewayAction(gatewayMac);
   gInbox.actions[2] = new Action("scan", &scan);
 }
