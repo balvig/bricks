@@ -9,7 +9,7 @@ using namespace Bricks;
 // Local
 #include <NimBLEDevice.h>
 
-uint8_t gatewayMac[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}; // default to broadcasting to all
+uint8_t gatewayMac[] = MAC_ALL; // default to broadcasting to all
 BLEScan *pBLEScan;
 
 class BLECallbacks: public BLEAdvertisedDeviceCallbacks {
