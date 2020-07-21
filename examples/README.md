@@ -35,3 +35,10 @@
 - [ ] Cases (Mesh-like form factor?)
 - [ ] Batteries: Rechargable? Coin batteries? AAs?
 - [ ] Base chip, what to use?
+
+## Specs
+
+- Built-in battery (aim: 30-day battery life)
+- USB port for charging and powering
+- Easy to attach to each other
+- Mergable USB cables?
