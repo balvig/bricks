@@ -69,7 +69,6 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Find out why published MAC address sometimes misses a digit
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Investigate rare gateway crashes
 - [ ] Look into permanency of MAC addresses
