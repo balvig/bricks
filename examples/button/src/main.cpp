@@ -19,10 +19,16 @@ RBD::Button button(GPIO_NUM_17);
 
 uint8_t gatewayMac[] = MAC_ALL; // default to broadcasting to all
 
+void getBattery(const uint8_t *macAddr, const Message message) {
+  char battery[10];
+  sprintf (battery, "%i", analogRead(A0));
+  gOutbox.send(macAddr, "battery", (const char*)battery);
+}
+
 void setup() {
   // Logging
   Serial.begin(115200);
-  Log.begin(LOG_LEVEL_NOTICE, &Serial);
+  Log.begin(LOG_LEVEL_ERROR, &Serial);
 
   // Configure ESPNow
   gBrick.init();
@@ -31,6 +37,7 @@ void setup() {
   gInbox.init();
   gInbox.actions[0] = new PongAction("Button");
   gInbox.actions[1] = new StoreGatewayAction(gatewayMac);
+  gInbox.actions[2] = new Action("getBattery", &getBattery);
 }
 
 void loop() {
