@@ -69,6 +69,8 @@ brick:
 ## Todo
 
 ### Next
+- [ ] Battery test
+- [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Investigate rare gateway crashes
 - [ ] Look into permanency of MAC addresses
