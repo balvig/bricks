@@ -24,7 +24,6 @@ void setup() {
   Log.begin(LOG_LEVEL_NOTICE, &M5.Lcd, false);
   Log.setPrefix(scrollScreen);
   Log.notice("M5ST: Gateway online" CR);
-  Log.setLevel(LOG_LEVEL_WARNING);
 
   // Bricks
   gBrick.init(WIFI_AP_STA);

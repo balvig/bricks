@@ -72,6 +72,7 @@ brick:
 - [ ] Battery test
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Fix errors raised by linter (mainly passing Message by value)
+- [ ] ESP8266s sometimes bad at receiving pings (due to missing multicast support?)
 - [ ] Investigate rare gateway crashes
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
