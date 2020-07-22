@@ -5,7 +5,9 @@ found.
 
 ## Inbox
 - `ping`
-- `scan` Value: scan time in seconds. No value will make it get stuck in a never ending scan (!)
+- `setScan` scan time in seconds. No value will make it get stuck in a never ending scan (!)
+- `setWait` wait time in seconds between scans.
+- `setMinRSSI` minimum RSSI in order to trigger event.
 
 ## Outbox
-- `found` Value: Name, mac, RSSI `Tile,e3:12:0b:13:a5:ae,-82`
+- `found` Mac, RSSI `e3:12:0b:13:a5:ae,-82`
