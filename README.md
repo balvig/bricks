@@ -78,6 +78,7 @@ brick:
 - [ ] Bricks hardware
 
 ### Nice to haves
+- [ ] Set log level from build properties
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?
 - [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
