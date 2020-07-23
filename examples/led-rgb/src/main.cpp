@@ -3,12 +3,16 @@
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
 #include <Bricks.PongAction.h>
+#include <Bricks.SleepAction.h>
+#include <Bricks.StoreGatewayAction.h>
 using namespace Bricks;
 
 // Local
 #include <LedAnimator.h>
 
 LedAnimator animator;
+
+uint8_t gatewayMac[] = MAC_ALL; // default to broadcasting to all
 
 // Bricks callbacks
 void setColor(const uint8_t *macAddr, const Message message) {
@@ -30,8 +34,10 @@ void setup() {
   // Enable receiving messages
   gInbox.init();
   gInbox.actions[0] = new PongAction("LED - RGB");
-  gInbox.actions[1] = new Action("setColor", &setColor);
-  gInbox.actions[2] = new Action("setPattern", &setPattern);
+  gInbox.actions[1] = new StoreGatewayAction(gatewayMac);
+  gInbox.actions[2] = new SleepAction(gatewayMac);
+  gInbox.actions[3] = new Action("setColor", &setColor);
+  gInbox.actions[4] = new Action("setPattern", &setPattern);
 }
 
 void loop() {

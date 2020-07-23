@@ -39,6 +39,13 @@
 ## Specs
 
 - Built-in battery (aim: 30-day battery life, currently 11 hours :D)
+- Deep sleep:
+  - can't go lower than 0.016~0.030A for Wemos ESP32/ESP8266 with LEDs (even when LEDs not on)?
+  - no lower than 0.06A _without_ LEDs? (ESP8266)
+  - ESP8266 needs D0/16 <-> RST connection to wake up (but that prevents flashing?)
+  - Limited max sleep time for ESP8266, but can't distinguish buttons
+    reset vs 16 reset?
+  - https://diyprojects.io/esp8266-deep-sleep-mode-test-wake-pir-motion-detector/#.XxrGDPgzblx
 - USB port for charging and powering?
 - Easy to attach to each other?
 - Mergable USB cables?

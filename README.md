@@ -69,13 +69,12 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Battery saving
-  - `SleepAction` for ESP8266
-  - Getting multiple "awake" messages
-  - LEDs light up randomly?
-  - can't go lower than 0.030A for standard Wemos ESP32?
-  - Button wake up _or_ power cut
-- [ ] Tidy up LED-RGB brick
+- [ ] Sleeping button
+  - ESP32 interrupt
+  - ESP8266 button that pulls Reset pin low.
+  - Ideally power cut
+- [ ] Wrap up LED-RGB brick
+  - LEDs light up randomly when sleeping?
 - [ ] Rename `animator.loop()` to `animator.update()`
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
