@@ -74,6 +74,7 @@ brick:
   - Getting multiple "awake" messages
   - LEDs light up randomly?
   - can't go lower than 0.030A for standard Wemos ESP32?
+  - Button wake up _or_ power cut
 - [ ] Tidy up LED-RGB brick
 - [ ] Rename `animator.loop()` to `animator.update()`
 - [ ] Fix errors raised by linter (mainly passing Message by value)
@@ -87,7 +88,6 @@ brick:
 
 ### Nice to haves
 - [ ] `gatewayMac` could/should maybe be a property on `Outbox`?
-- [ ] Set log level from build properties
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?
