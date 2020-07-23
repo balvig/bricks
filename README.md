@@ -25,7 +25,7 @@ Easiest way to get both is https://fred.sensetecnic.com/
 cd examples/gateway
 cp include/secrets.sample.h include/secrets.h
 vi include/secrets.h
-platformio run --target upload
+platformio run -t upload
 ```
 
 ### 3. Create some bricks
@@ -35,14 +35,14 @@ For example a button:
 
 ```bash
 cd examples/button
-platformio run --target upload
+platformio run -t upload
 ```
 
 and an LED:
 
 ```bash
 cd examples/led
-platformio run --target upload
+platformio run -t upload
 ```
 
 ### 4. Send out a ping
@@ -69,8 +69,13 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Poll/battery conscious versions
-  - `SleepAction`
+- [ ] Battery saving
+  - `SleepAction` for ESP8266
+  - Getting multiple "awake" messages
+  - LEDs light up randomly?
+  - can't go lower than 0.030A for standard Wemos ESP32?
+- [ ] Tidy up LED-RGB brick
+- [ ] Rename `animator.loop()` to `animator.update()`
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
   - In particular ESP8266s sometimes bad at receiving messages (mainly pings?)
@@ -86,7 +91,9 @@ brick:
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?
-- [ ] Couple of exported NodeRED flows
+- [ ] NodeRED - Allow payload, topic, mac to take msg input
+- [ ] NodeRED - Couple of exported flows
+- [ ] NodeRED - Add `payload` as option to "Brick out"
 - [ ] OTA updates
 - [ ] Make aliexpress ble button send notifications
 - [ ] Write up making a brick
