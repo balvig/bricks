@@ -69,11 +69,12 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Battery test
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Fix errors raised by linter (mainly passing Message by value)
-- [ ] ESP8266s sometimes bad at receiving pings (due to missing multicast support?)
+- [ ] Need an ACK/retry system? (delivery not guaranteed)
+  - In particular ESP8266s sometimes bad at receiving messages (mainly pings?)
 - [ ] Investigate rare gateway crashes
+  - Maybe publish uptime/online events?
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
 - [ ] Bricks hardware
@@ -82,7 +83,6 @@ brick:
 - [ ] Set log level from build properties
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?
-- [ ] Is `WIFI_AP` or `WIFI_STA` better for bricks?
 - [ ] Couple of exported NodeRED flows
 - [ ] OTA updates
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?

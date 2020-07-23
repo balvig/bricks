@@ -38,7 +38,7 @@
 
 ## Specs
 
-- Built-in battery (aim: 30-day battery life)
-- USB port for charging and powering
-- Easy to attach to each other
+- Built-in battery (aim: 30-day battery life, currently 11 hours :D)
+- USB port for charging and powering?
+- Easy to attach to each other?
 - Mergable USB cables?
