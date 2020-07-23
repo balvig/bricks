@@ -69,7 +69,8 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Allow BLE scanner to subscribe to beacon notifications
+- [ ] Poll/battery conscious versions
+  - `SleepAction`
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
   - In particular ESP8266s sometimes bad at receiving messages (mainly pings?)
@@ -80,10 +81,14 @@ brick:
 - [ ] Bricks hardware
 
 ### Nice to haves
+- [ ] `gatewayMac` could/should maybe be a property on `Outbox`?
 - [ ] Set log level from build properties
+- [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?
 - [ ] Couple of exported NodeRED flows
 - [ ] OTA updates
+- [ ] Make aliexpress ble button send notifications
+- [ ] Write up making a brick
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
