@@ -87,6 +87,8 @@ brick:
 - [ ] Bricks hardware
 
 ### Nice to haves
+- [ ] Instead of ping-pong flow, bricks can scan for gateway? (if not
+  configured)
 - [ ] `gatewayMac` could/should maybe be a property on `Outbox`?
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
