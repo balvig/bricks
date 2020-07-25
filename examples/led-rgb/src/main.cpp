@@ -12,8 +12,6 @@ using namespace Bricks;
 
 LedAnimator animator;
 
-uint8_t gatewayMac[] = MAC_ALL; // default to broadcasting to all
-
 // Bricks callbacks
 void setColor(const uint8_t *macAddr, const Message message) {
   animator.currentColor = atoi(message.value);
@@ -34,8 +32,8 @@ void setup() {
   // Enable receiving messages
   gInbox.init();
   gInbox.actions[0] = new PongAction("LED - RGB");
-  gInbox.actions[1] = new StoreGatewayAction(gatewayMac);
-  gInbox.actions[2] = new SleepAction(gatewayMac);
+  gInbox.actions[1] = new StoreGatewayAction();
+  gInbox.actions[2] = new SleepAction();
   gInbox.actions[3] = new Action("setColor", &setColor);
   gInbox.actions[4] = new Action("setPattern", &setPattern);
 }

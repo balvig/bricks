@@ -66,5 +66,5 @@
     reset vs 16 reset?
   - https://diyprojects.io/esp8266-deep-sleep-mode-test-wake-pir-motion-detector/#.XxrGDPgzblx
 - USB port for charging and powering?
-- On/off button?
+- On/off/reset/check battery-button?
 - Easy to attach to each other?

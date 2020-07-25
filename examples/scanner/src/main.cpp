@@ -9,7 +9,6 @@ using namespace Bricks;
 // Local
 #include <NimBLEDevice.h>
 
-uint8_t gatewayMac[] = MAC_ALL; // default to broadcasting to all
 BLEScan *pBLEScan;
 
 class BLECallbacks: public BLEAdvertisedDeviceCallbacks {
@@ -17,7 +16,7 @@ class BLECallbacks: public BLEAdvertisedDeviceCallbacks {
     if(device->haveName()) {
       char value[100];
       sprintf(value, "%s,%s,%d", device->getName().c_str(), device->getAddress().toString().c_str(), device->getRSSI());
-      gOutbox.send(gatewayMac, "found", value);
+      gOutbox.send("found", value);
     }
   }
 };
@@ -48,7 +47,7 @@ void setup() {
   // Enable receiving messages
   gInbox.init();
   gInbox.actions[0] = new PongAction("BLE Scanner");
-  gInbox.actions[1] = new StoreGatewayAction(gatewayMac);
+  gInbox.actions[1] = new StoreGatewayAction();
   gInbox.actions[2] = new Action("scan", &scan);
 }
 

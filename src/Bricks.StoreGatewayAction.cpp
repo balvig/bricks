@@ -1,33 +1,35 @@
 #include <Bricks.StoreGatewayAction.h>
 
 namespace Bricks {
-  StoreGatewayAction::StoreGatewayAction(uint8_t *gatewayMac) : Action("ping") {
-    this->gatewayMac = gatewayMac;
+  StoreGatewayAction::StoreGatewayAction() : Action("ping") {
+    EEPROM.begin(MAC_ADDR_SIZE);
     readMac();
   }
 
   void StoreGatewayAction::callback(const uint8_t *macAddr, const Message message) {
+    writeMac(macAddr);
+  }
+
+  void StoreGatewayAction::writeMac(const uint8_t *macAddr) {
     Log.notice("EEPR: Storing gateway MAC" CR);
+
     for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
-      gatewayMac[i] = macAddr[i];
       EEPROM.write(i, macAddr[i]);
     }
     EEPROM.commit();
-    logMac();
+
+    gOutbox.setGatewayMac(macAddr);
   }
 
   void StoreGatewayAction::readMac() {
     Log.notice("EEPR: Reading gateway MAC" CR);
-    EEPROM.begin(MAC_ADDR_SIZE);
-    for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
-      gatewayMac[i] = EEPROM.read(i);
-    }
-    logMac();
-  }
 
-  void StoreGatewayAction::logMac() {
-    char macStr[MAC_STR_SIZE];
-    Bricks::Utils::macToStr(gatewayMac, macStr);
-    Log.notice("EEPR: Current gateway MAC [%s]" CR, macStr);
+    uint8_t macAddr[MAC_ADDR_SIZE];
+
+    for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
+      macAddr[i] = EEPROM.read(i);
+    }
+
+    gOutbox.setGatewayMac(macAddr);
   }
 }

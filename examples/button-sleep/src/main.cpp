@@ -7,8 +7,6 @@
 #include <Bricks.StoreGatewayAction.h>
 using namespace Bricks;
 
-uint8_t gatewayMac[] = MAC_ALL; // default to broadcasting to all
-
 void setup() {
   // Logging
   Serial.begin(115200);
@@ -20,8 +18,8 @@ void setup() {
   // Enable receiving messages, store gateway mac on ping, allow sleep
   gInbox.init();
   gInbox.actions[0] = new PongAction("Button - Sleep");
-  gInbox.actions[1] = new StoreGatewayAction(gatewayMac);
-  gInbox.actions[2] = new SleepAction(gatewayMac);
+  gInbox.actions[1] = new StoreGatewayAction();
+  gInbox.actions[2] = new SleepAction();
 }
 
 void loop() {

@@ -21,6 +21,14 @@ namespace Bricks {
     }
   }
 
+  void Outbox::send(const char* key, const char* value) {
+    char macStr[MAC_STR_SIZE];
+    Bricks::Utils::macToStr(gatewayMac, macStr);
+    Log.notice("ESPN: Trying to send to gateway MAC [%s]" CR, macStr);
+
+    send(gatewayMac, key, value);
+  }
+
   void Outbox::pair(const uint8_t *macAddr) {
     if(WifiEspNow.hasPeer(macAddr)) {
       Log.trace("ESPN: Already paired" CR);
@@ -37,6 +45,16 @@ namespace Bricks {
     else {
       Log.error("ESPN: Pairing failed" CR);
     }
+  }
+
+  void Outbox::setGatewayMac(const uint8_t *macAddr) {
+    for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
+      gatewayMac[i] = macAddr[i];
+    }
+
+    char macStr[MAC_STR_SIZE];
+    Bricks::Utils::macToStr(gatewayMac, macStr);
+    Log.notice("BRIC: Current gateway MAC [%s]" CR, macStr);
   }
 
   Outbox gOutbox = Outbox();

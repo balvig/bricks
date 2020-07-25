@@ -13,8 +13,11 @@ namespace Bricks {
     public:
       Outbox() {}
       void send(const uint8_t *macAddr, const char *key, const char *value = "");
+      void send(const char *key, const char *value = "");
+      void setGatewayMac(const uint8_t *macAddr);
     private:
       void pair(const uint8_t *macAddr);
+      uint8_t gatewayMac[MAC_ADDR_SIZE] = MAC_ALL;
   };
 
   extern Outbox gOutbox;

@@ -17,8 +17,6 @@ RBD::Button button(0);
 RBD::Button button(GPIO_NUM_17);
 #endif
 
-uint8_t gatewayMac[] = MAC_ALL; // default to broadcasting to all
-
 void setup() {
   // Logging
   Serial.begin(115200);
@@ -30,15 +28,15 @@ void setup() {
   // Enable receiving messages and store gateway mac on ping
   gInbox.init();
   gInbox.actions[0] = new PongAction("Button");
-  gInbox.actions[1] = new StoreGatewayAction(gatewayMac);
+  gInbox.actions[1] = new StoreGatewayAction();
 }
 
 void loop() {
   if(button.onPressed()) {
-    gOutbox.send(gatewayMac, "pressed");
+    gOutbox.send("pressed");
   }
 
   if(button.onReleased()) {
-    gOutbox.send(gatewayMac, "released");
+    gOutbox.send("released");
   }
 }

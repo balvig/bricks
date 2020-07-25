@@ -55,7 +55,7 @@ This will configure all bricks to use the gateway,
 each responding with a "pong" containing their MAC address:
 
 ```mqtt
-bricks/in/ee:fa:bc:8e:89:1e/pong: button
+bricks/in/ee:fa:bc:8e:89:1e/pong: Button
 ```
 
 ### 5. Connect things in NodeRED
@@ -71,25 +71,19 @@ brick:
 ### Next
 - [ ] Define pairing process
   - Need paired/unpaired status?
-- [ ] Sleeping button
-  - ESP32 interrupt
-  - ESP8266 button that pulls Reset pin low.
-  - Ideally power cut
+  - Instead of ping-pong flow, bricks can scan for gateway? (if not configured)
 - [ ] Wrap up LED-RGB brick
   - LEDs light up randomly when sleeping?
 - [ ] Rename `animator.loop()` to `animator.update()`
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
-  - In particular ESP8266s sometimes bad at receiving messages (mainly pings?)
+  - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
 - [ ] Maybe publish gateway uptime/online events?
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
 - [ ] Bricks hardware
 
 ### Nice to haves
-- [ ] Instead of ping-pong flow, bricks can scan for gateway? (if not
-  configured)
-- [ ] `gatewayMac` could/should maybe be a property on `Outbox`?
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?

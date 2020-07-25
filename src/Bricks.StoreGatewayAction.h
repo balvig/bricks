@@ -6,17 +6,17 @@
 
 #include <Bricks.Action.h>
 #include <Bricks.Constants.h>
+#include <Bricks.Outbox.h>
 #include <Bricks.Utils.h>
 
 namespace Bricks {
   class StoreGatewayAction : public Action {
     public:
-      StoreGatewayAction(uint8_t *gatewayMac);
+      StoreGatewayAction();
       void callback(const uint8_t *macAddr, const Message message);
     private:
+      void writeMac(const uint8_t *macAddr);
       void readMac();
-      void logMac();
-      uint8_t *gatewayMac;
   };
 }
 #endif

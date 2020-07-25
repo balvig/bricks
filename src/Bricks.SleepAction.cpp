@@ -1,8 +1,7 @@
 #include <Bricks.SleepAction.h>
 
 namespace Bricks {
-  SleepAction::SleepAction(uint8_t *gatewayMac) : Action("sleep") {
-    this->gatewayMac = gatewayMac;
+  SleepAction::SleepAction() : Action("sleep") {
     sendAwakeMessage();
   }
 
@@ -19,7 +18,7 @@ namespace Bricks {
 #elif ESP32
     sprintf(value, "%d", esp_sleep_get_wakeup_cause());
 #endif
-    gOutbox.send(gatewayMac, "awake", value);
+    gOutbox.send("awake", value);
   }
 
   void SleepAction::deepSleep(uint8_t seconds) {
