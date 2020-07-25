@@ -52,7 +52,7 @@ bricks/out/ff:ff:ff:ff:ff:ff/ping
 ```
 
 This will configure all bricks to use the gateway,
-each responding with a "pong" containing their MAC address:
+each responding with a "pong" containing their MAC address and name:
 
 ```mqtt
 bricks/in/ee:fa:bc:8e:89:1e/pong: Button
@@ -75,7 +75,7 @@ brick:
     - LEDs light up randomly when sleeping?
     - Rename `animator.loop()` to `animator.update()`
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
-  - Testing out _basic_ ACK in led-matrix
+  - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
   - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
 - [ ] Define pairing process
   - Need paired/unpaired status?
@@ -90,7 +90,8 @@ brick:
 - [ ] NodeRED - Allow payload, topic, mac to take msg input
 - [ ] NodeRED - Couple of exported flows
 - [ ] NodeRED - Add `payload` as option to "Brick out"
-- [ ] OTA updates
+- [ ] More tests
+- [ ] Convert wake-up reasons to text?
 - [ ] Make aliexpress ble button send notifications
 - [ ] Write up making a brick
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
