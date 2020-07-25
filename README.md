@@ -69,6 +69,7 @@ brick:
 ## Todo
 
 ### Next
+- [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] Bricks basic kit
   - [ ] Solder button
   - [ ] Wrap up LED-RGB brick

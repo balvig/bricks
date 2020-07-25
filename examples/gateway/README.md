@@ -3,5 +3,15 @@
 The Brick Brain.
 
 ## Inbox
-- `* (ANY)`
-  - Publishes received messages to MQTT
+
+| key | description               | values |
+|-----|---------------------------|--------|
+| *   | Publishes message to MQTT |        |
+
+
+## Outbox
+
+| key | description                        | values |
+|-----|------------------------------------|--------|
+| *   | Sends events from MQTT as messages |        |
+

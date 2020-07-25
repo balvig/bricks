@@ -4,18 +4,18 @@
 
 ## Inbox
 
-| key      | description                             | values           |
-|----------|-----------------------------------------|------------------|
-| ping     | Saves gateway MAC. Responds with `pong` |                  |
-| sleep    | Sleep for `value` seconds.              | 0 (forever), 1-? |
-| setValue | Shows one character                     | 0-9 A-Z          |
+| key      | description               | values               |
+|----------|---------------------------|----------------------|
+| ping     | Responds with `pong`      |                      |
+| ping     | Saves gateway MAC         |                      |
+| sleep    | Sleep for `value` seconds | 0 (forever), 1-13612 |
+| setValue | Shows one character       | 0-9 A-Z              |
 
 
 ## Outbox
 
-| key   | description                               | values         |
-|-------|-------------------------------------------|----------------|
-| ack:* | Responds with `ack:<KEY>` to all messages |                |
-| awake | Sent when woken up                        | wake-up reason |
-| pong  | Sent when receiving `ping`                |                |
-
+| key   | description                               | values                   |
+|-------|-------------------------------------------|--------------------------|
+| *     | Responds with `ack:<KEY>` to all messages | same as received message |
+| awake | Sent when woken up                        | wake-up reason           |
+| pong  | Sent when receiving `ping`                | name of brick            |

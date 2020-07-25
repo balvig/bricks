@@ -45,7 +45,6 @@
   - no lower than 0.06A _without_ LEDs? (ESP8266)
   - ESP8266 needs D0/16 <-> RST connection to wake up (but that prevents flashing?)
   - Could hook up button both to GPIO and RST to catch long-presses?
-  - Limited max sleep time for ESP8266, but can't distinguish timed reset from button reset
   - https://diyprojects.io/esp8266-deep-sleep-mode-test-wake-pir-motion-detector/#.XxrGDPgzblx
 - USB port for charging and powering?
 - On/off/reset/check battery-button?
