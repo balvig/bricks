@@ -9,6 +9,24 @@
 - [BLE Scanner](scanner)
 - [Gateway using m5stack LCD for logs](gateway-m5)
 
+## Basic Kit
+
+### Button
+
+- awake/sleep
+
+### LED - RGB
+
+- setPattern: "off", "on", "glow"
+- setColor:
+
+### LED - Matrix
+
+- setValue
+
+
+
+
 ## Creating a brick
 
 ### Inbox/Outbox
@@ -16,6 +34,7 @@
 ### Actions
 
 ### "Pong"
+
 
 ## Planned Bricks
 
@@ -47,5 +66,5 @@
     reset vs 16 reset?
   - https://diyprojects.io/esp8266-deep-sleep-mode-test-wake-pir-motion-detector/#.XxrGDPgzblx
 - USB port for charging and powering?
+- On/off button?
 - Easy to attach to each other?
-- Mergable USB cables?

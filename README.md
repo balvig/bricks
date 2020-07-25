@@ -69,6 +69,8 @@ brick:
 ## Todo
 
 ### Next
+- [ ] Define pairing process
+  - Need paired/unpaired status?
 - [ ] Sleeping button
   - ESP32 interrupt
   - ESP8266 button that pulls Reset pin low.
@@ -79,8 +81,7 @@ brick:
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
   - In particular ESP8266s sometimes bad at receiving messages (mainly pings?)
-- [ ] Investigate rare gateway crashes
-  - Maybe publish uptime/online events?
+- [ ] Maybe publish gateway uptime/online events?
 - [ ] Look into permanency of MAC addresses
   - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
 - [ ] Bricks hardware
