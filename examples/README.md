@@ -5,27 +5,9 @@
 - [Button](button)
 - [LED](led)
 - [LED RGB](led-rgb)
-- [LED 8x8 Matrix](matrix)
+- [LED 8x8 Matrix](led-matrix)
 - [BLE Scanner](scanner)
 - [Gateway using m5stack LCD for logs](gateway-m5)
-
-## Basic Kit
-
-### Button
-
-- awake/sleep
-
-### LED - RGB
-
-- setPattern: "off", "on", "glow"
-- setColor:
-
-### LED - Matrix
-
-- setValue
-
-
-
 
 ## Creating a brick
 
@@ -62,8 +44,8 @@
   - can't go lower than 0.016~0.030A for Wemos ESP32/ESP8266 with LEDs (even when LEDs not on)?
   - no lower than 0.06A _without_ LEDs? (ESP8266)
   - ESP8266 needs D0/16 <-> RST connection to wake up (but that prevents flashing?)
-  - Limited max sleep time for ESP8266, but can't distinguish buttons
-    reset vs 16 reset?
+  - Could hook up button both to GPIO and RST to catch long-presses?
+  - Limited max sleep time for ESP8266, but can't distinguish timed reset from button reset
   - https://diyprojects.io/esp8266-deep-sleep-mode-test-wake-pir-motion-detector/#.XxrGDPgzblx
 - USB port for charging and powering?
 - On/off/reset/check battery-button?

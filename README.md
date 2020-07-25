@@ -69,21 +69,21 @@ brick:
 ## Todo
 
 ### Next
+- [ ] Bricks basic kit
+  - [ ] Solder button
+  - [ ] How to solve 16/RST problem? Use ESP32s for prototypes?
+  - [ ] Wrap up LED-RGB brick
+    - LEDs light up randomly when sleeping?
+    - Rename `animator.loop()` to `animator.update()`
+- [ ] Need an ACK/retry system? (delivery not guaranteed)
+  - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
 - [ ] Define pairing process
   - Need paired/unpaired status?
   - Instead of ping-pong flow, bricks can scan for gateway? (if not configured)
-- [ ] Wrap up LED-RGB brick
-  - LEDs light up randomly when sleeping?
-- [ ] Rename `animator.loop()` to `animator.update()`
-- [ ] Fix errors raised by linter (mainly passing Message by value)
-- [ ] Need an ACK/retry system? (delivery not guaranteed)
-  - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
-- [ ] Maybe publish gateway uptime/online events?
-- [ ] Look into permanency of MAC addresses
-  - https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
-- [ ] Bricks hardware
 
 ### Nice to haves
+- [ ] Maybe publish gateway uptime/online events?
+- [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Rename action "key" to name?
