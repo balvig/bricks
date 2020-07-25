@@ -3,7 +3,7 @@
 
 #include <ArduinoLog.h>
 #include <Bricks.Action.h>
-#include <Bricks.Events.h>
+#include <Bricks.Outbox.h>
 
 #define BRICKS_ACK_PREFIX "ack:"
 
