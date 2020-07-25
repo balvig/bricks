@@ -21,7 +21,7 @@ namespace Bricks {
       void callback(const uint8_t *macAddr, const Message message);
     private:
       void sendAwakeMessage();
-      void deepSleep(uint8_t seconds);
+      void deepSleep(const uint32_t seconds);
   };
 }
 #endif

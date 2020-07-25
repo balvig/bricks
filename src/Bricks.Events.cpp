@@ -45,7 +45,7 @@ namespace Bricks {
     bytes[length] = '\0';
     char *value = (char *) bytes;
     uint8_t macAddr[MAC_ADDR_SIZE];
-    char key[20]; // TODO: Repeated from Bricks.Message.h
+    char key[KEY_SIZE];
     parseTopic(topic, macAddr, key);
 
     Log.notice("MQTT: <- %s: %s" CR, topic, value);

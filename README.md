@@ -71,11 +71,11 @@ brick:
 ### Next
 - [ ] Bricks basic kit
   - [ ] Solder button
-  - [ ] How to solve 16/RST problem? Use ESP32s for prototypes?
   - [ ] Wrap up LED-RGB brick
     - LEDs light up randomly when sleeping?
     - Rename `animator.loop()` to `animator.update()`
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
+  - Testing out _basic_ ACK in led-matrix
   - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
 - [ ] Define pairing process
   - Need paired/unpaired status?

@@ -6,5 +6,6 @@
 #define MAC_STR_SIZE 18
 #define MAC_ALL {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}
 #define MICROSECONDS 1000000
+#define KEY_SIZE 20
 
 #endif

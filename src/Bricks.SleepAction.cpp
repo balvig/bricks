@@ -6,7 +6,7 @@ namespace Bricks {
   }
 
   void SleepAction::callback(const uint8_t *macAddr, const Message message) {
-    uint8_t sleepTime = atoi(message.value);
+    const uint32_t sleepTime = atoi(message.value);
     deepSleep(sleepTime);
   }
 
@@ -21,7 +21,7 @@ namespace Bricks {
     gOutbox.send("awake", value);
   }
 
-  void SleepAction::deepSleep(uint8_t seconds) {
+  void SleepAction::deepSleep(const uint32_t seconds) {
     Log.notice("SLEE: Going to sleep for %d second(s)" CR, seconds);
 #ifdef ESP8266
     ESP.deepSleep(seconds * MICROSECONDS);

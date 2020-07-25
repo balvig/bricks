@@ -12,7 +12,7 @@ void setUp(void) {
 
 void test_parse_topic() {
   uint8_t macAddr[MAC_ADDR_SIZE];
-  char key[20]; // TODO: Repeated from Bricks.Message.h
+  char key[KEY_SIZE];
   const char *topic = "accounts/name/bricks/out/FF:FF:FF:FF:FF:FF/ping";
 
   Bricks::Events::parseTopic(topic, macAddr, key);

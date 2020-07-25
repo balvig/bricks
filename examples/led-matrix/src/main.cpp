@@ -2,6 +2,7 @@
 #include <Bricks.Brick.h>
 #include <Bricks.Constants.h>
 #include <Bricks.Inbox.h>
+#include <Bricks.AckAction.h>
 #include <Bricks.PongAction.h>
 #include <Bricks.StoreGatewayAction.h>
 #include <Bricks.SleepAction.h>
@@ -32,10 +33,11 @@ void setup() {
 
   // Enable receiving messages and store gateway mac on ping
   gInbox.init();
-  gInbox.actions[0] = new PongAction("LED - 8x8 Matrix");
-  gInbox.actions[1] = new StoreGatewayAction();
-  gInbox.actions[2] = new SleepAction();
-  gInbox.actions[3] = new Action("setValue", &setValue);
+  gInbox.actions[0] = new AckAction(); // ack back all messages
+  gInbox.actions[1] = new PongAction("LED - 8x8 Matrix");
+  gInbox.actions[2] = new StoreGatewayAction();
+  gInbox.actions[3] = new SleepAction();
+  gInbox.actions[4] = new Action("setValue", &setValue);
 
   // Set on the side while prototyping
   matrix.setRotation(3);
