@@ -1,5 +1,7 @@
 # Bricks LED 8x8 Matrix
 
+<img src=demo.jpg width=500>
+
 ## Inbox
 
 | key      | description                             | values           |
