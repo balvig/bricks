@@ -11,7 +11,7 @@ running entirely on existing Arduino hardware and open source software.
 
 ## How it works
 
-**NodeRED** ←MQTT→ **Gateway Brick** ←ESPNow→ **Bricks**
+**NodeRED** ←MQTT→ **Brick Gateway** ←ESPNow→ **Bricks**
 
 ## Usage
 
@@ -25,24 +25,24 @@ Easiest way to get both is https://fred.sensetecnic.com/
 cd examples/gateway
 cp include/secrets.sample.h include/secrets.h
 vi include/secrets.h
-platformio run -t upload
+platformio run
 ```
 
 ### 3. Create some bricks
 
-[Working on a library here](/examples).
+[WIP library here](/examples).
 For example a button:
 
 ```bash
 cd examples/button
-platformio run -t upload
+platformio run
 ```
 
 and an LED:
 
 ```bash
 cd examples/led
-platformio run -t upload
+platformio run
 ```
 
 ### 4. Send out a ping
@@ -76,9 +76,9 @@ brick:
     - LEDs light up randomly when sleeping?
     - Rename `animator.loop()` to `animator.update()`
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
-  - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
   - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
-- [ ] Define pairing process
+  - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
+- [ ] Refine pairing process
   - Need paired/unpaired status?
   - Instead of ping-pong flow, bricks can scan for gateway? (if not configured)
 

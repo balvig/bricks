@@ -1,11 +1,20 @@
-# Bricks BLE Scanner
+# Bricks BLE Scanner (WIP)
 
 Scans for BLE devices and responds with `found` for any named devices
 found.
 
 ## Inbox
-- `ping`
-- `scan` Value: scan time in seconds. No value will make it get stuck in a never ending scan (!)
+
+| key      | description           | values  |
+|----------|-----------------------|---------|
+| ping     | Responds with `pong`  |         |
+| ping     | Saves gateway MAC     |         |
+| scan     | Scan for (x) seconds. | 1-255   |
+
 
 ## Outbox
-- `found` Value: Name, mac, RSSI `Tile,e3:12:0b:13:a5:ae,-82`
+
+| key   | description                | values                                       |
+|-------|----------------------------|----------------------------------------------|
+| pong  | Sent when receiving `ping` | name of brick                                |
+| found | Sent when BLE device found | Name, MAC, RSSI `Tile,12:34:56:78:9a:bd,-82` |

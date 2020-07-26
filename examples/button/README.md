@@ -1,11 +1,18 @@
 # Bricks Button
 
 ## Inbox
-- `ping`
-  - Responds with `pong`
-  - Saves Gateway MAC to flash for later usage
+
+| key  | description          | values |
+|------|----------------------|--------|
+| ping | Responds with `pong` |        |
+| ping | Saves gateway MAC    |        |
+
 
 ## Outbox
-- `pong`
-- `pressed`
-- `released`
+
+| key  | description                | values        |
+|------|----------------------------|---------------|
+| pong | Sent when receiving `ping` | name of brick |
+| on   | Turns LED on               |               |
+| off  | Turns LED off              |               |
+

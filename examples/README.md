@@ -1,13 +1,13 @@
 # Brick Examples
 
 - [Gateway](gateway)
-- [Ponger](ponger)
+- [Gateway using m5stack LCD for logs](gateway-m5)
 - [Button](button)
+- [Button (sleeps)](button-sleep)
 - [LED](led)
 - [LED RGB](led-rgb)
 - [LED 8x8 Matrix](led-matrix)
 - [BLE Scanner](scanner)
-- [Gateway using m5stack LCD for logs](gateway-m5)
 
 ## Creating a brick
 
