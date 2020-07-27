@@ -64,36 +64,37 @@ Here is a simple example that allows a button brick to control an LED
 brick:
 
 <img src=example.png width=500>
+<img src=example.gif width=400>
 
 
 ## Todo
 
 ### Next
-- [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] Bricks basic kit
   - [ ] Solder button
   - [ ] Wrap up LED-RGB brick
     - LEDs light up randomly when sleeping?
-    - Rename `animator.loop()` to `animator.update()`
+    - Rewrite animation to be more flexible/non-blocking
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
-  - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
+  - In particular ESP8266s sometimes bad at receiving messages (in particular pings to MAC_ALL?)
   - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
+- [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] Refine pairing process
   - Need paired/unpaired status?
   - Instead of ping-pong flow, bricks can scan for gateway? (if not configured)
+  - If ACK is built in to all bricks, no need for `pong`?
 
 ### Nice to haves
+- [ ] Write up making a brick
 - [ ] Maybe publish gateway uptime/online events?
 - [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
-- [ ] Rename action "key" to name?
 - [ ] NodeRED - Allow payload, topic, mac to take msg input
 - [ ] NodeRED - Couple of exported flows
 - [ ] NodeRED - Add `payload` as option to "Brick out"
 - [ ] More tests
 - [ ] Convert wake-up reasons to text?
 - [ ] Make aliexpress ble button send notifications
-- [ ] Write up making a brick
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
