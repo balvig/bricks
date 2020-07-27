@@ -72,13 +72,11 @@ brick:
 ### Next
 - [ ] Bricks basic kit
   - [ ] Solder button
-  - [ ] Wrap up LED-RGB brick
-    - LEDs light up randomly when sleeping?
-    - Rewrite animation to be more flexible/non-blocking
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
-  - In particular ESP8266s sometimes bad at receiving messages (in particular pings to MAC_ALL?)
+  - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
   - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
 - [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
+- [ ] "Pack" of built in actions for all bricks?
 - [ ] Refine pairing process
   - Need paired/unpaired status?
   - Instead of ping-pong flow, bricks can scan for gateway? (if not configured)
@@ -92,7 +90,6 @@ brick:
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] NodeRED - Allow payload, topic, mac to take msg input
 - [ ] NodeRED - Couple of exported flows
-- [ ] NodeRED - Add `payload` as option to "Brick out"
 - [ ] More tests
 - [ ] Convert wake-up reasons to text?
 - [ ] Make aliexpress ble button send notifications

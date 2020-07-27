@@ -8,18 +8,23 @@
 using namespace Bricks;
 
 // Local
-#include <LedAnimator.h>
+#include <Lumi.Animator.h>
 
-LedAnimator animator;
+Lumi::Animator animator;
 
 // Bricks callbacks
-void setColor(const uint8_t *macAddr, const Message message) {
-  animator.currentColor = atoi(message.value);
-}
-
 void setPattern(const uint8_t *macAddr, const Message message) {
   animator.currentPattern = atoi(message.value);
 }
+
+void setVariation(const uint8_t *macAddr, const Message message) {
+  animator.currentVariation = atoi(message.value);
+}
+
+void setDelay(const uint8_t *macAddr, const Message message) {
+  animator.currentDelay = atoi(message.value);
+}
+
 
 void setup() {
   // Logging
@@ -34,10 +39,11 @@ void setup() {
   gInbox.actions[0] = new PongAction("LED - RGB");
   gInbox.actions[1] = new StoreGatewayAction();
   gInbox.actions[2] = new SleepAction();
-  gInbox.actions[3] = new Action("setColor", &setColor);
-  gInbox.actions[4] = new Action("setPattern", &setPattern);
+  gInbox.actions[3] = new Action("setPattern", &setPattern);
+  gInbox.actions[4] = new Action("setVariation", &setVariation);
+  gInbox.actions[5] = new Action("setDelay", &setDelay);
 }
 
 void loop() {
-  animator.loop();
+  animator.update();
 }
