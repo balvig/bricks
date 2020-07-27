@@ -1,4 +1,4 @@
-# Bricks BLE Scanner (WIP)
+# BLE Scanner (WIP)
 
 Scans for BLE devices and responds with `found` for any named devices
 found.

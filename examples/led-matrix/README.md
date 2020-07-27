@@ -1,4 +1,4 @@
-# Bricks LED 8x8 Matrix
+# LED - 8x8 Matrix
 
 <img src=demo.jpg width=500>
 

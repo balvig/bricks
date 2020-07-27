@@ -1,4 +1,4 @@
-# Bricks LED - RGB (WIP)
+# LED - RGB (WIP)
 
 For https://docs.wemos.cc/en/latest/d1_mini_shiled/rgb_led.html
 

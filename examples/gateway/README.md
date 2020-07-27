@@ -1,4 +1,4 @@
-# Bricks Gateway
+# Gateway
 
 The Brick Brain.
 

@@ -1,4 +1,7 @@
-# Bricks Button
+# Button
+
+"Always on" button.
+Very responsive but will consume battery/should probably be plugged in.
 
 ## Inbox
 
