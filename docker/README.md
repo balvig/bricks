@@ -8,7 +8,7 @@ You'll need to have [Docker](https://www.docker.com/) on your computer, and that
 
 ## Starting/stopping
 
-You can start the Node-RED server and the MQTT broker by running `docker-compose up` in this directory. This command will keep running and display both applications's logs. You can use the `--detach` option if you want it to run in the background (you won't be able to read the logs though).
+You can start the Node-RED server and the MQTT broker by running `docker-compose up` in this directory. This command will keep running and display both applications' logs. You can use the `--detach` option if you want it to run in the background (you won't be able to read the logs though).
 
 :memo: _The first time you run `docker-compose up`, it will take longer, as it needs to download and build Docker images._
 
@@ -22,15 +22,16 @@ The two Docker containers defined in `docker-compose.yml` are on the same networ
 
 ### Data
 
-Node-RED's data (stored in the `/data` directory of the Docker container) is synced to the `data/` directory, so that flows and configuration are persisted when the Docker containers are shut down. After running once, you will find the following files:
+Node-RED's data (stored in the `/data` directory of the Docker container) is synced to the `data/` local directory, so that flows and configuration are persisted when the Docker containers are shut down. After running once, you will find the following files:
 
-- `data/flows.json`
+-  `data/settings.js`: Node-RED's settings file, that could be checked in if there are settings changes that need to be persisted
+- `data/flows.json`: an export of all the flows defined in Node-RED
 - `data/flows_cred.json`
 
 ### SQLite
 
 The `node-red-node-sqlite` module is already installed, and provides access to SQLite databases. To ensure that your SQLite data is persisted when the Docker container is shut down, make sure you set your database's path inside `/data/`.
 
-### Node modules
+### Node-RED modules
 
 Node-RED's UI provides a way to install new modules ("Manage Palette" in the top menu, then "Install" tab). Installing new modules will update the `data/package.json` and `data/package-lock.json` files.
