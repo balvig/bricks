@@ -83,14 +83,15 @@ brick:
   - If ACK is built in to all bricks, no need for `pong`?
 
 ### Nice to haves
-- [ ] Fix errors raised by linter (mainly passing Message by value)
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
+- [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
+  - Also, get `pio check` running again!
 - [ ] Write up making a brick
 - [ ] Maybe publish gateway uptime/online events?
-- [ ] NodeRED - Allow payload, topic, mac to take msg input
-- [ ] NodeRED - Couple of exported flows
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
+- [ ] NodeRED - Allow payload, topic, mac to take msg input
+- [ ] NodeRED - Couple of exported flows
