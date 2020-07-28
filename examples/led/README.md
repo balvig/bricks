@@ -1,9 +1,15 @@
-# Bricks LED
+# LED
 
 ## Inbox
-- `ping`
-- `on`
-- `off`
+
+| key  | description          | values |
+|------|----------------------|--------|
+| ping | Responds with `pong` |        |
+| on   | Turns on LED         |        |
+| off  | Turns off LED        |        |
 
 ## Outbox
-- `pong`
+
+| key  | description                | values        |
+|------|----------------------------|---------------|
+| pong | Sent when receiving `ping` | name of brick |
