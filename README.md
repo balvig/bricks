@@ -93,7 +93,6 @@ brick:
 - [ ] NodeRED - Allow payload, topic, mac to take msg input
 - [ ] NodeRED - Couple of exported flows
 - [ ] More tests
-- [ ] Convert wake-up reasons to text?
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?

@@ -16,11 +16,23 @@ void test_mac_to_str() {
   TEST_ASSERT_EQUAL_STRING("de:4f:22:01:b1:c0", macStr);
 }
 
+void test_get_wakeup_reason() {
+  char reason[50];
+  Bricks::Utils::getWakeupReason(reason);
+
+#ifdef ESP8266
+  TEST_ASSERT_EQUAL_STRING("external system reset", reason);
+#elif ESP32
+  TEST_ASSERT_EQUAL_STRING("reset was not caused by exit from deep sleep", reason);
+#endif
+}
+
 void setup() {
   delay(2000); // if board doesn't support software reset via Serial.DTR/RTS
 
   UNITY_BEGIN();
   RUN_TEST(test_mac_to_str);
+  RUN_TEST(test_get_wakeup_reason);
   UNITY_END();
 }
 

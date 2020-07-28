@@ -13,6 +13,7 @@
 #include <Bricks.Action.h>
 #include <Bricks.Constants.h>
 #include <Bricks.Outbox.h>
+#include <Bricks.Utils.h>
 
 namespace Bricks {
   class SleepAction : public Action {

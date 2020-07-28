@@ -11,14 +11,11 @@ namespace Bricks {
   }
 
   void SleepAction::sendAwakeMessage() {
-    Log.notice("SLEE: Woke up" CR);
-    char value[2] = "";
-#ifdef ESP8266
-    sprintf(value, "%d", ESP.getResetInfoPtr()->reason);
-#elif ESP32
-    sprintf(value, "%d", esp_sleep_get_wakeup_cause());
-#endif
-    gOutbox.send("awake", value);
+    char reason[50];
+    Bricks::Utils::getWakeupReason(reason);
+
+    Log.notice("SLEE: Woke up [%s]" CR, reason);
+    gOutbox.send("awake", reason);
   }
 
   void SleepAction::deepSleep(const uint32_t seconds) {
