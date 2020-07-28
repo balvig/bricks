@@ -19,7 +19,7 @@ running entirely on existing Arduino hardware and open source software.
 
 Easiest way to get both is https://fred.sensetecnic.com/.
 
-If you want to run these services locally, take a look at the [`docker` directory](/balvig/bricks/docker).
+If you want to run these services locally, take a look at the [`docker` directory](/docker).
 
 ### 2. Install a gateway
 
