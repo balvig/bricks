@@ -17,7 +17,9 @@ running entirely on existing Arduino hardware and open source software.
 
 ### 1. Set up MQTT, NodeRED
 
-Easiest way to get both is https://fred.sensetecnic.com/
+Easiest way to get both is https://fred.sensetecnic.com/.
+
+If you want to run these services locally, take a look at the [`docker` directory](/docker).
 
 ### 2. Install a gateway
 

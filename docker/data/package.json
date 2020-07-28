@@ -1,0 +1,16 @@
+{
+  "name": "node-red-bricks",
+  "version": "0.0.1",
+  "description": "A Node-RED setup for Bricks.",
+  "repository": "git@github.com:balvig/bricks.git",
+  "private": true,
+  "main": "node_modules/node-red/red/red.js",
+  "scripts": {
+    "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS"
+  },
+  "dependencies": {
+    "node-red": "^1.1.2",
+    "node-red-dashboard": "^2.23.0",
+    "node-red-node-sqlite": "^0.4.3"
+  }
+}

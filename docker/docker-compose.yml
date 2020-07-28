@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  node-red:
+    build: .
+    environment:
+      - TZ=Asia/Tokyo
+    ports:
+      - "1880:1880"
+    networks:
+      - node-red-net
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
+    links:
+      - "mqtt:mqtt"
+
+  mqtt:
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+    networks:
+      - node-red-net
+
+networks:
+  node-red-net:
