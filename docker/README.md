@@ -1,6 +1,6 @@
 # Running Node-RED and an MQTT broker locally
 
-This Docker setup allows anyone to run a [Node-RED](https://nodered.org/) server and an MQTT broker ([Eclipse Mosquitto](https://mosquitto.org/) – both vital parts of the Bricks ecosystem – on your personal computer (or on a server, or in the cloud, provided some tweaks).
+This Docker setup allows anyone to run a [Node-RED](https://nodered.org/) server and an MQTT broker ([Eclipse Mosquitto](https://mosquitto.org/)) – both vital parts of the Bricks ecosystem – on your personal computer (or on a server, or in the cloud, provided some tweaks).
 
 ## Requirements
 
