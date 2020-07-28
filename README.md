@@ -72,8 +72,6 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Bricks basic kit
-  - [ ] Solder button
 - [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] "Pack" of built in actions for all bricks?
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
