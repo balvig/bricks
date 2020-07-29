@@ -98,6 +98,7 @@ brick:
 
 ### Unproven theories on dropped messages
 - ESP32s more stable than ESP8266s?
+- Is it better to use _all_ ESP32s / _all_ ESP8266s? ([interdevice comms flakey?](https://github.com/leonyuhanov/ESP-NOW-TX-RX#things-i-found-deep-in-the-rabbit-hole))
 - Related to modem sleep and the `WIFI_AP_STA` setting on the _gateway_? Lost ability to track send results with [WifiEspNow](https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L141)
 - ESP8266 don't respond well to `FF:FF:FF:FF:FF:FF` broadcasts?
 - Are we doing ["lengthy operations"](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#receiving-esp-now-data)?
