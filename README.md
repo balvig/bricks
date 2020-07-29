@@ -108,3 +108,6 @@ brick:
   - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L81
 - Some level of dropping is expected? (how much?) Need to have [manual ACK/retry system](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#send-esp-now-data)?
   - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
+- Does changing the `channel` do anything?
+  - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L73
+  - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNowBroadcast.cpp#L28
