@@ -101,5 +101,8 @@ brick:
 - Related to modem sleep and the `WIFI_AP_STA` setting on the _gateway_? Lost ability to track send results with [WifiEspNow](https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L141)
 - ESP8266 don't respond well to `FF:FF:FF:FF:FF:FF` broadcasts?
 - Are we doing ["lengthy operations"](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#receiving-esp-now-data)?
+- Does the "role" setting of ESP8266 have any impact?
+  - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L27
+  - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L81
 - Some level of dropping is expected? (how much?) Need to have [manual ACK/retry system](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#send-esp-now-data)?
   - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
