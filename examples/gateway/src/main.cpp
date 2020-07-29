@@ -6,11 +6,19 @@
 #include <Bricks.PublishAction.h>
 using namespace Bricks;
 
+#ifdef ARDUINO_M5Stack_Core_ESP32
+#include <M5Logger.h>
+#endif
+
 // Main
 void setup() {
   // Logging
+#ifdef ARDUINO_M5Stack_Core_ESP32
+  M5Logger::init();
+#else
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
+#endif
 
   // Configure ESPNOW
   gBrick.init(WIFI_AP_STA);
