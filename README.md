@@ -76,6 +76,7 @@ brick:
 - [ ] "Pack" of built in actions for all bricks?
 - [ ] Need an ACK/retry system? (delivery not guaranteed)
   - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
+  - Could it be related to modem sleep and the `WIFI_AP_STA` setting on the gateways?
   - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
 - [ ] Refine pairing process
   - Need paired/unpaired status?
