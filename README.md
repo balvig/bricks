@@ -99,5 +99,6 @@ brick:
 ### Unproven theories on dropped messages
 - ESP32s more stable than ESP8266s?
 - Related to modem sleep and the `WIFI_AP_STA` setting on the _gateway_? Lost ability to track send results with [WifiEspNow](https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L141)
+- ESP8266 don't respond well to `FF:FF:FF:FF:FF:FF` broadcasts?
 - Some level of dropping is expected? (how much?) Need to have manual ACK/retry system?
   - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
