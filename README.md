@@ -75,10 +75,7 @@ brick:
 - [ ] Merge Gateway / M5 Gateway code
 - [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] "Pack" of built in actions for all bricks?
-- [ ] Need an ACK/retry system? (delivery not guaranteed)
-  - In particular ESP8266s sometimes bad at receiving messages (mainly pings to MAC_ALL?)
-  - Could it be related to modem sleep and the `WIFI_AP_STA` setting on the gateways?
-  - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
+- [ ] Solve dropped messages problem
 - [ ] Refine pairing process
   - Need paired/unpaired status?
   - Instead of ping-pong flow, bricks can scan for gateway? (if not configured)
@@ -97,3 +94,10 @@ brick:
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
 - [ ] NodeRED - Allow payload, topic, mac to take msg input
 - [ ] NodeRED - Couple of exported flows
+
+
+### Unproven theories on dropped messages
+- ESP32s more stable than ESP8266s?
+- Related to modem sleep and the `WIFI_AP_STA` setting on the _gateway_? Lost ability to track send results with [WifiEspNow](https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L141)
+- Some level of dropping is expected? (how much?) Need to have manual ACK/retry system?
+  - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
