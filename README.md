@@ -72,7 +72,6 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Merge Gateway / M5 Gateway code
 - [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] "Pack" of built in actions for all bricks?
 - [ ] Solve dropped messages problem

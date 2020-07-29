@@ -1,7 +1,6 @@
 # Brick Examples
 
 - [Gateway](gateway)
-- [Gateway using m5stack LCD for logs](gateway-m5)
 - [Button](button)
 - [Button (sleeps)](button-sleep)
 - [LED](led)
