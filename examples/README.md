@@ -25,11 +25,6 @@
 - Battery servo
 - ...more!
 
-## Supported Platforms
-
-- **ESP32**: Supports sending messages to multiple devices via `FF::FF::FF::FF::FF::FF`. Recommended for gateway.
-- **ESP8266**: Only supports sending messages to specific MAC addresses. Can be used for bricks.
-
 ## Hardware
 
 - [ ] Cases (Mesh-like form factor?)

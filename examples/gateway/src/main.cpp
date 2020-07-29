@@ -28,9 +28,7 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init();
-
-  // Publish all received messages to mqtt
-  gInbox.actions[0] = new PublishAction();
+  gInbox.actions[0] = new PublishAction(); // Publish all received messages to mqtt
 }
 
 void loop() {

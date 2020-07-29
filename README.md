@@ -47,13 +47,13 @@ cd examples/led
 platformio run
 ```
 
-### 4. Send out a ping
+### 4. Scan for bricks
 
 ```mqtt
-bricks/out/ff:ff:ff:ff:ff:ff/ping
+bricks/gateway/scan
 ```
 
-This will configure all bricks to use the gateway,
+This will configure all active bricks to use the gateway,
 each responding with a "pong" containing their MAC address and name:
 
 ```mqtt
@@ -77,7 +77,6 @@ brick:
 - [ ] Solve dropped messages problem
 - [ ] Refine pairing process
   - Need paired/unpaired status?
-  - Instead of ping-pong flow, bricks can scan for gateway? (if not configured)
   - If ACK is built in to all bricks, no need for `pong`?
 
 ### Nice to haves
@@ -91,15 +90,21 @@ brick:
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
-- [ ] NodeRED - Allow payload, topic, mac to take msg input
+- [ ] NodeRED - Allow topic, mac to take msg input
 - [ ] NodeRED - Couple of exported flows
+- [ ] Use same system for defining mqtt responses (instead of hardcoded "scan")
+  ```
+  // Connect mqtt event stream
+  gEvents.init();
+  gEvents.events[0] = new ScanEvent();
+  gEvents.events[1] = new BroadcastEvent();
+  ```
 
 
 ### Unproven theories on dropped messages
 - ESP32s more stable than ESP8266s?
 - Is it better to use _all_ ESP32s / _all_ ESP8266s? ([interdevice comms flakey?](https://github.com/leonyuhanov/ESP-NOW-TX-RX#things-i-found-deep-in-the-rabbit-hole))
 - Related to modem sleep and the `WIFI_AP_STA` setting on the _gateway_? Lost ability to track send results with [WifiEspNow](https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L141)
-- ESP8266 don't respond well to `FF:FF:FF:FF:FF:FF` broadcasts?
 - Are we doing ["lengthy operations"](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#receiving-esp-now-data)?
 - Does ["data rate"](https://github.com/espressif/esp-idf/issues/3238) have any impact?
 - Does the "role" setting of ESP8266 have any impact?

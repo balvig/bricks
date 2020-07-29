@@ -17,7 +17,7 @@ namespace Bricks {
       void setGatewayMac(const uint8_t *macAddr);
     private:
       void pair(const uint8_t *macAddr);
-      uint8_t gatewayMac[MAC_ADDR_SIZE] = MAC_ALL;
+      uint8_t gatewayMac[MAC_ADDR_SIZE] = MAC_UNSET;
   };
 
   extern Outbox gOutbox;
