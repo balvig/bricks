@@ -75,8 +75,8 @@ namespace Bricks {
 
       if(mqtt.connect(BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD)) {
         Log.notice(CR "MQTT: Connected" CR);
-        Log.notice("MQTT: Subscribing [" BRICKS_MESSAGES_OUT "/#]" CR);
         mqtt.subscribe(BRICKS_MESSAGES_OUT "/#");
+        Log.notice("MQTT: Subscribed [" BRICKS_MESSAGES_OUT "/#]" CR);
       }
       else {
         Log.warning(CR "MQTT: Failed [%s]" CR, mqtt.state());
