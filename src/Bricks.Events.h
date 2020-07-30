@@ -27,6 +27,7 @@
 
 #define BRICKS_MESSAGES_IN BRICKS_MQTT_TOPIC_PREFIX "/in"
 #define BRICKS_MESSAGES_OUT BRICKS_MQTT_TOPIC_PREFIX "/out"
+#define BRICKS_MESSAGES_SCAN BRICKS_MQTT_TOPIC_PREFIX "/gateway/scan"
 
 namespace Bricks {
   class Events {
@@ -38,6 +39,7 @@ namespace Bricks {
       void loop();
       void publish(const uint8_t *macAddr, Message message);
       void publish(const uint8_t *macAddr, const char *key, const char *value = "");
+      void publish(const char *topic, const char *value = "");
       static void onEvent(char *topic, byte *bytes, unsigned int length);
       static void parseTopic(const char *topic, uint8_t *macAddr, char *key);
     private:
@@ -45,6 +47,8 @@ namespace Bricks {
       PubSubClient mqtt;
       void connectWiFi();
       void connectMQTT();
+      void subscribe(const char *topic);
+      static void scanForBricks();
   };
 
   extern Events gEvents;

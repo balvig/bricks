@@ -20,36 +20,41 @@ namespace Bricks {
   }
 
   void Events::publish(const uint8_t *macAddr, Message message) {
-    if (mqtt.connected()) {
-      char macStr[MAC_STR_SIZE];
-      Bricks::Utils::macToStr(macAddr, macStr);
-      char topic[MAX_TOPIC_SIZE];
-      sprintf(topic, BRICKS_MESSAGES_IN "/%s/%s", macStr, message.key);
+    publish(macAddr, message.key, message.value);
+  }
 
-      Log.notice("MQTT: -> %s: %s" CR, topic, message.value);
-      mqtt.publish(topic, message.value);
+  void Events::publish(const uint8_t *macAddr, const char *key, const char *value) {
+    char macStr[MAC_STR_SIZE];
+    Bricks::Utils::macToStr(macAddr, macStr);
+    char topic[MAX_TOPIC_SIZE];
+    sprintf(topic, BRICKS_MESSAGES_IN "/%s/%s", macStr, key);
+    publish(topic, value);
+  }
+
+  void Events::publish(const char *topic, const char *value) {
+    if (mqtt.connected()) {
+      Log.notice("MQTT: -> %s: %s" CR, topic, value);
+      mqtt.publish(topic, value);
     }
     else {
       Log.error("MQTT: Publishing failed [disconnected]" CR);
     }
   }
 
-  void Events::publish(const uint8_t *macAddr, const char *key, const char *value) {
-    Message message;
-    strcpy(message.key, key);
-    strcpy(message.value, value);
-    publish(macAddr, message);
-  }
-
   void Events::onEvent(char *topic, byte *bytes, unsigned int length) {
     bytes[length] = '\0';
     char *value = (char *) bytes;
-    uint8_t macAddr[MAC_ADDR_SIZE];
-    char key[KEY_SIZE];
-    parseTopic(topic, macAddr, key);
-
     Log.notice("MQTT: <- %s: %s" CR, topic, value);
-    gOutbox.send(macAddr, key, value);
+
+    if(strcmp(BRICKS_MESSAGES_SCAN, topic) == 0) {
+      scanForBricks();
+    }
+    else {
+      uint8_t macAddr[MAC_ADDR_SIZE];
+      char key[KEY_SIZE];
+      parseTopic(topic, macAddr, key);
+      gOutbox.send(macAddr, key, value);
+    }
   }
 
   void Events::parseTopic(const char *topic, uint8_t *macAddr, char *key) {
@@ -75,8 +80,8 @@ namespace Bricks {
 
       if(mqtt.connect(BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD)) {
         Log.notice(CR "MQTT: Connected" CR);
-        mqtt.subscribe(BRICKS_MESSAGES_OUT "/#");
-        Log.notice("MQTT: Subscribed [" BRICKS_MESSAGES_OUT "/#]" CR);
+        subscribe(BRICKS_MESSAGES_OUT "/#");
+        subscribe(BRICKS_MESSAGES_SCAN);
       }
       else {
         Log.warning(CR "MQTT: Failed [%s]" CR, mqtt.state());
@@ -85,5 +90,26 @@ namespace Bricks {
       }
     }
   }
+
+  void Events::subscribe(const char *topic) {
+    mqtt.subscribe(topic);
+    Log.notice("MQTT: Subscribed [%s]" CR, topic);
+  }
+
+  void Events::scanForBricks() {
+    Log.notice("WIFI: Scanning for Bricks" CR);
+    const uint8_t scanResults = WiFi.scanNetworks();
+
+    for(int i = 0; i < scanResults; ++i) {
+      if(WiFi.SSID(i).indexOf(BRICKS_NAME_PREFIX) == 0) {
+        gOutbox.send(WiFi.BSSID(i), BRICKS_PING_ACTION);
+      }
+    }
+
+    WiFi.scanDelete();
+    Log.notice("WIFI: Scan complete" CR);
+    gEvents.publish(BRICKS_MESSAGES_SCAN "/done");
+  }
+
   Events gEvents = Events();
 }
