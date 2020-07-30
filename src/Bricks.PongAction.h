@@ -12,6 +12,7 @@ namespace Bricks {
       PongAction(const char *name = "New Brick");
       void callback(const uint8_t *macAddr, const Message message);
     private:
+      void advertise();
       const char *name;
   };
 }
