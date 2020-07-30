@@ -19,6 +19,8 @@ namespace Bricks {
     else {
       Log.error("ESPN: Error sending message" CR);
     }
+
+    debugMessages();
   }
 
   void Outbox::send(const char* key, const char* value) {
@@ -37,9 +39,9 @@ namespace Bricks {
 
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(macAddr, macStr);
-    Log.trace("ESPN: Pairing [%s]" CR, macStr);
+    Log.trace("ESPN: Pairing [%s] [%s]" CR, macStr, BRICKS_AP_CHANNEL);
 
-    if(WifiEspNow.addPeer(macAddr)) {
+    if(WifiEspNow.addPeer(macAddr, BRICKS_AP_CHANNEL)) {
       Log.trace("ESPN: Paired" CR);
     }
     else {
@@ -55,6 +57,21 @@ namespace Bricks {
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(gatewayMac, macStr);
     Log.notice("BRIC: Current gateway MAC [%s]" CR, macStr);
+  }
+
+  // Not used, but keeping around for debugging for now
+  void Outbox::debugMessages() {
+    Log.notice("ESPN: Last packet result [%d]" CR, WifiEspNow.getSendStatus());
+
+    const int MAX_PEERS = 20;
+    WifiEspNowPeerInfo peers[MAX_PEERS];
+    int nPeers = std::min(WifiEspNow.listPeers(peers, MAX_PEERS), MAX_PEERS);
+
+    for (int i = 0; i < nPeers; ++i) {
+      char macStr[MAC_STR_SIZE];
+      Bricks::Utils::macToStr(peers[i].mac, macStr);
+      Log.notice("ESPN: Peer %d [%s] [%d]" CR, i, macStr, peers[i].channel);
+    }
   }
 
   Outbox gOutbox = Outbox();

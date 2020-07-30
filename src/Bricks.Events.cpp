@@ -62,9 +62,12 @@ namespace Bricks {
         &macAddr[0], &macAddr[1], &macAddr[2], &macAddr[3], &macAddr[4], &macAddr[5], key);
   }
 
+  // https://github.com/espressif/arduino-esp32/issues/878#issuecomment-578885352
+  // https://randomnerdtutorials.com/esp32-esp-now-wi-fi-web-server/#more-96436
   void Events::connectWiFi() {
     Log.notice("WIFI: Connecting [%s]", BRICKS_WIFI_SSID);
-    WiFi.begin(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD);
+    WiFi.begin(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD); // Can also specify a channel here?
+    WiFi.softAP("WHATGOESHERE", NULL, BRICKS_AP_CHANNEL, true); // Hm?
 
     while(WiFi.status() != WL_CONNECTED) {
       delay(500);
@@ -99,8 +102,8 @@ namespace Bricks {
 
     for(int i = 0; i < scanResults; ++i) {
       if(WiFi.SSID(i).indexOf(BRICKS_NAME_PREFIX) == 0) {
+        Log.notice("WIFI: Brick found on channel %d" CR, WiFi.channel(i));
         gOutbox.send(WiFi.BSSID(i), BRICKS_PING_ACTION);
-        Log.trace("WIFI: Brick found on channel %d" CR, WiFi.channel(i));
       }
     }
 

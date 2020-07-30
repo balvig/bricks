@@ -1,6 +1,7 @@
 #ifndef BRICKS_CONSTANTS_H
 #define BRICKS_CONSTANTS_H
 
+#define BRICKS_AP_CHANNEL 2
 #define BRICKS_NAME_PREFIX "Brick"
 #define BRICKS_PING_ACTION "ping"
 #define MAC_FORMAT "%02hhx:%02hhx:%02hhx:%02hhx:%02hhx:%02hhx"
