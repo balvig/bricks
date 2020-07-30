@@ -74,18 +74,15 @@ namespace Bricks {
   }
 
   void Events::connectMQTT() {
-    Log.notice("MQTT: Connecting");
+    Log.notice("MQTT: Connecting" CR);
     while(!mqtt.connected()) {
-      Log.notice(".");
-
       if(mqtt.connect(BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD)) {
-        Log.notice(CR "MQTT: Connected" CR);
+        Log.notice("MQTT: Connected" CR);
         subscribe(BRICKS_MESSAGES_OUT "/#");
         subscribe(BRICKS_MESSAGES_SCAN);
       }
       else {
-        Log.warning(CR "MQTT: Failed [%s]" CR, mqtt.state());
-        Log.warning("MQTT: Retrying in 5 secs");
+        Log.warning("MQTT: Failed [%s]. Retrying in 5 secs" CR, mqtt.state());
         delay(5000);
       }
     }
@@ -103,6 +100,7 @@ namespace Bricks {
     for(int i = 0; i < scanResults; ++i) {
       if(WiFi.SSID(i).indexOf(BRICKS_NAME_PREFIX) == 0) {
         gOutbox.send(WiFi.BSSID(i), BRICKS_PING_ACTION);
+        Log.trace("WIFI: Brick found on channel %d" CR, WiFi.channel(i));
       }
     }
 

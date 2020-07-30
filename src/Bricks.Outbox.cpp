@@ -24,7 +24,7 @@ namespace Bricks {
   void Outbox::send(const char* key, const char* value) {
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(gatewayMac, macStr);
-    Log.notice("ESPN: Trying to send to gateway MAC [%s]" CR, macStr);
+    Log.notice("ESPN: Using stored gateway MAC [%s]" CR, macStr);
 
     send(gatewayMac, key, value);
   }
