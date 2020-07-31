@@ -6,12 +6,13 @@ using namespace Bricks;
 
 const int ledPin = LED_BUILTIN;
 
-void ledOn(const uint8_t *macAddr, const Message message) {
-  digitalWrite(ledPin, LOW);
-}
-
-void ledOff(const uint8_t *macAddr, const Message message) {
-  digitalWrite(ledPin, HIGH);
+void setPattern(const uint8_t *macAddr, const Message message) {
+  if(atoi(message.value)) {
+    digitalWrite(ledPin, LOW);
+  }
+  else {
+    digitalWrite(ledPin, HIGH);
+  }
 }
 
 //Main
@@ -30,8 +31,7 @@ void setup() {
   // Enable receiving messages
   gInbox.init();
   gInbox.actions[0] = new PongAction("LED");
-  gInbox.actions[1] = new Action("on", &ledOn);
-  gInbox.actions[2] = new Action("off", &ledOff);
+  gInbox.actions[1] = new Action("setPattern", &setPattern);
 }
 
 void loop() {
