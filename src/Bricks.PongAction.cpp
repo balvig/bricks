@@ -13,6 +13,6 @@ namespace Bricks {
   void PongAction::advertise() {
     char apName[50]; // Need unique name?
     sprintf(apName, BRICKS_NAME_PREFIX " [%s]", name);
-    WiFi.softAP(apName, "1234567890", BRICKS_AP_CHANNEL);
+    WiFi.softAP(apName, "1234567890", BRICKS_WIFI_CHANNEL);
   }
 }

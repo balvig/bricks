@@ -17,7 +17,6 @@ namespace Bricks {
       void setGatewayMac(const uint8_t *macAddr);
     private:
       void pair(const uint8_t *macAddr);
-      void debugMessages();
       uint8_t gatewayMac[MAC_ADDR_SIZE] = MAC_UNSET;
   };
 

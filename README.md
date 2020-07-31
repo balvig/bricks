@@ -30,6 +30,8 @@ vi include/secrets.h
 platformio run
 ```
 
+**Note:** Bricks currently requires a WiFi network that uses channel 1.
+
 ### 3. Create some bricks
 
 [WIP library here](/examples).
@@ -78,6 +80,8 @@ brick:
 - [ ] Refine pairing process
   - Need paired/unpaired status?
   - If ACK is built in to all bricks, no need for `pong`?
+  - Should Bricks stop advertising once paired? (what's the power usage difference)
+  - Raise an error if Brick is found on "incompatible" channel?
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
@@ -101,19 +105,15 @@ brick:
   ```
 
 
-### Unproven theories on dropped messages
-- ESP32s more stable than ESP8266s?
-- Does ["data rate"](https://github.com/espressif/esp-idf/issues/3238) have any impact?
-- Does calling `WiFi.disconnect()` "to be sure" have an effect?
-- Does the "role" setting of ESP8266 have any impact?
-  - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L27
-  - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L81
+### Limitations
+- Channel needs to be same as connected WiFi
+- Channel is _maybe_ hardcoded to 1 when using `WIFI_AP_STA`?
+  - https://rntlab.com/question/esp-now-gateway-wifi_mode_sta-with-a-wifi-router/#answer-71229
+  - https://github.com/espressif/arduino-esp32/issues/878#issuecomment-578885352
 - Some level of dropping is expected? (how much?) Need to have [manual ACK/retry system](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#send-esp-now-data)?
   - Testing out _basic_ ACK in [led-matrix](examples/led-matrix)
-- Does changing the `channel` do anything?
-  - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L73
-  - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNowBroadcast.cpp#L28
 
+#### Test results
 
 | Gateway AP | Gateway Peer | Brick AP | Brick Peer | Ping | Pong |
 |------------|--------------|----------|------------|------|------|
