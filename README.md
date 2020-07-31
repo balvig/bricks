@@ -79,7 +79,7 @@ brick:
 - [ ] Refine pairing process
   - Need paired/unpaired status?
   - If ACK is built in to all bricks, no need for `pong`?
-  - Should Bricks stop advertising once paired? (what's the power usage difference)
+  - Should Bricks stop advertising once paired?
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
