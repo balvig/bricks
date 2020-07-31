@@ -55,14 +55,6 @@ pio run
 bricks/gateway/scan
 ```
 
-or
-
-```mqtt
-bricks/out/ff:ff:ff:ff:f:ff/ping
-```
-
-(TBD)
-
 This will configure all active bricks to use the gateway,
 each responding with a "pong" containing their MAC address and name:
 
@@ -87,8 +79,6 @@ brick:
   - Need paired/unpaired status?
   - If ACK is built in to all bricks, no need for `pong`?
   - Should Bricks stop advertising once paired?
-  - Scanning AP approach seems to randomly disconnect gateway. Reverse
-    relationship? Revisit `ff:ff` approach?
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications

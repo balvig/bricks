@@ -6,7 +6,7 @@
 
 class M5Logger {
   public:
-    static void init();
+    static void init(int level);
   private:
     static void scrollScreen(Print* _logOutput);
 };

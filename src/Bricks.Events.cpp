@@ -33,7 +33,7 @@ namespace Bricks {
 
   void Events::publish(const char *topic, const char *value) {
     if (mqtt.connected()) {
-      Log.notice("MQTT: -> %s: %s" CR, topic, value);
+      Log.trace("MQTT: -> %s: %s" CR, topic, value);
       mqtt.publish(topic, value);
     }
     else {
@@ -44,7 +44,7 @@ namespace Bricks {
   void Events::onEvent(char *topic, byte *bytes, unsigned int length) {
     bytes[length] = '\0';
     char *value = (char *) bytes;
-    Log.notice("MQTT: <- %s: %s" CR, topic, value);
+    Log.trace("MQTT: <- %s: %s" CR, topic, value);
 
     if(strcmp(BRICKS_MESSAGES_SCAN, topic) == 0) {
       scanForBricks();
@@ -63,12 +63,12 @@ namespace Bricks {
   }
 
   void Events::connectWiFi() {
-    Log.notice("WIFI: Connecting [%s]" CR, BRICKS_WIFI_SSID);
+    Log.notice("WIFI: Connecting to [%s]" CR, BRICKS_WIFI_SSID);
     WiFi.begin(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD);
 
     while(WiFi.status() != WL_CONNECTED) {
       delay(500);
-      Log.notice("WIFI: Still connecting..." CR);
+      Log.trace("WIFI: Still connecting..." CR);
     }
     Log.notice(CR "WIFI: Connected [%s] [Channel %d]" CR, WiFi.localIP().toString().c_str(), WiFi.channel());
 
@@ -78,7 +78,7 @@ namespace Bricks {
   }
 
   void Events::connectMQTT() {
-    Log.notice("MQTT: Connecting" CR);
+    Log.notice("MQTT: Connecting to [%s]" CR, BRICKS_MQTT_HOST);
     while(!mqtt.connected()) {
       if(mqtt.connect(BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD)) {
         Log.notice("MQTT: Connected" CR);
@@ -94,7 +94,7 @@ namespace Bricks {
 
   void Events::subscribe(const char *topic) {
     mqtt.subscribe(topic);
-    Log.notice("MQTT: Subscribed [%s]" CR, topic);
+    Log.trace("MQTT: Subscribed [%s]" CR, topic);
   }
 
   void Events::scanForBricks() {
@@ -103,7 +103,7 @@ namespace Bricks {
 
     for(int i = 0; i < scanResults; ++i) {
       if(WiFi.SSID(i).indexOf(BRICKS_NAME_PREFIX) == 0) {
-        Log.notice("WIFI: Brick found on channel %d" CR, WiFi.channel(i));
+        Log.trace("WIFI: Brick found on channel %d" CR, WiFi.channel(i));
         gOutbox.send(WiFi.BSSID(i), BRICKS_PING_ACTION);
       }
     }

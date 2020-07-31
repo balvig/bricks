@@ -14,7 +14,7 @@ using namespace Bricks;
 void setup() {
   // Logging
 #ifdef ARDUINO_M5Stack_Core_ESP32
-  M5Logger::init();
+  M5Logger::init(LOG_LEVEL_NOTICE); // unstable with high activity
 #else
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);

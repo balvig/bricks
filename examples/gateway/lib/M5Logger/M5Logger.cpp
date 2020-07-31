@@ -1,9 +1,9 @@
 #include <M5Logger.h>
 
-void M5Logger::init() {
+void M5Logger::init(int level) {
   M5.begin();
   M5.Lcd.setTextWrap(true, true);
-  Log.begin(LOG_LEVEL_NOTICE, &M5.Lcd, false);
+  Log.begin(level, &M5.Lcd, false);
   Log.setPrefix(M5Logger::scrollScreen);
 }
 
