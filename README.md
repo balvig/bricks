@@ -103,9 +103,6 @@ brick:
 
 ### Unproven theories on dropped messages
 - ESP32s more stable than ESP8266s?
-- Is it better to use _all_ ESP32s / _all_ ESP8266s? ([interdevice comms flakey?](https://github.com/leonyuhanov/ESP-NOW-TX-RX#things-i-found-deep-in-the-rabbit-hole))
-- Related to modem sleep and the `WIFI_AP_STA` setting on the _gateway_? Lost ability to track send results with [WifiEspNow](https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L141)
-- Are we doing ["lengthy operations"](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#receiving-esp-now-data)?
 - Does ["data rate"](https://github.com/espressif/esp-idf/issues/3238) have any impact?
 - Does calling `WiFi.disconnect()` "to be sure" have an effect?
 - Does the "role" setting of ESP8266 have any impact?
@@ -116,3 +113,15 @@ brick:
 - Does changing the `channel` do anything?
   - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNow.cpp#L73
   - https://github.com/yoursunny/WifiEspNow/blob/master/src/WifiEspNowBroadcast.cpp#L28
+
+
+| Gateway AP | Gateway Peer | Brick AP | Brick Peer | Ping | Pong |
+|------------|--------------|----------|------------|------|------|
+| 1          | 1            | 1        | 1          | OK   | OK   |
+| 6          | 1            | 1        | 1          | OK   | OK   |
+| 1          | 6            | 1        | 1          | OK   | OK   |
+| 6          | 6            | 1        | 1          | OK   | OK   |
+| 1          | 1            | 6        | 1          | NG   | NG   |
+| 1          | 1            | 1        | 6          | OK   | NG   |
+| 1          | 1            | 6        | 6          | NG   | NG   |
+| 1          | 1            | 2        | 1          | OK   | NG   |
