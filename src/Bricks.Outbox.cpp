@@ -39,7 +39,7 @@ namespace Bricks {
     Bricks::Utils::macToStr(macAddr, macStr);
     Log.trace("ESPN: Pairing [%s]" CR, macStr);
 
-    if(WifiEspNow.addPeer(macAddr)) {
+    if(WifiEspNow.addPeer(macAddr, BRICKS_WIFI_CHANNEL)) {
       Log.trace("ESPN: Paired" CR);
     }
     else {
