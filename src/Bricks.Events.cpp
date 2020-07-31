@@ -63,14 +63,18 @@ namespace Bricks {
   }
 
   void Events::connectWiFi() {
-    Log.notice("WIFI: Connecting [%s]", BRICKS_WIFI_SSID);
+    Log.notice("WIFI: Connecting [%s]" CR, BRICKS_WIFI_SSID);
     WiFi.begin(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD);
 
     while(WiFi.status() != WL_CONNECTED) {
       delay(500);
-      Log.notice(".");
+      Log.notice("WIFI: Still connecting..." CR);
     }
-    Log.notice(CR "WIFI: Connected [%s]" CR, WiFi.localIP().toString().c_str());
+    Log.notice(CR "WIFI: Connected [%s] [Channel %d]" CR, WiFi.localIP().toString().c_str(), WiFi.channel());
+
+    if(WiFi.channel() != BRICKS_WIFI_CHANNEL) {
+      Log.error("WIFI: Bricks currently requires WiFi on channel %d", BRICKS_WIFI_CHANNEL);
+    }
   }
 
   void Events::connectMQTT() {
