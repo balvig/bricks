@@ -27,7 +27,7 @@ If you want to run these services locally, take a look at the [`docker` director
 cd examples/gateway
 cp include/secrets.sample.h include/secrets.h
 vi include/secrets.h
-platformio run
+pio run
 ```
 
 **Note:** Bricks currently requires a WiFi network that uses channel 1.
@@ -39,14 +39,14 @@ For example a button:
 
 ```bash
 cd examples/button
-platformio run
+pio run
 ```
 
 and an LED:
 
 ```bash
 cd examples/led
-platformio run
+pio run
 ```
 
 ### 4. Scan for bricks
@@ -54,6 +54,14 @@ platformio run
 ```mqtt
 bricks/gateway/scan
 ```
+
+or
+
+```mqtt
+bricks/out/ff:ff:ff:ff:f:ff/ping
+```
+
+(TBD)
 
 This will configure all active bricks to use the gateway,
 each responding with a "pong" containing their MAC address and name:
@@ -70,7 +78,6 @@ brick:
 <img src=example.png width=500>
 <img src=example.gif width=400>
 
-
 ## Todo
 
 ### Next
@@ -80,6 +87,8 @@ brick:
   - Need paired/unpaired status?
   - If ACK is built in to all bricks, no need for `pong`?
   - Should Bricks stop advertising once paired?
+  - Scanning AP approach seems to randomly disconnect gateway. Reverse
+    relationship? Revisit `ff:ff` approach?
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
