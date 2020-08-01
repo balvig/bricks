@@ -9,12 +9,11 @@
 class ScrollTextWindow : public Print {
   public:
     ScrollTextWindow(uint16_t bgColor = TFT_BLACK, uint8_t textWidth = 6, uint8_t textHeight = 8);
-    size_t write(uint8_t utf8);
+    size_t write(uint8_t c);
 
   private:
     uint16_t m_textWidth;
     uint16_t m_textHeight;
-    const uint16_t m_bottomFixedHeight = 0;
     uint16_t m_scrollableHeight;
     uint16_t m_scrollLimit;
     uint16_t m_backgroundColor;

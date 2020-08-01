@@ -4,8 +4,8 @@ ScrollTextWindow::ScrollTextWindow(uint16_t bgColor, uint8_t textWidth, uint8_t 
   m_backgroundColor = bgColor;
   m_textWidth = textWidth;
   m_textHeight = textHeight;
-  m_scrollableHeight = ((SCREEN_HEIGHT - m_bottomFixedHeight) / m_textHeight) * m_textHeight;
-  m_scrollLimit = 0 + m_scrollableHeight - m_textHeight;
+  m_scrollableHeight = (SCREEN_HEIGHT / m_textHeight) * m_textHeight;
+  m_scrollLimit = m_scrollableHeight - m_textHeight;
 
   m_xPos = 0;
   m_yPos = 0;
@@ -30,23 +30,23 @@ void ScrollTextWindow::scrollAddress(uint16_t vsp) {
   M5.Lcd.writedata(vsp);
 }
 
-size_t ScrollTextWindow::write(uint8_t utf8) {
-  if (utf8 == '\r') return 1;
-  uint16_t c = utf8;
-
+size_t ScrollTextWindow::write(uint8_t c) {
   if (c == '\n' || m_xPos > (SCREEN_WIDTH - m_textWidth)) {
     m_xPos = 0;
     m_yPos += m_textHeight;
 
     if (!m_bScroll) {
       m_bScroll = (m_yPos > m_scrollLimit);
+
       if (m_bScroll) {
         m_yScrollPos = 0;
       }
     }
+
     if (m_yPos > m_scrollLimit) {
       m_yPos -= m_scrollableHeight;
     }
+
     if (m_bScroll) {
       m_yScrollPos += m_textHeight;
 
@@ -62,9 +62,6 @@ size_t ScrollTextWindow::write(uint8_t utf8) {
 
   if (c > 31 && c < 128) {
     M5.Lcd.drawChar(c, m_xPos, m_yPos);
-    m_xPos += m_textWidth;
-  } else if (c != '\n') {
-    M5.Lcd.drawChar('.', m_xPos, m_yPos);
     m_xPos += m_textWidth;
   }
 
