@@ -70,7 +70,7 @@ namespace Bricks {
       delay(500);
       Log.trace("WIFI: Still connecting..." CR);
     }
-    Log.notice(CR "WIFI: Connected [%s] [Channel %d]" CR, WiFi.localIP().toString().c_str(), WiFi.channel());
+    Log.notice("WIFI: Connected [%s] [Channel %d]" CR, WiFi.localIP().toString().c_str(), WiFi.channel());
 
     if(WiFi.channel() != BRICKS_WIFI_CHANNEL) {
       Log.error("WIFI: Bricks currently requires WiFi on channel %d", BRICKS_WIFI_CHANNEL);
