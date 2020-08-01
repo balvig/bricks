@@ -14,7 +14,6 @@ class ScrollTextWindow : public Print {
   private:
     uint16_t m_textWidth;
     uint16_t m_textHeight;
-    const uint16_t m_topFixedHeight = 0 ;
     const uint16_t m_bottomFixedHeight = 0;
     uint16_t m_scrollableHeight;
     uint16_t m_scrollLimit;

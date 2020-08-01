@@ -17,9 +17,7 @@ ScrollTextWindow stw;
 void setup() {
   // Logging
 #ifdef ARDUINO_M5Stack_Core_ESP32
-  // M5Logger::init(LOG_LEVEL_NOTICE); // unstable with high activity
   M5.begin();
-
   Log.begin(LOG_LEVEL_NOTICE, &stw); // unstable with high activity
 #else
   Serial.begin(115200);

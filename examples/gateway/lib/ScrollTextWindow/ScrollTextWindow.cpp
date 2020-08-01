@@ -4,14 +4,14 @@ ScrollTextWindow::ScrollTextWindow(uint16_t bgColor, uint8_t textWidth, uint8_t 
   m_backgroundColor = bgColor;
   m_textWidth = textWidth;
   m_textHeight = textHeight;
-  m_scrollableHeight = ((SCREEN_HEIGHT - m_topFixedHeight - m_bottomFixedHeight) / m_textHeight) * m_textHeight;
-  m_scrollLimit = m_topFixedHeight + m_scrollableHeight - m_textHeight;
+  m_scrollableHeight = ((SCREEN_HEIGHT - m_bottomFixedHeight) / m_textHeight) * m_textHeight;
+  m_scrollLimit = 0 + m_scrollableHeight - m_textHeight;
 
   m_xPos = 0;
-  m_yPos = m_topFixedHeight;
+  m_yPos = 0;
   m_bScroll = false;
 
-  setupScrollArea(m_topFixedHeight, SCREEN_HEIGHT - m_topFixedHeight - m_scrollableHeight);
+  setupScrollArea(0, SCREEN_HEIGHT - m_scrollableHeight);
 }
 
 void ScrollTextWindow::setupScrollArea(uint16_t tfa, uint16_t bfa) {
@@ -41,7 +41,7 @@ size_t ScrollTextWindow::write(uint8_t utf8) {
     if (!m_bScroll) {
       m_bScroll = (m_yPos > m_scrollLimit);
       if (m_bScroll) {
-        m_yScrollPos = m_topFixedHeight;
+        m_yScrollPos = 0;
       }
     }
     if (m_yPos > m_scrollLimit) {
@@ -50,7 +50,7 @@ size_t ScrollTextWindow::write(uint8_t utf8) {
     if (m_bScroll) {
       m_yScrollPos += m_textHeight;
 
-      if (m_yScrollPos >= (m_topFixedHeight + m_scrollableHeight)) {
+      if (m_yScrollPos >= m_scrollableHeight) {
         m_yScrollPos -= m_scrollableHeight;
       }
 
