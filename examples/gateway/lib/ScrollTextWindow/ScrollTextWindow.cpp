@@ -1,17 +1,16 @@
 #include "ScrollTextWindow.h"
 
 ScrollTextWindow::ScrollTextWindow(uint16_t bgColor, uint8_t textWidth, uint8_t textHeight) {
-  m_backgroundColor = bgColor;
-  m_textWidth = textWidth;
-  m_textHeight = textHeight;
-  m_scrollableHeight = (SCREEN_HEIGHT / m_textHeight) * m_textHeight;
-  m_scrollLimit = m_scrollableHeight - m_textHeight;
+  this->bgColor = bgColor;
+  this->textWidth = textWidth;
+  this->textHeight = textHeight;
+  this->scrollableHeight = (SCREEN_HEIGHT / textHeight) * textHeight;
+  this->scrollLimit = scrollableHeight - textHeight;
+  this->xPos = 0;
+  this->yPos = 0;
+  this->bScroll = false;
 
-  m_xPos = 0;
-  m_yPos = 0;
-  m_bScroll = false;
-
-  setupScrollArea(0, SCREEN_HEIGHT - m_scrollableHeight);
+  setupScrollArea(0, SCREEN_HEIGHT - scrollableHeight);
 }
 
 void ScrollTextWindow::setupScrollArea(uint16_t tfa, uint16_t bfa) {
@@ -31,38 +30,38 @@ void ScrollTextWindow::scrollAddress(uint16_t vsp) {
 }
 
 size_t ScrollTextWindow::write(uint8_t c) {
-  if (c == '\n' || m_xPos > (SCREEN_WIDTH - m_textWidth)) {
-    m_xPos = 0;
-    m_yPos += m_textHeight;
+  if (c == '\n' || xPos > (SCREEN_WIDTH - textWidth)) {
+    xPos = 0;
+    yPos += textHeight;
 
-    if (!m_bScroll) {
-      m_bScroll = (m_yPos > m_scrollLimit);
+    if (!bScroll) {
+      bScroll = (yPos > scrollLimit);
 
-      if (m_bScroll) {
-        m_yScrollPos = 0;
+      if (bScroll) {
+        yScrollPos = 0;
       }
     }
 
-    if (m_yPos > m_scrollLimit) {
-      m_yPos -= m_scrollableHeight;
+    if (yPos > scrollLimit) {
+      yPos -= scrollableHeight;
     }
 
-    if (m_bScroll) {
-      m_yScrollPos += m_textHeight;
+    if (bScroll) {
+      yScrollPos += textHeight;
 
-      if (m_yScrollPos >= m_scrollableHeight) {
-        m_yScrollPos -= m_scrollableHeight;
+      if (yScrollPos >= scrollableHeight) {
+        yScrollPos -= scrollableHeight;
       }
 
-      scrollAddress(m_yScrollPos);
+      scrollAddress(yScrollPos);
 
-      M5.Lcd.fillRect(0, m_yPos, SCREEN_WIDTH, m_textHeight, m_backgroundColor);
+      M5.Lcd.fillRect(0, yPos, SCREEN_WIDTH, textHeight, bgColor);
     }
   }
 
   if (c > 31 && c < 128) {
-    M5.Lcd.drawChar(c, m_xPos, m_yPos);
-    m_xPos += m_textWidth;
+    M5.Lcd.drawChar(c, xPos, yPos);
+    xPos += textWidth;
   }
 
   return 1;
