@@ -101,6 +101,25 @@ brick:
   gEvents.events[1] = new BroadcastEvent();
   ```
 
+### Thoughts on ACK/Reply
+
+For v0.1, could this be done entirely NodeRED side?
+
+While it would be nice to have it built in to bricks and "just work",
+it will result in further complexity C++ side and extra processing load
+on the bricks.
+
+Some scenarios maybe lost messages don't even matter too much?
+
+Scenarios to solve:
+
+| Scenario         | Solution                                                             |
+|------------------|----------------------------------------------------------------------|
+| `setValue`       | Simple retry unless ACK is received                                  |
+| `sleep`          | Simple retry unless ACK is received                                  |
+| `awake` - Button | Manual repress                                                       |
+| `awake` - timed  | Schedule future ping after `sleep`. Send ping if no response by then |
+
 ### Limitations
 - Channel needs to be same as connected WiFi
 - Channel is _maybe_ hardcoded to 1 when using `WIFI_AP_STA`?
