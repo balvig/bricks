@@ -80,6 +80,25 @@ brick:
   - If ACK is built in to all bricks, no need for `pong`?
   - Should Bricks stop advertising once paired?
 
+### Thoughts on ACK/Reply
+
+For v0.1, could this be done entirely NodeRED side?
+
+While it would be nice to have it built in to bricks and "just work",
+it will result in further complexity C++ side and extra processing load
+on the bricks.
+
+Some scenarios maybe lost messages don't even matter too much?
+
+Scenarios to solve:
+
+| Scenario         | Solution                                                             |
+|------------------|----------------------------------------------------------------------|
+| `setValue`       | Simple retry unless ACK is received                                  |
+| `sleep`          | Simple retry unless ACK is received                                  |
+| `awake` - Button | Manual repress                                                       |
+| `awake` - timed  | Schedule future ping after `sleep`. Send ping if no response by then |
+
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
@@ -100,25 +119,6 @@ brick:
   gEvents.events[0] = new ScanEvent();
   gEvents.events[1] = new BroadcastEvent();
   ```
-
-### Thoughts on ACK/Reply
-
-For v0.1, could this be done entirely NodeRED side?
-
-While it would be nice to have it built in to bricks and "just work",
-it will result in further complexity C++ side and extra processing load
-on the bricks.
-
-Some scenarios maybe lost messages don't even matter too much?
-
-Scenarios to solve:
-
-| Scenario         | Solution                                                             |
-|------------------|----------------------------------------------------------------------|
-| `setValue`       | Simple retry unless ACK is received                                  |
-| `sleep`          | Simple retry unless ACK is received                                  |
-| `awake` - Button | Manual repress                                                       |
-| `awake` - timed  | Schedule future ping after `sleep`. Send ping if no response by then |
 
 ### Limitations
 - Channel needs to be same as connected WiFi
