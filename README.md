@@ -73,8 +73,8 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] [ACK/retry](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#send-esp-now-data)
+- [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] Refine pairing process
   - Need paired/unpaired status?
   - If ACK is built in to all bricks, no need for `pong`?
@@ -82,7 +82,6 @@ brick:
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
-- [ ] Properly scrollable m5 screen (repurpose https://github.com/totsucom/M5Stack_ScrollTextWindow ?)
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
   - Also, get `pio check` running again!
 - [ ] Write up making a brick
