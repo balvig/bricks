@@ -1,6 +1,7 @@
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
+#include <Bricks.OtaAction.h>
 #include <Bricks.PongAction.h>
 using namespace Bricks;
 
@@ -31,8 +32,10 @@ void setup() {
   // Enable receiving messages
   gInbox.init();
   gInbox.actions[0] = new PongAction("LED");
-  gInbox.actions[1] = new Action("setPattern", &setPattern);
+  gInbox.actions[1] = new OtaAction();
+  gInbox.actions[2] = new Action("setPattern", &setPattern);
 }
 
 void loop() {
+  ArduinoOTA.handle();
 }

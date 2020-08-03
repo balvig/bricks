@@ -75,8 +75,7 @@ brick:
 ### Decide on internals
 
 - ESP8266 / ESP32?
-- USB chargable
-- _Somehow_ programmable
+- USB powereable
 - Low power usage (ideally microamps in deep sleep)
 - LIPO battery? 800mah?
 - Battery read
