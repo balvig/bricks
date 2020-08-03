@@ -73,9 +73,8 @@ brick:
 ## Todo
 
 ### Next
-- [ ] Refine pairing process
-  - Need paired/unpaired status?
-  - If ACK is built in to all bricks, no need for `pong`? (but how to get name then?)
+- [ ] Decide on internals
+- [ ] Build case
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
