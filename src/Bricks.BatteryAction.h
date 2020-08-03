@@ -8,7 +8,7 @@
 namespace Bricks {
   class BatteryAction : public Action {
     public:
-      BatteryAction(const uint8_t pin = D4);
+      BatteryAction(const uint8_t pin = A0);
       void callback(const uint8_t *macAddr, const Message message);
     private:
       uint8_t pin;
