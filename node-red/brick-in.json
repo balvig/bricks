@@ -1,0 +1,133 @@
+[
+    {
+        "id": "a3a2426c.d3bf6",
+        "type": "subflow",
+        "name": "Brick - In",
+        "info": "# Bricks in\n\nUse this for input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this subscribes to _everything_, then filters it.",
+        "category": "bricks",
+        "in": [],
+        "out": [
+            {
+                "x": 420,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "12814906.bf21d7",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "MAC",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-address-card",
+                    "label": {
+                        "en-US": "Address"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "num",
+                            "bool",
+                            "json",
+                            "bin",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "ACTION",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Action"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "num",
+                            "bool",
+                            "json",
+                            "bin",
+                            "env"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#E9967A",
+        "icon": "font-awesome/fa-sign-in"
+    },
+    {
+        "id": "33d545ea.dae14a",
+        "type": "mqtt in",
+        "z": "a3a2426c.d3bf6",
+        "name": "All messages",
+        "topic": "accounts/balvig/bricks/in/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 90,
+        "y": 40,
+        "wires": [
+            [
+                "12814906.bf21d7"
+            ]
+        ]
+    },
+    {
+        "id": "12814906.bf21d7",
+        "type": "switch",
+        "z": "a3a2426c.d3bf6",
+        "name": "Filter messages",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "${MAC}/${ACTION}",
+                "vt": "env",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "69cfef51.baf9",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "mqtt.sensetecnic.com",
+        "port": "1883",
+        "clientid": "bricks-nodered",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

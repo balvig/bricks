@@ -77,8 +77,7 @@ brick:
 - [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] Refine pairing process
   - Need paired/unpaired status?
-  - If ACK is built in to all bricks, no need for `pong`?
-  - Should Bricks stop advertising once paired?
+  - If ACK is built in to all bricks, no need for `pong`? (but how to get name then?)
 
 ### Thoughts on ACK/Reply
 
@@ -92,12 +91,13 @@ Some scenarios maybe lost messages don't even matter too much?
 
 Scenarios to solve:
 
-| Scenario         | Solution                                                             |
-|------------------|----------------------------------------------------------------------|
-| `setValue`       | Simple retry unless ACK is received                                  |
-| `sleep`          | Simple retry unless ACK is received                                  |
-| `awake` - Button | Manual repress                                                       |
-| `awake` - timed  | Schedule future ping after `sleep`. Send ping if no response by then |
+| Scenario         | Solution                                                             | Status |
+|------------------|----------------------------------------------------------------------|--------|
+| `setValue`       | Simple retry unless ACK is received                                  | Solved |
+| `sleep`          | Simple retry unless ACK is received                                  | Solved |
+| `awake` - Button | Manual repress                                                       | Solved |
+| `awake` - timed  | Schedule future ping after `sleep`. Send ping if no response by then |        |
+| `awake` - timed  | Allow specifying auto sleep after a while?                           |        |
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
