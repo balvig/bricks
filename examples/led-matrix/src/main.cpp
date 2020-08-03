@@ -44,5 +44,12 @@ void setup() {
   matrix.setRotation(3);
 }
 
+const uint16_t period = 60000;
+unsigned long now = 0;
+
 void loop() {
+  if(millis() >= now + period) {
+    now += period;
+    gOutbox.send("awake", "pulse");
+  }
 }

@@ -97,6 +97,7 @@ Scenarios to solve:
 | `awake` - Button | Manual repress                                                       | Solved |
 | `awake` - timed  | Schedule future ping after `sleep`. Send ping if no response by then |        |
 | `awake` - timed  | Allow specifying auto sleep after a while?                           |        |
+| `awake` - timed  | Send uptime events? (ie "still awake?") Replace pong?                |        |
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
