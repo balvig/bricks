@@ -39,9 +39,6 @@ void setup() {
   gInbox.actions[3] = new SleepAction();
   gInbox.actions[4] = new BatteryAction();
   gInbox.actions[5] = new Action("setValue", &setValue);
-
-  // Set on the side while prototyping
-  matrix.setRotation(3);
 }
 
 void loop() {
