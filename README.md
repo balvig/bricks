@@ -72,9 +72,23 @@ brick:
 
 ## Todo
 
-### Next
-- [ ] Decide on internals
-- [ ] Build case
+### Decide on internals
+
+- ESP8266 / ESP32?
+- USB chargable
+- USB programmable
+- Low power usage (ideally microamps in deep sleep)
+- LIPO battery? 800mah?
+- Battery read
+- a few GPIOs
+- A place to mount LED, sensor, button etc
+- ESP8266 will need extra switch for 16/RST
+- Pressable reset/system button?
+- RBG strip / LED Matrix would be nice to have, but are power hungry? (5v?)
+
+### Build case
+
+- Propotype in Fusion
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
