@@ -3,6 +3,7 @@
 #include <Bricks.Constants.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.AckAction.h>
+#include <Bricks.BatteryAction.h>
 #include <Bricks.PongAction.h>
 #include <Bricks.StoreGatewayAction.h>
 #include <Bricks.SleepAction.h>
@@ -12,8 +13,7 @@ using namespace Bricks;
 // Local
 #include <WEMOS_Matrix_GFX.h>
 
-const uint8_t INTENSITY = 5;
-MLED matrix(INTENSITY);
+MLED matrix(5);
 
 // Bricks callbacks
 void setValue(const uint8_t *macAddr, const Message message) {
@@ -37,7 +37,8 @@ void setup() {
   gInbox.actions[1] = new PongAction("LED - 8x8 Matrix");
   gInbox.actions[2] = new StoreGatewayAction();
   gInbox.actions[3] = new SleepAction();
-  gInbox.actions[4] = new Action("setValue", &setValue);
+  gInbox.actions[4] = new BatteryAction();
+  gInbox.actions[5] = new Action("setValue", &setValue);
 
   // Set on the side while prototyping
   matrix.setRotation(3);

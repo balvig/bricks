@@ -74,7 +74,6 @@ brick:
 
 ### Next
 - [ ] [ACK/retry](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#send-esp-now-data)
-- [ ] Battery [read strategies](https://github.com/balvig/bricks/compare/battery)
 - [ ] Refine pairing process
   - Need paired/unpaired status?
   - If ACK is built in to all bricks, no need for `pong`? (but how to get name then?)
