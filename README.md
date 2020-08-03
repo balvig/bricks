@@ -87,8 +87,6 @@ brick:
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
-- [ ] NodeRED - Allow topic, mac to take msg input
-- [ ] NodeRED - Couple of exported flows
 - [ ] Use same system for defining mqtt responses (instead of hardcoded "scan")
   ```
   // Connect mqtt event stream

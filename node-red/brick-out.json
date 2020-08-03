@@ -120,12 +120,23 @@
                 "y": 60,
                 "wires": [
                     {
-                        "id": "f4fdc3f.4f09d4"
+                        "id": "7a427677.5191a8"
                     }
                 ]
             }
         ],
-        "out": [],
+        "out": [
+            {
+                "x": 140,
+                "y": 20,
+                "wires": [
+                    {
+                        "id": "5fc87090.da588",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
         "env": [
             {
                 "name": "MAC",
@@ -194,6 +205,15 @@
                         ]
                     }
                 }
+            },
+            {
+                "name": "TOPIC_PREFIX",
+                "type": "str",
+                "value": "accounts/balvig/bricks/out",
+                "ui": {
+                    "type": "hide",
+                    "opts": {}
+                }
             }
         ],
         "color": "#E9967A",
@@ -208,7 +228,7 @@
         "qos": "",
         "retain": "",
         "broker": "69cfef51.baf9",
-        "x": 770,
+        "x": 790,
         "y": 60,
         "wires": []
     },
@@ -217,42 +237,15 @@
         "type": "function",
         "z": "5fc87090.da588",
         "name": "Compose topic/payload",
-        "func": "msg.topic = [msg.topic, env.get(\"MAC\"), env.get(\"ACTION\")].join(\"/\")\nif(env.get(\"VALUE\") !== \"\") {\n    msg.payload = env.get(\"VALUE\")\n}\nreturn msg;",
+        "func": "if(env.get(\"MAC\") !== \"\") {\n    msg.topic = env.get(\"MAC\")\n}\n\nif(env.get(\"ACTION\") !== \"\") {\n    msg.action = env.get(\"ACTION\")\n}\n\nif(env.get(\"VALUE\") !== \"\") {\n    msg.payload = env.get(\"VALUE\")\n}\n\nmsg.topic = [env.get(\"TOPIC_PREFIX\"), msg.topic, msg.action].join(\"/\")\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 390,
+        "x": 230,
         "y": 60,
         "wires": [
             [
                 "a26696d1.e25b38",
                 "32de54b1.3705dc"
-            ]
-        ]
-    },
-    {
-        "id": "f4fdc3f.4f09d4",
-        "type": "change",
-        "z": "5fc87090.da588",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "accounts/balvig/bricks/out",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 160,
-        "y": 60,
-        "wires": [
-            [
-                "7a427677.5191a8"
             ]
         ]
     },
@@ -311,7 +304,7 @@
         "func": "msg.reset = true;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 390,
+        "x": 410,
         "y": 160,
         "wires": [
             [
@@ -334,7 +327,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 590,
+        "x": 430,
         "y": 100,
         "wires": [
             [
