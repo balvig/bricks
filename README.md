@@ -73,30 +73,9 @@ brick:
 ## Todo
 
 ### Next
-- [ ] [ACK/retry](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html#send-esp-now-data)
 - [ ] Refine pairing process
   - Need paired/unpaired status?
   - If ACK is built in to all bricks, no need for `pong`? (but how to get name then?)
-
-### Thoughts on ACK/Reply
-
-For v0.1, could this be done entirely NodeRED side?
-
-While it would be nice to have it built in to bricks and "just work",
-it will result in further complexity C++ side and extra processing load
-on the bricks.
-
-Some scenarios maybe lost messages don't even matter too much?
-
-Scenarios to solve:
-
-| Scenario         | Solution                                                             | Status |
-|------------------|----------------------------------------------------------------------|--------|
-| `setValue`       | Simple retry unless ACK is received                                  | Solved |
-| `sleep`          | Simple retry unless ACK is received                                  | Solved |
-| `awake` - Button | Manual repress                                                       | Solved |
-| `awake` - timed  | Schedule future ping after `sleep`. Send ping if no response by then |        |
-| `awake` - timed  | Allow specifying auto sleep after a while?                           |        |
 
 ### Nice to haves
 - [ ] Allow BLE scanner to subscribe to beacon notifications
@@ -118,22 +97,3 @@ Scenarios to solve:
   gEvents.events[0] = new ScanEvent();
   gEvents.events[1] = new BroadcastEvent();
   ```
-
-### Limitations
-- Channel needs to be same as connected WiFi
-- Channel is _maybe_ hardcoded to 1 when using `WIFI_AP_STA`?
-  - https://rntlab.com/question/esp-now-gateway-wifi_mode_sta-with-a-wifi-router/#answer-71229
-  - https://github.com/espressif/arduino-esp32/issues/878#issuecomment-578885352
-
-#### Test results
-
-| Gateway AP | Gateway Peer | Brick AP | Brick Peer | Ping | Pong |
-|------------|--------------|----------|------------|------|------|
-| 1          | 1            | 1        | 1          | OK   | OK   |
-| 6          | 1            | 1        | 1          | OK   | OK   |
-| 1          | 6            | 1        | 1          | OK   | OK   |
-| 6          | 6            | 1        | 1          | OK   | OK   |
-| 1          | 1            | 6        | 1          | NG   | NG   |
-| 1          | 1            | 1        | 6          | OK   | NG   |
-| 1          | 1            | 6        | 6          | NG   | NG   |
-| 1          | 1            | 2        | 1          | OK   | NG   |
