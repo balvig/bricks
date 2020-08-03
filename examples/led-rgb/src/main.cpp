@@ -2,6 +2,7 @@
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
+#include <Bricks.AckAction.h>
 #include <Bricks.PongAction.h>
 #include <Bricks.SleepAction.h>
 #include <Bricks.StoreGatewayAction.h>
@@ -36,9 +37,9 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init();
-  gInbox.actions[0] = new PongAction("LED - RGB");
-  gInbox.actions[1] = new StoreGatewayAction();
-  gInbox.actions[2] = new SleepAction();
+  gInbox.actions[0] = new AckAction();
+  gInbox.actions[1] = new PongAction("LED - RGB");
+  gInbox.actions[2] = new StoreGatewayAction();
   gInbox.actions[3] = new Action("setPattern", &setPattern);
   gInbox.actions[4] = new Action("setVariation", &setVariation);
   gInbox.actions[5] = new Action("setDelay", &setDelay);
