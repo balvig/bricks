@@ -27,7 +27,7 @@ void setup() {
 
   // Enable receiving messages and store gateway mac on ping
   gInbox.init();
-  gInbox.actions[0] = new PongAction("Button");
+  gInbox.actions[0] = new PongAction("Button (Realtime)");
   gInbox.actions[1] = new StoreGatewayAction();
 }
 

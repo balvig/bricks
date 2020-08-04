@@ -38,7 +38,7 @@ void setup() {
   // Enable receiving messages
   gInbox.init();
   gInbox.actions[0] = new AckAction();
-  gInbox.actions[1] = new PongAction("LED - RGB");
+  gInbox.actions[1] = new PongAction("LED RGB");
   gInbox.actions[2] = new StoreGatewayAction();
   gInbox.actions[3] = new Action("setPattern", &setPattern);
   gInbox.actions[4] = new Action("setVariation", &setVariation);
