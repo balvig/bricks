@@ -83,6 +83,7 @@ brick:
 - A place to mount LED, sensor, button etc
 - ESP8266 will need extra switch for 16/RST
 - Pressable reset/system button?
+- Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
 - RBG strip / LED Matrix would be nice to have, but are power hungry? (5v?)
 
 ### Build case
