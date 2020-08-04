@@ -1,7 +1,7 @@
 #include <Bricks.StoreGatewayAction.h>
 
 namespace Bricks {
-  StoreGatewayAction::StoreGatewayAction() : Action("ping") {
+  StoreGatewayAction::StoreGatewayAction() : Action(BRICKS_PING_ACTION) {
     EEPROM.begin(MAC_ADDR_SIZE);
     readMac();
   }
