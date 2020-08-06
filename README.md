@@ -88,7 +88,9 @@ brick:
 ## Software
 
 ### Todo
+- [ ] Fix `A0` and `ArduinoOTA` dependencies
 - [ ] "Pack" of built in actions for all bricks
+- [ ] TravisCI
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
