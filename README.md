@@ -70,33 +70,31 @@ brick:
 <img src=example.png width=500>
 <img src=example.gif width=400>
 
-## Todo
 
-### Decide on internals
+## Hardware
+### v.01
 
-- ESP8266 / ESP32?
-- USB powereable
-- Low power usage (ideally microamps in deep sleep)
-- LIPO battery? 800mah?
-- Battery read
-- a few GPIOs
-- A place to mount LED, sensor, button etc
-- ESP8266 will need extra switch for 16/RST
-- Pressable reset/system button?
-- Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
-- RBG strip / LED Matrix would be nice to have, but are power hungry? (5v?)
+- Wemos D1 Mini
+- Battery Shield
+- 800mah battery
+- "Manual" component wiring
 
-### Build case
+### Todo
 
-- Propotype in Fusion
+- [x] Button
+- LED
+- [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
+
+## Software
+
+### Todo
+- [ ] "Pack" of built in actions for all bricks
 
 ### Nice to haves
-- [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
   - Also, get `pio check` running again!
 - [ ] Write up making a brick
-- [ ] "Pack" of built in actions for all bricks?
-- [ ] Maybe publish gateway uptime/online events?
+- [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
