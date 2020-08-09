@@ -82,7 +82,7 @@ brick:
 ### Todo
 
 - [x] Button
-- LED
+- [ ] LED
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
 
 ## Software
