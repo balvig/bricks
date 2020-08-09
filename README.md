@@ -88,7 +88,6 @@ brick:
 ## Software
 
 ### Todo
-- [ ] Fix `A0` and `ArduinoOTA` dependencies
 - [ ] "Pack" of built in actions for all bricks
 - [ ] TravisCI
 
