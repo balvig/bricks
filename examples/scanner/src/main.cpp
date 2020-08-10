@@ -25,12 +25,23 @@ class BLECallbacks: public BLEAdvertisedDeviceCallbacks {
   }
 };
 
-void scan(const uint8_t *macAddr, const Message message) {
-  const uint8_t scanTime = atoi(message.value);
+void scan(const uint8_t scanTime, const bool activeScan = false) {
   Log.notice("BLES: Scanning for %d second(s)" CR, scanTime);
+  pBLEScan->setActiveScan(activeScan);
   pBLEScan->start(scanTime, false);
   pBLEScan->clearResults();
   Log.notice("BLES: Scan done" CR);
+}
+
+void passiveScan(const uint8_t *macAddr, const Message message) {
+  const uint8_t scanTime = atoi(message.value);
+  scan(scanTime, false);
+}
+
+// active scan required to get names?
+void activeScan(const uint8_t *macAddr, const Message message) {
+  const uint8_t scanTime = atoi(message.value);
+  scan(scanTime, true);
 }
 
 //Main
@@ -43,7 +54,6 @@ void setup() {
   BLEDevice::init("");
   pBLEScan = BLEDevice::getScan();
   pBLEScan->setAdvertisedDeviceCallbacks(new BLECallbacks());
-  // pBLEScan->setActiveScan(true); // required to get names?
 
   // Configure ESPNOW
   gBrick.init();
@@ -55,7 +65,8 @@ void setup() {
   gInbox.actions[2] = new OtaAction();
   gInbox.actions[3] = new StoreGatewayAction();
   gInbox.actions[4] = new SleepAction();
-  gInbox.actions[5] = new Action("scan", &scan);
+  gInbox.actions[5] = new Action("scan", &passiveScan);
+  gInbox.actions[6] = new Action("activeScan", &activeScan);
 }
 
 void loop() {
