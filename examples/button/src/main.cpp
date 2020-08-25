@@ -3,8 +3,6 @@
 #include <Bricks.Constants.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
-#include <Bricks.PongAction.h>
-#include <Bricks.StoreGatewayAction.h>
 using namespace Bricks;
 
 // Local
@@ -25,10 +23,8 @@ void setup() {
   // Configure ESPNow
   gBrick.init();
 
-  // Enable receiving messages and store gateway mac on ping
-  gInbox.init();
-  gInbox.actions[0] = new PongAction("Button (Realtime)");
-  gInbox.actions[1] = new StoreGatewayAction();
+  // Configure inbox
+  gInbox.init("Button (Realtime)");
 }
 
 void loop() {

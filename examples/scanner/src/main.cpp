@@ -2,11 +2,7 @@
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
-#include <Bricks.AckAction.h>
 #include <Bricks.OtaAction.h>
-#include <Bricks.PongAction.h>
-#include <Bricks.SleepAction.h>
-#include <Bricks.StoreGatewayAction.h>
 using namespace Bricks;
 
 // Local
@@ -59,14 +55,10 @@ void setup() {
   gBrick.init();
 
   // Enable receiving messages
-  gInbox.init();
-  gInbox.actions[0] = new AckAction();
-  gInbox.actions[1] = new PongAction("BLE Scanner");
-  gInbox.actions[2] = new OtaAction();
-  gInbox.actions[3] = new StoreGatewayAction();
-  gInbox.actions[4] = new SleepAction();
-  gInbox.actions[5] = new Action("scan", &passiveScan);
-  gInbox.actions[6] = new Action("activeScan", &activeScan);
+  gInbox.init("BLE Scanner");
+  gInbox.actions[0] = new OtaAction();
+  gInbox.actions[1] = new Action("scan", &passiveScan);
+  gInbox.actions[2] = new Action("activeScan", &activeScan);
 }
 
 void loop() {

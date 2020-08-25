@@ -88,7 +88,6 @@ brick:
 ## Software
 
 ### Todo
-- [ ] "Pack" of built in actions for all bricks
 - [ ] TravisCI
 
 ### Nice to haves

@@ -2,11 +2,6 @@
 #include <Bricks.Brick.h>
 #include <Bricks.Constants.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.AckAction.h>
-#include <Bricks.BatteryAction.h>
-#include <Bricks.PongAction.h>
-#include <Bricks.StoreGatewayAction.h>
-#include <Bricks.SleepAction.h>
 #include <Bricks.Utils.h>
 using namespace Bricks;
 
@@ -31,14 +26,9 @@ void setup() {
   // Configure ESPNow
   gBrick.init();
 
-  // Enable receiving messages and store gateway mac on ping
-  gInbox.init();
-  gInbox.actions[0] = new AckAction(); // ack back all messages
-  gInbox.actions[1] = new PongAction("LED 8x8 Matrix");
-  gInbox.actions[2] = new StoreGatewayAction();
-  gInbox.actions[3] = new SleepAction();
-  gInbox.actions[4] = new BatteryAction();
-  gInbox.actions[5] = new Action("setValue", &setValue);
+  // Configure inbox
+  gInbox.init("LED 8x8 Matrix");
+  gInbox.actions[0] = new Action("setValue", &setValue);
 }
 
 void loop() {
