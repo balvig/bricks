@@ -23,6 +23,9 @@ void setup() {
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
+  // Wemos will be on side
+  matrix.setRotation(3);
+
   // Configure ESPNow
   gBrick.init();
 
