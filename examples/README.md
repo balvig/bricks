@@ -8,6 +8,25 @@
 - [LED 8x8 Matrix](led-matrix)
 - [BLE Scanner](scanner)
 
+## Common actions
+
+### Inbox
+
+| key        | description                               | values               |
+|------------|-------------------------------------------|----------------------|
+| *          | Responds with `ack:<KEY>` to all messages |                      |
+| ping       | Saves gateway MAC, responds with `pong`   |                      |
+| sleep      | Sleep for `value` seconds                 | 0 (forever), 1-13612 |
+| getBattery | Ask to send battery value                 |                      |
+
+### Outbox
+
+| key     | description                | values         |
+|---------|----------------------------|----------------|
+| awake   | Sent when woken up         | wake-up reason |
+| battery | Current battery value      | 0 - 1000+      |
+| pong    | Sent when receiving `ping` | name of brick  |
+
 ## Planned Bricks
 
 ### Basic set

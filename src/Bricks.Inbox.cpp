@@ -1,7 +1,16 @@
 #include "Bricks.Inbox.h"
 
 namespace Bricks {
-  void Inbox::init() {
+  void Inbox::init(const char *name) {
+    actions[5] = new PongAction(name);
+    actions[6] = new StoreGatewayAction();
+    actions[7] = new SleepAction();
+    actions[8] = new BatteryAction();
+    actions[9] = new AckAction();
+    initBase();
+  }
+
+  void Inbox::initBase() {
     WifiEspNow.onReceive(Inbox::onDataReceived, nullptr);
   }
 

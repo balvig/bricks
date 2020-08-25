@@ -29,8 +29,8 @@ void setup() {
   // Connect mqtt event stream
   gEvents.init();
 
-  // Enable receiving messages
-  gInbox.init();
+  // Configure inbox
+  gInbox.initBase();
   gInbox.actions[0] = new PublishAction(); // Publish all received messages to mqtt
 }
 

@@ -2,10 +2,6 @@
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
-#include <Bricks.AckAction.h>
-#include <Bricks.PongAction.h>
-#include <Bricks.SleepAction.h>
-#include <Bricks.StoreGatewayAction.h>
 using namespace Bricks;
 
 // Local
@@ -35,14 +31,11 @@ void setup() {
   // Configure ESPNOW
   gBrick.init();
 
-  // Enable receiving messages
+  // Configure inbox
   gInbox.init();
-  gInbox.actions[0] = new AckAction();
-  gInbox.actions[1] = new PongAction("LED RGB");
-  gInbox.actions[2] = new StoreGatewayAction();
-  gInbox.actions[3] = new Action("setPattern", &setPattern);
-  gInbox.actions[4] = new Action("setVariation", &setVariation);
-  gInbox.actions[5] = new Action("setDelay", &setDelay);
+  gInbox.actions[0] = new Action("setPattern", &setPattern);
+  gInbox.actions[1] = new Action("setVariation", &setVariation);
+  gInbox.actions[2] = new Action("setDelay", &setDelay);
 }
 
 void loop() {

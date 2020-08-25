@@ -9,13 +9,21 @@
 #include <Bricks.Message.h>
 #include <Bricks.Utils.h>
 
+// Stock actions
+#include <Bricks.AckAction.h>
+#include <Bricks.BatteryAction.h>
+#include <Bricks.PongAction.h>
+#include <Bricks.SleepAction.h>
+#include <Bricks.StoreGatewayAction.h>
+
 # define MAX_ACTIONS 10
 
 namespace Bricks {
   class Inbox {
     public:
       Inbox() {}
-      void init();
+      void init(const char *name);
+      void initBase();
       void process(const uint8_t *macAddr, const Message message);
       String listActions(); // The (supposedly) EVIL STRING?
       Action *actions[MAX_ACTIONS] = { new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action() }; // what the
