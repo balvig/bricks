@@ -70,15 +70,6 @@ brick:
 <img src=example.png width=500>
 <img src=example.gif width=400>
 
-
-## Hardware
-### v.01
-
-- Wemos D1 Mini
-- Battery Shield
-- 800mah battery
-- "Manual" component wiring
-
 ### Todo
 
 - [x] Button
@@ -89,6 +80,7 @@ brick:
 
 ### Todo
 - [ ] TravisCI
+- [ ] Turn "setRotation" into an action instead for LED Matrix
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
