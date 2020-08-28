@@ -2,8 +2,8 @@
     {
         "id": "a3a2426c.d3bf6",
         "type": "subflow",
-        "name": "Brick - In",
-        "info": "# Bricks in\n\nUse this for input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this subscribes to _everything_, then filters it.",
+        "name": "Brick In",
+        "info": "# Brick in\n\nUse this for input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this subscribes to _everything_, then filters it.",
         "category": "bricks",
         "in": [],
         "out": [
@@ -27,17 +27,6 @@
                     "icon": "font-awesome/fa-address-card",
                     "label": {
                         "en-US": "Address"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "num",
-                            "bool",
-                            "json",
-                            "bin",
-                            "env"
-                        ]
                     }
                 }
             },
@@ -49,17 +38,6 @@
                     "icon": "font-awesome/fa-bolt",
                     "label": {
                         "en-US": "Action"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "num",
-                            "bool",
-                            "json",
-                            "bin",
-                            "env"
-                        ]
                     }
                 }
             }
@@ -111,8 +89,8 @@
     {
         "id": "5fc87090.da588",
         "type": "subflow",
-        "name": "Brick - Out",
-        "info": "",
+        "name": "Brick Out",
+        "info": "Shortcut for sending messages to Bricks, with a rudimentary (optional) retry feature built in.",
         "category": "bricks",
         "in": [
             {
@@ -128,7 +106,7 @@
         "out": [
             {
                 "x": 140,
-                "y": 20,
+                "y": 120,
                 "wires": [
                     {
                         "id": "5fc87090.da588",
@@ -211,8 +189,7 @@
                 "type": "str",
                 "value": "accounts/balvig/bricks/out",
                 "ui": {
-                    "type": "hide",
-                    "opts": {}
+                    "type": "hide"
                 }
             }
         ],
