@@ -30,13 +30,19 @@ vi include/secrets.h
 pio run
 ```
 
+Make a note of the gateway's MAC from the log output:
+
+```
+Initialized [98:f3:ab:6c:e6:b5]
+```
+
 **Note:** Bricks currently requires a WiFi network that uses channel 1.
 
 ### 3. Create some bricks
 
 [WIP library here](/examples).
-For example a button:
 
+For example a button:
 ```bash
 cd examples/button
 pio run
@@ -49,14 +55,14 @@ cd examples/led
 pio run
 ```
 
-### 4. Scan for bricks
+### 4. Make gateway scan for bricks
 
 ```mqtt
-bricks/gateway/scan
+bricks/out/98:f3:ab:6c:e6:b5/scan
 ```
 
-This will configure all active bricks to use the gateway,
-each responding with a "pong" containing their MAC address and name:
+This will configure all active bricks to use the gateway for
+communication, each responding with a "pong" containing their MAC address and name:
 
 ```mqtt
 bricks/in/ee:fa:bc:8e:89:1e/pong: Button
@@ -91,10 +97,3 @@ brick:
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
 - [ ] Idea: Reply with de-duped list of "capabilities" instead of name?
-- [ ] Use same system for defining mqtt responses (instead of hardcoded "scan")
-  ```
-  // Connect mqtt event stream
-  gEvents.init();
-  gEvents.events[0] = new ScanEvent();
-  gEvents.events[1] = new BroadcastEvent();
-  ```
