@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Constants.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.OtaAction.h>
 using namespace Bricks;
