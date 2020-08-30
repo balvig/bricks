@@ -7,6 +7,8 @@
 - [LED RGB](led-rgb)
 - [LED 8x8 Matrix](led-matrix)
 - [BLE Scanner](scanner)
+- [IR Controller](ir)
+- [PIR Sensor](pir)
 
 ## Common actions
 
