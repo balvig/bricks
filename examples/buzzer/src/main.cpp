@@ -5,16 +5,15 @@
 using namespace Bricks;
 
 // Local
-#include <WEMOS_Matrix_GFX.h>
-
-MLED matrix(5);
+const int BUZZER = D5;
 
 // Bricks callbacks
-void setValue(const uint8_t *macAddr, const Message message) {
-  matrix.clear();
-  matrix.setCursor(2, 1);
-  matrix.print(message.value);
-  matrix.writeDisplay();
+void playTone(const uint8_t *macAddr, const Message message) {
+  int frequency;
+  int duration;
+  sscanf(message.value, "%d,%d", &frequency, &duration);
+
+  tone(BUZZER, frequency, duration);
 }
 
 void setup() {
@@ -22,16 +21,16 @@ void setup() {
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
-  // Wemos will be on side
-  matrix.setRotation(3);
-
   // Configure ESPNow
   gBrick.init();
 
   // Configure inbox
-  gInbox.init("LED 8x8 Matrix");
+  gInbox.init("Buzzer");
   gInbox.actions[0] = new OtaAction();
-  gInbox.actions[1] = new Action("setValue", &setValue);
+  gInbox.actions[1] = new Action("tone", &playTone);
+
+  // Configure buzzer
+  pinMode(BUZZER, OUTPUT);
 }
 
 void loop() {
