@@ -84,7 +84,6 @@ brick:
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
-  - Also, get `pio check` running again!
 - [ ] Write up making a brick
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] More tests
