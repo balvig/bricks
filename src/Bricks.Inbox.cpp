@@ -2,6 +2,7 @@
 
 namespace Bricks {
   void Inbox::init(const char *name) {
+    actions[3] = new OtaAction();
     actions[4] = new ListAction();
     actions[5] = new PongAction(name);
     actions[6] = new StoreGatewayAction();
@@ -24,6 +25,12 @@ namespace Bricks {
     Log.notice("ESPN: <- %s [%s] [%s]" CR, macStr, message.key, message.value);
 
     gInbox.process(macAddr, message);
+  }
+
+  void Inbox::loop() {
+    for(int i = 0; i < MAX_ACTIONS; i++) {
+      actions[i]->loop();
+    }
   }
 
   void Inbox::process(const uint8_t *macAddr, const Message message) {

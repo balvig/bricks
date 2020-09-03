@@ -12,6 +12,7 @@ namespace Bricks {
     public:
       Action(const char *key = "", std::function<void(const uint8_t *macAddr, const Message message)> customCallback = nullptr);
       bool respondsTo(const char* compareKey);
+      virtual void loop();
       virtual void callback(const uint8_t *macAddr, const Message message);
       const char *key;
     private:

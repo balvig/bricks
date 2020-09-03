@@ -1,7 +1,6 @@
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.OtaAction.h>
 using namespace Bricks;
 
 const int ledPin = LED_BUILTIN;
@@ -15,7 +14,7 @@ void setPattern(const uint8_t *macAddr, const Message message) {
   }
 }
 
-//Main
+// Main
 void setup() {
   // Logging
   Serial.begin(115200);
@@ -30,10 +29,9 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init("LED");
-  gInbox.actions[0] = new OtaAction();
-  gInbox.actions[1] = new Action("setPattern", &setPattern);
+  gInbox.actions[0] = new Action("setPattern", &setPattern);
 }
 
 void loop() {
-  ArduinoOTA.handle();
+  gInbox.loop();
 }

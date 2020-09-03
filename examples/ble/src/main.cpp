@@ -2,7 +2,6 @@
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
-#include <Bricks.OtaAction.h>
 using namespace Bricks;
 
 // Local
@@ -56,11 +55,10 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init("BLE Scanner");
-  gInbox.actions[0] = new OtaAction();
-  gInbox.actions[1] = new Action("scan", &passiveScan);
-  gInbox.actions[2] = new Action("activeScan", &activeScan);
+  gInbox.actions[0] = new Action("scan", &passiveScan);
+  gInbox.actions[1] = new Action("activeScan", &activeScan);
 }
 
 void loop() {
-  ArduinoOTA.handle();
+  gInbox.loop();
 }

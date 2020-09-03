@@ -1,7 +1,6 @@
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.OtaAction.h>
 using namespace Bricks;
 
 // Local
@@ -30,10 +29,9 @@ void setup() {
 
   // Configure inbox
   gInbox.init("LED 8x8 Matrix");
-  gInbox.actions[0] = new OtaAction();
-  gInbox.actions[1] = new Action("setValue", &setValue);
+  gInbox.actions[0] = new Action("setValue", &setValue);
 }
 
 void loop() {
-  ArduinoOTA.handle();
+  gInbox.loop();
 }

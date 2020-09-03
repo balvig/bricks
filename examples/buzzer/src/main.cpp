@@ -1,7 +1,6 @@
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.OtaAction.h>
 using namespace Bricks;
 
 // Local
@@ -26,13 +25,12 @@ void setup() {
 
   // Configure inbox
   gInbox.init("Buzzer");
-  gInbox.actions[0] = new OtaAction();
-  gInbox.actions[1] = new Action("tone", &playTone);
+  gInbox.actions[0] = new Action("tone", &playTone);
 
   // Configure buzzer
   pinMode(BUZZER, OUTPUT);
 }
 
 void loop() {
-  ArduinoOTA.handle();
+  gInbox.loop();
 }
