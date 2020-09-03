@@ -12,6 +12,7 @@
 // Stock actions
 #include <Bricks.AckAction.h>
 #include <Bricks.BatteryAction.h>
+#include <Bricks.ListAction.h>
 #include <Bricks.PongAction.h>
 #include <Bricks.SleepAction.h>
 #include <Bricks.StoreGatewayAction.h>
