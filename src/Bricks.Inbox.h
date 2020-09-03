@@ -13,6 +13,7 @@
 #include <Bricks.AckAction.h>
 #include <Bricks.BatteryAction.h>
 #include <Bricks.ListAction.h>
+#include <Bricks.OtaAction.h>
 #include <Bricks.PongAction.h>
 #include <Bricks.SleepAction.h>
 #include <Bricks.StoreGatewayAction.h>
@@ -25,6 +26,7 @@ namespace Bricks {
       Inbox() {}
       void init(const char *name);
       void initBase();
+      void loop();
       void process(const uint8_t *macAddr, const Message message);
       String listActions(); // The (supposedly) EVIL STRING?
       Action *actions[MAX_ACTIONS] = { new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action() }; // what the

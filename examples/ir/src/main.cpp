@@ -1,7 +1,6 @@
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.OtaAction.h>
 using namespace Bricks;
 
 // Local
@@ -38,8 +37,7 @@ void setup() {
   gBrick.init();
 
   gInbox.init("IR Controller");
-  gInbox.actions[0] = new OtaAction();
-  gInbox.actions[1] = new Action("sendCode", &sendCode);
+  gInbox.actions[0] = new Action("sendCode", &sendCode);
 
   // Start the IR receiver / sender
   irrecv.enableIRIn();
@@ -57,5 +55,5 @@ void loop() {
     Log.notice(resultToSourceCode(&results).c_str());
     irrecv.resume();
   }
-  ArduinoOTA.handle();
+  gInbox.loop();
 }

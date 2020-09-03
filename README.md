@@ -81,6 +81,7 @@ brick:
 ### Todo
 - [ ] TravisCI
 - [ ] Turn "setRotation" into an action instead for LED Matrix
+- [ ] Move "ack" to top of stack, run actions in reverse, or split actions
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)

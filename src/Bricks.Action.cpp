@@ -6,6 +6,10 @@ namespace Bricks {
     this->customCallback = customCallback;
   }
 
+  void Action::loop() {
+    // Do nothing
+  }
+
   void Action::callback(const uint8_t *macAddr, const Message message) {
     customCallback(macAddr, message);
   }

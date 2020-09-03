@@ -1,7 +1,6 @@
 // Bricks
 #include <Bricks.Brick.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.OtaAction.h>
 using namespace Bricks;
 
 // Local
@@ -35,7 +34,6 @@ void setup() {
 
   // Configure inbox
   gInbox.init("PIR");
-  gInbox.actions[0] = new OtaAction();
 
   // Configure PIR
   pinMode(PIR, INPUT);
@@ -47,5 +45,5 @@ void loop() {
   if(timer.onRestart()) {
     notifyChanges();
   }
-  ArduinoOTA.handle();
+  gInbox.loop();
 }

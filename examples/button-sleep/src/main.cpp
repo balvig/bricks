@@ -2,7 +2,6 @@
 #include <Bricks.Brick.h>
 #include <Bricks.Constants.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.OtaAction.h>
 using namespace Bricks;
 
 void setup() {
@@ -15,9 +14,8 @@ void setup() {
 
   // Configure inbox
   gInbox.init("Button");
-  gInbox.actions[0] = new OtaAction();
 }
 
 void loop() {
-  ArduinoOTA.handle();
+  gInbox.loop();
 }

@@ -10,6 +10,7 @@ namespace Bricks {
   class OtaAction : public Action {
     public:
       OtaAction();
+      void loop();
       void callback(const uint8_t *macAddr, const Message message);
     private:
       void initOta();
