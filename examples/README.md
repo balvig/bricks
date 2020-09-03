@@ -23,11 +23,11 @@
 
 ### Outbox
 
-| key     | description                | values         |
-|---------|----------------------------|----------------|
-| awake   | Sent when woken up         | wake-up reason |
-| battery | Current battery value      | 0 - 1000+      |
-| pong    | Sent when receiving `ping` | name of brick  |
+| key     | description                            | values         |
+|---------|----------------------------------------|----------------|
+| awake   | Sent when woken up                     | wake-up reason |
+| battery | Current battery value                  | 0 - 1000+      |
+| pong    | Sent on boot and when receiving `ping` | name of brick  |
 
 ## Planned Bricks
 

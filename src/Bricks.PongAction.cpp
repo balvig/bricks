@@ -4,6 +4,7 @@ namespace Bricks {
   PongAction::PongAction(const char *name) : Action(BRICKS_PING_ACTION) {
     this->name = name;
     advertise();
+    gOutbox.send("pong", name);
   }
 
   void PongAction::callback(const uint8_t *macAddr, const Message message) {
