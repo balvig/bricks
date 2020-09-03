@@ -14,7 +14,10 @@ namespace Bricks {
   class Utils {
     public:
       static void macToStr(const uint8_t *macAddr, char *macStr);
+      static bool wasManuallyReset();
       static void getWakeupReason(char *reason);
+    private:
+      static int resetInfo();
   };
 }
 #endif

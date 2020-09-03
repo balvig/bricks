@@ -12,7 +12,7 @@
 namespace Bricks {
   class Brick {
     public:
-      void init(const WiFiMode_t wifiMode = WIFI_AP);
+      void init(const WiFiMode_t wifiMode = WIFI_STA);
   };
 
   extern Brick gBrick;
