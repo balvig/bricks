@@ -6,7 +6,7 @@
 - [LED](led)
 - [LED RGB](led-rgb)
 - [LED 8x8 Matrix](led-matrix)
-- [BLE Scanner](scanner)
+- [BLE Scanner](ble)
 - [IR Controller](ir)
 - [PIR Sensor](pir)
 
