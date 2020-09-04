@@ -1,8 +1,7 @@
 # Brick Examples
 
 - [Gateway](gateway)
-- [Button (realtime)](button)
-- [Button (sleeps)](button-sleep)
+- [Button](button)
 - [LED](led)
 - [LED RGB](led-rgb)
 - [LED 8x8 Matrix](led-matrix)
@@ -14,12 +13,13 @@
 
 ### Inbox
 
-| key        | description                               | values               |
-|------------|-------------------------------------------|----------------------|
-| *          | Responds with `ack:<KEY>` to all messages |                      |
-| ping       | Saves gateway MAC, responds with `pong`   |                      |
-| sleep      | Sleep for `value` seconds                 | 0 (forever), 1-13612 |
-| getBattery | Ask to send battery value                 |                      |
+| key        | description                                                               | values               |
+|------------|---------------------------------------------------------------------------|----------------------|
+| *          | Responds with `ack:<KEY>` to all messages                                 |                      |
+| ping       | Saves gateway MAC, responds with `pong`                                   |                      |
+| sleep      | Sleep for `value` seconds                                                 | 0 (forever), 1-13612 |
+| getBattery | Ask to send battery value                                                 |                      |
+| setOta     | Allows `pio run -t upload --upload-port 192.168.4.1` when connected to AP |                      |
 
 ### Outbox
 

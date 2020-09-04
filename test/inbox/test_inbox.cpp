@@ -3,7 +3,6 @@
 #include <unity.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.PongAction.h>
-#include <Bricks.StoreGatewayAction.h>
 using namespace Bricks;
 
 void setUp(void) {
@@ -20,15 +19,6 @@ void test_pong() {
   gInbox.process(macAddr, message);
 }
 
-void test_store_gateway() {
-  const uint8_t macAddr[] = {0x98, 0xF4, 0xAB, 0x6C, 0xE6, 0xB5};
-  Message message;
-  strcpy(message.key, "ping");
-
-  gInbox.actions[0] = new StoreGatewayAction();
-  gInbox.process(macAddr, message);
-}
-
 void test_list_actions() {
   gInbox.actions[0] = new PongAction();
 
@@ -40,7 +30,6 @@ void setup() {
 
   UNITY_BEGIN();
   RUN_TEST(test_pong);
-  RUN_TEST(test_store_gateway);
   RUN_TEST(test_list_actions);
   UNITY_END();
 }

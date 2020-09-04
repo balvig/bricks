@@ -9,10 +9,14 @@
 #endif
 #include <WifiEspNow.h>
 
+#include <Bricks.Constants.h>
+
 namespace Bricks {
   class Brick {
     public:
-      void init(const WiFiMode_t wifiMode = WIFI_AP);
+      void init(const WiFiMode_t wifiMode = WIFI_AP); // AP is more stable that STA when communication with AT_STA
+    private:
+      void logMac(WiFiMode_t wifiMode);
   };
 
   extern Brick gBrick;

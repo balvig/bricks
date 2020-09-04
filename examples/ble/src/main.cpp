@@ -8,7 +8,7 @@ using namespace Bricks;
 #include <NimBLEDevice.h>
 
 BLEScan *pBLEScan;
-const int8_t MINIMUM_RSSI = -70;
+const int8_t MINIMUM_RSSI = -80;
 
 class BLECallbacks: public BLEAdvertisedDeviceCallbacks {
   void onResult(BLEAdvertisedDevice* device) {
