@@ -1,6 +1,10 @@
 #include "Bricks.Outbox.h"
 
 namespace Bricks {
+  Outbox::Outbox() {
+    setGatewayMac();
+  }
+
   void Outbox::send(const uint8_t *macAddr, const char* key, const char* value) {
     pair(macAddr);
 
@@ -47,14 +51,9 @@ namespace Bricks {
     }
   }
 
-  void Outbox::setGatewayMac(const uint8_t *macAddr) {
-    for (int i = 0; i < MAC_ADDR_SIZE; ++i) {
-      gatewayMac[i] = macAddr[i];
-    }
-
-    char macStr[MAC_STR_SIZE];
-    Bricks::Utils::macToStr(gatewayMac, macStr);
-    Log.notice("BRIC: Current gateway MAC [%s]" CR, macStr);
+  void Outbox::setGatewayMac() {
+    sscanf(BRICKS_GATEWAY_MAC, MAC_FORMAT,
+        &gatewayMac[0], &gatewayMac[1], &gatewayMac[2], &gatewayMac[3], &gatewayMac[4], &gatewayMac[5]);
   }
 
   Outbox gOutbox = Outbox();

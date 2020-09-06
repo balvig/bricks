@@ -23,7 +23,7 @@ void setup() {
   gBrick.init();
 
   // Configure inbox
-  gInbox.init("Button (Realtime)");
+  gInbox.init("Button");
 }
 
 void loop() {
@@ -34,4 +34,6 @@ void loop() {
   if(button.onReleased()) {
     gOutbox.send("released");
   }
+
+  gInbox.loop();
 }

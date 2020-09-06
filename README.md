@@ -30,39 +30,45 @@ vi include/secrets.h
 pio run
 ```
 
+Make a note of the gateway's MAC address:
+
+```bash
+Initialized [82:7d:3a:79:14:79]
+```
+
 **Note:** Bricks currently requires a WiFi network that uses channel 1.
 
 ### 3. Create some bricks
 
-[WIP library here](/examples).
-For example a button:
+[WIP catalogue here](/examples).
+For example a button and an LED:
 
 ```bash
+export PLATFORMIO_BUILD_FLAGS="'-DBRICKS_GATEWAY_MAC=\"82:7d:3a:79:14:79\"'"
+
 cd examples/button
 pio run
-```
 
-and an LED:
-
-```bash
 cd examples/led
 pio run
 ```
 
-### 4. Scan for bricks
+### 4. Communicate with bricks using MQTT
+
+Bricks announce themselves and their MAC addresses when they come online:
 
 ```mqtt
-bricks/gateway/scan
+bricks/in/ee:fa:bc:8e:89:1e/awake: Button - software restart
+bricks/in/ee:fa:bc:8e:89:8f/awake: LED - software restart
 ```
 
-This will configure all active bricks to use the gateway,
-each responding with a "pong" containing their MAC address and name:
+Use the MAC address to send messages to the bricks:
 
 ```mqtt
-bricks/in/ee:fa:bc:8e:89:1e/pong: Button
+bricks/out/ee:fa:bc:8e:89:8f/setPattern: 1
 ```
 
-### 5. Connect things in NodeRED
+### 5. Connect bricks in NodeRED
 
 Here is a simple example that allows a button brick to control an LED
 brick:
@@ -70,19 +76,14 @@ brick:
 <img src=example.png width=500>
 <img src=example.gif width=400>
 
-### Todo
-
-- [x] Button
-- [ ] LED
-- [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
-
 ## Software
 
 ### Todo
 - [ ] TravisCI
 - [ ] Turn "setRotation" into an action instead for LED Matrix
 - [ ] Move "ack" to top of stack, run actions in reverse, or split actions
-- [ ] Use advertising instead of "scan" to claim bricks
+- [ ] Node-RED list of bricks
+- [ ] Verify tests after gateway hardcoding
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
@@ -91,10 +92,13 @@ brick:
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
-- [ ] Use same system for defining mqtt responses (instead of hardcoded "scan")
-  ```
-  // Connect mqtt event stream
-  gEvents.init();
-  gEvents.events[0] = new ScanEvent();
-  gEvents.events[1] = new BroadcastEvent();
-  ```
+
+## Hardware
+
+### Todo
+- [ ] Low profile headers
+- [ ] Finish case
+- [ ] Nicer stickers
+- [ ] Button
+- [ ] LED
+- [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)

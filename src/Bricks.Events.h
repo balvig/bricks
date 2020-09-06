@@ -27,7 +27,6 @@
 
 #define BRICKS_MESSAGES_IN BRICKS_MQTT_TOPIC_PREFIX "/in"
 #define BRICKS_MESSAGES_OUT BRICKS_MQTT_TOPIC_PREFIX "/out"
-#define BRICKS_MESSAGES_SCAN BRICKS_MQTT_TOPIC_PREFIX "/gateway/scan"
 
 namespace Bricks {
   class Events {
@@ -48,7 +47,6 @@ namespace Bricks {
       void connectWiFi();
       void connectMQTT();
       void subscribe(const char *topic);
-      static void scanForBricks();
   };
 
   extern Events gEvents;

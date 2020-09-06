@@ -2,8 +2,7 @@
 #include <ArduinoLog.h>
 #include <unity.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.PongAction.h>
-#include <Bricks.StoreGatewayAction.h>
+#include <Bricks.AckAction.h>
 using namespace Bricks;
 
 void setUp(void) {
@@ -11,36 +10,26 @@ void setUp(void) {
   Log.begin(LOG_LEVEL_TRACE, &Serial);
 }
 
-void test_pong() {
+void test_ack() {
   const uint8_t macAddr[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
   Message message;
   strcpy(message.key, "ping");
 
-  gInbox.actions[0] = new PongAction();
-  gInbox.process(macAddr, message);
-}
-
-void test_store_gateway() {
-  const uint8_t macAddr[] = {0x98, 0xF4, 0xAB, 0x6C, 0xE6, 0xB5};
-  Message message;
-  strcpy(message.key, "ping");
-
-  gInbox.actions[0] = new StoreGatewayAction();
+  gInbox.actions[0] = new AckAction();
   gInbox.process(macAddr, message);
 }
 
 void test_list_actions() {
-  gInbox.actions[0] = new PongAction();
+  gInbox.actions[0] = new AckAction();
 
-  TEST_ASSERT_EQUAL_STRING("ping", gInbox.listActions().c_str());
+  TEST_ASSERT_EQUAL_STRING("*", gInbox.listActions().c_str());
 }
 
 void setup() {
   delay(2000); // if board doesn't support software reset via Serial.DTR/RTS
 
   UNITY_BEGIN();
-  RUN_TEST(test_pong);
-  RUN_TEST(test_store_gateway);
+  RUN_TEST(test_ack);
   RUN_TEST(test_list_actions);
   UNITY_END();
 }

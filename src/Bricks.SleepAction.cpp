@@ -1,7 +1,8 @@
 #include <Bricks.SleepAction.h>
 
 namespace Bricks {
-  SleepAction::SleepAction() : Action("sleep") {
+  SleepAction::SleepAction(const char *name) : Action("sleep") {
+    this->name = name;
     sendAwakeMessage();
   }
 
@@ -12,10 +13,12 @@ namespace Bricks {
 
   void SleepAction::sendAwakeMessage() {
     char reason[50];
+    char message[100];
     Bricks::Utils::getWakeupReason(reason);
-
     Log.notice("SLEE: Woke up [%s]" CR, reason);
-    gOutbox.send("awake", reason);
+
+    sprintf(message, "%s - %s", name, reason);
+    gOutbox.send("awake", message);
   }
 
   void SleepAction::deepSleep(const uint32_t seconds) {

@@ -14,6 +14,7 @@ namespace Bricks {
       void callback(const uint8_t *macAddr, const Message message);
     private:
       void initOta();
+      void startAP();
   };
 }
 #endif

@@ -10,7 +10,7 @@ namespace Bricks {
 
   void OtaAction::callback(const uint8_t *macAddr, const Message message) {
     initOta();
-    gOutbox.send(macAddr, "ota", WiFi.softAPIP().toString().c_str());
+    startAP();
   }
 
   void OtaAction::initOta() {
@@ -41,5 +41,10 @@ namespace Bricks {
       }
     });
     ArduinoOTA.begin();
+  }
+
+  void OtaAction::startAP() {
+    WiFi.mode(WIFI_AP);
+    WiFi.softAP("Brick - OTA", NULL, BRICKS_WIFI_CHANNEL, false, 1);
   }
 }

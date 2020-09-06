@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "ArduinoLog": "~1.0.3",
-    "EEPROM": ">0",
     "PubSubClient": "~2.8",
     "WifiEspNow": "~0.0.20190814"
   },

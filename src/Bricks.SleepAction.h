@@ -18,11 +18,12 @@
 namespace Bricks {
   class SleepAction : public Action {
     public:
-      SleepAction();
+      SleepAction(const char *name = "New Brick");
       void callback(const uint8_t *macAddr, const Message message);
     private:
       void sendAwakeMessage();
       void deepSleep(const uint32_t seconds);
+      const char *name;
   };
 }
 #endif

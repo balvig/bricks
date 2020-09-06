@@ -1,7 +1,7 @@
 # Button
 
-"Always on" button.
-Very responsive but will consume battery/should probably be plugged in.
+Sends `pressed/release` messages.
+Can also be put to sleep and use RST wake-up as trigger.
 
 ## Outbox
 
