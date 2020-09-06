@@ -14,7 +14,6 @@
 #include <Bricks.BatteryAction.h>
 #include <Bricks.ListAction.h>
 #include <Bricks.OtaAction.h>
-#include <Bricks.PongAction.h>
 #include <Bricks.SleepAction.h>
 
 # define MAX_ACTIONS 10

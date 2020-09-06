@@ -58,8 +58,8 @@ pio run
 Bricks announce themselves and their MAC addresses when they come online:
 
 ```mqtt
-bricks/in/ee:fa:bc:8e:89:1e/pong: Button
-bricks/in/ee:fa:bc:8e:89:8f/pong: LED
+bricks/in/ee:fa:bc:8e:89:1e/awake: Button - software restart
+bricks/in/ee:fa:bc:8e:89:8f/awake: LED - software restart
 ```
 
 Use the MAC address to send messages to the bricks:
@@ -102,4 +102,3 @@ brick:
 - [ ] Button
 - [ ] LED
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
-

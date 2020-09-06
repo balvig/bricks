@@ -14,7 +14,7 @@
 namespace Bricks {
   class Brick {
     public:
-      void init(const WiFiMode_t wifiMode = WIFI_AP); // AP is more stable that STA when communication with AT_STA
+      void init(const WiFiMode_t wifiMode = WIFI_AP); // AP is more stable than STA when communicating with AT_STA
     private:
       void logMac(WiFiMode_t wifiMode);
   };

@@ -2,10 +2,9 @@
 
 namespace Bricks {
   void Inbox::init(const char *name) {
-    actions[4] = new OtaAction();
-    actions[5] = new ListAction();
-    actions[6] = new PongAction(name);
-    actions[7] = new SleepAction();
+    actions[5] = new OtaAction();
+    actions[6] = new ListAction();
+    actions[7] = new SleepAction(name);
     actions[8] = new BatteryAction();
     actions[9] = new AckAction();
     initBase();

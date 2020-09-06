@@ -1,6 +1,6 @@
 # Button
 
-If plugged in can use `pressed/release` messages.
+Sends `pressed/release` messages.
 Can also be put to sleep and use RST wake-up as trigger.
 
 ## Outbox
