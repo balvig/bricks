@@ -58,8 +58,8 @@ pio run
 Bricks announce themselves and their MAC addresses when they come online:
 
 ```mqtt
-bricks/in/ee:fa:bc:8e:89:1e/awake: Button - software restart
-bricks/in/ee:fa:bc:8e:89:8f/awake: LED - software restart
+bricks/in/ee:fa:bc:8e:89:1e/awake: Button - external system reset
+bricks/in/ee:fa:bc:8e:89:8f/awake: LED - external system reset
 ```
 
 Use the MAC address to send messages to the bricks:
