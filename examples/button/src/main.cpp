@@ -24,6 +24,9 @@ void setup() {
 
   // Configure inbox
   gInbox.init("Button");
+
+  // Configure button
+  button.setDebounceTimeout(100);
 }
 
 void loop() {
