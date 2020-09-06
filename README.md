@@ -91,6 +91,7 @@ brick:
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
+- [ ] Idea: Rename "actions" to "skills"?
 
 ## Hardware
 
