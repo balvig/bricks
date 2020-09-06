@@ -1,0 +1,818 @@
+[
+    {
+        "id": "c829e851.77b118",
+        "type": "subflow",
+        "name": "format time",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "303e8462.4800cc"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 640,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "25b52c39.535b54",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "FIELD",
+                "type": "str",
+                "value": "time"
+            },
+            {
+                "name": "TIMEZONE",
+                "type": "str",
+                "value": "Asia/Tokyo"
+            },
+            {
+                "name": "FORMAT",
+                "type": "str",
+                "value": "MM/DD - HH:mm:ss"
+            }
+        ],
+        "color": "#E6E0F8",
+        "icon": "font-awesome/fa-clock-o"
+    },
+    {
+        "id": "9e515fc8.b91cf",
+        "type": "moment",
+        "z": "c829e851.77b118",
+        "name": "Moment.js",
+        "topic": "",
+        "input": "formattedTime",
+        "inputType": "msg",
+        "inTz": "Etc/UTC",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "$(FORMAT)",
+        "locale": "\"POSIX\"",
+        "output": "formattedTime",
+        "outputType": "msg",
+        "outTz": "$(TIMEZONE)",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "25b52c39.535b54"
+            ]
+        ]
+    },
+    {
+        "id": "25b52c39.535b54",
+        "type": "function",
+        "z": "c829e851.77b118",
+        "name": "Move back",
+        "func": "let field = env.get(\"FIELD\");\nmsg.payload[field] = msg.formattedTime;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "303e8462.4800cc",
+        "type": "function",
+        "z": "c829e851.77b118",
+        "name": "Move out",
+        "func": "let field = env.get(\"FIELD\");\nmsg.formattedTime = msg.payload[field];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "9e515fc8.b91cf"
+            ]
+        ]
+    },
+    {
+        "id": "a3a2426c.d3bf6",
+        "type": "subflow",
+        "name": "Brick In",
+        "info": "# Brick in\n\nUse this for input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this subscribes to _everything_, then filters it.",
+        "category": "bricks",
+        "in": [],
+        "out": [
+            {
+                "x": 420,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "12814906.bf21d7",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "MAC",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-address-card",
+                    "label": {
+                        "en-US": "Address"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "num",
+                            "bool",
+                            "json",
+                            "bin",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "ACTION",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Action"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "num",
+                            "bool",
+                            "json",
+                            "bin",
+                            "env"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#E9967A",
+        "icon": "font-awesome/fa-sign-in"
+    },
+    {
+        "id": "33d545ea.dae14a",
+        "type": "mqtt in",
+        "z": "a3a2426c.d3bf6",
+        "name": "All messages",
+        "topic": "accounts/balvig/bricks/in/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 90,
+        "y": 40,
+        "wires": [
+            [
+                "12814906.bf21d7"
+            ]
+        ]
+    },
+    {
+        "id": "12814906.bf21d7",
+        "type": "switch",
+        "z": "a3a2426c.d3bf6",
+        "name": "Filter messages",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "${MAC}/${ACTION}",
+                "vt": "env",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5fc87090.da588",
+        "type": "subflow",
+        "name": "Brick Out",
+        "info": "Shortcut for sending messages to Bricks, with a rudimentary (optional) retry feature built in.",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 40,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "7a427677.5191a8"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 140,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "5fc87090.da588",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "MAC",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-address-card",
+                    "label": {
+                        "en-US": "Address"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "ACTION",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Action"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "VALUE",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-commenting-o",
+                    "label": {
+                        "en-US": "Value"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "RETRY_ON_NAK",
+                "type": "bool",
+                "value": "false",
+                "ui": {
+                    "icon": "font-awesome/fa-recycle",
+                    "label": {
+                        "en-US": "Retry"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "bool"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "TOPIC_PREFIX",
+                "type": "str",
+                "value": "accounts/balvig/bricks/out",
+                "ui": {
+                    "type": "hide",
+                    "opts": {}
+                }
+            }
+        ],
+        "color": "#E9967A",
+        "icon": "font-awesome/fa-sign-out"
+    },
+    {
+        "id": "a26696d1.e25b38",
+        "type": "mqtt out",
+        "z": "5fc87090.da588",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "69cfef51.baf9",
+        "x": 790,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7a427677.5191a8",
+        "type": "function",
+        "z": "5fc87090.da588",
+        "name": "Compose topic/payload",
+        "func": "if(env.get(\"MAC\") !== \"\") {\n    msg.topic = env.get(\"MAC\")\n}\n\nif(env.get(\"ACTION\") !== \"\") {\n    msg.action = env.get(\"ACTION\")\n}\n\nif(env.get(\"VALUE\") !== \"\") {\n    msg.payload = env.get(\"VALUE\")\n}\n\nmsg.topic = [env.get(\"TOPIC_PREFIX\"), msg.topic, msg.action].join(\"/\")\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "a26696d1.e25b38",
+                "32de54b1.3705dc"
+            ]
+        ]
+    },
+    {
+        "id": "2d670747.762248",
+        "type": "subflow:a3a2426c.d3bf6",
+        "z": "5fc87090.da588",
+        "name": "ack:<ACTION>",
+        "env": [
+            {
+                "name": "MAC",
+                "value": "MAC",
+                "type": "env"
+            },
+            {
+                "name": "ACTION",
+                "value": "ack:${ACTION}",
+                "type": "env"
+            }
+        ],
+        "x": 200,
+        "y": 160,
+        "wires": [
+            [
+                "fc4317a7.046c38"
+            ]
+        ]
+    },
+    {
+        "id": "ea39e62f.d055d8",
+        "type": "trigger",
+        "z": "5fc87090.da588",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "pay",
+        "duration": "1",
+        "extend": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "name": "",
+        "x": 600,
+        "y": 160,
+        "wires": [
+            [
+                "a26696d1.e25b38"
+            ]
+        ]
+    },
+    {
+        "id": "fc4317a7.046c38",
+        "type": "function",
+        "z": "5fc87090.da588",
+        "name": "Reset = true",
+        "func": "msg.reset = true;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "ea39e62f.d055d8"
+            ]
+        ]
+    },
+    {
+        "id": "32de54b1.3705dc",
+        "type": "switch",
+        "z": "5fc87090.da588",
+        "name": "",
+        "property": "RETRY_ON_NAK",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 430,
+        "y": 100,
+        "wires": [
+            [
+                "ea39e62f.d055d8"
+            ]
+        ]
+    },
+    {
+        "id": "5cc01b87.5b1a24",
+        "type": "tab",
+        "label": "Ping-Pong",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4b22d03d.92f74",
+        "type": "litedb",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "e19130c6.f2df1"
+            ]
+        ]
+    },
+    {
+        "id": "d12d5d0.3ac6aa",
+        "type": "function",
+        "z": "5cc01b87.5b1a24",
+        "name": "insert record",
+        "func": "var sql = `\nINSERT OR REPLACE INTO devices (mac, name, time)\nVALUES(\n  \"${msg.topic.split(\"/\").reverse()[1]}\",\n  \"${msg.payload.split(\"-\")[0].trim()}\",\n  \"${+new Date()}\"\n);\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 120,
+        "wires": [
+            [
+                "4b22d03d.92f74"
+            ]
+        ]
+    },
+    {
+        "id": "e8c8a447.70c3b8",
+        "type": "ui_template",
+        "z": "5cc01b87.5b1a24",
+        "group": "d5696cc3.b218b",
+        "name": "UI Table",
+        "order": 1,
+        "width": "6",
+        "height": "7",
+        "format": "<table style=\"width:100%;font-size:0.8rem;\">\n  <tr>\n    <th style=\"text-align:left;\">Mac</th> \n    <th style=\"text-align:left\">Name</th>\n    <th style=\"text-align:left\">Last seen</th>\n    <th></th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload\">\n    <td>\n        <input type=\"text\" style=\"border:none;padding:0;background:none;width:8em;\" value=\"{{msg.payload[$index].mac}}\"/>\n    </td>\n    <td>{{msg.payload[$index].name}}</td> \n    <td>{{msg.payload[$index].time}}</td> \n    <td>\n        <button ng-click=\"send({topic:msg.payload[$index].mac})\">\n            OTA\n        </button>\n    </td>\n  </tr>\n</table>",
+        "storeOutMessages": true,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 800,
+        "y": 200,
+        "wires": [
+            [
+                "e19130c6.f2df1",
+                "2b21d84a.8e6dd8"
+            ]
+        ]
+    },
+    {
+        "id": "73f2d8bb.258068",
+        "type": "litedb",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "f142050.9aeb5f8"
+            ]
+        ]
+    },
+    {
+        "id": "311ae743.6d5f48",
+        "type": "mqtt in",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "topic": "accounts/balvig/bricks/in/+/awake",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "d12d5d0.3ac6aa"
+            ]
+        ]
+    },
+    {
+        "id": "e19130c6.f2df1",
+        "type": "function",
+        "z": "5cc01b87.5b1a24",
+        "name": "read records",
+        "func": "var sql = `\nSELECT * FROM devices ORDER BY time DESC;\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "73f2d8bb.258068"
+            ]
+        ]
+    },
+    {
+        "id": "9b0e61db.e4759",
+        "type": "function",
+        "z": "5cc01b87.5b1a24",
+        "name": "create database",
+        "func": "var sql = `\nCREATE TABLE devices(\n  mac STRING PRIMARY KEY NOT NULL, \n  name STRING,\n  time INT\n)\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 400,
+        "wires": [
+            [
+                "ccc95973.746608"
+            ]
+        ]
+    },
+    {
+        "id": "371413bf.791ecc",
+        "type": "function",
+        "z": "5cc01b87.5b1a24",
+        "name": "drop database",
+        "func": "var sql = `\nDROP TABLE IF EXISTS devices;\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 360,
+        "wires": [
+            [
+                "427de7dd.8d0988"
+            ]
+        ]
+    },
+    {
+        "id": "427de7dd.8d0988",
+        "type": "litedb",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "x": 470,
+        "y": 360,
+        "wires": [
+            [
+                "9b0e61db.e4759"
+            ]
+        ]
+    },
+    {
+        "id": "ccc95973.746608",
+        "type": "litedb",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "x": 470,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24abb755.19f168",
+        "type": "inject",
+        "z": "5cc01b87.5b1a24",
+        "name": "Initialize DB",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "371413bf.791ecc"
+            ]
+        ]
+    },
+    {
+        "id": "f142050.9aeb5f8",
+        "type": "split",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 670,
+        "y": 160,
+        "wires": [
+            [
+                "af945db0.b9386"
+            ]
+        ]
+    },
+    {
+        "id": "8ec61f97.0e702",
+        "type": "join",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "mode": "auto",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [
+                "e8c8a447.70c3b8"
+            ]
+        ]
+    },
+    {
+        "id": "ae6eeeea.67fad",
+        "type": "litedb",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "e19130c6.f2df1"
+            ]
+        ]
+    },
+    {
+        "id": "2b21d84a.8e6dd8",
+        "type": "subflow:5fc87090.da588",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "env": [
+            {
+                "name": "ACTION",
+                "value": "setOta",
+                "type": "str"
+            },
+            {
+                "name": "VALUE",
+                "value": "1",
+                "type": "str"
+            }
+        ],
+        "x": 970,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2f37d855.7da478",
+        "type": "inject",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "e19130c6.f2df1"
+            ]
+        ]
+    },
+    {
+        "id": "af945db0.b9386",
+        "type": "subflow:c829e851.77b118",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "env": [
+            {
+                "name": "FORMAT",
+                "value": "timeAgo",
+                "type": "str"
+            }
+        ],
+        "x": 810,
+        "y": 160,
+        "wires": [
+            [
+                "8ec61f97.0e702"
+            ]
+        ]
+    },
+    {
+        "id": "f9825865.88b3d8",
+        "type": "function",
+        "z": "5cc01b87.5b1a24",
+        "name": "update last seen",
+        "func": "var sql = `\nUPDATE devices SET time = \"${+new Date()}\"\nWHERE mac = \"${msg.topic.split(\"/\").reverse()[1]}\"\n;\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 260,
+        "wires": [
+            [
+                "ae6eeeea.67fad"
+            ]
+        ]
+    },
+    {
+        "id": "145b1868.ed2998",
+        "type": "mqtt in",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "topic": "accounts/balvig/bricks/in/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "f9825865.88b3d8"
+            ]
+        ]
+    },
+    {
+        "id": "d5696cc3.b218b",
+        "type": "ui_group",
+        "z": "",
+        "name": "Bricks",
+        "tab": "6e72a433.d464dc",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "69cfef51.baf9",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "mqtt.sensetecnic.com",
+        "port": "1883",
+        "clientid": "bricks-nodered",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "6e72a433.d464dc",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "home",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
