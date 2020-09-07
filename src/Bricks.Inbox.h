@@ -29,7 +29,7 @@ namespace Bricks {
       String listActions(); // The (supposedly) EVIL STRING?
       Action *actions[MAX_ACTIONS] = { new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action(), new Action() }; // what the
     private:
-      static void onDataReceived(const uint8_t macAddr[6], const uint8_t *data, size_t len, void *cbarg);
+      static void onDataReceived(const uint8_t macAddr[MAC_ADDR_SIZE], const uint8_t *data, size_t len, void *cbarg);
   };
 
   extern Inbox gInbox;

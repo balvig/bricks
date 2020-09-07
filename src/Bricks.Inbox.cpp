@@ -4,8 +4,8 @@ namespace Bricks {
   void Inbox::init(const char *name) {
     actions[5] = new OtaAction();
     actions[6] = new ListAction();
-    actions[7] = new SleepAction(name);
-    actions[8] = new BatteryAction();
+    actions[7] = new BatteryAction();
+    actions[8] = new SleepAction(name);
     actions[9] = new AckAction();
     initBase();
   }
@@ -14,7 +14,7 @@ namespace Bricks {
     WifiEspNow.onReceive(Inbox::onDataReceived, nullptr);
   }
 
-  void Inbox::onDataReceived(const uint8_t macAddr[6], const uint8_t *data, size_t len, void *cbarg) {
+  void Inbox::onDataReceived(const uint8_t macAddr[MAC_ADDR_SIZE], const uint8_t *data, size_t len, void *cbarg) {
     Message message;
     memcpy(&message, data, sizeof(message));
 
@@ -26,13 +26,13 @@ namespace Bricks {
   }
 
   void Inbox::loop() {
-    for(int i = 0; i < MAX_ACTIONS; i++) {
+    for(int i = MAX_ACTIONS - 1; i >= 0; i--) {
       actions[i]->loop();
     }
   }
 
   void Inbox::process(const uint8_t *macAddr, const Message message) {
-    for(int i = 0; i < MAX_ACTIONS; i++) {
+    for(int i = MAX_ACTIONS - 1; i >= 0; i--) {
       if(actions[i]->respondsTo(message.key)) {
         Log.trace("BRIC: Action found [%s]" CR, message.key);
         actions[i]->callback(macAddr, message);

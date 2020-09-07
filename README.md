@@ -81,7 +81,6 @@ brick:
 ### Todo
 - [ ] TravisCI
 - [ ] Turn "setRotation" into an action instead for LED Matrix
-- [ ] Move "ack" to top of stack, run actions in reverse, or split actions
 - [ ] Test connecting button shield to RST
 
 ### Nice to haves
