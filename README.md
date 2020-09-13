@@ -81,7 +81,7 @@ brick:
 ### Todo
 - [ ] TravisCI
 - [ ] Turn "setRotation" into an action instead for LED Matrix
-- [ ] Test connecting button shield to RST
+- [ ] Investigate gateway crashes
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
@@ -95,9 +95,8 @@ brick:
 ## Hardware
 
 ### Todo
-- [ ] Low profile headers
 - [ ] Finish case
 - [ ] Nicer stickers
-- [ ] Button
+- [ ] Reset Button
 - [ ] LED
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
