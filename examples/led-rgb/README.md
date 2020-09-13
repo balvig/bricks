@@ -1,7 +1,10 @@
 # LED - RGB
 
 For https://docs.wemos.cc/en/latest/d1_mini_shiled/rgb_led.html
-TODO: Flashes all LEDs on reset :(
+
+## TODO
+- [ ] Flashes all LEDs on reset, avoidable?
+- [ ] Built-in LED seems to turn on when other LEDs are off
 
 ## Inbox
 
