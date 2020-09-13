@@ -32,7 +32,7 @@ void setup() {
   gBrick.init();
 
   // Configure inbox
-  gInbox.init();
+  gInbox.init("LED RGB");
   gInbox.actions[0] = new Action("setPattern", &setPattern);
   gInbox.actions[1] = new Action("setVariation", &setVariation);
   gInbox.actions[2] = new Action("setDelay", &setDelay);
