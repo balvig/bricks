@@ -6,7 +6,7 @@ using namespace Bricks;
 // Local
 #include <WEMOS_Matrix_GFX.h>
 
-MLED matrix(5);
+MLED matrix(7);
 
 // Bricks callbacks
 void setValue(const uint8_t *macAddr, const Message message) {
@@ -22,7 +22,7 @@ void setup() {
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
   // Wemos will be on side
-  matrix.setRotation(3);
+  matrix.setRotation(1);
 
   // Configure ESPNow
   gBrick.init();
