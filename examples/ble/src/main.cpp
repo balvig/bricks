@@ -55,8 +55,8 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init("BLE Scanner");
-  gInbox.actions[0] = new Action("scan", &passiveScan);
-  gInbox.actions[1] = new Action("activeScan", &activeScan);
+  gInbox.skills[0] = new Skill("scan", &passiveScan);
+  gInbox.skills[1] = new Skill("activeScan", &activeScan);
 }
 
 void loop() {

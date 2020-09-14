@@ -2,11 +2,11 @@
 
 namespace Bricks {
   void Inbox::init(const char *name) {
-    actions[5] = new OtaAction();
-    actions[6] = new ListAction();
-    actions[7] = new BatteryAction();
-    actions[8] = new SleepAction(name);
-    actions[9] = new AckAction();
+    skills[5] = new OtaSkill();
+    skills[6] = new ListSkill();
+    skills[7] = new BatterySkill();
+    skills[8] = new SleepSkill(name);
+    skills[9] = new AckSkill();
     initBase();
   }
 
@@ -26,33 +26,33 @@ namespace Bricks {
   }
 
   void Inbox::loop() {
-    for(int i = MAX_ACTIONS - 1; i >= 0; i--) {
-      actions[i]->loop();
+    for(int i = MAX_SKILLS - 1; i >= 0; i--) {
+      skills[i]->loop();
     }
   }
 
   void Inbox::process(const uint8_t *macAddr, const Message message) {
-    for(int i = MAX_ACTIONS - 1; i >= 0; i--) {
-      if(actions[i]->respondsTo(message.key)) {
-        Log.trace("BRIC: Action found [%s]" CR, message.key);
-        actions[i]->callback(macAddr, message);
+    for(int i = MAX_SKILLS - 1; i >= 0; i--) {
+      if(skills[i]->respondsTo(message.key)) {
+        Log.trace("BRIC: Skill found [%s]" CR, message.key);
+        skills[i]->callback(macAddr, message);
       }
     }
   }
 
-  String Inbox::listActions() {
-    String actionList = "";
+  String Inbox::listSkills() {
+    String skillList = "";
 
-    for(int i = 0; i < MAX_ACTIONS; i++) {
-      if(strcmp(actions[i]->key, "") != 0) {
-        actionList += actions[i]->key;
-        actionList += " ";
+    for(int i = 0; i < MAX_SKILLS; i++) {
+      if(strcmp(skills[i]->key, "") != 0) {
+        skillList += skills[i]->key;
+        skillList += " ";
       }
     }
 
-    actionList.trim();
+    skillList.trim();
 
-    return actionList;
+    return skillList;
   }
 
   Inbox gInbox = Inbox();

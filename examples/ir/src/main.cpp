@@ -37,7 +37,7 @@ void setup() {
   gBrick.init();
 
   gInbox.init("IR Controller");
-  gInbox.actions[0] = new Action("sendCode", &sendCode);
+  gInbox.skills[0] = new Skill("sendCode", &sendCode);
 
   // Start the IR receiver / sender
   irrecv.enableIRIn();

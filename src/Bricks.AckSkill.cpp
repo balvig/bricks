@@ -1,10 +1,10 @@
-#include "Bricks.AckAction.h"
+#include "Bricks.AckSkill.h"
 
 namespace Bricks {
-  AckAction::AckAction() : Action("*") {
+  AckSkill::AckSkill() : Skill("*") {
   }
 
-  void AckAction::callback(const uint8_t *macAddr, const Message message) {
+  void AckSkill::callback(const uint8_t *macAddr, const Message message) {
     char ackKey[KEY_SIZE];
     sprintf(ackKey, BRICKS_ACK_PREFIX "%s", message.key);
     gOutbox.send(macAddr, ackKey, message.value);

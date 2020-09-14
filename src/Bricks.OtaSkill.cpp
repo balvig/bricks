@@ -1,19 +1,19 @@
-#include "Bricks.OtaAction.h"
+#include "Bricks.OtaSkill.h"
 
 namespace Bricks {
-  OtaAction::OtaAction() : Action("setOta") {
+  OtaSkill::OtaSkill() : Skill("setOta") {
   }
 
-  void OtaAction::loop() {
+  void OtaSkill::loop() {
     ArduinoOTA.handle();
   }
 
-  void OtaAction::callback(const uint8_t *macAddr, const Message message) {
+  void OtaSkill::callback(const uint8_t *macAddr, const Message message) {
     initOta();
     startAP();
   }
 
-  void OtaAction::initOta() {
+  void OtaSkill::initOta() {
     ArduinoOTA.onStart([]() {
       Log.notice("AOTA: Starting OTA" CR);
     });
@@ -43,7 +43,7 @@ namespace Bricks {
     ArduinoOTA.begin();
   }
 
-  void OtaAction::startAP() {
+  void OtaSkill::startAP() {
     WiFi.mode(WIFI_AP);
     WiFi.softAP("Brick - OTA", NULL, BRICKS_WIFI_CHANNEL, false, 1);
   }

@@ -9,7 +9,7 @@
 - [IR Controller](ir)
 - [PIR Sensor](pir)
 
-## Common actions
+## Common skills
 
 ### Inbox
 
