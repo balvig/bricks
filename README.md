@@ -81,6 +81,7 @@ brick:
 ### Todo
 - [ ] TravisCI
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
+- [ ] "Hibernate" mode
 - [ ] Investigate gateway crashes
 
 ### Nice to haves
