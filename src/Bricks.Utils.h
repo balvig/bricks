@@ -15,6 +15,9 @@ namespace Bricks {
     public:
       static void macToStr(const uint8_t *macAddr, char *macStr);
       static void getWakeupReason(char *reason);
+      static bool wokeUpFromDeepSleep();
+    private:
+      static int resetInfo();
   };
 }
 #endif
