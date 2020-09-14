@@ -1,5 +1,5 @@
-#ifndef BRICKS_SLEEP_ACTION_H
-#define BRICKS_SLEEP_ACTION_H
+#ifndef BRICKS_SLEEP_SKILL_H
+#define BRICKS_SLEEP_SKILL_H
 
 #include <ArduinoLog.h>
 #ifdef ESP32
@@ -10,15 +10,15 @@
 #include <esp_wifi.h>
 #endif
 
-#include <Bricks.Action.h>
+#include <Bricks.Skill.h>
 #include <Bricks.Constants.h>
 #include <Bricks.Outbox.h>
 #include <Bricks.Utils.h>
 
 namespace Bricks {
-  class SleepAction : public Action {
+  class SleepSkill : public Skill {
     public:
-      SleepAction(const char *name = "New Brick");
+      SleepSkill(const char *name = "New Brick");
       void callback(const uint8_t *macAddr, const Message message);
     private:
       void sendAwakeMessage();

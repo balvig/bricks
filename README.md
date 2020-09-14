@@ -80,7 +80,7 @@ brick:
 
 ### Todo
 - [ ] TravisCI
-- [ ] Turn "setRotation" into an action instead for LED Matrix
+- [ ] Turn "setRotation" into a skill instead for LED Matrix
 - [ ] Investigate gateway crashes
 
 ### Nice to haves
@@ -90,7 +90,6 @@ brick:
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
-- [ ] Idea: Rename "actions" to "skills"?
 
 ## Hardware
 

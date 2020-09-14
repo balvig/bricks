@@ -9,7 +9,7 @@ For many scenarios,  maybe lost messages don't even matter too much?
 Where it _does_ matter, these are some approaches that can be taken:
 
 ### Outcoming message lost
-- Use `AckAction` + retry in Node-RED (examples [here](/node-red)).
+- Use `AckSkill` + retry in Node-RED (examples [here](/node-red)).
 
 ### Incoming message lost
 - Combine responding to `awake` with Node-RED side cron>

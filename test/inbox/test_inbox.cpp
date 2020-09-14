@@ -2,7 +2,7 @@
 #include <ArduinoLog.h>
 #include <unity.h>
 #include <Bricks.Inbox.h>
-#include <Bricks.AckAction.h>
+#include <Bricks.AckSkill.h>
 using namespace Bricks;
 
 void setUp(void) {
@@ -15,14 +15,14 @@ void test_ack() {
   Message message;
   strcpy(message.key, "ping");
 
-  gInbox.actions[0] = new AckAction();
+  gInbox.skills[0] = new AckSkill();
   gInbox.process(macAddr, message);
 }
 
-void test_list_actions() {
-  gInbox.actions[0] = new AckAction();
+void test_list_skills() {
+  gInbox.skills[0] = new AckSkill();
 
-  TEST_ASSERT_EQUAL_STRING("*", gInbox.listActions().c_str());
+  TEST_ASSERT_EQUAL_STRING("*", gInbox.listSkills().c_str());
 }
 
 void setup() {
@@ -30,7 +30,7 @@ void setup() {
 
   UNITY_BEGIN();
   RUN_TEST(test_ack);
-  RUN_TEST(test_list_actions);
+  RUN_TEST(test_list_skills);
   UNITY_END();
 }
 

@@ -3,7 +3,7 @@
 #include <Bricks.Events.h>
 #include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
-#include <Bricks.PublishAction.h>
+#include <Bricks.PublishSkill.h>
 using namespace Bricks;
 
 #ifdef ARDUINO_M5Stack_Core_ESP32
@@ -31,7 +31,7 @@ void setup() {
 
   // Configure inbox
   gInbox.initBase();
-  gInbox.actions[0] = new PublishAction(); // Publish all received messages to mqtt
+  gInbox.skills[0] = new PublishSkill(); // Publish all received messages to mqtt
 }
 
 void loop() {

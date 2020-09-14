@@ -29,7 +29,7 @@ void setup() {
 
   // Configure inbox
   gInbox.init("LED 8x8 Matrix");
-  gInbox.actions[0] = new Action("setValue", &setValue);
+  gInbox.skills[0] = new Skill("setValue", &setValue);
 }
 
 void loop() {

@@ -25,7 +25,7 @@ void setup() {
 
   // Configure inbox
   gInbox.init("Buzzer");
-  gInbox.actions[0] = new Action("tone", &playTone);
+  gInbox.skills[0] = new Skill("tone", &playTone);
 
   // Configure buzzer
   pinMode(BUZZER, OUTPUT);

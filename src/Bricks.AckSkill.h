@@ -1,16 +1,16 @@
-#ifndef BRICKS_ACK_ACTION_H
-#define BRICKS_ACK_ACTION_H
+#ifndef BRICKS_ACK_SKILL_H
+#define BRICKS_ACK_SKILL_H
 
 #include <ArduinoLog.h>
-#include <Bricks.Action.h>
+#include <Bricks.Skill.h>
 #include <Bricks.Outbox.h>
 
 #define BRICKS_ACK_PREFIX "ack:"
 
 namespace Bricks {
-  class AckAction : public Action {
+  class AckSkill : public Skill {
     public:
-      AckAction();
+      AckSkill();
       void callback(const uint8_t *macAddr, const Message message);
   };
 }

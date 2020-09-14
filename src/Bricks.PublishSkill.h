@@ -1,14 +1,14 @@
-#ifndef BRICKS_PUBLISH_ACTION_H
-#define BRICKS_PUBLISH_ACTION_H
+#ifndef BRICKS_PUBLISH_SKILL_H
+#define BRICKS_PUBLISH_SKILL_H
 
 #include <ArduinoLog.h>
-#include <Bricks.Action.h>
+#include <Bricks.Skill.h>
 #include <Bricks.Events.h>
 
 namespace Bricks {
-  class PublishAction : public Action {
+  class PublishSkill : public Skill {
     public:
-      PublishAction();
+      PublishSkill();
       void callback(const uint8_t *macAddr, const Message message);
   };
 }

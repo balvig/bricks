@@ -29,7 +29,7 @@ void setup() {
 
   // Enable receiving messages
   gInbox.init("LED");
-  gInbox.actions[0] = new Action("setPattern", &setPattern);
+  gInbox.skills[0] = new Skill("setPattern", &setPattern);
 }
 
 void loop() {

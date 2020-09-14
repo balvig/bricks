@@ -33,9 +33,9 @@ void setup() {
 
   // Configure inbox
   gInbox.init("LED RGB");
-  gInbox.actions[0] = new Action("setPattern", &setPattern);
-  gInbox.actions[1] = new Action("setVariation", &setVariation);
-  gInbox.actions[2] = new Action("setDelay", &setDelay);
+  gInbox.skills[0] = new Skill("setPattern", &setPattern);
+  gInbox.skills[1] = new Skill("setVariation", &setVariation);
+  gInbox.skills[2] = new Skill("setDelay", &setDelay);
 }
 
 void loop() {

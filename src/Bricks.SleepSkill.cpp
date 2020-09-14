@@ -1,17 +1,17 @@
-#include <Bricks.SleepAction.h>
+#include <Bricks.SleepSkill.h>
 
 namespace Bricks {
-  SleepAction::SleepAction(const char *name) : Action("sleep") {
+  SleepSkill::SleepSkill(const char *name) : Skill("sleep") {
     this->name = name;
     sendAwakeMessage();
   }
 
-  void SleepAction::callback(const uint8_t *macAddr, const Message message) {
+  void SleepSkill::callback(const uint8_t *macAddr, const Message message) {
     const uint32_t sleepTime = atoi(message.value);
     deepSleep(sleepTime);
   }
 
-  void SleepAction::sendAwakeMessage() {
+  void SleepSkill::sendAwakeMessage() {
     char reason[50];
     char message[100];
     Bricks::Utils::getWakeupReason(reason);
@@ -21,7 +21,7 @@ namespace Bricks {
     gOutbox.send("awake", message);
   }
 
-  void SleepAction::deepSleep(const uint32_t seconds) {
+  void SleepSkill::deepSleep(const uint32_t seconds) {
     Log.notice("SLEE: Going to sleep for %d second(s)" CR, seconds);
 #ifdef ESP8266
     ESP.deepSleep(seconds * MICROSECONDS);
