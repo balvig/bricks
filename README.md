@@ -82,6 +82,7 @@ brick:
 - [ ] TravisCI
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
 - [ ] Investigate gateway crashes
+- [ ] Implement RTC storage for ESP32
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)

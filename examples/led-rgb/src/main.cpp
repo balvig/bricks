@@ -39,5 +39,6 @@ void setup() {
 }
 
 void loop() {
+  gInbox.loop();
   animator.update();
 }
