@@ -83,6 +83,12 @@ brick:
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
 - [ ] "Hibernate" mode
 - [ ] Investigate gateway crashes
+- [ ] Use `ack` as an integrated part of skill responses, ie
+
+```
+battery
+ack:battery -> 958
+```
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
