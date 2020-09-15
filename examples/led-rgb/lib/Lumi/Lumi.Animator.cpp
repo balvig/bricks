@@ -7,7 +7,7 @@ namespace Lumi {
     patterns[2] = new Glow(leds, NUM_LEDS);
     patterns[3] = new Spin(leds, NUM_LEDS);
     patterns[4] = new Wave(leds, NUM_LEDS);
-    FastLED.addLeds<WS2811, PIN, GRB>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+    FastLED.addLeds<WS2811, LUMI_ANIMATOR_PIN, GRB>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
   }
 
   void Animator::update() {
