@@ -4,20 +4,24 @@
 #include <ArduinoLog.h>
 #include <functional>
 #include <Bricks.Message.h>
+#include <Bricks.Outbox.h>
+
+#define BRICKS_CALLBACK_SIGNATURE const uint8_t *macAddr, const Message message, char *response
 
 namespace Bricks {
   class Skill {
     const char *ANY = "*";
-    const char *ACK_PREFIX = "ack:";
+    const char *ACK_PREFIX = "ack";
 
     public:
       Skill(const char *key = "", std::function<void(const uint8_t *macAddr, const Message message)> customCallback = nullptr);
       bool respondsTo(const char* compareKey);
+      void process(const uint8_t *macAddr, const Message message);
+      virtual void callback(BRICKS_CALLBACK_SIGNATURE);
       virtual void loop();
-      virtual void callback(const uint8_t *macAddr, const Message message);
       const char *key;
     private:
-      void ack();
+      void ack(const char *response);
       std::function<void(const uint8_t *macAddr, const Message message)> customCallback;
   };
 }

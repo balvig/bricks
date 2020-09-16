@@ -13,20 +13,18 @@
 
 ### Inbox
 
-| key        | description                                                        | values                     |
-|------------|--------------------------------------------------------------------|----------------------------|
-| *          | Responds with `ack:<KEY>` to all messages                          |                            |
-| setSleep   | Start sleep cycles lasting `value` seconds each                    | 0 (stop sleeping), 1-13612 |
-| getBattery | Ask for battery value                                              |                            |
-| setOta     | `pio run -t upload --upload-port 192.168.4.1` when connected to AP |                            |
-| getSkills  | Get a list of actions the Brick responds to                        |                            |
+| key     | description                                                        | values                     |
+|---------|--------------------------------------------------------------------|----------------------------|
+| sleep   | Start sleep cycles lasting `value` seconds each                    | 0 (stop sleeping), 1-13612 |
+| battery | Ask for battery value                                              |                            |
+| ota     | `pio run -t upload --upload-port 192.168.4.1` when connected to AP |                            |
+| skills  | Get a list of actions the Brick responds to                        |                            |
 
 ### Outbox
 
-| key     | description           | values            |
-|---------|-----------------------|-------------------|
-| awake   | Sent when woken up    | <NAME> - <REASON> |
-| battery | Current battery value | 0 - 1000+         |
+| key   | description        | values            |
+|-------|--------------------|-------------------|
+| awake | Sent when woken up | <NAME> - <REASON> |
 
 ## Planned Bricks
 

@@ -4,14 +4,13 @@
 #include <ArduinoLog.h>
 #include <ArduinoOTA.h>
 #include <Bricks.Skill.h>
-#include <Bricks.Outbox.h>
 
 namespace Bricks {
   class OtaSkill : public Skill {
     public:
       OtaSkill();
       void loop();
-      void callback(const uint8_t *macAddr, const Message message);
+      void callback(BRICKS_CALLBACK_SIGNATURE);
     private:
       void initOta();
       void startAP();

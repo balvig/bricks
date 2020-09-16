@@ -34,7 +34,7 @@ namespace Bricks {
     for(int i = MAX_SKILLS - 1; i >= 0; i--) {
       if(skills[i]->respondsTo(message.key)) {
         Log.trace("BRIC: Skill found [%s]" CR, message.key);
-        skills[i]->callback(macAddr, message);
+        skills[i]->process(macAddr, message);
       }
     }
   }

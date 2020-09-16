@@ -81,14 +81,8 @@ brick:
 ### Todo
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
 - [ ] Consider using `qos=1` for sending messages
-- [ ] Use `ack` as an integrated part of skill responses, ie
 - [ ] DRY up MAC addresses in node-red
 - [ ] TravisCI
-
-```
-battery
-ack:battery -> 958
-```
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)

@@ -5,7 +5,7 @@ namespace Bricks {
   RTC_DATA_ATTR uint32_t rtcSleepTime = 0;
 #endif
 
-  SleepSkill::SleepSkill(const char *name) : Skill("setSleep") {
+  SleepSkill::SleepSkill(const char *name) : Skill("sleep") {
     this->name = name;
     sendAwakeMessage();
 
@@ -21,10 +21,16 @@ namespace Bricks {
     }
   }
 
-  void SleepSkill::callback(const uint8_t *macAddr, const Message message) {
+  void SleepSkill::callback(BRICKS_CALLBACK_SIGNATURE) {
     this->sleepTime = atoi(message.value);
     writeSleepTime();
-    ack("Going to sleep for sleepTime second(s)");
+
+    if(sleepTime > 0) {
+      sprintf(response, "Starting %d second sleep cycles", sleepTime);
+    }
+    else {
+      strcpy(response, "Stopping sleep cycles");
+    }
   }
 
   void SleepSkill::sendAwakeMessage() {
@@ -37,7 +43,7 @@ namespace Bricks {
   }
 
   void SleepSkill::deepSleep() {
-    // Log.notice("SLEE: Going to sleep for %d second(s)" CR, sleepTime);
+    Log.notice("SLEE: Going to sleep for %d second(s)" CR, sleepTime);
 #ifdef ESP8266
     ESP.deepSleep(sleepTime * MICROSECONDS);
 #elif ESP32

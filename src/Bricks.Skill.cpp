@@ -6,22 +6,31 @@ namespace Bricks {
     this->customCallback = customCallback;
   }
 
-  void Skill::loop() {
-    // Do nothing
-  }
-
-  void Skill::callback(const uint8_t *macAddr, const Message message) {
-    ack(message.value);
-    customCallback(macAddr, message);
-  }
-
   bool Skill::respondsTo(const char *compareKey) {
     return (strcmp(key, compareKey) == 0 || strcmp(key, ANY) == 0);
   }
 
-  void Skill:ack(const char *value) {
+  void Skill::process(const uint8_t *macAddr, const Message message) {
+    char response[100];
+    callback(macAddr, message, response);
+
+    // Doesn't work yet. Always true.
+    if(response) {
+      ack(response);
+    }
+  }
+
+  void Skill::callback(BRICKS_CALLBACK_SIGNATURE) {
+    customCallback(macAddr, message);
+  }
+
+  void Skill::loop() {
+    // Do nothing by default
+  }
+
+  void Skill::ack(const char *response) {
     char ackKey[KEY_SIZE];
-    sprintf(ackKey, BRICKS_ACK_PREFIX "%s", key);
-    gOutbox.send(ackKey, value);
+    sprintf(ackKey, "%s:%s", ACK_PREFIX, key);
+    gOutbox.send(ackKey, response);
   }
 }

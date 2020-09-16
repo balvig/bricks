@@ -1,13 +1,11 @@
 #include <Bricks.BatterySkill.h>
 
 namespace Bricks {
-  BatterySkill::BatterySkill(const uint8_t pin) : Skill("getBattery") {
+  BatterySkill::BatterySkill(const uint8_t pin) : Skill("battery") {
     this->pin = pin;
   }
 
-  void BatterySkill::callback(const uint8_t *macAddr, const Message message) {
-    char battery[5];
-    sprintf(battery, "%i", analogRead(pin));
-    ack(battery);
+  void BatterySkill::callback(BRICKS_CALLBACK_SIGNATURE) {
+    sprintf(response, "%i", analogRead(pin));
   }
 }
