@@ -1,9 +1,10 @@
 #include <Bricks.Skill.h>
 
 namespace Bricks {
-  Skill::Skill(const char *key, std::function<void(const uint8_t *macAddr, const Message message)> customCallback) {
+  Skill::Skill(const char *key, std::function<void(BRICKS_CALLBACK_SIGNATURE)> customCallback, bool sendAck) {
     this->key = key;
     this->customCallback = customCallback;
+    this->sendAck = sendAck;
   }
 
   bool Skill::respondsTo(const char *compareKey) {
@@ -12,16 +13,16 @@ namespace Bricks {
 
   void Skill::process(const uint8_t *macAddr, const Message message) {
     char response[100];
+    strcpy(response, message.value);
     callback(macAddr, message, response);
 
-    // Doesn't work yet. Always true.
-    if(response) {
+    if(sendAck) {
       ack(response);
     }
   }
 
   void Skill::callback(BRICKS_CALLBACK_SIGNATURE) {
-    customCallback(macAddr, message);
+    customCallback(macAddr, message, response);
   }
 
   void Skill::loop() {

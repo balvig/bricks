@@ -5,7 +5,7 @@ using namespace Bricks;
 
 const int ledPin = LED_BUILTIN;
 
-void setPattern(const uint8_t *macAddr, const Message message) {
+void setPattern(BRICKS_CALLBACK_SIGNATURE) {
   if(atoi(message.value)) {
     digitalWrite(ledPin, LOW);
   }

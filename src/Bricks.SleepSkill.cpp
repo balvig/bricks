@@ -5,7 +5,7 @@ namespace Bricks {
   RTC_DATA_ATTR uint32_t rtcSleepTime = 0;
 #endif
 
-  SleepSkill::SleepSkill(const char *name) : Skill("sleep") {
+  SleepSkill::SleepSkill(const char *name) : Skill("setSleep") {
     this->name = name;
     sendAwakeMessage();
 

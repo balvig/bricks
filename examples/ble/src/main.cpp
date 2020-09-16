@@ -28,13 +28,13 @@ void scan(const uint8_t scanTime, const bool activeScan = false) {
   Log.notice("BLES: Scan done" CR);
 }
 
-void passiveScan(const uint8_t *macAddr, const Message message) {
+void passiveScan(BRICKS_CALLBACK_SIGNATURE) {
   const uint8_t scanTime = atoi(message.value);
   scan(scanTime, false);
 }
 
 // active scan required to get names?
-void activeScan(const uint8_t *macAddr, const Message message) {
+void activeScan(BRICKS_CALLBACK_SIGNATURE) {
   const uint8_t scanTime = atoi(message.value);
   scan(scanTime, true);
 }

@@ -9,7 +9,7 @@ using namespace Bricks;
 MLED matrix(7);
 
 // Bricks callbacks
-void setValue(const uint8_t *macAddr, const Message message) {
+void setValue(BRICKS_CALLBACK_SIGNATURE) {
   matrix.clear();
   matrix.setCursor(2, 1);
   matrix.print(message.value);

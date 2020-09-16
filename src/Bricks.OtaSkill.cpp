@@ -1,7 +1,7 @@
 #include "Bricks.OtaSkill.h"
 
 namespace Bricks {
-  OtaSkill::OtaSkill() : Skill("ota") {
+  OtaSkill::OtaSkill() : Skill("setOta") {
   }
 
   void OtaSkill::loop() {

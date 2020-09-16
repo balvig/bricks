@@ -14,7 +14,7 @@ namespace Bricks {
     const char *ACK_PREFIX = "ack";
 
     public:
-      Skill(const char *key = "", std::function<void(const uint8_t *macAddr, const Message message)> customCallback = nullptr);
+      Skill(const char *key = "", std::function<void(BRICKS_CALLBACK_SIGNATURE)> customCallback = nullptr, bool sendAck = true);
       bool respondsTo(const char* compareKey);
       void process(const uint8_t *macAddr, const Message message);
       virtual void callback(BRICKS_CALLBACK_SIGNATURE);
@@ -22,7 +22,8 @@ namespace Bricks {
       const char *key;
     private:
       void ack(const char *response);
-      std::function<void(const uint8_t *macAddr, const Message message)> customCallback;
+      bool sendAck;
+      std::function<void(BRICKS_CALLBACK_SIGNATURE)> customCallback;
   };
 }
 #endif

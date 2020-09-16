@@ -1,7 +1,7 @@
 #include <Bricks.BatterySkill.h>
 
 namespace Bricks {
-  BatterySkill::BatterySkill(const uint8_t pin) : Skill("battery") {
+  BatterySkill::BatterySkill(const uint8_t pin) : Skill("getBattery") {
     this->pin = pin;
   }
 

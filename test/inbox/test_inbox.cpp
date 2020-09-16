@@ -13,7 +13,7 @@ void setUp(void) {
 void test_battery() {
   const uint8_t macAddr[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
   Message message;
-  strcpy(message.key, "battery");
+  strcpy(message.key, "getBattery");
 
   gInbox.skills[0] = new BatterySkill();
   gInbox.process(macAddr, message);
@@ -22,7 +22,7 @@ void test_battery() {
 void test_list_skills() {
   gInbox.skills[0] = new BatterySkill();
 
-  TEST_ASSERT_EQUAL_STRING("battery", gInbox.listSkills().c_str());
+  TEST_ASSERT_EQUAL_STRING("getBattery", gInbox.listSkills().c_str());
 }
 
 void setup() {

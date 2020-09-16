@@ -1,7 +1,7 @@
 #include "Bricks.PublishSkill.h"
 
 namespace Bricks {
-  PublishSkill::PublishSkill() : Skill("*") {
+  PublishSkill::PublishSkill() : Skill("*", nullptr, false) {
     gEvents.publish(BRICKS_MESSAGES_IN "/gateway/awake");
   }
 
