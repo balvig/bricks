@@ -1,6 +1,10 @@
 #include <Bricks.SleepSkill.h>
 
 namespace Bricks {
+#ifdef ESP32
+  RTC_DATA_ATTR uint32_t rtcSleepTime = 0;
+#endif
+
   SleepSkill::SleepSkill(const char *name) : Skill("setSleep") {
     this->name = name;
     sendAwakeMessage();
@@ -26,7 +30,6 @@ namespace Bricks {
     char reason[50];
     char message[100];
     Bricks::Utils::getWakeupReason(reason);
-    Log.notice("SLEE: Woke up [%s]" CR, reason);
 
     sprintf(message, "%s - %s", name, reason);
     gOutbox.send("awake", message);
@@ -53,10 +56,18 @@ namespace Bricks {
   }
 
   void SleepSkill::readSleepTime() {
+#ifdef ESP8266
     system_rtc_mem_read(RTC_SLEEP_TIME_REGISTER, &sleepTime, sizeof(sleepTime));
+#elif ESP32
+    sleepTime = Bricks::rtcSleepTime;
+#endif
   }
 
   void SleepSkill::writeSleepTime() {
+#ifdef ESP8266
     system_rtc_mem_write(RTC_SLEEP_TIME_REGISTER, &sleepTime, sizeof(sleepTime));
+#elif ESP32
+    Bricks::rtcSleepTime = sleepTime;
+#endif
   }
 }

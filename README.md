@@ -82,7 +82,6 @@ brick:
 - [ ] TravisCI
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
 - [ ] Investigate gateway crashes
-- [ ] Implement RTC storage for ESP32
 
 ### Nice to haves
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
@@ -91,6 +90,7 @@ brick:
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
+- [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 
 ## Hardware
 

@@ -3,12 +3,12 @@
 
 #include <ArduinoLog.h>
 
+#ifdef ESP8266
 // For ESP8266 RTC memory
 extern "C" {
 #include "user_interface.h"
 }
-
-#ifdef ESP32
+#elif ESP32
 #include <esp_sleep.h>
 #include <driver/adc.h>
 #include <esp_bt.h>
@@ -23,6 +23,9 @@ extern "C" {
 
 namespace Bricks {
   class SleepSkill : public Skill {
+    const uint32_t TIMEOUT = 2000;
+    const uint32_t RTC_SLEEP_TIME_REGISTER = 65;
+
     public:
       SleepSkill(const char *name = "New Brick");
       void loop();
@@ -34,10 +37,7 @@ namespace Bricks {
       void readSleepTime();
       void writeSleepTime();
       const char *name;
-      uint32_t sleepTime = 0; // RTC_DATA_ATTR int sleepTime = 0; for ESP32
-
-      const uint32_t TIMEOUT = 2000;
-      const uint32_t RTC_SLEEP_TIME_REGISTER = 65;
+      uint32_t sleepTime = 0;
   };
 }
 #endif
