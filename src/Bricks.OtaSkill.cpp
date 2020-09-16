@@ -1,7 +1,7 @@
 #include "Bricks.OtaSkill.h"
 
 namespace Bricks {
-  OtaSkill::OtaSkill() : Skill("setOta") {
+  OtaSkill::OtaSkill() : Skill("ota") {
   }
 
   void OtaSkill::loop() {
@@ -11,6 +11,7 @@ namespace Bricks {
   void OtaSkill::callback(const uint8_t *macAddr, const Message message) {
     initOta();
     startAP();
+    ack("Connect to Brick - OTA");
   }
 
   void OtaSkill::initOta() {

@@ -5,7 +5,9 @@ namespace Bricks {
     this->pin = pin;
   }
 
-  void BatterySkill::setAckValue(const char *value) {
-    sprintf(ackValue, "%i", analogRead(pin));
+  void BatterySkill::callback(const uint8_t *macAddr, const Message message) {
+    char battery[5];
+    sprintf(battery, "%i", analogRead(pin));
+    ack(battery);
   }
 }

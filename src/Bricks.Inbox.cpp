@@ -2,11 +2,10 @@
 
 namespace Bricks {
   void Inbox::init(const char *name) {
-    skills[5] = new OtaSkill();
-    skills[6] = new ListSkill();
-    skills[7] = new BatterySkill();
-    skills[8] = new SleepSkill(name);
-    skills[9] = new AckSkill();
+    skills[6] = new OtaSkill();
+    skills[7] = new ListSkill();
+    skills[8] = new BatterySkill();
+    skills[9] = new SleepSkill(name);
     initBase();
   }
 

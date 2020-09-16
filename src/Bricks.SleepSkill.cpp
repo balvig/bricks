@@ -24,6 +24,7 @@ namespace Bricks {
   void SleepSkill::callback(const uint8_t *macAddr, const Message message) {
     this->sleepTime = atoi(message.value);
     writeSleepTime();
+    ack("Going to sleep for sleepTime second(s)");
   }
 
   void SleepSkill::sendAwakeMessage() {
@@ -36,7 +37,7 @@ namespace Bricks {
   }
 
   void SleepSkill::deepSleep() {
-    Log.notice("SLEE: Going to sleep for %d second(s)" CR, sleepTime);
+    // Log.notice("SLEE: Going to sleep for %d second(s)" CR, sleepTime);
 #ifdef ESP8266
     ESP.deepSleep(sleepTime * MICROSECONDS);
 #elif ESP32

@@ -11,8 +11,7 @@ namespace Bricks {
   }
 
   void Skill::callback(const uint8_t *macAddr, const Message message) {
-    setAckValue(message.value);
-    ack(macAddr);
+    ack(message.value);
     customCallback(macAddr, message);
   }
 
@@ -20,13 +19,9 @@ namespace Bricks {
     return (strcmp(key, compareKey) == 0 || strcmp(key, ANY) == 0);
   }
 
-  void Skill:setAckValue(const char *value) {
-    this->ackValue = value;
-  }
-
-  void Skill:ack(const uint8_t *macAddr) {
+  void Skill:ack(const char *value) {
     char ackKey[KEY_SIZE];
-    sprintf(ackKey, BRICKS_ACK_PREFIX "%s", message.key);
-    gOutbox.send(macAddr, ackKey, ackValue);
+    sprintf(ackKey, BRICKS_ACK_PREFIX "%s", key);
+    gOutbox.send(ackKey, value);
   }
 }
