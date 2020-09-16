@@ -9,7 +9,7 @@
 #include <Lumi.Wave.h>
 
 #define NUM_LEDS 7
-#define PIN D4
+#define LUMI_ANIMATOR_PIN D2
 
 namespace Lumi {
   class Animator {

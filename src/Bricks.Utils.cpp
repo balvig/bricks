@@ -1,3 +1,4 @@
+
 #include "Bricks.Utils.h"
 
 namespace Bricks {
@@ -6,9 +7,18 @@ namespace Bricks {
         macAddr[0], macAddr[1], macAddr[2], macAddr[3], macAddr[4], macAddr[5]);
   }
 
-  void Utils::getWakeupReason(char *reason) {
+  bool Utils::wokeUpFromDeepSleep() {
+    int info = resetInfo();
 #ifdef ESP8266
-    switch(ESP.getResetInfoPtr()->reason) {
+    return info == REASON_DEEP_SLEEP_AWAKE;
+#elif ESP32
+    return info != ESP_SLEEP_WAKEUP_UNDEFINED;
+#endif
+  }
+
+  void Utils::getWakeupReason(char *reason) {
+    switch(resetInfo()) {
+#ifdef ESP8266
       case REASON_DEFAULT_RST:
         strcpy(reason, "normal startup by power on");
         break;
@@ -30,11 +40,7 @@ namespace Bricks {
       case REASON_EXT_SYS_RST:
         strcpy(reason, "external system reset");
         break;
-      default:
-        strcpy(reason, "unknown");
-    }
 #elif ESP32
-    switch(esp_sleep_get_wakeup_cause()) {
       case ESP_SLEEP_WAKEUP_UNDEFINED:
         strcpy(reason, "reset was not caused by exit from deep sleep");
         break;
@@ -59,9 +65,17 @@ namespace Bricks {
       case ESP_SLEEP_WAKEUP_UART:
         strcpy(reason, "UART");
         break;
+#endif
       default:
         strcpy(reason, "unknown");
     }
+  }
+
+  int Utils::resetInfo() {
+#ifdef ESP8266
+    return ESP.getResetInfoPtr()->reason;
+#elif ESP32
+    return esp_sleep_get_wakeup_cause();
 #endif
   }
 }

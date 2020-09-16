@@ -2,9 +2,10 @@
 
 For https://docs.wemos.cc/en/latest/d1_mini_shiled/rgb_led.html
 
-## TODO
-- [ ] Flashes all LEDs on reset, avoidable?
-- [ ] Built-in LED seems to turn on when other LEDs are off
+## Hardware prep
+
+- Cut SJ3 jumper (disconnect D4 from LEDs)
+- Connect D2
 
 ## Inbox
 

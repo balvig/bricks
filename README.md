@@ -81,7 +81,6 @@ brick:
 ### Todo
 - [ ] TravisCI
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
-- [ ] "Hibernate" mode
 - [ ] Investigate gateway crashes
 - [ ] Use `ack` as an integrated part of skill responses, ie
 
@@ -97,6 +96,7 @@ ack:battery -> 958
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
 - [ ] Idea: Move sender macAddr into message to reduce params to 1?
+- [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 
 ## Hardware
 

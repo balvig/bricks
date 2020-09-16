@@ -2,7 +2,13 @@
 #define BRICKS_SLEEP_SKILL_H
 
 #include <ArduinoLog.h>
-#ifdef ESP32
+
+#ifdef ESP8266
+// For ESP8266 RTC memory
+extern "C" {
+#include "user_interface.h"
+}
+#elif ESP32
 #include <esp_sleep.h>
 #include <driver/adc.h>
 #include <esp_bt.h>
@@ -17,13 +23,21 @@
 
 namespace Bricks {
   class SleepSkill : public Skill {
+    const uint32_t TIMEOUT = 2000;
+    const uint32_t RTC_SLEEP_TIME_REGISTER = 65;
+
     public:
       SleepSkill(const char *name = "New Brick");
+      void loop();
       void callback(const uint8_t *macAddr, const Message message);
     private:
       void sendAwakeMessage();
-      void deepSleep(const uint32_t seconds);
+      void deepSleep();
+      bool awakeTimeout();
+      void readSleepTime();
+      void writeSleepTime();
       const char *name;
+      uint32_t sleepTime = 0;
   };
 }
 #endif
