@@ -79,12 +79,11 @@ brick:
 ## Software
 
 ### Todo
-- [ ] TravisCI
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
-- [ ] Investigate gateway crashes
-  - [ ] Try using ESP8266 as a gateway instead
 - [ ] Consider using `qos=1` for sending messages
 - [ ] Use `ack` as an integrated part of skill responses, ie
+- [ ] DRY up MAC addresses in node-red
+- [ ] TravisCI
 
 ```
 battery
@@ -103,7 +102,6 @@ ack:battery -> 958
 ## Hardware
 
 ### Todo
-- [ ] Finish case
 - [ ] Wooden panels
 - [ ] Sturdier PCB attachment
 - [ ] Nicer stickers
