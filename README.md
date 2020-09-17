@@ -84,6 +84,7 @@ brick:
 - [ ] Investigate gateway crashes
   - [ ] [Try out a delay](https://github.com/knolleary/pubsubclient/issues/55#issuecomment-677787979)
   - [ ] Try using ESP8266 as a gateway instead
+- [ ] Consider using `qos=1` for sending messages
 - [ ] Use `ack` as an integrated part of skill responses, ie
 
 ```
