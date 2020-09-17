@@ -80,11 +80,12 @@ brick:
 
 ### Todo
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
-- [ ] Consider using `qos=1` for sending messages
 - [ ] DRY up MAC addresses in node-red
 - [ ] TravisCI
+- [ ] "Dash button" implementation that won't trigger when ESP8266 wakes up for other reasons
 
 ### Nice to haves
+- [ ] Consider using `qos=1` for sending messages
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
 - [ ] Write up making a brick
 - [ ] Allow BLE scanner to subscribe to beacon notifications
