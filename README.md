@@ -82,7 +82,6 @@ brick:
 - [ ] TravisCI
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
 - [ ] Investigate gateway crashes
-  - [ ] [Try out a delay](https://github.com/knolleary/pubsubclient/issues/55#issuecomment-677787979)
   - [ ] Try using ESP8266 as a gateway instead
 - [ ] Consider using `qos=1` for sending messages
 - [ ] Use `ack` as an integrated part of skill responses, ie
@@ -105,6 +104,8 @@ ack:battery -> 958
 
 ### Todo
 - [ ] Finish case
+- [ ] Wooden panels
+- [ ] Sturdier PCB attachment
 - [ ] Nicer stickers
 - [ ] Reset Button
 - [ ] LED

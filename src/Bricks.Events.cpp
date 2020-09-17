@@ -17,6 +17,9 @@ namespace Bricks {
       Log.warning("MQTT: disconnected" CR);
       connectMQTT();
     }
+#ifdef ESP32
+    delay(25); // https://github.com/knolleary/pubsubclient/issues/55#issuecomment-677787979
+#endif
   }
 
   void Events::publish(const uint8_t *macAddr, Message message) {
