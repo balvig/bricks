@@ -5,9 +5,7 @@ namespace Bricks {
     this->pin = pin;
   }
 
-  void BatterySkill::callback(const uint8_t *macAddr, const Message message) {
-    char battery[10];
-    sprintf(battery, "%i", analogRead(pin));
-    gOutbox.send(macAddr, "battery", (const char*)battery);
+  void BatterySkill::callback(BRICKS_CALLBACK_SIGNATURE) {
+    sprintf(response, "%i", analogRead(pin));
   }
 }

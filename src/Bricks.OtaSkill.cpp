@@ -8,9 +8,10 @@ namespace Bricks {
     ArduinoOTA.handle();
   }
 
-  void OtaSkill::callback(const uint8_t *macAddr, const Message message) {
+  void OtaSkill::callback(BRICKS_CALLBACK_SIGNATURE) {
     initOta();
     startAP();
+    strcpy(response, "Connect to 'Brick - OTA'");
   }
 
   void OtaSkill::initOta() {

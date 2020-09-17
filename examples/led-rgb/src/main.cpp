@@ -10,15 +10,15 @@ using namespace Bricks;
 Lumi::Animator animator;
 
 // Bricks callbacks
-void setPattern(const uint8_t *macAddr, const Message message) {
+void setPattern(BRICKS_CALLBACK_SIGNATURE) {
   animator.currentPattern = atoi(message.value);
 }
 
-void setVariation(const uint8_t *macAddr, const Message message) {
+void setVariation(BRICKS_CALLBACK_SIGNATURE) {
   animator.currentVariation = atoi(message.value);
 }
 
-void setDelay(const uint8_t *macAddr, const Message message) {
+void setDelay(BRICKS_CALLBACK_SIGNATURE) {
   animator.currentDelay = atoi(message.value);
 }
 

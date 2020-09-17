@@ -21,9 +21,16 @@ namespace Bricks {
     }
   }
 
-  void SleepSkill::callback(const uint8_t *macAddr, const Message message) {
+  void SleepSkill::callback(BRICKS_CALLBACK_SIGNATURE) {
     this->sleepTime = atoi(message.value);
     writeSleepTime();
+
+    if(sleepTime > 0) {
+      sprintf(response, "Starting %d second sleep cycles", sleepTime);
+    }
+    else {
+      strcpy(response, "Stopping sleep cycles");
+    }
   }
 
   void SleepSkill::sendAwakeMessage() {

@@ -10,7 +10,6 @@
 #include <Bricks.Utils.h>
 
 // Stock skills
-#include <Bricks.AckSkill.h>
 #include <Bricks.BatterySkill.h>
 #include <Bricks.ListSkill.h>
 #include <Bricks.OtaSkill.h>

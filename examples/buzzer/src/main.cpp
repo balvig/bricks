@@ -7,7 +7,7 @@ using namespace Bricks;
 const int BUZZER = D5;
 
 // Bricks callbacks
-void playTone(const uint8_t *macAddr, const Message message) {
+void playTone(BRICKS_CALLBACK_SIGNATURE) {
   int frequency;
   int duration;
   sscanf(message.value, "%d,%d", &frequency, &duration);

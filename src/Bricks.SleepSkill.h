@@ -18,7 +18,6 @@ extern "C" {
 
 #include <Bricks.Skill.h>
 #include <Bricks.Constants.h>
-#include <Bricks.Outbox.h>
 #include <Bricks.Utils.h>
 
 namespace Bricks {
@@ -29,7 +28,7 @@ namespace Bricks {
     public:
       SleepSkill(const char *name = "New Brick");
       void loop();
-      void callback(const uint8_t *macAddr, const Message message);
+      void callback(BRICKS_CALLBACK_SIGNATURE);
     private:
       void sendAwakeMessage();
       void deepSleep();

@@ -2,11 +2,10 @@
 
 namespace Bricks {
   void Inbox::init(const char *name) {
-    skills[5] = new OtaSkill();
-    skills[6] = new ListSkill();
-    skills[7] = new BatterySkill();
-    skills[8] = new SleepSkill(name);
-    skills[9] = new AckSkill();
+    skills[6] = new OtaSkill();
+    skills[7] = new ListSkill();
+    skills[8] = new BatterySkill();
+    skills[9] = new SleepSkill(name);
     initBase();
   }
 
@@ -35,7 +34,7 @@ namespace Bricks {
     for(int i = MAX_SKILLS - 1; i >= 0; i--) {
       if(skills[i]->respondsTo(message.key)) {
         Log.trace("BRIC: Skill found [%s]" CR, message.key);
-        skills[i]->callback(macAddr, message);
+        skills[i]->process(macAddr, message);
       }
     }
   }

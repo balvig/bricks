@@ -9,7 +9,7 @@ namespace Bricks {
   class PublishSkill : public Skill {
     public:
       PublishSkill();
-      void callback(const uint8_t *macAddr, const Message message);
+      void callback(BRICKS_CALLBACK_SIGNATURE);
   };
 }
 #endif

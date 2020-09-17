@@ -24,7 +24,7 @@ decode_results results;
 IRCode *code;
 
 // Bricks callbacks
-void sendCode(const uint8_t *macAddr, const Message message) {
+void sendCode(BRICKS_CALLBACK_SIGNATURE) {
   code = codes[atoi(message.value)];
 }
 
