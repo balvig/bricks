@@ -90,7 +90,7 @@ brick:
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
-- [ ] Idea: Move sender macAddr into message to reduce params to 1?
+- [ ] Idea: Move sender macAddr into message to reduce params? Or maybe leave out entirely?
 - [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 
 ## Hardware
