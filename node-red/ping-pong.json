@@ -104,342 +104,6 @@
         ]
     },
     {
-        "id": "a3a2426c.d3bf6",
-        "type": "subflow",
-        "name": "Brick In",
-        "info": "# Brick in\n\nUse this for input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this subscribes to _everything_, then filters it.",
-        "category": "bricks",
-        "in": [],
-        "out": [
-            {
-                "x": 420,
-                "y": 40,
-                "wires": [
-                    {
-                        "id": "12814906.bf21d7",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "MAC",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-address-card",
-                    "label": {
-                        "en-US": "Address"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "num",
-                            "bool",
-                            "json",
-                            "bin",
-                            "env"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "ACTION",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-bolt",
-                    "label": {
-                        "en-US": "Action"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "num",
-                            "bool",
-                            "json",
-                            "bin",
-                            "env"
-                        ]
-                    }
-                }
-            }
-        ],
-        "color": "#E9967A",
-        "icon": "font-awesome/fa-sign-in"
-    },
-    {
-        "id": "33d545ea.dae14a",
-        "type": "mqtt in",
-        "z": "a3a2426c.d3bf6",
-        "name": "All messages",
-        "topic": "accounts/balvig/bricks/in/#",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "69cfef51.baf9",
-        "x": 90,
-        "y": 40,
-        "wires": [
-            [
-                "12814906.bf21d7"
-            ]
-        ]
-    },
-    {
-        "id": "12814906.bf21d7",
-        "type": "switch",
-        "z": "a3a2426c.d3bf6",
-        "name": "Filter messages",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "regex",
-                "v": "${MAC}/${ACTION}",
-                "vt": "env",
-                "case": false
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 280,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5fc87090.da588",
-        "type": "subflow",
-        "name": "Brick Out",
-        "info": "Shortcut for sending messages to Bricks, with a rudimentary (optional) retry feature built in.",
-        "category": "bricks",
-        "in": [
-            {
-                "x": 40,
-                "y": 60,
-                "wires": [
-                    {
-                        "id": "7a427677.5191a8"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 140,
-                "y": 120,
-                "wires": [
-                    {
-                        "id": "5fc87090.da588",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "MAC",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-address-card",
-                    "label": {
-                        "en-US": "Address"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "ACTION",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-bolt",
-                    "label": {
-                        "en-US": "Action"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "VALUE",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-commenting-o",
-                    "label": {
-                        "en-US": "Value"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "RETRY_ON_NAK",
-                "type": "bool",
-                "value": "false",
-                "ui": {
-                    "icon": "font-awesome/fa-recycle",
-                    "label": {
-                        "en-US": "Retry"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "bool"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "TOPIC_PREFIX",
-                "type": "str",
-                "value": "accounts/balvig/bricks/out",
-                "ui": {
-                    "type": "hide",
-                    "opts": {}
-                }
-            }
-        ],
-        "color": "#E9967A",
-        "icon": "font-awesome/fa-sign-out"
-    },
-    {
-        "id": "a26696d1.e25b38",
-        "type": "mqtt out",
-        "z": "5fc87090.da588",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "broker": "69cfef51.baf9",
-        "x": 790,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "7a427677.5191a8",
-        "type": "function",
-        "z": "5fc87090.da588",
-        "name": "Compose topic/payload",
-        "func": "if(env.get(\"MAC\") !== \"\") {\n    msg.topic = env.get(\"MAC\")\n}\n\nif(env.get(\"ACTION\") !== \"\") {\n    msg.action = env.get(\"ACTION\")\n}\n\nif(env.get(\"VALUE\") !== \"\") {\n    msg.payload = env.get(\"VALUE\")\n}\n\nmsg.topic = [env.get(\"TOPIC_PREFIX\"), msg.topic, msg.action].join(\"/\")\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 230,
-        "y": 60,
-        "wires": [
-            [
-                "a26696d1.e25b38",
-                "32de54b1.3705dc"
-            ]
-        ]
-    },
-    {
-        "id": "2d670747.762248",
-        "type": "subflow:a3a2426c.d3bf6",
-        "z": "5fc87090.da588",
-        "name": "ack:<ACTION>",
-        "env": [
-            {
-                "name": "MAC",
-                "value": "MAC",
-                "type": "env"
-            },
-            {
-                "name": "ACTION",
-                "value": "ack:${ACTION}",
-                "type": "env"
-            }
-        ],
-        "x": 200,
-        "y": 160,
-        "wires": [
-            [
-                "fc4317a7.046c38"
-            ]
-        ]
-    },
-    {
-        "id": "ea39e62f.d055d8",
-        "type": "trigger",
-        "z": "5fc87090.da588",
-        "op1": "",
-        "op2": "",
-        "op1type": "nul",
-        "op2type": "pay",
-        "duration": "1",
-        "extend": false,
-        "units": "s",
-        "reset": "",
-        "bytopic": "all",
-        "name": "",
-        "x": 600,
-        "y": 160,
-        "wires": [
-            [
-                "a26696d1.e25b38"
-            ]
-        ]
-    },
-    {
-        "id": "fc4317a7.046c38",
-        "type": "function",
-        "z": "5fc87090.da588",
-        "name": "Reset = true",
-        "func": "msg.reset = true;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 410,
-        "y": 160,
-        "wires": [
-            [
-                "ea39e62f.d055d8"
-            ]
-        ]
-    },
-    {
-        "id": "32de54b1.3705dc",
-        "type": "switch",
-        "z": "5fc87090.da588",
-        "name": "",
-        "property": "RETRY_ON_NAK",
-        "propertyType": "env",
-        "rules": [
-            {
-                "t": "true"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 430,
-        "y": 100,
-        "wires": [
-            [
-                "ea39e62f.d055d8"
-            ]
-        ]
-    },
-    {
         "id": "5cc01b87.5b1a24",
         "type": "tab",
         "label": "Ping-Pong",
@@ -483,8 +147,8 @@
         "name": "UI Table",
         "order": 1,
         "width": "6",
-        "height": "7",
-        "format": "<table style=\"width:100%;font-size:0.8rem;\">\n  <tr>\n    <th style=\"text-align:left;\">Mac</th> \n    <th style=\"text-align:left\">Name</th>\n    <th style=\"text-align:left\">Last seen</th>\n    <th></th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload\">\n    <td>\n        <input type=\"text\" style=\"border:none;padding:0;background:none;width:8em;\" value=\"{{msg.payload[$index].mac}}\"/>\n    </td>\n    <td>{{msg.payload[$index].name}}</td> \n    <td>{{msg.payload[$index].time}}</td> \n    <td>\n        <button ng-click=\"send({topic:msg.payload[$index].mac})\">\n            OTA\n        </button>\n    </td>\n  </tr>\n</table>",
+        "height": "6",
+        "format": "<table style=\"width:100%;font-size:0.8rem;\">\n  <tr>\n    <th style=\"text-align:left;\">Mac</th> \n    <th style=\"text-align:left\">Name</th>\n    <th style=\"text-align:left\">Last seen</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload\"  class=\"{{msg.payload[$index].old ? 'text-gray-500' : ''}}\">\n    <td>\n        <a href=\"#\" class=\"underline\" ng-click=\"send({topic:msg.payload[$index].mac})\">{{msg.payload[$index].mac}}</a>\n    </td>\n    <td>{{msg.payload[$index].name}}</td> \n    <td>{{msg.payload[$index].time}}</td> \n  </tr>\n</table>",
         "storeOutMessages": true,
         "fwdInMessages": false,
         "resendOnRefresh": true,
@@ -494,7 +158,7 @@
         "wires": [
             [
                 "e19130c6.f2df1",
-                "2b21d84a.8e6dd8"
+                "63f26d33.646b34"
             ]
         ]
     },
@@ -635,7 +299,7 @@
         "y": 160,
         "wires": [
             [
-                "af945db0.b9386"
+                "ec9df7ea.336eb8"
             ]
         ]
     },
@@ -677,29 +341,6 @@
         ]
     },
     {
-        "id": "2b21d84a.8e6dd8",
-        "type": "subflow:5fc87090.da588",
-        "z": "5cc01b87.5b1a24",
-        "name": "",
-        "env": [
-            {
-                "name": "ACTION",
-                "value": "setOta",
-                "type": "str"
-            },
-            {
-                "name": "VALUE",
-                "value": "1",
-                "type": "str"
-            }
-        ],
-        "x": 970,
-        "y": 200,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "2f37d855.7da478",
         "type": "inject",
         "z": "5cc01b87.5b1a24",
@@ -711,7 +352,7 @@
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
-        "x": 110,
+        "x": 90,
         "y": 160,
         "wires": [
             [
@@ -731,7 +372,7 @@
                 "type": "str"
             }
         ],
-        "x": 810,
+        "x": 970,
         "y": 160,
         "wires": [
             [
@@ -769,6 +410,34 @@
         "wires": [
             [
                 "f9825865.88b3d8"
+            ]
+        ]
+    },
+    {
+        "id": "63f26d33.646b34",
+        "type": "link out",
+        "z": "5cc01b87.5b1a24",
+        "name": "",
+        "links": [
+            "572261d6.7fe"
+        ],
+        "x": 915,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "ec9df7ea.336eb8",
+        "type": "function",
+        "z": "5cc01b87.5b1a24",
+        "name": "Add old flag",
+        "func": "let TIME_TO_GET_OLD = 3 * 86400000\nmsg.payload.old = Date.now() - msg.payload.time > TIME_TO_GET_OLD\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 160,
+        "wires": [
+            [
+                "af945db0.b9386"
             ]
         ]
     },

@@ -27,6 +27,12 @@
                     "icon": "font-awesome/fa-address-card",
                     "label": {
                         "en-US": "Address"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
                     }
                 }
             },
@@ -38,6 +44,17 @@
                     "icon": "font-awesome/fa-bolt",
                     "label": {
                         "en-US": "Action"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "num",
+                            "bool",
+                            "json",
+                            "bin",
+                            "env"
+                        ]
                     }
                 }
             }
@@ -189,7 +206,8 @@
                 "type": "str",
                 "value": "accounts/balvig/bricks/out",
                 "ui": {
-                    "type": "hide"
+                    "type": "hide",
+                    "opts": {}
                 }
             }
         ],

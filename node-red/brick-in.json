@@ -2,8 +2,8 @@
     {
         "id": "a3a2426c.d3bf6",
         "type": "subflow",
-        "name": "Brick - In",
-        "info": "# Bricks in\n\nUse this for input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this subscribes to _everything_, then filters it.",
+        "name": "Brick In",
+        "info": "# Brick in\n\nUse this for input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this subscribes to _everything_, then filters it.",
         "category": "bricks",
         "in": [],
         "out": [
@@ -31,12 +31,7 @@
                     "type": "input",
                     "opts": {
                         "types": [
-                            "str",
-                            "num",
-                            "bool",
-                            "json",
-                            "bin",
-                            "env"
+                            "str"
                         ]
                     }
                 }
