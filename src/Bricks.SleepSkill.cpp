@@ -44,18 +44,7 @@ namespace Bricks {
 
   void SleepSkill::deepSleep() {
     Log.notice("SLEE: Going to sleep for %d second(s)" CR, sleepTime);
-#ifdef ESP8266
-    ESP.deepSleep(sleepTime * MICROSECONDS);
-#elif ESP32
-    esp_bluedroid_disable();
-    esp_bluedroid_deinit();
-    esp_bt_controller_disable();
-    esp_bt_controller_deinit();
-    esp_bt_mem_release(ESP_BT_MODE_BTDM);
-    adc_power_off();
-    esp_wifi_stop();
-    esp_deep_sleep(sleepTime * MICROSECONDS);
-#endif
+    Utils::deepSleep(sleepTime);
   }
 
   bool SleepSkill::awakeTimeout() {

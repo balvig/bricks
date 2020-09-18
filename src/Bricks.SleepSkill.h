@@ -8,12 +8,6 @@
 extern "C" {
 #include "user_interface.h"
 }
-#elif ESP32
-#include <esp_sleep.h>
-#include <driver/adc.h>
-#include <esp_bt.h>
-#include <esp_bt_main.h>
-#include <esp_wifi.h>
 #endif
 
 #include <Bricks.Skill.h>

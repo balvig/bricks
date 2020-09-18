@@ -2,6 +2,7 @@
 
 - [Gateway](gateway)
 - [Button](button)
+- [Dash Button](button-bash)
 - [LED](led)
 - [LED RGB](led-rgb)
 - [LED 8x8 Matrix](led-matrix)

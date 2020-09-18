@@ -7,6 +7,21 @@ namespace Bricks {
         macAddr[0], macAddr[1], macAddr[2], macAddr[3], macAddr[4], macAddr[5]);
   }
 
+  void Utils::deepSleep(uint32_t sleepTime) {
+#ifdef ESP8266
+    ESP.deepSleep(sleepTime * MICROSECONDS);
+#elif ESP32
+    esp_bluedroid_disable();
+    esp_bluedroid_deinit();
+    esp_bt_controller_disable();
+    esp_bt_controller_deinit();
+    esp_bt_mem_release(ESP_BT_MODE_BTDM);
+    adc_power_off();
+    esp_wifi_stop();
+    esp_deep_sleep(sleepTime * MICROSECONDS);
+#endif
+  }
+
   bool Utils::wokeUpFromDeepSleep() {
     int info = resetInfo();
 #ifdef ESP8266
