@@ -1,0 +1,77 @@
+[
+    {
+        "id": "a3a2426c.d3bf6",
+        "type": "subflow",
+        "name": "Filter",
+        "info": "# Filter\n\nUse this to filter input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this receives _everything_, then filters it.",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 60,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "12814906.bf21d7"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 360,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "12814906.bf21d7",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "key",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Key"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "node-red/join.svg"
+    },
+    {
+        "id": "12814906.bf21d7",
+        "type": "switch",
+        "z": "a3a2426c.d3bf6",
+        "name": "Filter by key",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "key",
+                "vt": "env",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    }
+]

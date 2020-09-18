@@ -80,7 +80,6 @@ brick:
 
 ### Todo
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
-- [ ] DRY up MAC addresses in node-red
 - [ ] TravisCI
 - [ ] "Dash button" implementation that won't trigger when ESP8266 wakes up for other reasons
 

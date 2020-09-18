@@ -1,0 +1,151 @@
+[
+    {
+        "id": "61a652c9.fcba9c",
+        "type": "subflow",
+        "name": "Compose",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 40,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "be545e24.9aa31"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 760,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "1b6bf0a5.50ff0f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "key",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Key"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "value",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-comment-o",
+                    "label": {
+                        "en-US": "Value"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "delay",
+                "type": "num",
+                "value": "0",
+                "ui": {
+                    "icon": "font-awesome/fa-clock-o",
+                    "label": {
+                        "en-US": "Delay (ms)"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "node-red/split.svg"
+    },
+    {
+        "id": "1b6bf0a5.50ff0f",
+        "type": "delay",
+        "z": "61a652c9.fcba9c",
+        "name": "Delay",
+        "pauseType": "delayv",
+        "timeout": "0",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 630,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "45b2f3b4.06b84c",
+        "type": "change",
+        "z": "61a652c9.fcba9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "delay",
+                "pt": "msg",
+                "to": "delay",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 40,
+        "wires": [
+            [
+                "1b6bf0a5.50ff0f"
+            ]
+        ]
+    },
+    {
+        "id": "be545e24.9aa31",
+        "type": "function",
+        "z": "61a652c9.fcba9c",
+        "name": "Set key & payload",
+        "func": "msg.key = env.get(\"key\") || msg.key\nmsg.payload = env.get(\"value\") || msg.payload\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 210,
+        "y": 40,
+        "wires": [
+            [
+                "45b2f3b4.06b84c"
+            ]
+        ]
+    }
+]

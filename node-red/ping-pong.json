@@ -1,5 +1,137 @@
 [
     {
+        "id": "828761ad.f21bd",
+        "type": "subflow",
+        "name": "Brick",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "ae27039.97d81"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 480,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "127382d8.f9bbbd",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "mac",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-address-card-o",
+                    "label": {
+                        "en-US": "MAC"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "TOPIC_PREFIX",
+                "type": "str",
+                "value": "accounts/balvig/bricks",
+                "ui": {
+                    "type": "hide",
+                    "opts": {}
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "node-red/redis.png"
+    },
+    {
+        "id": "726e72cd.52d94c",
+        "type": "mqtt out",
+        "z": "828761ad.f21bd",
+        "name": "Bricks out",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "69cfef51.baf9",
+        "x": 440,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ae27039.97d81",
+        "type": "function",
+        "z": "828761ad.f21bd",
+        "name": "Compose topic",
+        "func": "msg.topic = [\n    env.get(\"TOPIC_PREFIX\"),\n    \"out\",\n    env.get(\"mac\") || msg.mac,\n    msg.key\n].join(\"/\")\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 240,
+        "y": 80,
+        "wires": [
+            [
+                "726e72cd.52d94c"
+            ]
+        ]
+    },
+    {
+        "id": "2ebfb91e.bd6c76",
+        "type": "mqtt in",
+        "z": "828761ad.f21bd",
+        "name": "Bricks in",
+        "topic": "accounts/balvig/bricks/in/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "127382d8.f9bbbd"
+            ]
+        ],
+        "info": "Why can't topic be `$(TOPIC_PREFIX)/in/#`"
+    },
+    {
+        "id": "127382d8.f9bbbd",
+        "type": "switch",
+        "z": "828761ad.f21bd",
+        "name": "Filter by MAC",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "MAC",
+                "vt": "env",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "c829e851.77b118",
         "type": "subflow",
         "name": "format time",
@@ -352,7 +484,7 @@
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
-        "x": 90,
+        "x": 110,
         "y": 160,
         "wires": [
             [
@@ -397,23 +529,6 @@
         ]
     },
     {
-        "id": "145b1868.ed2998",
-        "type": "mqtt in",
-        "z": "5cc01b87.5b1a24",
-        "name": "",
-        "topic": "accounts/balvig/bricks/in/#",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "69cfef51.baf9",
-        "x": 130,
-        "y": 260,
-        "wires": [
-            [
-                "f9825865.88b3d8"
-            ]
-        ]
-    },
-    {
         "id": "63f26d33.646b34",
         "type": "link out",
         "z": "5cc01b87.5b1a24",
@@ -438,6 +553,26 @@
         "wires": [
             [
                 "af945db0.b9386"
+            ]
+        ]
+    },
+    {
+        "id": "126e9d25.38f943",
+        "type": "subflow:828761ad.f21bd",
+        "z": "5cc01b87.5b1a24",
+        "name": "All bricks",
+        "env": [
+            {
+                "name": "mac",
+                "value": "#",
+                "type": "str"
+            }
+        ],
+        "x": 80,
+        "y": 260,
+        "wires": [
+            [
+                "f9825865.88b3d8"
             ]
         ]
     },
