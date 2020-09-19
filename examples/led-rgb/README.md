@@ -7,7 +7,7 @@ For https://docs.wemos.cc/en/latest/d1_mini_shiled/rgb_led.html
 - Cut SJ3 jumper (disconnect D4 from LEDs)
 - Connect D2
 
-## Inbox
+## In
 
 | key          | description                           | values                          |
 |--------------|---------------------------------------|---------------------------------|

@@ -1,12 +1,12 @@
 # PIR Sensor (WIP)
 
-## Inbox (WIP)
+## In (WIP)
 
 | key          | description                      | values |
 |--------------|----------------------------------|--------|
 | setFrequency | set sensor read frequency in ms | 100-?  |
 
-## Outbox
+## Out
 
 | key    | description                          | values                      |
 |--------|--------------------------------------|-----------------------------|

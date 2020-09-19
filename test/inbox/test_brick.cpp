@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <ArduinoLog.h>
 #include <unity.h>
-#include <Bricks.Inbox.h>
+#include <Bricks.Brick.h>
 #include <Bricks.BatterySkill.h>
 using namespace Bricks;
 
@@ -15,14 +15,14 @@ void test_battery() {
   Message message;
   strcpy(message.key, "getBattery");
 
-  gInbox.skills[0] = new BatterySkill();
-  gInbox.process(macAddr, message);
+  gBrick.skills[0] = new BatterySkill();
+  gBrick.process(macAddr, message);
 }
 
 void test_list_skills() {
-  gInbox.skills[0] = new BatterySkill();
+  gBrick.skills[0] = new BatterySkill();
 
-  TEST_ASSERT_EQUAL_STRING("getBattery", gInbox.listSkills().c_str());
+  TEST_ASSERT_EQUAL_STRING("getBattery", gBrick.listSkills().c_str());
 }
 
 void setup() {

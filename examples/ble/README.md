@@ -3,14 +3,14 @@
 Scans for BLE devices and responds with `found` for any named devices
 found.
 
-## Inbox
+## In
 
 | key      | description           | values  |
 |----------|-----------------------|---------|
 | scan     | Scan for (x) seconds. | 1-255   |
 
 
-## Outbox
+## Out
 
 | key   | description                | values                                       |
 |-------|----------------------------|----------------------------------------------|

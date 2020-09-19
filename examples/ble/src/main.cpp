@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
 using namespace Bricks;
 
@@ -50,15 +49,12 @@ void setup() {
   pBLEScan = BLEDevice::getScan();
   pBLEScan->setAdvertisedDeviceCallbacks(new BLECallbacks());
 
-  // Configure ESPNOW
-  gBrick.init();
-
-  // Enable receiving messages
-  gInbox.init("BLE Scanner");
-  gInbox.skills[0] = new Skill("scan", &passiveScan);
-  gInbox.skills[1] = new Skill("activeScan", &activeScan);
+  // Configure Brick
+  gBrick.init("BLE Scanner");
+  gBrick.skills[0] = new Skill("scan", &passiveScan);
+  gBrick.skills[1] = new Skill("activeScan", &activeScan);
 }
 
 void loop() {
-  gInbox.loop();
+  gBrick.loop();
 }

@@ -2,7 +2,7 @@
 #define BRICKS_LIST_SKILL_H
 
 #include <Bricks.Skill.h>
-#include <Bricks.Inbox.h>
+#include <Bricks.Brick.h>
 
 namespace Bricks {
   class ListSkill : public Skill {

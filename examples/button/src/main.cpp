@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
 using namespace Bricks;
 
@@ -19,14 +18,11 @@ void setup() {
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
-  // Configure ESPNow
-  gBrick.init();
-
-  // Configure inbox
-  gInbox.init("Button");
-
   // Configure button
   button.setDebounceTimeout(100);
+
+  // Configure Brick
+  gBrick.init("Button");
 }
 
 void loop() {
@@ -38,5 +34,5 @@ void loop() {
     gOutbox.send("released");
   }
 
-  gInbox.loop();
+  gBrick.loop();
 }

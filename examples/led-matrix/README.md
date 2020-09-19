@@ -2,7 +2,7 @@
 
 <img src=demo.jpg width=500>
 
-## Inbox
+## In
 
 | key      | description         | values  |
 |----------|---------------------|---------|

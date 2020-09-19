@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Inbox.h>
 using namespace Bricks;
 
 // Local
@@ -29,21 +28,18 @@ void setup() {
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
-  // Configure ESPNow
-  gBrick.init();
-
-  // Configure inbox
-  gInbox.init("PIR");
-
   // Configure PIR
   pinMode(PIR, INPUT);
   timer.setTimeout(DEFAULT_FREQUENCY);
   timer.restart();
+
+  // Configure Brick
+  gBrick.init("PIR");
 }
 
 void loop() {
   if(timer.onRestart()) {
     notifyChanges();
   }
-  gInbox.loop();
+  gBrick.loop();
 }

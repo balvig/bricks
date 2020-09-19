@@ -3,7 +3,7 @@
 Sends IR codes predefined in `codes.h`.
 Run with serial monitor to capture and transcribe IR codes.
 
-## Inbox
+## In
 
 | key      | description             | values |
 |----------|-------------------------|--------|

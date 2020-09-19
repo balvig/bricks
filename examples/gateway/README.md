@@ -2,14 +2,14 @@
 
 The Brick Brain.
 
-## Inbox
+## In
 
 | key | description               | values |
 |-----|---------------------------|--------|
 | *   | Publishes message to MQTT |        |
 
 
-## Outbox
+## Out
 
 | key | description                        | values |
 |-----|------------------------------------|--------|

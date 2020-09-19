@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Inbox.h>
 using namespace Bricks;
 
 const int ledPin = LED_BUILTIN;
@@ -24,14 +23,11 @@ void setup() {
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, HIGH);
 
-  // Configure ESPNOW
-  gBrick.init();
-
-  // Enable receiving messages
-  gInbox.init("LED");
-  gInbox.skills[0] = new Skill("setPattern", &setPattern);
+  // Configure Brick
+  gBrick.init("LED");
+  gBrick.skills[0] = new Skill("setPattern", &setPattern);
 }
 
 void loop() {
-  gInbox.loop();
+  gBrick.loop();
 }
