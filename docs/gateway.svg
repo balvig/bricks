@@ -1,0 +1,67 @@
+<svg version="1.1" baseProfile="full" width="568" height="398" viewbox="0 0 568 398" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold normal 12pt Helvetica, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <title >gateway</title>
+  <desc >#title: gateway
+#arrowSize:0.7
+#lineWidth: 1
+#fill: transparent; #fdf6e3
+
+[In|
+[Button Brick]-[&lt;note&gt;pressed]
+[pressed]-&gt;[Gateway Brick]
+
+[Gateway Brick]-[&lt;note&gt;/bricks/in/$MAC/pressed]
+[/bricks/in/$MAC/pressed]-&gt;[MQTT]
+]
+
+[Out|
+[MQTT]-[&lt;note&gt;/bricks/out/$MAC/setPattern: 1]
+[/bricks/out/$MAC/setPattern: 1]-&gt;[Gateway Brick]
+
+[Gateway Brick]-[&lt;note&gt;setPattern: 1]
+[setPattern: 1]-&gt;[LED Brick]
+]
+</desc>
+  <rect x="0" y="0" height="398" width="568" style="stroke:none; fill:transparent;"></rect>
+  <rect x="13.5" y="13.5" height="372" width="228" data-name="In" style="stroke:#33322E;fill:transparent;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="127.5" y="35" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="In">In</text>
+  <path d="M127.5 88.5 L127.5 108.5 L127.5 128.5 L127.5 128.5 " data-name="In" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M127.5 159.5 L127.5 179.5 L127.5 199.5 L127.5 199.5 " data-name="In" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M123.8 190.2 L127.5 194.8 L131.2 190.2 L127.5 199.5 Z" data-name="In" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M127.5 230.5 L127.5 250.5 L127.5 270.5 L127.5 270.5 " data-name="In" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M127.5 301.5 L127.5 321.5 L127.5 341.5 L127.5 341.5 " data-name="In" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M123.8 332.2 L127.5 336.8 L131.2 332.2 L127.5 341.5 Z" data-name="In" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="71.5" y="57.5" height="31" width="112" data-name="Button Brick" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="127.5" y="79" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Button Brick">Button Brick</text>
+  <path d="M89.5 128.5 L158.5 128.5 L166.5 136.5 L166.5 159.5 L89.5 159.5 L89.5 128.5 Z" data-name="pressed" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M158.5 128.5 L158.5 136.5 L166.5 136.5" data-name="pressed" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="97.5" y="150" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="pressed">pressed</text>
+  <rect x="64.5" y="199.5" height="31" width="126" data-name="Gateway Brick" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="127.5" y="221" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Gateway Brick">Gateway Brick</text>
+  <path d="M26.5 270.5 L220.5 270.5 L228.5 278.5 L228.5 301.5 L26.5 301.5 L26.5 270.5 Z" data-name="/bricks/in/$MAC/pressed" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M220.5 270.5 L220.5 278.5 L228.5 278.5" data-name="/bricks/in/$MAC/pressed" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="34.5" y="292" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="/bricks/in/$MAC/pressed">/bricks/in/$MAC/pressed</text>
+  <rect x="97.5" y="341.5" height="31" width="61" data-name="MQTT" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="128" y="363" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="MQTT">MQTT</text>
+  <path d="M13.5 44.5 L241.5 44.5" data-name="MQTT" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="281.5" y="13.5" height="372" width="274" data-name="Out" style="stroke:#33322E;fill:transparent;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="418.5" y="35" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Out">Out</text>
+  <path d="M418.5 88.5 L418.5 108.5 L418.5 128.5 L418.5 128.5 " data-name="Out" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M418.5 159.5 L418.5 179.5 L418.5 199.5 L418.5 199.5 " data-name="Out" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M414.8 190.2 L418.5 194.8 L422.2 190.2 L418.5 199.5 Z" data-name="Out" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M418.5 230.5 L418.5 250.5 L418.5 270.5 L418.5 270.5 " data-name="Out" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M418.5 301.5 L418.5 321.5 L418.5 341.5 L418.5 341.5 " data-name="Out" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M414.8 332.2 L418.5 336.8 L422.2 332.2 L418.5 341.5 Z" data-name="Out" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="388.5" y="57.5" height="31" width="61" data-name="MQTT" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="419" y="79" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="MQTT">MQTT</text>
+  <path d="M294.5 128.5 L534.5 128.5 L542.5 136.5 L542.5 159.5 L294.5 159.5 L294.5 128.5 Z" data-name="/bricks/out/$MAC/setPattern: 1" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M534.5 128.5 L534.5 136.5 L542.5 136.5" data-name="/bricks/out/$MAC/setPattern: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="302.5" y="150" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="/bricks/out/$MAC/setPattern: 1">/bricks/out/$MAC/setPattern: 1</text>
+  <rect x="355.5" y="199.5" height="31" width="126" data-name="Gateway Brick" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="418.5" y="221" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Gateway Brick">Gateway Brick</text>
+  <path d="M362.5 270.5 L467.5 270.5 L475.5 278.5 L475.5 301.5 L362.5 301.5 L362.5 270.5 Z" data-name="setPattern: 1" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M467.5 270.5 L467.5 278.5 L475.5 278.5" data-name="setPattern: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="370.5" y="292" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="setPattern: 1">setPattern: 1</text>
+  <rect x="372.5" y="341.5" height="31" width="92" data-name="LED Brick" style="stroke:#33322E;fill: #fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="418.5" y="363" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="LED Brick">LED Brick</text>
+  <path d="M281.5 44.5 L555.5 44.5" data-name="LED Brick" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+</svg>

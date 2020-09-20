@@ -1,0 +1,27 @@
+<svg version="1.1" baseProfile="full" width="677" height="128" viewbox="0 0 677 128" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold normal 12pt Helvetica, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <title >mqtt</title>
+  <desc >#title: mqtt
+#arrowSize:0.7
+#lineWidth: 1
+#direction: right
+
+[&lt;note&gt;bricks/in/ee:fa:bc:8e:89:1e/pressed]-&gt;[&lt;note&gt;bricks/out/ee:fa:bc:8e:89:8f/setPattern: 1]
+[&lt;note&gt;bricks/in/ee:fa:bc:8e:89:1e/released]-&gt;[&lt;note&gt;bricks/out/ee:fa:bc:8e:89:8f/setPattern: 0]</desc>
+  <rect x="0" y="0" height="128" width="677" style="stroke:none; fill:transparent;"></rect>
+  <path d="M298 29 L319.5 29 L339.5 29 L339.5 29 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M330.2 32.7 L334.8 29 L330.2 25.3 L339.5 29 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M299.5 100 L319.5 100 L339.5 100 L339.5 100 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M330.2 103.7 L334.8 100 L330.2 96.3 L339.5 100 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M15.5 13.5 L290.5 13.5 L298.5 21.5 L298.5 44.5 L15.5 44.5 L15.5 13.5 Z" data-name="bricks/in/ee:fa:bc:8e:89:1e/pressed" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M290.5 13.5 L290.5 21.5 L298.5 21.5" data-name="bricks/in/ee:fa:bc:8e:89:1e/pressed" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="23.5" y="35" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/in/ee:fa:bc:8e:89:1e/pressed">bricks/in/ee:fa:bc:8e:89:1e/pressed</text>
+  <path d="M339.5 13.5 L656.5 13.5 L664.5 21.5 L664.5 44.5 L339.5 44.5 L339.5 13.5 Z" data-name="bricks/out/ee:fa:bc:8e:89:8f/setPattern: 1" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M656.5 13.5 L656.5 21.5 L664.5 21.5" data-name="bricks/out/ee:fa:bc:8e:89:8f/setPattern: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="347.5" y="35" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/out/ee:fa:bc:8e:89:8f/setPattern: 1">bricks/out/ee:fa:bc:8e:89:8f/setPattern: 1</text>
+  <path d="M13.5 84.5 L291.5 84.5 L299.5 92.5 L299.5 115.5 L13.5 115.5 L13.5 84.5 Z" data-name="bricks/in/ee:fa:bc:8e:89:1e/released" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M291.5 84.5 L291.5 92.5 L299.5 92.5" data-name="bricks/in/ee:fa:bc:8e:89:1e/released" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="21.5" y="106" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/in/ee:fa:bc:8e:89:1e/released">bricks/in/ee:fa:bc:8e:89:1e/released</text>
+  <path d="M339.5 84.5 L656.5 84.5 L664.5 92.5 L664.5 115.5 L339.5 115.5 L339.5 84.5 Z" data-name="bricks/out/ee:fa:bc:8e:89:8f/setPattern: 0" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M656.5 84.5 L656.5 92.5 L664.5 92.5" data-name="bricks/out/ee:fa:bc:8e:89:8f/setPattern: 0" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="347.5" y="106" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/out/ee:fa:bc:8e:89:8f/setPattern: 0">bricks/out/ee:fa:bc:8e:89:8f/setPattern: 0</text>
+</svg>
