@@ -1,89 +1,53 @@
-# Bricks (super WIP)
-<img src=logo.png width=200>
+<h1><img src=logo.svg height=50 alt=Bricks></h1>
 
-Casual dabbling in the world of IoT still feels a little _too_ hard (or expensive!)
+Casual IoT tinkering and DIY for people who love modern programming languages.
 
-The aim of Bricks is to make turning ideas (even silly ones) into
-reality a quick, easy, and fun activity.
+**NOTE:** This project is _heavily_ WIP.
 
-Think [Sony Mesh](https://meshprj.com/), but without the hefty price tag,
-running entirely on existing Arduino hardware and open source software.
+## What is Bricks?
 
-## How it works
+I come up with dumb gadget ideas all the time.
 
-**NodeRED** ←MQTT→ **Brick Gateway** ←ESPNow→ **Bricks**
+"Wouldn't it be cool if a light goes on when I take my keys out of the
+key tray or if a message is posted to the coffee chat whenever I put the
+kettle on?"
 
-## Usage
+They're fun for a while, add spice to everyday life, and maybe even
+inspire _actual_ useful ideas, but mostly are disposable one-offs.
 
-### 1. Set up MQTT, NodeRED
+I'm a developer by profession, but spending days writing C++, flashing
+microcontrollers, soldering custom PCBs, and building enclosures for
+what are essentially throwaway projects always felt a little harder than it should.
 
-Easiest way to get both is https://fred.sensetecnic.com/.
+That led to the idea of building a suite of pre-programmed IoT "Bricks".
 
-If you want to run these services locally, take a look at the [`docker` directory](/docker).
+Individual LEDs, buttons, sensors, that could be pulled out when needed, were all internet-enabled,
+and whose behavior could easily be programmed ad hoc using modern program
+languages such as Ruby or JavaScript.
 
-### 2. Install a gateway
+You could say Bricks is [Sony Mesh](https://meshprj.com/) without the hefty price tag,
+running entirely on existing Arduino-compatible hardware and open source software,
+and made for people who already know how to code.
 
-```bash
-cd examples/gateway
-cp include/secrets.sample.h include/secrets.h
-vi include/secrets.h
-pio run
-```
+## How to use Bricks?
 
-Make a note of the gateway's MAC address:
+This repository contains all the info required to build a collection of Bricks.
 
-```bash
-Initialized [82:7d:3a:79:14:79]
-```
+Depending on your needs, it could be used to:
 
-**Note:** Bricks currently requires a WiFi network that uses channel 1.
+- [**Create** Bricks using any ESP8266/ESP32s you have and the examples found in this library.](docs/create.md)
+- [**Integrate** just the C++ library to easily internet-enable your own ESP8266/ESP32 projects.](docs/integrate.md)
+- [**Recreate** the full original suite of Bricks including Node-RED flows, hardware, and enclosures.](docs/recreate.md)
 
-### 3. Create some bricks
+## Todo
 
-[WIP catalogue here](/examples).
-For example a button and an LED:
+### Software
 
-```bash
-export PLATFORMIO_BUILD_FLAGS="'-DBRICKS_GATEWAY_MAC=\"82:7d:3a:79:14:79\"'"
-
-cd examples/button
-pio run
-
-cd examples/led
-pio run
-```
-
-### 4. Communicate with bricks using MQTT
-
-Bricks announce themselves and their MAC addresses when they come online:
-
-```mqtt
-bricks/in/ee:fa:bc:8e:89:1e/awake: Button - external system reset
-bricks/in/ee:fa:bc:8e:89:8f/awake: LED - external system reset
-```
-
-Use the MAC address to send messages to the bricks:
-
-```mqtt
-bricks/out/ee:fa:bc:8e:89:8f/setPattern: 1
-```
-
-### 5. Connect bricks in NodeRED
-
-Here is a simple example that allows a button brick to control an LED
-brick:
-
-<img src=example.png width=500>
-<img src=example.gif width=400>
-
-## Software
-
-### Todo
 - [ ] Turn "setRotation" into a skill instead for LED Matrix
 - [ ] TravisCI
 - [ ] "Dash button" implementation that won't trigger when ESP8266 wakes up for other reasons
 
-### Nice to haves
+#### Nice to haves
 - [ ] Consider using `qos=1` for sending messages
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
 - [ ] Write up making a brick
@@ -93,12 +57,10 @@ brick:
 - [ ] Idea: Move sender macAddr into message to reduce params? Or maybe leave out entirely?
 - [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 
-## Hardware
+### Hardware
 
-### Todo
 - [ ] Wooden panels
 - [ ] Sturdier PCB attachment
 - [ ] Nicer stickers
 - [ ] Reset Button
-- [ ] LED
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
