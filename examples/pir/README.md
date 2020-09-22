@@ -1,13 +1,8 @@
 # PIR Sensor (WIP)
 
-## In (WIP)
+## Skills
 
-| key          | description                      | values |
-|--------------|----------------------------------|--------|
-| setFrequency | set sensor read frequency in ms | 100-?  |
-
-## Out
-
-| key    | description                          | values                      |
-|--------|--------------------------------------|-----------------------------|
-| status | Sends PIR status whenever it changes | 0: No detection 1: Detected |
+| key              | description                          | values                      |
+|------------------|--------------------------------------|-----------------------------|
+| out/setFrequency | set sensor read frequency in ms      | 100-?                       |
+| in/status        | Sends PIR status whenever it changes | 0: No detection 1: Detected |

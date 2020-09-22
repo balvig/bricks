@@ -1,7 +1,7 @@
 # LED
 
-## In
+## Skills
 
-| key        | description          | values          |
-|------------|----------------------|-----------------|
-| setPattern | Change LED pattern   | 0 (off), 1 (on) |
+| key            | description        | values          |
+|----------------|--------------------|-----------------|
+| out/setPattern | Change LED pattern | 0 (off), 1 (on) |

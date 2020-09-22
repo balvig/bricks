@@ -2,16 +2,9 @@
 
 The Brick Brain.
 
-## In
+## Skills
 
-| key | description               | values |
-|-----|---------------------------|--------|
-| *   | Publishes message to MQTT |        |
-
-
-## Out
-
-| key | description                        | values |
-|-----|------------------------------------|--------|
-| *   | Sends events from MQTT as messages |        |
-
+| key   | description                        | values |
+|-------|------------------------------------|--------|
+| out/* | Sends events from MQTT as messages |        |
+| in/*  | Publishes message to MQTT          |        |

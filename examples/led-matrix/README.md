@@ -2,8 +2,8 @@
 
 <img src=demo.jpg width=500>
 
-## In
+## Skills
 
-| key      | description         | values  |
-|----------|---------------------|---------|
-| setValue | Shows one character | 0-9 A-Z |
+| key          | description         | values  |
+|--------------|---------------------|---------|
+| out/setValue | Shows one character | 0-9 A-Z |

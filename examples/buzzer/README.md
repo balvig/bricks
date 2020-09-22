@@ -1,7 +1,7 @@
 # Buzzer (WIP)
 
-## In
+## Skills
 
-| key  | description                          | values        |
-|------|--------------------------------------|---------------|
-| tone | play tone at set frequency, duration | "800,200" etc |
+| key      | description                          | values        |
+|----------|--------------------------------------|---------------|
+| out/tone | play tone at set frequency, duration | "800,200" etc |

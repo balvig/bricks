@@ -3,8 +3,8 @@
 Sends IR codes predefined in `codes.h`.
 Run with serial monitor to capture and transcribe IR codes.
 
-## In
+## Skills
 
-| key      | description             | values |
-|----------|-------------------------|--------|
-| sendCode | Send predefined IR Code | 0-9    |
+| key          | description             | values |
+|--------------|-------------------------|--------|
+| out/sendCode | Send predefined IR Code | 0-9    |
