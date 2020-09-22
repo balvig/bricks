@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Inbox.h>
 using namespace Bricks;
 
 // Local
@@ -33,15 +32,13 @@ void setup() {
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
-  // Configure ESPNow
-  gBrick.init();
-
-  gInbox.init("IR Controller");
-  gInbox.skills[0] = new Skill("sendCode", &sendCode);
-
   // Start the IR receiver / sender
   irrecv.enableIRIn();
   irsend.begin();
+
+  // Configure Brick
+  gBrick.init("IR Controller");
+  gBrick.skills[0] = new Skill("sendCode", &sendCode);
 }
 
 void loop() {
@@ -55,5 +52,5 @@ void loop() {
     Log.notice(resultToSourceCode(&results).c_str());
     irrecv.resume();
   }
-  gInbox.loop();
+  gBrick.loop();
 }

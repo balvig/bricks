@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Inbox.h>
 using namespace Bricks;
 
 // Local
@@ -24,14 +23,11 @@ void setup() {
   // Wemos will be on side
   matrix.setRotation(1);
 
-  // Configure ESPNow
-  gBrick.init();
-
-  // Configure inbox
-  gInbox.init("LED 8x8 Matrix");
-  gInbox.skills[0] = new Skill("setValue", &setValue);
+  // Configure Brick
+  gBrick.init("LED 8x8 Matrix");
+  gBrick.skills[0] = new Skill("setValue", &setValue);
 }
 
 void loop() {
-  gInbox.loop();
+  gBrick.loop();
 }

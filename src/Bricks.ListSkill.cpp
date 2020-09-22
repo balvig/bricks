@@ -5,6 +5,6 @@ namespace Bricks {
   }
 
   void ListSkill::callback(BRICKS_CALLBACK_SIGNATURE) {
-    strcpy(response, gInbox.listSkills().c_str());
+    strcpy(response, gBrick.listSkills().c_str());
   }
 }

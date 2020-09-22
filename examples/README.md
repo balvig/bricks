@@ -11,7 +11,7 @@
 
 ## Common skills
 
-### Inbox
+### In
 
 | key        | description                                                        | values                     |
 |------------|--------------------------------------------------------------------|----------------------------|
@@ -20,7 +20,7 @@
 | getBattery | Ask for battery value                                              |                            |
 | getSkills  | Get a list of actions the Brick responds to                        |                            |
 
-### Outbox
+### Out
 
 | key   | description        | values            |
 |-------|--------------------|-------------------|

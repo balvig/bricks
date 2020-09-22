@@ -48,6 +48,9 @@ Depending on your needs, it could be used to:
 - [ ] "Dash button" implementation that won't trigger when ESP8266 wakes up for other reasons
 
 #### Nice to haves
+- [ ] Move `logMac` to utils
+- [ ] Consolidate `gOutbox` into `gBrick`?
+- [ ] Consolidate `gEvents` into `publishSkill`?
 - [ ] Consider using `qos=1` for sending messages
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
 - [ ] Write up making a brick

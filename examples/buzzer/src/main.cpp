@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Inbox.h>
 using namespace Bricks;
 
 // Local
@@ -20,17 +19,15 @@ void setup() {
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
-  // Configure ESPNow
-  gBrick.init();
-
-  // Configure inbox
-  gInbox.init("Buzzer");
-  gInbox.skills[0] = new Skill("tone", &playTone);
-
   // Configure buzzer
   pinMode(BUZZER, OUTPUT);
+
+  // Configure Brick
+  gBrick.init("Buzzer");
+  gBrick.skills[0] = new Skill("tone", &playTone);
+
 }
 
 void loop() {
-  gInbox.loop();
+  gBrick.loop();
 }

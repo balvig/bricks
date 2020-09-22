@@ -1,6 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Inbox.h>
 #include <Bricks.Outbox.h>
 using namespace Bricks;
 
@@ -28,17 +27,14 @@ void setup() {
   Serial.begin(115200);
   Log.begin(LOG_LEVEL_NOTICE, &Serial);
 
-  // Configure ESPNOW
-  gBrick.init();
-
-  // Configure inbox
-  gInbox.init("LED RGB");
-  gInbox.skills[0] = new Skill("setPattern", &setPattern);
-  gInbox.skills[1] = new Skill("setVariation", &setVariation);
-  gInbox.skills[2] = new Skill("setDelay", &setDelay);
+  // Configure Brick
+  gBrick.init("LED RGB");
+  gBrick.skills[0] = new Skill("setPattern", &setPattern);
+  gBrick.skills[1] = new Skill("setVariation", &setVariation);
+  gBrick.skills[2] = new Skill("setDelay", &setDelay);
 }
 
 void loop() {
-  gInbox.loop();
+  gBrick.loop();
   animator.update();
 }
