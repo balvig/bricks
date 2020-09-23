@@ -45,27 +45,26 @@ Depending on your needs, it could be used to:
 
 - [ ] TravisCI
 - [ ] "Dash button" implementation that won't trigger when ESP8266 wakes up for other reasons
+- [ ] Write up building a Brick
+- [ ] Write up making a custom brick
 
 #### Nice to haves
 - [ ] Better implementation of `awake` on Gateway
-- [ ] Move `logMac` to utils
 - [ ] Consolidate `gOutbox` into `gBrick`?
 - [ ] Consolidate `gEvents` into `publishSkill`?
 - [ ] Consider using `qos=1` for sending messages
+- [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
-- [ ] Write up making a custom brick
-- [ ] Write up building a Brick
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
-- [ ] Idea: Move sender macAddr into message to reduce params? Or maybe leave out entirely?
-- [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 
 ### Hardware
 
 - [ ] Find a way to make use of battery connector instead of soldering
-- [ ] Wooden panels
 - [ ] Sturdier PCB attachment
 - [ ] Nicer stickers
-- [ ] Reset Button
+- [ ] Test sensors
+- [ ] Slot for buttons
+- [ ] Wooden panels
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
