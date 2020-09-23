@@ -15,6 +15,10 @@ void setValue(BRICKS_CALLBACK_SIGNATURE) {
   matrix.writeDisplay();
 }
 
+void setRotation(BRICKS_CALLBACK_SIGNATURE) {
+  matrix.setRotation(atoi(message.value));
+}
+
 void setup() {
   // Logging
   Serial.begin(115200);
@@ -26,6 +30,7 @@ void setup() {
   // Configure Brick
   gBrick.init("LED 8x8 Matrix");
   gBrick.skills[0] = new Skill("setValue", &setValue);
+  gBrick.skills[1] = new Skill("setRotation", &setRotation);
 }
 
 void loop() {

@@ -43,17 +43,18 @@ Depending on your needs, it could be used to:
 
 ### Software
 
-- [ ] Turn "setRotation" into a skill instead for LED Matrix
 - [ ] TravisCI
 - [ ] "Dash button" implementation that won't trigger when ESP8266 wakes up for other reasons
 
 #### Nice to haves
+- [ ] Better implementation of `awake` on Gateway
 - [ ] Move `logMac` to utils
 - [ ] Consolidate `gOutbox` into `gBrick`?
 - [ ] Consolidate `gEvents` into `publishSkill`?
 - [ ] Consider using `qos=1` for sending messages
 - [ ] Fix errors raised by `pio check` (mainly passing `Message` by value)
-- [ ] Write up making a brick
+- [ ] Write up making a custom brick
+- [ ] Write up building a Brick
 - [ ] Allow BLE scanner to subscribe to beacon notifications
 - [ ] More tests
 - [ ] Make aliexpress ble button send notifications
