@@ -62,6 +62,7 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
+- [ ] Find a way to make use of battery connector instead of soldering
 - [ ] Wooden panels
 - [ ] Sturdier PCB attachment
 - [ ] Nicer stickers
