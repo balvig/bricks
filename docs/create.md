@@ -1,4 +1,4 @@
-## Creating Bricks
+# Creating Bricks
 
 To illustrate how Bricks works, this simple example will allow pressing
 a button Brick to turn on/off an LED Brick.
@@ -12,7 +12,7 @@ The example uses:
 
 However, basically any combination of ESP8266/ESP32 boards and capabilities will do, and you can modify the existing [examples](/examples) or [write your own](/docs/integrate.md) as needed.
 
-### 1. Create a Gateway Brick
+## 1. Create a Gateway Brick
 
 One board will act as the _Gateway Brick_.
 
@@ -41,7 +41,7 @@ Initialized [82:7d:3a:79:14:79]
 
 **Note:** Bricks currently requires a WiFi network that uses channel 1.
 
-### 2. Create an LED Brick
+## 2. Create an LED Brick
 
 The [LED Brick example](/examples/led) defaults to using the built-in LED, allowing it to
 be turned on/off by sending `setPattern` messages with values of `1` or `0`.
@@ -53,7 +53,7 @@ cd examples/led
 pio run
 ```
 
-### 3. Create a Button Brick
+## 3. Create a Button Brick
 
 The [Button Brick example](/examples/button) assumes a button attached
 to GPIO 0, and will send `pressed` and `released` messages.
@@ -65,7 +65,7 @@ cd examples/button
 pio run
 ```
 
-### 4. Define Brick behavior using MQTT
+## 4. Define Brick behavior using MQTT
 
 Bricks announce themselves and their MAC addresses when they come online:
 

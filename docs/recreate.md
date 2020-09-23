@@ -11,20 +11,18 @@ if you want to host locally, take a look at the [`docker` directory](/docker).
 - [900mAh Lipo](https://www.aliexpress.com/item/32952515649.html)
 - [Accessory Shield](https://docs.wemos.cc/en/latest/d1_mini_shiled/index.html)
 
+## Steps
+
 ### D1 Mini
 
 - Add male headers
 
-### Doubler
+### Battery shield
+- Connect A0 battery read jumper
+- Solder male/female headers to shield
+
+### Double base
 
 - Connect D0 - RST
+- Solder shield headers to double base
 - Add female headers for accessory
-
-### Battery shield
-- Connect A0 battery read
-- Add male/female headers
-
-### Combine
-
-- Connect battery
-- Solder battery headers
