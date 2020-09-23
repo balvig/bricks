@@ -1,7 +1,7 @@
 {
   "name": "Bricks",
-  "keywords": "",
-  "description": "",
+  "keywords": "esp-now, esp8266, esp32, wifi, mqtt, node-red",
+  "description": "Casual IoT tinkering and DIY for people who love modern programming languages.",
   "repository": {
     "type": "git",
     "url": "https://github.com/balvig/bricks.git"
@@ -11,6 +11,7 @@
     "PubSubClient": "~2.8",
     "WifiEspNow": "~0.0.20190814"
   },
+  "homepage": "https://github.com/balvig/bricks",
   "version": "0.0.1",
   "frameworks": "arduino",
   "platforms": ["espressif32", "espressif8266"]
