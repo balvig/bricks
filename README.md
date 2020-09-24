@@ -1,4 +1,4 @@
-<h1><img src=logo.svg height=50 alt=Bricks></h1>
+<h1><img src=docs/logo.svg height=50 alt=Bricks></h1>
 
 Casual IoT tinkering and DIY for people who love modern programming languages.
 
@@ -61,9 +61,9 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
-- [ ] Test sensors
-- [ ] Nicer stickers
 - [ ] Slot for buttons
+- [ ] Slot for PIR sensor
 - [ ] Sturdier PCB attachment
+- [ ] Nicer stickers
 - [ ] Wooden panels
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
