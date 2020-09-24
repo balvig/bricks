@@ -44,7 +44,6 @@ Depending on your needs, it could be used to:
 ### Software
 
 - [ ] TravisCI
-- [ ] "Dash button" implementation that won't trigger when ESP8266 wakes up for other reasons
 - [ ] Write up building a Brick
 - [ ] Write up making a custom brick
 
@@ -62,10 +61,9 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
-- [ ] Find a way to make use of battery connector instead of soldering
-- [ ] Sturdier PCB attachment
-- [ ] Nicer stickers
 - [ ] Test sensors
+- [ ] Nicer stickers
 - [ ] Slot for buttons
+- [ ] Sturdier PCB attachment
 - [ ] Wooden panels
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
