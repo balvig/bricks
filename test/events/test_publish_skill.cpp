@@ -2,7 +2,7 @@
 #include <ArduinoLog.h>
 #include <unity.h>
 #include <Bricks.Constants.h>
-#include <Bricks.Events.h>
+#include <Bricks.PublishSkill.h>
 #include <Bricks.Utils.h>
 
 void setUp(void) {
@@ -15,7 +15,7 @@ void test_parse_topic() {
   char key[KEY_SIZE];
   const char *topic = "accounts/name/bricks/out/FF:FF:FF:FF:FF:FF/ping";
 
-  Bricks::Events::parseTopic(topic, macAddr, key);
+  Bricks::PublishSkill::parseTopic(topic, macAddr, key);
 
   TEST_ASSERT_EQUAL_STRING("ping", key);
 

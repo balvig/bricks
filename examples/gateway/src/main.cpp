@@ -1,7 +1,5 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Events.h>
-#include <Bricks.Outbox.h>
 #include <Bricks.PublishSkill.h>
 using namespace Bricks;
 
@@ -25,11 +23,8 @@ void setup() {
   // Configure Brick
   gBrick.initBase(WIFI_AP_STA);
   gBrick.skills[0] = new PublishSkill(); // Publish all received messages to mqtt
-
-  // Connect mqtt event stream
-  gEvents.init();
 }
 
 void loop() {
-  gEvents.loop();
+  gBrick.loop();
 }

@@ -49,7 +49,6 @@ Depending on your needs, it could be used to:
 
 #### Nice to haves
 - [ ] Better implementation of `awake` on Gateway
-- [ ] Consolidate `gEvents` into `publishSkill`?
 - [ ] Use `events` or `ESPNOW` as different _buses_ for outbox, to allow better Gateway comms?
 - [ ] Consider using `qos=1` for sending messages
 - [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
