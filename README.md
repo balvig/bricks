@@ -61,7 +61,7 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
-- [ ] Slot for buttons
+- [ ] Slot for reset button
 - [ ] Slot for PIR sensor
 - [ ] Sturdier PCB attachment
 - [ ] Nicer stickers
