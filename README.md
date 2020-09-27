@@ -61,8 +61,8 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
+- [ ] Reset putton PCB
 - [ ] Slot for reset button
-- [ ] Slot for PIR sensor
 - [ ] Sturdier PCB attachment
 - [ ] Nicer stickers
 - [ ] Wooden panels
