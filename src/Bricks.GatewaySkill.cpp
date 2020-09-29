@@ -1,15 +1,19 @@
-#include "Bricks.Events.h"
+#include "Bricks.GatewaySkill.h"
 
 namespace Bricks {
-  void Events::init() {
+  GatewaySkill::GatewaySkill() : Skill("*", nullptr, false), mqtt(wifi) {
     mqtt.setServer(BRICKS_MQTT_HOST, 1883);
-    mqtt.setCallback(Events::onEvent);
+    mqtt.setCallback(GatewaySkill::onEvent);
 
     connectWiFi();
     connectMQTT();
   }
 
-  void Events::loop() {
+  void GatewaySkill::callback(BRICKS_CALLBACK_SIGNATURE) {
+    publish(macAddr, message);
+  }
+
+  void GatewaySkill::loop() {
     if (mqtt.connected()) {
       mqtt.loop();
     }
@@ -22,29 +26,7 @@ namespace Bricks {
 #endif
   }
 
-  void Events::publish(const uint8_t *macAddr, Message message) {
-    publish(macAddr, message.key, message.value);
-  }
-
-  void Events::publish(const uint8_t *macAddr, const char *key, const char *value) {
-    char macStr[MAC_STR_SIZE];
-    Bricks::Utils::macToStr(macAddr, macStr);
-    char topic[MAX_TOPIC_SIZE];
-    sprintf(topic, BRICKS_MESSAGES_IN "/%s/%s", macStr, key);
-    publish(topic, value);
-  }
-
-  void Events::publish(const char *topic, const char *value) {
-    if (mqtt.connected()) {
-      Log.trace("MQTT: -> %s: %s" CR, topic, value);
-      mqtt.publish(topic, value);
-    }
-    else {
-      Log.error("MQTT: Publishing failed [disconnected]" CR);
-    }
-  }
-
-  void Events::onEvent(char *topic, byte *bytes, unsigned int length) {
+  void GatewaySkill::onEvent(char *topic, byte *bytes, unsigned int length) {
     bytes[length] = '\0';
     char *value = (char *) bytes;
     Log.trace("MQTT: <- %s: %s" CR, topic, value);
@@ -55,12 +37,34 @@ namespace Bricks {
     gOutbox.send(macAddr, key, value);
   }
 
-  void Events::parseTopic(const char *topic, uint8_t *macAddr, char *key) {
+  void GatewaySkill::parseTopic(const char *topic, uint8_t *macAddr, char *key) {
     sscanf(topic, BRICKS_MESSAGES_OUT "/" MAC_FORMAT "/%s",
         &macAddr[0], &macAddr[1], &macAddr[2], &macAddr[3], &macAddr[4], &macAddr[5], key);
   }
 
-  void Events::connectWiFi() {
+  void GatewaySkill::publish(const uint8_t *macAddr, Message message) {
+    publish(macAddr, message.key, message.value);
+  }
+
+  void GatewaySkill::publish(const uint8_t *macAddr, const char *key, const char *value) {
+    char macStr[MAC_STR_SIZE];
+    Bricks::Utils::macToStr(macAddr, macStr);
+    char topic[MAX_TOPIC_SIZE];
+    sprintf(topic, BRICKS_MESSAGES_IN "/%s/%s", macStr, key);
+    publish(topic, value);
+  }
+
+  void GatewaySkill::publish(const char *topic, const char *value) {
+    if (mqtt.connected()) {
+      Log.trace("MQTT: -> %s: %s" CR, topic, value);
+      mqtt.publish(topic, value);
+    }
+    else {
+      Log.error("MQTT: Publishing failed [disconnected]" CR);
+    }
+  }
+
+  void GatewaySkill::connectWiFi() {
     Log.notice("WIFI: Connecting to [%s]" CR, BRICKS_WIFI_SSID);
     WiFi.begin(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD);
 
@@ -75,7 +79,7 @@ namespace Bricks {
     }
   }
 
-  void Events::connectMQTT() {
+  void GatewaySkill::connectMQTT() {
     Log.notice("MQTT: Connecting to [%s]" CR, BRICKS_MQTT_HOST);
     while(!mqtt.connected()) {
       if(mqtt.connect(BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD)) {
@@ -89,10 +93,8 @@ namespace Bricks {
     }
   }
 
-  void Events::subscribe(const char *topic) {
+  void GatewaySkill::subscribe(const char *topic) {
     mqtt.subscribe(topic);
     Log.trace("MQTT: Subscribed [%s]" CR, topic);
   }
-
-  Events gEvents = Events();
 }

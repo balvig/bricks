@@ -1,7 +1,8 @@
-#ifndef BRICKS_EVENTS_H
-#define BRICKS_EVENTS_H
+#ifndef BRICKS_GATEWAY_SKILL_H
+#define BRICKS_GATEWAY_SKILL_H
 
 #include <ArduinoLog.h>
+
 #include <PubSubClient.h>
 #ifdef ESP8266
 #include <ESP8266WiFi.h>
@@ -9,10 +10,8 @@
 #include <WiFi.h>
 #endif
 
-#include <Bricks.Constants.h>
-#include <Bricks.Message.h>
+#include <Bricks.Skill.h>
 #include <Bricks.Outbox.h>
-#include <Bricks.Utils.h>
 
 // Define in secrets.h file
 #ifndef SECRETS_H
@@ -29,16 +28,13 @@
 #define BRICKS_MESSAGES_OUT BRICKS_MQTT_TOPIC_PREFIX "/out"
 
 namespace Bricks {
-  class Events {
+  class GatewaySkill : public Skill {
     static const uint16_t MAX_TOPIC_SIZE = 200;
 
     public:
-      Events() : mqtt(wifi) {}
-      void init();
+      GatewaySkill();
+      void callback(BRICKS_CALLBACK_SIGNATURE);
       void loop();
-      void publish(const uint8_t *macAddr, Message message);
-      void publish(const uint8_t *macAddr, const char *key, const char *value = "");
-      void publish(const char *topic, const char *value = "");
       static void onEvent(char *topic, byte *bytes, unsigned int length);
       static void parseTopic(const char *topic, uint8_t *macAddr, char *key);
     private:
@@ -46,9 +42,10 @@ namespace Bricks {
       PubSubClient mqtt;
       void connectWiFi();
       void connectMQTT();
+      void publish(const uint8_t *macAddr, Message message);
+      void publish(const uint8_t *macAddr, const char *key, const char *value = "");
+      void publish(const char *topic, const char *value = "");
       void subscribe(const char *topic);
   };
-
-  extern Events gEvents;
 }
 #endif

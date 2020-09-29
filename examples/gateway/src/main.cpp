@@ -1,8 +1,6 @@
 // Bricks
 #include <Bricks.Brick.h>
-#include <Bricks.Events.h>
-#include <Bricks.Outbox.h>
-#include <Bricks.PublishSkill.h>
+#include <Bricks.GatewaySkill.h>
 using namespace Bricks;
 
 #ifdef ARDUINO_M5Stack_Core_ESP32
@@ -24,12 +22,9 @@ void setup() {
 
   // Configure Brick
   gBrick.initBase(WIFI_AP_STA);
-  gBrick.skills[0] = new PublishSkill(); // Publish all received messages to mqtt
-
-  // Connect mqtt event stream
-  gEvents.init();
+  gBrick.skills[0] = new GatewaySkill();
 }
 
 void loop() {
-  gEvents.loop();
+  gBrick.loop();
 }
