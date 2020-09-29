@@ -1,5 +1,5 @@
-#ifndef BRICKS_PUBLISH_SKILL_H
-#define BRICKS_PUBLISH_SKILL_H
+#ifndef BRICKS_GATEWAY_SKILL_H
+#define BRICKS_GATEWAY_SKILL_H
 
 #include <ArduinoLog.h>
 
@@ -28,11 +28,11 @@
 #define BRICKS_MESSAGES_OUT BRICKS_MQTT_TOPIC_PREFIX "/out"
 
 namespace Bricks {
-  class PublishSkill : public Skill {
+  class GatewaySkill : public Skill {
     static const uint16_t MAX_TOPIC_SIZE = 200;
 
     public:
-      PublishSkill();
+      GatewaySkill();
       void callback(BRICKS_CALLBACK_SIGNATURE);
       void loop();
       static void onEvent(char *topic, byte *bytes, unsigned int length);
