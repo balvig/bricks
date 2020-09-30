@@ -38,7 +38,7 @@ namespace Bricks {
   }
 
   void GatewaySkill::parseTopic(const char *topic, uint8_t *macAddr, char *key) {
-    sscanf(topic, BRICKS_MESSAGES_OUT "/" MAC_FORMAT "/%s",
+    sscanf(topic, BRICKS_MESSAGES_OUT "/" MAC_FORMAT "/%20s",
         &macAddr[0], &macAddr[1], &macAddr[2], &macAddr[3], &macAddr[4], &macAddr[5], key);
   }
 
