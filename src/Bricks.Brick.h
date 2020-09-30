@@ -29,7 +29,7 @@ namespace Bricks {
       void init(const char *name);
       void initBase(const WiFiMode_t wifiMode = WIFI_AP); // AP is more stable than STA when communicating with AT_STA
       void loop();
-      void process(const uint8_t *macAddr, const Message message);
+      void process(BRICKS_PROCESS_SIGNATURE);
       String listSkills();
       Skill *skills[MAX_SKILLS] = { new Skill(), new Skill(), new Skill(), new Skill(), new Skill(), new Skill(), new Skill(), new Skill(), new Skill(), new Skill() };
     private:

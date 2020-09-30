@@ -6,7 +6,8 @@
 #include <Bricks.Message.h>
 #include <Bricks.Outbox.h>
 
-#define BRICKS_CALLBACK_SIGNATURE const uint8_t *macAddr, const Message message, char *response
+#define BRICKS_PROCESS_SIGNATURE const uint8_t *macAddr, const Message message
+#define BRICKS_CALLBACK_SIGNATURE BRICKS_PROCESS_SIGNATURE , char *response
 
 namespace Bricks {
   class Skill {
@@ -16,7 +17,7 @@ namespace Bricks {
     public:
       Skill(const char *key = "", std::function<void(BRICKS_CALLBACK_SIGNATURE)> customCallback = nullptr, bool sendAck = true);
       bool respondsTo(const char* compareKey);
-      void process(const uint8_t *macAddr, const Message message);
+      void process(BRICKS_PROCESS_SIGNATURE);
       virtual void callback(BRICKS_CALLBACK_SIGNATURE);
       virtual void loop();
       const char *key;

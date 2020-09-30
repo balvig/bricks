@@ -11,7 +11,7 @@ namespace Bricks {
     return (strcmp(key, compareKey) == 0 || strcmp(key, ANY) == 0);
   }
 
-  void Skill::process(const uint8_t *macAddr, const Message message) {
+  void Skill::process(BRICKS_PROCESS_SIGNATURE) {
     char response[100];
     strcpy(response, message.value);
     callback(macAddr, message, response);

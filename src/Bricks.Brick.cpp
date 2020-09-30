@@ -41,7 +41,7 @@ namespace Bricks {
     }
   }
 
-  void Brick::process(const uint8_t *macAddr, const Message message) {
+  void Brick::process(BRICKS_PROCESS_SIGNATURE) {
     for(int i = MAX_SKILLS - 1; i >= 0; i--) {
       if(skills[i]->respondsTo(message.key)) {
         Log.trace("BRIC: Skill found [%s]" CR, message.key);
