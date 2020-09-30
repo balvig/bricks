@@ -20,7 +20,7 @@ namespace Bricks {
     writeSleepTime();
 
     if(sleepTime > 0) {
-      sprintf(response, "Starting %d second sleep cycles", sleepTime);
+      sprintf(response, "Starting %u second sleep cycles", sleepTime);
     }
     else {
       strcpy(response, "Stopping sleep cycles");
