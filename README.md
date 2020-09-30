@@ -44,8 +44,8 @@ Depending on your needs, it could be used to:
 ### Software
 
 - [ ] TravisCI
-- [ ] Write up building a Brick
 - [ ] Write up making a custom brick
+- [ ] Write up building a Brick
 
 #### Nice to haves
 - [ ] Consider using `qos=1` for sending messages

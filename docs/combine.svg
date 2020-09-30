@@ -1,51 +1,58 @@
-<svg version="1.1" baseProfile="full" width="516" height="341" viewbox="0 0 516 341" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold normal 12pt Helvetica, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+<svg version="1.1" baseProfile="full" width="688" height="372" viewbox="0 0 688 372" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold normal 12pt Helvetica, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
   <title >combine</title>
   <desc >#title: combine
 #arrowSize:0.7
 #lineWidth: 1
+#fill: #fdf6e3; #fdf6e3
 
-[Button Brick]-[&lt;note&gt;pressed]
-[pressed]-&gt;[Gateway Brick]
+[Button Brick|00:11:22:33:44:55]-[&lt;note&gt;pressed]
+[pressed]-&gt;[Gateway Brick - in]
 
-[LED Brick]&lt;-[&lt;note&gt;setPattern: 1]
-[setPattern: 1]-[Gateway Brick]
+[LED Brick|aa:bb:cc:dd:ee:ff]&lt;-[&lt;note&gt;setPattern: 1]
+[setPattern: 1]-[Gateway Brick - out]
 
-[Gateway Brick]-[&lt;note&gt;/bricks/in/$MAC/pressed]
-[/bricks/in/$MAC/pressed]-&gt;[MQTT] 
+[Gateway Brick - in]-[&lt;note&gt;/bricks/in/00:11:22:33:44:55/pressed]
+[/bricks/in/00:11:22:33:44:55/pressed]-&gt;[MQTT]
 
-[Gateway Brick]&lt;-[&lt;note&gt;/bricks/out/$MAC/setPattern: 1]
-[/bricks/out/$MAC/setPattern: 1]-[MQTT]</desc>
-  <rect x="0" y="0" height="341" width="516" style="stroke:none; fill:transparent;"></rect>
-  <path d="M176 44.5 L176 64.5 L176 84.5 L176 84.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M176 115.5 L176 135.5 L216 155.5 L216 155.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M206 154.7 L211.8 153.4 L209.3 148 L216 155.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M318 44.5 L318 64.5 L318 84.5 L318 84.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M321.7 53.8 L318 49.2 L314.3 53.8 L318 44.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M318 115.5 L318 135.5 L278 155.5 L278 155.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M189.1 186.5 L114.5 206.5 L114.5 226.5 L114.5 226.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M114.5 257.5 L114.5 277.5 L216.5 304.8 L216.5 304.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M206.5 306 L212 303.6 L208.5 298.8 L216.5 304.8 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M304.9 186.5 L379.5 206.5 L379.5 226.5 L379.5 226.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M314.8 185.3 L309.4 187.7 L312.9 192.5 L304.9 186.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M379.5 257.5 L379.5 277.5 L277.5 304.8 L277.5 304.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <rect x="120.5" y="13.5" height="31" width="112" data-name="Button Brick" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></rect>
-  <text x="176.5" y="35" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Button Brick">Button Brick</text>
-  <path d="M137.5 84.5 L206.5 84.5 L214.5 92.5 L214.5 115.5 L137.5 115.5 L137.5 84.5 Z" data-name="pressed" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M206.5 84.5 L206.5 92.5 L214.5 92.5" data-name="pressed" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <text x="145.5" y="106" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="pressed">pressed</text>
-  <rect x="184.5" y="155.5" height="31" width="126" data-name="Gateway Brick" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></rect>
-  <text x="247.5" y="177" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Gateway Brick">Gateway Brick</text>
-  <rect x="272.5" y="13.5" height="31" width="92" data-name="LED Brick" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></rect>
-  <text x="318.5" y="35" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="LED Brick">LED Brick</text>
-  <path d="M261.5 84.5 L366.5 84.5 L374.5 92.5 L374.5 115.5 L261.5 115.5 L261.5 84.5 Z" data-name="setPattern: 1" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M366.5 84.5 L366.5 92.5 L374.5 92.5" data-name="setPattern: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <text x="269.5" y="106" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="setPattern: 1">setPattern: 1</text>
-  <path d="M13.5 226.5 L207.5 226.5 L215.5 234.5 L215.5 257.5 L13.5 257.5 L13.5 226.5 Z" data-name="/bricks/in/$MAC/pressed" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M207.5 226.5 L207.5 234.5 L215.5 234.5" data-name="/bricks/in/$MAC/pressed" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <text x="21.5" y="248" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="/bricks/in/$MAC/pressed">/bricks/in/$MAC/pressed</text>
-  <rect x="216.5" y="297.5" height="31" width="61" data-name="MQTT" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></rect>
-  <text x="247" y="319" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="MQTT">MQTT</text>
-  <path d="M255.5 226.5 L495.5 226.5 L503.5 234.5 L503.5 257.5 L255.5 257.5 L255.5 226.5 Z" data-name="/bricks/out/$MAC/setPattern: 1" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M495.5 226.5 L495.5 234.5 L503.5 234.5" data-name="/bricks/out/$MAC/setPattern: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <text x="263.5" y="248" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="/bricks/out/$MAC/setPattern: 1">/bricks/out/$MAC/setPattern: 1</text>
+[Gateway Brick - out]&lt;-[&lt;note&gt;/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]
+[/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]-[MQTT]</desc>
+  <rect x="0" y="0" height="372" width="688" style="stroke:none; fill:transparent;"></rect>
+  <path d="M158 75.5 L158 95.5 L158 115.5 L158 115.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M158 146.5 L158 166.5 L158 186.5 L158 186.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M154.3 177.2 L158 181.8 L161.7 177.2 L158 186.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M509 75.5 L509 95.5 L509 115.5 L509 115.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M512.7 84.8 L509 80.2 L505.3 84.8 L509 75.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M509 146.5 L509 166.5 L509 186.5 L509 186.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M158 217.5 L158 237.5 L158 257.5 L158 257.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M158 288.5 L158 308.5 L303 337.8 L303 337.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M293.1 339.6 L298.4 336.9 L294.6 332.3 L303 337.8 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M509 217.5 L509 237.5 L509 257.5 L509 257.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M512.7 226.8 L509 222.2 L505.3 226.8 L509 217.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M509 288.5 L509 308.5 L364 337.8 L364 337.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="86.5" y="13.5" height="62" width="144" data-name="Button Brick" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="158.5" y="35" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Button Brick">Button Brick</text>
+  <text x="94.5" y="66" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Button Brick">00:11:22:33:44:55</text>
+  <path d="M86.5 44.5 L230.5 44.5" data-name="Button Brick" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="442.5" y="13.5" height="62" width="134" data-name="LED Brick" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="509.5" y="35" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="LED Brick">LED Brick</text>
+  <text x="450.5" y="66" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="LED Brick">aa:bb:cc:dd:ee:ff</text>
+  <path d="M442.5 44.5 L576.5 44.5" data-name="LED Brick" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M119.5 115.5 L188.5 115.5 L196.5 123.5 L196.5 146.5 L119.5 146.5 L119.5 115.5 Z" data-name="pressed" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M188.5 115.5 L188.5 123.5 L196.5 123.5" data-name="pressed" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="127.5" y="137" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="pressed">pressed</text>
+  <rect x="80.5" y="186.5" height="31" width="155" data-name="Gateway Brick - in" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="158" y="208" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Gateway Brick - in">Gateway Brick - in</text>
+  <path d="M452.5 115.5 L557.5 115.5 L565.5 123.5 L565.5 146.5 L452.5 146.5 L452.5 115.5 Z" data-name="setPattern: 1" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M557.5 115.5 L557.5 123.5 L565.5 123.5" data-name="setPattern: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="460.5" y="137" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="setPattern: 1">setPattern: 1</text>
+  <rect x="426.5" y="186.5" height="31" width="165" data-name="Gateway Brick - out" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="509" y="208" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Gateway Brick - out">Gateway Brick - out</text>
+  <path d="M13.5 257.5 L294.5 257.5 L302.5 265.5 L302.5 288.5 L13.5 288.5 L13.5 257.5 Z" data-name="/bricks/in/00:11:22:33:44:55/pressed" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M294.5 257.5 L294.5 265.5 L302.5 265.5" data-name="/bricks/in/00:11:22:33:44:55/pressed" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="21.5" y="279" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="/bricks/in/00:11:22:33:44:55/pressed">/bricks/in/00:11:22:33:44:55/pressed</text>
+  <rect x="303.5" y="328.5" height="31" width="61" data-name="MQTT" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="334" y="350" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="MQTT">MQTT</text>
+  <path d="M342.5 257.5 L667.5 257.5 L675.5 265.5 L675.5 288.5 L342.5 288.5 L342.5 257.5 Z" data-name="/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M667.5 257.5 L667.5 265.5 L675.5 265.5" data-name="/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="350.5" y="279" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1">/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1</text>
 </svg>

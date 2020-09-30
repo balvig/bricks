@@ -6,22 +6,22 @@ http://www.nomnoml.com/
 #title: gateway
 #arrowSize:0.7
 #lineWidth: 1
-#fill: transparent; #fdf6e3
+#fill: #fdf6e3; #fdf6e3
 
 [In|
-[Button Brick]-[<note>pressed]
+[Button Brick|00:11:22:33:44:55]-[<note>pressed]
 [pressed]->[Gateway Brick]
 
-[Gateway Brick]-[<note>/bricks/in/$MAC/pressed]
-[/bricks/in/$MAC/pressed]->[MQTT]
+[Gateway Brick]-[<note>/bricks/in/00:11:22:33:44:55/pressed]
+[/bricks/in/00:11:22:33:44:55/pressed]->[MQTT]
 ]
 
 [Out|
-[MQTT]-[<note>/bricks/out/$MAC/setPattern: 1]
-[/bricks/out/$MAC/setPattern: 1]->[Gateway Brick]
+[MQTT]-[<note>/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]
+[/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]->[Gateway Brick]
 
 [Gateway Brick]-[<note>setPattern: 1]
-[setPattern: 1]->[LED Brick]
+[setPattern: 1]->[LED Brick|aa:bb:cc:dd:ee:ff]
 ]
 ```
 
@@ -31,18 +31,19 @@ http://www.nomnoml.com/
 #title: combine
 #arrowSize:0.7
 #lineWidth: 1
+#fill: #fdf6e3; #fdf6e3
 
-[Button Brick]-[<note>pressed]
-[pressed]->[Gateway Brick]
+[Button Brick|00:11:22:33:44:55]-[<note>pressed]
+[pressed]->[Gateway Brick - in]
 
-[LED Brick]<-[<note>setPattern: 1]
-[setPattern: 1]-[Gateway Brick]
+[LED Brick|aa:bb:cc:dd:ee:ff]<-[<note>setPattern: 1]
+[setPattern: 1]-[Gateway Brick - out]
 
-[Gateway Brick]-[<note>/bricks/in/$MAC/pressed]
-[/bricks/in/$MAC/pressed]->[MQTT]
+[Gateway Brick - in]-[<note>/bricks/in/00:11:22:33:44:55/pressed]
+[/bricks/in/00:11:22:33:44:55/pressed]->[MQTT]
 
-[Gateway Brick]<-[<note>/bricks/out/$MAC/setPattern: 1]
-[/bricks/out/$MAC/setPattern: 1]-[MQTT]
+[Gateway Brick - out]<-[<note>/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]
+[/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]-[MQTT]
 ```
 
 ---
@@ -52,7 +53,8 @@ http://www.nomnoml.com/
 #arrowSize:0.7
 #lineWidth: 1
 #direction: right
+#fill: #fdf6e3; #fdf6e3
 
-[<note>bricks/in/ee:fa:bc:8e:89:1e/pressed]->[<note>bricks/out/ee:fa:bc:8e:89:8f/setPattern: 1]
-[<note>bricks/in/ee:fa:bc:8e:89:1e/released]->[<note>bricks/out/ee:fa:bc:8e:89:8f/setPattern: 0]
+[<note>bricks/in/00:11:22:33:44:55/pressed]->[<note>bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]
+[<note>bricks/in/00:11:22:33:44:55/released]->[<note>bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 0]
 ```
