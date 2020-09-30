@@ -8,7 +8,7 @@ namespace Bricks {
   class ListSkill : public Skill {
     public:
       ListSkill();
-      void callback(BRICKS_CALLBACK_SIGNATURE);
+      void callback(BRICKS_CALLBACK_SIGNATURE) override;
   };
 }
 #endif

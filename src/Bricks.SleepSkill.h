@@ -21,8 +21,8 @@ namespace Bricks {
 
     public:
       SleepSkill(const char *name = "New Brick");
-      void loop();
-      void callback(BRICKS_CALLBACK_SIGNATURE);
+      void callback(BRICKS_CALLBACK_SIGNATURE) override;
+      void loop() override;
     private:
       void sendAwakeMessage();
       void deepSleep();

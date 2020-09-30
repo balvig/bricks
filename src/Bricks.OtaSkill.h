@@ -9,8 +9,8 @@ namespace Bricks {
   class OtaSkill : public Skill {
     public:
       OtaSkill();
-      void loop();
-      void callback(BRICKS_CALLBACK_SIGNATURE);
+      void callback(BRICKS_CALLBACK_SIGNATURE) override;
+      void loop() override;
     private:
       void initOta();
       void startAP();

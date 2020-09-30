@@ -15,12 +15,6 @@ namespace Bricks {
     }
   }
 
-  void SleepSkill::loop() {
-    if(awakeTimeout()) {
-      deepSleep();
-    }
-  }
-
   void SleepSkill::callback(BRICKS_CALLBACK_SIGNATURE) {
     this->sleepTime = atoi(message.value);
     writeSleepTime();
@@ -30,6 +24,12 @@ namespace Bricks {
     }
     else {
       strcpy(response, "Stopping sleep cycles");
+    }
+  }
+
+  void SleepSkill::loop() {
+    if(awakeTimeout()) {
+      deepSleep();
     }
   }
 

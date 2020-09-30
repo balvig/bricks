@@ -4,14 +4,14 @@ namespace Bricks {
   OtaSkill::OtaSkill() : Skill("setOta") {
   }
 
-  void OtaSkill::loop() {
-    ArduinoOTA.handle();
-  }
-
   void OtaSkill::callback(BRICKS_CALLBACK_SIGNATURE) {
     initOta();
     startAP();
     strcpy(response, "Connect to 'Brick - OTA'");
+  }
+
+  void OtaSkill::loop() {
+    ArduinoOTA.handle();
   }
 
   void OtaSkill::initOta() {

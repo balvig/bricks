@@ -8,7 +8,7 @@ namespace Bricks {
   class BatterySkill : public Skill {
     public:
       BatterySkill(const uint8_t pin = 17); // A0 on Wemos
-      void callback(BRICKS_CALLBACK_SIGNATURE);
+      void callback(BRICKS_CALLBACK_SIGNATURE) override;
     private:
       uint8_t pin;
   };

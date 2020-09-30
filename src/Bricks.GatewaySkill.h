@@ -33,8 +33,8 @@ namespace Bricks {
 
     public:
       GatewaySkill();
-      void callback(BRICKS_CALLBACK_SIGNATURE);
-      void loop();
+      void callback(BRICKS_CALLBACK_SIGNATURE) override;
+      void loop() override;
       static void onEvent(char *topic, byte *bytes, unsigned int length);
       static void parseTopic(const char *topic, uint8_t *macAddr, char *key);
     private:
