@@ -1,0 +1,900 @@
+[
+    {
+        "id": "828761ad.f21bd",
+        "type": "subflow",
+        "name": "Brick",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "ae27039.97d81"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 480,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "127382d8.f9bbbd",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "mac",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-address-card-o",
+                    "label": {
+                        "en-US": "MAC"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "TOPIC_PREFIX",
+                "type": "str",
+                "value": "accounts/balvig/bricks",
+                "ui": {
+                    "type": "hide",
+                    "opts": {}
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "node-red/redis.png"
+    },
+    {
+        "id": "726e72cd.52d94c",
+        "type": "mqtt out",
+        "z": "828761ad.f21bd",
+        "name": "Bricks out",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "69cfef51.baf9",
+        "x": 440,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ae27039.97d81",
+        "type": "function",
+        "z": "828761ad.f21bd",
+        "name": "Compose topic",
+        "func": "msg.topic = [\n    env.get(\"TOPIC_PREFIX\"),\n    \"out\",\n    env.get(\"mac\") || msg.mac,\n    msg.key\n].join(\"/\")\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 240,
+        "y": 80,
+        "wires": [
+            [
+                "726e72cd.52d94c"
+            ]
+        ]
+    },
+    {
+        "id": "2ebfb91e.bd6c76",
+        "type": "mqtt in",
+        "z": "828761ad.f21bd",
+        "name": "Bricks in",
+        "topic": "accounts/balvig/bricks/in/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "127382d8.f9bbbd"
+            ]
+        ],
+        "info": "Why can't topic be `$(TOPIC_PREFIX)/in/#`"
+    },
+    {
+        "id": "127382d8.f9bbbd",
+        "type": "switch",
+        "z": "828761ad.f21bd",
+        "name": "Filter by MAC",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "mac",
+                "vt": "env"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "61a652c9.fcba9c",
+        "type": "subflow",
+        "name": "Compose",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 40,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "be545e24.9aa31"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 760,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "1b6bf0a5.50ff0f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "key",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Key"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "value",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-comment-o",
+                    "label": {
+                        "en-US": "Value"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "delay",
+                "type": "num",
+                "value": "0",
+                "ui": {
+                    "icon": "font-awesome/fa-clock-o",
+                    "label": {
+                        "en-US": "Delay (ms)"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "node-red/split.svg"
+    },
+    {
+        "id": "1b6bf0a5.50ff0f",
+        "type": "delay",
+        "z": "61a652c9.fcba9c",
+        "name": "Delay",
+        "pauseType": "delayv",
+        "timeout": "0",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 630,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "45b2f3b4.06b84c",
+        "type": "change",
+        "z": "61a652c9.fcba9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "delay",
+                "pt": "msg",
+                "to": "delay",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 40,
+        "wires": [
+            [
+                "1b6bf0a5.50ff0f"
+            ]
+        ]
+    },
+    {
+        "id": "be545e24.9aa31",
+        "type": "function",
+        "z": "61a652c9.fcba9c",
+        "name": "Set key & payload",
+        "func": "msg.key = env.get(\"key\") || msg.key\nmsg.payload = env.get(\"value\") || msg.payload\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 210,
+        "y": 40,
+        "wires": [
+            [
+                "45b2f3b4.06b84c"
+            ]
+        ]
+    },
+    {
+        "id": "c829e851.77b118",
+        "type": "subflow",
+        "name": "format time",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "303e8462.4800cc"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 640,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "25b52c39.535b54",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "FIELD",
+                "type": "str",
+                "value": "time"
+            },
+            {
+                "name": "TIMEZONE",
+                "type": "str",
+                "value": "Asia/Tokyo"
+            },
+            {
+                "name": "FORMAT",
+                "type": "str",
+                "value": "MM/DD - HH:mm:ss"
+            }
+        ],
+        "color": "#E6E0F8",
+        "icon": "font-awesome/fa-clock-o"
+    },
+    {
+        "id": "9e515fc8.b91cf",
+        "type": "moment",
+        "z": "c829e851.77b118",
+        "name": "Moment.js",
+        "topic": "",
+        "input": "formattedTime",
+        "inputType": "msg",
+        "inTz": "Etc/UTC",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "$(FORMAT)",
+        "locale": "\"POSIX\"",
+        "output": "formattedTime",
+        "outputType": "msg",
+        "outTz": "$(TIMEZONE)",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "25b52c39.535b54"
+            ]
+        ]
+    },
+    {
+        "id": "25b52c39.535b54",
+        "type": "function",
+        "z": "c829e851.77b118",
+        "name": "Move back",
+        "func": "let field = env.get(\"FIELD\");\nmsg.payload[field] = msg.formattedTime;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "303e8462.4800cc",
+        "type": "function",
+        "z": "c829e851.77b118",
+        "name": "Move out",
+        "func": "let field = env.get(\"FIELD\");\nmsg.formattedTime = msg.payload[field];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "9e515fc8.b91cf"
+            ]
+        ]
+    },
+    {
+        "id": "b926ce0c.749ff",
+        "type": "tab",
+        "label": "Console",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a3aa3a08.d89b18",
+        "type": "ui_text_input",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "group": "289f89e3.a0fb16",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "text",
+        "delay": "0",
+        "topic": "",
+        "x": 100,
+        "y": 80,
+        "wires": [
+            [
+                "2c2074ef.067d2c",
+                "dfdddd49.c4e56"
+            ]
+        ]
+    },
+    {
+        "id": "2444f275.69edae",
+        "type": "function",
+        "z": "b926ce0c.749ff",
+        "name": "Parse",
+        "func": "let parts = msg.payload.split(\":\")\nmsg.mac = flow.get(\"MAC\")\nmsg.key = parts[0];\nmsg.payload = parts[1];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 80,
+        "wires": [
+            [
+                "3f985866.17bea8"
+            ]
+        ]
+    },
+    {
+        "id": "6d66b4f8.35bccc",
+        "type": "litedb",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "x": 650,
+        "y": 180,
+        "wires": [
+            [
+                "8d68ad63.81ead"
+            ]
+        ]
+    },
+    {
+        "id": "18c0eb51.cc47a5",
+        "type": "function",
+        "z": "b926ce0c.749ff",
+        "name": "insert record",
+        "func": "var sql = `\nINSERT OR REPLACE INTO logs (topic, value, time)\nVALUES(\n  \"${msg.topic}\",\n  \"${msg.payload}\",\n  \"${+new Date()}\"\n);\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "6d66b4f8.35bccc"
+            ]
+        ]
+    },
+    {
+        "id": "f5473101.cd61b",
+        "type": "ui_template",
+        "z": "b926ce0c.749ff",
+        "group": "289f89e3.a0fb16",
+        "name": "UI Table",
+        "order": 2,
+        "width": "6",
+        "height": "5",
+        "format": "<html>\n    <head>\n        <link href=\"https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css\" rel=\"stylesheet\">\n    </head>\n    <body class=\"h-full\">\n        <table class=\"w-full text-xs\">\n          <tr ng-repeat=\"x in msg.payload\" class=\"align-top\">\n            <td class=\"font-bold w-20\">\n                {{msg.payload[$index].time}}\n                {{msg.payload[$index].direction}}\n            </td>\n            <td>\n                {{msg.payload[$index].action}}\n                <span class=\"text-gray-600\">{{msg.payload[$index].value}}</span>\n            </td>\n          </tr>\n        </table>        \n    </body>\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 860,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4064715c.87577",
+        "type": "litedb",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "x": 650,
+        "y": 220,
+        "wires": [
+            [
+                "f5a36a7e.3e9bb8"
+            ]
+        ]
+    },
+    {
+        "id": "8d68ad63.81ead",
+        "type": "function",
+        "z": "b926ce0c.749ff",
+        "name": "read records",
+        "func": "var sql = `\nSELECT * FROM logs ORDER BY time DESC LIMIT 30\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 220,
+        "wires": [
+            [
+                "4064715c.87577"
+            ]
+        ]
+    },
+    {
+        "id": "2813fbb4.b87724",
+        "type": "function",
+        "z": "b926ce0c.749ff",
+        "name": "create database",
+        "func": "var sql = `\nCREATE TABLE logs(\n  topic STRING,\n  value STRING,\n  time INT\n)\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 420,
+        "wires": [
+            [
+                "6e84c3ca.c64abc"
+            ]
+        ]
+    },
+    {
+        "id": "e9d24e99.68c3a",
+        "type": "function",
+        "z": "b926ce0c.749ff",
+        "name": "drop database",
+        "func": "var sql = `\nDROP TABLE IF EXISTS logs;\n`\nvar newMsg = { \"topic\": sql }\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 380,
+        "wires": [
+            [
+                "624caf47.b8a8b"
+            ]
+        ]
+    },
+    {
+        "id": "624caf47.b8a8b",
+        "type": "litedb",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "x": 530,
+        "y": 380,
+        "wires": [
+            [
+                "2813fbb4.b87724"
+            ]
+        ]
+    },
+    {
+        "id": "6e84c3ca.c64abc",
+        "type": "litedb",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "x": 530,
+        "y": 420,
+        "wires": [
+            [
+                "5c43133c.606d8c"
+            ]
+        ]
+    },
+    {
+        "id": "f5a36a7e.3e9bb8",
+        "type": "split",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 490,
+        "y": 260,
+        "wires": [
+            [
+                "989c2040.39564"
+            ]
+        ]
+    },
+    {
+        "id": "beeaeddf.2a0d1",
+        "type": "join",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "mode": "auto",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 670,
+        "y": 300,
+        "wires": [
+            [
+                "f5473101.cd61b"
+            ]
+        ]
+    },
+    {
+        "id": "3c3556ef.bdb42a",
+        "type": "function",
+        "z": "b926ce0c.749ff",
+        "name": "Parse",
+        "func": "let parts = msg.payload.topic.split(\"/\")\nmsg.payload.direction = parts[3]\nmsg.payload.action = parts[5]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 300,
+        "wires": [
+            [
+                "beeaeddf.2a0d1"
+            ]
+        ]
+    },
+    {
+        "id": "989c2040.39564",
+        "type": "subflow:c829e851.77b118",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "env": [
+            {
+                "name": "FORMAT",
+                "value": "HH:mm",
+                "type": "str"
+            }
+        ],
+        "x": 630,
+        "y": 260,
+        "wires": [
+            [
+                "3c3556ef.bdb42a"
+            ]
+        ]
+    },
+    {
+        "id": "b33622d3.56608",
+        "type": "mqtt in",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "topic": "accounts/balvig/bricks/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 130,
+        "y": 180,
+        "wires": [
+            [
+                "2577322c.13b11e"
+            ]
+        ]
+    },
+    {
+        "id": "572261d6.7fe",
+        "type": "link in",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "links": [
+            "63f26d33.646b34"
+        ],
+        "x": 55,
+        "y": 380,
+        "wires": [
+            [
+                "23ceddda.c89cb2",
+                "a4937785.a9aa08"
+            ]
+        ]
+    },
+    {
+        "id": "23ceddda.c89cb2",
+        "type": "change",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "MAC",
+                "pt": "flow",
+                "to": "topic",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 190,
+        "y": 380,
+        "wires": [
+            [
+                "e9d24e99.68c3a"
+            ]
+        ]
+    },
+    {
+        "id": "a4937785.a9aa08",
+        "type": "ui_text",
+        "z": "b926ce0c.749ff",
+        "group": "289f89e3.a0fb16",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "MAC",
+        "format": "{{msg.topic}}",
+        "layout": "row-spread",
+        "x": 170,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "dfdddd49.c4e56",
+        "type": "template",
+        "z": "b926ce0c.749ff",
+        "name": "clear",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "",
+        "output": "str",
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "a3aa3a08.d89b18"
+            ]
+        ]
+    },
+    {
+        "id": "5c43133c.606d8c",
+        "type": "function",
+        "z": "b926ce0c.749ff",
+        "name": "Clear",
+        "func": "msg.payload = [];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 420,
+        "wires": [
+            [
+                "f5473101.cd61b"
+            ]
+        ]
+    },
+    {
+        "id": "2c2074ef.067d2c",
+        "type": "switch",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 250,
+        "y": 80,
+        "wires": [
+            [
+                "2444f275.69edae"
+            ]
+        ]
+    },
+    {
+        "id": "2577322c.13b11e",
+        "type": "switch",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "MAC",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "a4896bf.a6c9498"
+            ]
+        ]
+    },
+    {
+        "id": "a4896bf.a6c9498",
+        "type": "delay",
+        "z": "b926ce0c.749ff",
+        "name": "Dedupe",
+        "pauseType": "timed",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "0.1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "18c0eb51.cc47a5"
+            ]
+        ]
+    },
+    {
+        "id": "3f985866.17bea8",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "env": [],
+        "x": 540,
+        "y": 80,
+        "wires": [
+            [
+                "8bd22c17.eb421"
+            ]
+        ]
+    },
+    {
+        "id": "8bd22c17.eb421",
+        "type": "subflow:828761ad.f21bd",
+        "z": "b926ce0c.749ff",
+        "name": "",
+        "env": [],
+        "x": 690,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "289f89e3.a0fb16",
+        "type": "ui_group",
+        "z": "",
+        "name": "Console",
+        "tab": "6e72a433.d464dc",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "69cfef51.baf9",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "mqtt.sensetecnic.com",
+        "port": "1883",
+        "clientid": "bricks-nodered",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "6e72a433.d464dc",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "home",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

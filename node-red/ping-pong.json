@@ -116,10 +116,9 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "regex",
-                "v": "MAC",
-                "vt": "env",
-                "case": false
+                "t": "cont",
+                "v": "mac",
+                "vt": "env"
             }
         ],
         "checkall": "true",
@@ -280,7 +279,7 @@
         "order": 1,
         "width": "6",
         "height": "6",
-        "format": "<table style=\"width:100%;font-size:0.8rem;\">\n  <tr>\n    <th style=\"text-align:left;\">Mac</th> \n    <th style=\"text-align:left\">Name</th>\n    <th style=\"text-align:left\">Last seen</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload\"  class=\"{{msg.payload[$index].old ? 'text-gray-500' : ''}}\">\n    <td>\n        <a href=\"#\" class=\"underline\" ng-click=\"send({topic:msg.payload[$index].mac})\">{{msg.payload[$index].mac}}</a>\n    </td>\n    <td>{{msg.payload[$index].name}}</td> \n    <td>{{msg.payload[$index].time}}</td> \n  </tr>\n</table>",
+        "format": "<table style=\"width:100%;font-size:0.8rem;\">\n  <tr>\n    <th style=\"text-align:left;\">Mac</th> \n    <th style=\"text-align:left\">Name</th>\n    <th style=\"text-align:left\">Last seen</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload\" class=\"{{msg.payload[$index].old ? 'text-gray-400 line-through' : ''}}\">\n    <td>\n        <a href=\"#\" class=\"underline\" ng-click=\"send({topic:msg.payload[$index].mac})\">{{msg.payload[$index].mac}}</a>\n    </td>\n    <td>{{msg.payload[$index].name}}</td> \n    <td>{{msg.payload[$index].time}}</td> \n  </tr>\n</table>",
         "storeOutMessages": true,
         "fwdInMessages": false,
         "resendOnRefresh": true,
@@ -349,7 +348,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 320,
-        "y": 400,
+        "y": 380,
         "wires": [
             [
                 "ccc95973.746608"
@@ -365,7 +364,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 320,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "427de7dd.8d0988"
@@ -378,7 +377,7 @@
         "z": "5cc01b87.5b1a24",
         "name": "",
         "x": 470,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "9b0e61db.e4759"
@@ -391,7 +390,7 @@
         "z": "5cc01b87.5b1a24",
         "name": "",
         "x": 470,
-        "y": 400,
+        "y": 380,
         "wires": [
             []
         ]
@@ -409,7 +408,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 110,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "371413bf.791ecc"
@@ -485,7 +484,7 @@
         "once": true,
         "onceDelay": 0.1,
         "x": 110,
-        "y": 160,
+        "y": 180,
         "wires": [
             [
                 "e19130c6.f2df1"

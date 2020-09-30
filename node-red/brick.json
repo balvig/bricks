@@ -116,10 +116,9 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "regex",
-                "v": "MAC",
-                "vt": "env",
-                "case": false
+                "t": "cont",
+                "v": "mac",
+                "vt": "env"
             }
         ],
         "checkall": "true",
