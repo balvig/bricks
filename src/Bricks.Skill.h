@@ -6,7 +6,7 @@
 #include <Bricks.Message.h>
 #include <Bricks.Outbox.h>
 
-#define BRICKS_PROCESS_SIGNATURE const uint8_t *macAddr, const Message message
+#define BRICKS_PROCESS_SIGNATURE const uint8_t *macAddr, const Message &message
 #define BRICKS_CALLBACK_SIGNATURE BRICKS_PROCESS_SIGNATURE , char *response
 
 namespace Bricks {
