@@ -54,9 +54,14 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
-- [ ] Reset putton PCB
-- [ ] Slot for reset button
+- [ ] Build Bricks suite
+  - [ ] LED
+  - [ ] Matrix
+  - [ ] Dash button
+  - [ ] Realtime button
+  - [ ] Buzzer
+  - [ ] PIR
+  - [ ] IR
 - [ ] Sturdier PCB attachment
-- [ ] Nicer stickers
 - [ ] Wooden panels
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
