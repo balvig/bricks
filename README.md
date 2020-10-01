@@ -25,7 +25,7 @@ Individual LEDs, buttons, sensors, that could be pulled out when needed, were al
 and whose behavior could easily be programmed ad hoc using modern program
 languages such as Ruby or JavaScript.
 
-You could say Bricks is [Sony Mesh](https://meshprj.com/) without the hefty price tag,
+You could say Bricks is a poor man's [Sony Mesh](https://meshprj.com/),
 running entirely on existing Arduino-compatible hardware and open source software,
 and made for people who already know how to code.
 
