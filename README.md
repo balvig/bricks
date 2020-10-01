@@ -46,6 +46,7 @@ Depending on your needs, it could be used to:
 - [ ] TravisCI
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
+- [ ] More matrix options
 
 #### Nice to haves
 - [ ] Consider using `qos=1` for sending messages
@@ -54,6 +55,8 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
+- [ ] Tweak shelf size
+- [ ] Gap for wire?
 - [ ] Build Bricks suite
   - [ ] LED
   - [ ] Matrix
