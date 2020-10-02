@@ -43,7 +43,7 @@ Depending on your needs, it could be used to:
 
 ### Software
 
-- [ ] TravisCI
+- [ ] Find way to test examples with includes
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
 - [ ] More matrix options
@@ -55,14 +55,12 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
-- [ ] Tweak shelf size
-- [ ] Gap for wire?
 - [ ] Build Bricks suite
-  - [ ] LED
+  - [x] LED RGB
   - [ ] Matrix
   - [ ] Dash button
   - [ ] Realtime button
-  - [ ] Buzzer
+  - [x] Buzzer
   - [ ] PIR
   - [ ] IR
 - [ ] Sturdier PCB attachment
