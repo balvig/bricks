@@ -2,7 +2,6 @@ language: python
 python:
   - "2.7"
 
-# Cache PlatformIO packages using Travis CI container-based infrastructure
 cache:
   directories:
     - "~/.platformio"
@@ -12,7 +11,7 @@ env:
   - EXAMPLE=examples/button-dash
   - EXAMPLE=examples/button
   - EXAMPLE=examples/buzzer
-  # - EXAMPLE=examples/gateway
+  - EXAMPLE=examples/gateway
   # - EXAMPLE=examples/ir
   - EXAMPLE=examples/led-matrix
   - EXAMPLE=examples/led-rgb
@@ -22,6 +21,7 @@ env:
 install:
   - pip install -U platformio
   - pio update
+  - touch examples/gateway/include/secrets.h
   - export PLATFORMIO_BUILD_FLAGS="'-DBRICKS_GATEWAY_MAC=\"00:00:00:00:00:00\"'"
 
 script:
