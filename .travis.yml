@@ -12,8 +12,8 @@ env:
   - EXAMPLE=examples/button-dash
   - EXAMPLE=examples/button
   - EXAMPLE=examples/buzzer
-  - EXAMPLE=examples/gateway
-  - EXAMPLE=examples/ir
+  # - EXAMPLE=examples/gateway
+  # - EXAMPLE=examples/ir
   - EXAMPLE=examples/led-matrix
   - EXAMPLE=examples/led-rgb
   - EXAMPLE=examples/led
