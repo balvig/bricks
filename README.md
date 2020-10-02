@@ -46,19 +46,19 @@ Depending on your needs, it could be used to:
 - [ ] Find way to test examples with includes
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
-- [ ] More matrix options
 
 #### Nice to haves
-- [ ] Consider using `qos=1` for sending messages
 - [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
-- [ ] More tests
+- [ ] Try using `qos=1` for sending messages
+- [ ] More matrix options
+- [ ] More buzzer options
 
 ### Hardware
 
 - [ ] Build Bricks suite
   - [x] LED RGB
-  - [ ] Matrix
   - [ ] Dash button
+  - [ ] Matrix
   - [ ] Realtime button
   - [x] Buzzer
   - [ ] PIR
