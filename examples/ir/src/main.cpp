@@ -20,7 +20,7 @@ IRrecv irrecv(RECEIVER_PIN, BUFFER, TIMEOUT);
 IRsend irsend(SEND_PIN);
 decode_results results;
 
-IRCode *code;
+IRcode *code;
 
 // Bricks callbacks
 void sendCode(BRICKS_CALLBACK_SIGNATURE) {

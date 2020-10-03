@@ -43,7 +43,6 @@ Depending on your needs, it could be used to:
 
 ### Software
 
-- [ ] Find way to test examples with includes
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
 
