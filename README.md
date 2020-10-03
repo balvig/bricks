@@ -47,10 +47,14 @@ Depending on your needs, it could be used to:
 - [ ] Write up building a Brick
 
 #### Nice to haves
-- [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
-- [ ] Try using `qos=1` for sending messages
 - [ ] More matrix options
 - [ ] More buzzer options
+- [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
+- [ ] Try using `qos=1` for sending messages
+
+#### Ideas
+- [ ] Should awake send battery level too?
+- [ ] `setSleep:600,getBattery`
 
 ### Hardware
 
