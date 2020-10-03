@@ -12,7 +12,7 @@ env:
   - EXAMPLE=examples/button
   - EXAMPLE=examples/buzzer
   - EXAMPLE=examples/gateway
-  # - EXAMPLE=examples/ir
+  - EXAMPLE=examples/ir
   - EXAMPLE=examples/led-matrix
   - EXAMPLE=examples/led-rgb
   - EXAMPLE=examples/led
@@ -25,5 +25,4 @@ install:
   - export PLATFORMIO_BUILD_FLAGS="'-DBRICKS_GATEWAY_MAC=\"00:00:00:00:00:00\"'"
 
 script:
-  - cd $EXAMPLE
-  - pio run --target ""
+  - pio run --target "" --project-dir $EXAMPLE
