@@ -64,7 +64,7 @@ Depending on your needs, it could be used to:
 
 - [ ] Build Bricks suite
   - [x] LED RGB
-  - [ ] Dash button
+  - [x] Dash button
   - [ ] Matrix
   - [ ] Realtime button
   - [x] Buzzer
