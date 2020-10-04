@@ -43,6 +43,8 @@ Depending on your needs, it could be used to:
 
 ### Software
 
+- [ ] MAC handling in Node-RED
+- [ ] Drop camel case for skills?
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
 
@@ -66,6 +68,7 @@ Depending on your needs, it could be used to:
   - [x] Buzzer
   - [ ] PIR
   - [ ] IR
+- [ ] Softer/slimmer cushion
 - [ ] Sturdier PCB attachment
 - [ ] Wooden panels
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
