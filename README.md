@@ -19,7 +19,9 @@ I'm a developer by profession, but spending days writing C++, flashing
 microcontrollers, soldering custom PCBs, and building enclosures for
 what are essentially throwaway projects always felt a little harder than it should.
 
-That led to the idea of building a suite of pre-programmed IoT "Bricks".
+That led to the idea of building a suite of pre-programmed IoT "Bricks":
+
+<img src=docs/bricks.jpg alt=Bricks width=50%>
 
 Individual LEDs, buttons, sensors, that could be pulled out when needed, were all internet-enabled,
 and whose behavior could easily be programmed ad hoc using modern program
