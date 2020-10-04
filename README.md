@@ -57,6 +57,7 @@ Depending on your needs, it could be used to:
 #### Ideas
 - [ ] Should awake send battery level too?
 - [ ] `setSleep:600,getBattery`
+- [ ] `setLED:2,50,10`
 
 ### Hardware
 
