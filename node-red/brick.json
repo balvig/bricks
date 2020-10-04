@@ -18,7 +18,7 @@
         ],
         "out": [
             {
-                "x": 480,
+                "x": 680,
                 "y": 140,
                 "wires": [
                     {
@@ -102,7 +102,7 @@
         "y": 140,
         "wires": [
             [
-                "127382d8.f9bbbd"
+                "e00de14f.8bc2b"
             ]
         ],
         "info": "Why can't topic be `$(TOPIC_PREFIX)/in/#`"
@@ -112,7 +112,7 @@
         "type": "switch",
         "z": "828761ad.f21bd",
         "name": "Filter by MAC",
-        "property": "topic",
+        "property": "mac",
         "propertyType": "msg",
         "rules": [
             {
@@ -124,10 +124,26 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 320,
+        "x": 540,
         "y": 140,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "e00de14f.8bc2b",
+        "type": "function",
+        "z": "828761ad.f21bd",
+        "name": "Parse MAC / Key",
+        "func": "let parts = msg.topic.split(\"/\").reverse()\nmsg.key = parts[0]\nmsg.mac = parts[1]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "127382d8.f9bbbd"
+            ]
         ]
     },
     {

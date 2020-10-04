@@ -45,8 +45,6 @@ Depending on your needs, it could be used to:
 
 ### Software
 
-- [ ] MAC handling in Node-RED
-- [ ] Drop camel case for skills?
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
 
