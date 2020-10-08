@@ -9,18 +9,17 @@ using namespace Bricks;
 Lumi::Animator animator;
 
 // Bricks callbacks
-void setPattern(BRICKS_CALLBACK_SIGNATURE) {
-  animator.currentPattern = atoi(message.value);
-}
+void setLED(BRICKS_CALLBACK_SIGNATURE) {
+  unsigned int pattern;
+  unsigned int variation;
+  unsigned int delay;
 
-void setVariation(BRICKS_CALLBACK_SIGNATURE) {
-  animator.currentVariation = atoi(message.value);
-}
+  int matches = sscanf(message.value, "%u,%u,%u", &pattern, &variation, &delay);
 
-void setDelay(BRICKS_CALLBACK_SIGNATURE) {
-  animator.currentDelay = atoi(message.value);
+  if(matches >= 1) { animator.currentPattern = pattern; }
+  if(matches >= 2) { animator.currentVariation = variation; }
+  if(matches >= 3) { animator.currentDelay = delay; }
 }
-
 
 void setup() {
   // Logging
@@ -29,9 +28,7 @@ void setup() {
 
   // Configure Brick
   gBrick.init("LED RGB");
-  gBrick.skills[0] = new Skill("setPattern", &setPattern);
-  gBrick.skills[1] = new Skill("setVariation", &setVariation);
-  gBrick.skills[2] = new Skill("setDelay", &setDelay);
+  gBrick.skills[0] = new Skill("setLED", &setLED);
 }
 
 void loop() {

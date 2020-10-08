@@ -57,7 +57,6 @@ Depending on your needs, it could be used to:
 #### Ideas
 - [ ] Should awake send battery level too?
 - [ ] `setSleep:600,getBattery`
-- [ ] `setLED:2,50,10`
 
 ### Hardware
 
@@ -71,5 +70,5 @@ Depending on your needs, it could be used to:
   - [ ] IR
 - [ ] Softer/slimmer cushion
 - [ ] Sturdier PCB attachment
-- [ ] Wooden panels
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
+- [ ] Wooden panels
