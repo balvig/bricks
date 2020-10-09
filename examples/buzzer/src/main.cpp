@@ -3,15 +3,28 @@
 using namespace Bricks;
 
 // Local
+#include <Song.h>
+#include <songs.h>
 const int BUZZER = D5;
 
-// Bricks callbacks
-void playTone(BRICKS_CALLBACK_SIGNATURE) {
-  int frequency;
-  int duration;
-  sscanf(message.value, "%d,%d", &frequency, &duration);
+Song *song;
 
-  tone(BUZZER, frequency, duration);
+// Bricks callbacks
+void cueSong(BRICKS_CALLBACK_SIGNATURE) {
+  const int songNumber = atoi(message.value);
+  song = &songs[songNumber];
+}
+
+void playSong() {
+  for (int thisNote = 0; thisNote < song->length; thisNote++) {
+    const int noteDuration = 1000 / song->timings[thisNote];
+    const int pauseBetweenNotes = noteDuration * 1.30;
+
+    tone(BUZZER, song->melody[thisNote], noteDuration);
+    delay(pauseBetweenNotes);
+  }
+
+  song = nullptr;
 }
 
 void setup() {
@@ -24,10 +37,12 @@ void setup() {
 
   // Configure Brick
   gBrick.init("Buzzer");
-  gBrick.skills[0] = new Skill("tone", &playTone);
-
+  gBrick.skills[0] = new Skill("play", &cueSong);
 }
 
 void loop() {
+  if(song) {
+    playSong();
+  }
   gBrick.loop();
 }

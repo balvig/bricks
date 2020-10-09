@@ -2,6 +2,6 @@
 
 ## Skills
 
-| key      | description                          | values        |
-|----------|--------------------------------------|---------------|
-| out/tone | play tone at set frequency, duration | "800,200" etc |
+| key      | description  | values |
+|----------|--------------|--------|
+| out/play | play song/fx | 0-2    |
