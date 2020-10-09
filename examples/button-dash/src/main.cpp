@@ -10,6 +10,9 @@ void setup() {
   // Configure Brick
   gBrick.init("Dash Button");
 
+  // Give a moment to respond to any messages
+  delay(200);
+
   // Put to sleep indefinitely
   Utils::deepSleep(0);
 }
