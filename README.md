@@ -47,10 +47,11 @@ Depending on your needs, it could be used to:
 
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
-
-#### Nice to haves
+- [ ] Build something with PIR
 - [ ] More matrix options
 - [ ] More buzzer options
+
+#### Nice to haves
 - [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 - [ ] Try using `qos=1` for sending messages
 
