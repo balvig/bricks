@@ -33,5 +33,5 @@ void setup() {
 
 void loop() {
   gBrick.loop();
-  animator.update();
+  animator.loop();
 }

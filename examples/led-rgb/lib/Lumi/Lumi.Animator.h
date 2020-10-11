@@ -2,6 +2,7 @@
 #define LUMI_ANIMATOR_H
 
 #include <FastLED.h>
+#include <Lumi.Sequencer.h>
 #include <Lumi.Off.h>
 #include <Lumi.On.h>
 #include <Lumi.Glow.h>
@@ -12,16 +13,13 @@
 #define LUMI_ANIMATOR_PIN D2
 
 namespace Lumi {
-  class Animator {
+  class Animator : public Sequencer {
     public:
       Animator();
-      void update();
-      uint8_t currentPattern = 0;
-      uint8_t currentVariation = 0;
-      uint8_t currentDelay = 10;
-    private:
-      uint8_t progress = 0;
+    protected:
       Pattern *patterns[5];
+    private:
+      void update();
       CRGB leds[NUM_LEDS];
   };
 }
