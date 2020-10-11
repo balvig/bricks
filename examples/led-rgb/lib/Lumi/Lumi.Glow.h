@@ -1,13 +1,13 @@
 #ifndef LUMI_GLOW_H
 #define LUMI_GLOW_H
 
-#include <Lumi.Pattern.h>
+#include <Lumi.LEDPattern.h>
 
 namespace Lumi {
-  class Glow : public Pattern {
+  class Glow : public LEDPattern {
     public:
-      using Pattern::Pattern;
-      void update(const uint8_t progress, const uint8_t variation);
+      using LEDPattern::LEDPattern;
+      void update(const uint8_t progress);
   };
 }
 #endif

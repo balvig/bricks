@@ -6,8 +6,8 @@
 #direction: right
 #fill: #fdf6e3; #fdf6e3
 
-[&lt;note&gt;bricks/in/00:11:22:33:44:55/pressed]-&gt;[&lt;note&gt;bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]
-[&lt;note&gt;bricks/in/00:11:22:33:44:55/released]-&gt;[&lt;note&gt;bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 0]</desc>
+[&lt;note&gt;bricks/in/00:11:22:33:44:55/pressed]-&gt;[&lt;note&gt;bricks/out/aa:bb:cc:dd:ee:ff/set: 1]
+[&lt;note&gt;bricks/in/00:11:22:33:44:55/released]-&gt;[&lt;note&gt;bricks/out/aa:bb:cc:dd:ee:ff/set: 0]</desc>
   <rect x="0" y="0" height="128" width="682" style="stroke:none; fill:transparent;"></rect>
   <path d="M300 29 L321.5 29 L341.5 29 L341.5 29 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
   <path d="M332.2 32.7 L336.8 29 L332.2 25.3 L341.5 29 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
@@ -16,13 +16,13 @@
   <path d="M15.5 13.5 L292.5 13.5 L300.5 21.5 L300.5 44.5 L15.5 44.5 L15.5 13.5 Z" data-name="bricks/in/00:11:22:33:44:55/pressed" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
   <path d="M292.5 13.5 L292.5 21.5 L300.5 21.5" data-name="bricks/in/00:11:22:33:44:55/pressed" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
   <text x="23.5" y="35" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/in/00:11:22:33:44:55/pressed">bricks/in/00:11:22:33:44:55/pressed</text>
-  <path d="M341.5 13.5 L661.5 13.5 L669.5 21.5 L669.5 44.5 L341.5 44.5 L341.5 13.5 Z" data-name="bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M661.5 13.5 L661.5 21.5 L669.5 21.5" data-name="bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <text x="349.5" y="35" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1">bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1</text>
+  <path d="M341.5 13.5 L661.5 13.5 L669.5 21.5 L669.5 44.5 L341.5 44.5 L341.5 13.5 Z" data-name="bricks/out/aa:bb:cc:dd:ee:ff/set: 1" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M661.5 13.5 L661.5 21.5 L669.5 21.5" data-name="bricks/out/aa:bb:cc:dd:ee:ff/set: 1" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="349.5" y="35" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/out/aa:bb:cc:dd:ee:ff/set: 1">bricks/out/aa:bb:cc:dd:ee:ff/set: 1</text>
   <path d="M13.5 84.5 L293.5 84.5 L301.5 92.5 L301.5 115.5 L13.5 115.5 L13.5 84.5 Z" data-name="bricks/in/00:11:22:33:44:55/released" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
   <path d="M293.5 84.5 L293.5 92.5 L301.5 92.5" data-name="bricks/in/00:11:22:33:44:55/released" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
   <text x="21.5" y="106" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/in/00:11:22:33:44:55/released">bricks/in/00:11:22:33:44:55/released</text>
-  <path d="M341.5 84.5 L661.5 84.5 L669.5 92.5 L669.5 115.5 L341.5 115.5 L341.5 84.5 Z" data-name="bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 0" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
-  <path d="M661.5 84.5 L661.5 92.5 L669.5 92.5" data-name="bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 0" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
-  <text x="349.5" y="106" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 0">bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 0</text>
+  <path d="M341.5 84.5 L661.5 84.5 L669.5 92.5 L669.5 115.5 L341.5 115.5 L341.5 84.5 Z" data-name="bricks/out/aa:bb:cc:dd:ee:ff/set: 0" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M661.5 84.5 L661.5 92.5 L669.5 92.5" data-name="bricks/out/aa:bb:cc:dd:ee:ff/set: 0" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <text x="349.5" y="106" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="bricks/out/aa:bb:cc:dd:ee:ff/set: 0">bricks/out/aa:bb:cc:dd:ee:ff/set: 0</text>
 </svg>

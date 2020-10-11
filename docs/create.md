@@ -44,7 +44,7 @@ Initialized [82:7d:3a:79:14:79]
 ## 2. Create an LED Brick
 
 The [LED Brick example](/examples/led) defaults to using the built-in LED, allowing it to
-be turned on/off by sending `setPattern` messages with values of `1` or `0`.
+be turned on/off by sending `set` messages with values of `1` or `0`.
 
 ```bash
 export PLATFORMIO_BUILD_FLAGS="'-DBRICKS_GATEWAY_MAC=\"82:7d:3a:79:14:79\"'"

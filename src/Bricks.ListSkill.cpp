@@ -1,7 +1,7 @@
 #include "Bricks.ListSkill.h"
 
 namespace Bricks {
-  ListSkill::ListSkill() : Skill("getSkills") {
+  ListSkill::ListSkill() : Skill("skills") {
   }
 
   void ListSkill::callback(BRICKS_CALLBACK_SIGNATURE) {

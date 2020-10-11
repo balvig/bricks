@@ -1,13 +1,13 @@
 #ifndef LUMI_SPIN_H
 #define LUMI_SPIN_H
 
-#include <Lumi.Pattern.h>
+#include <Lumi.LEDPattern.h>
 
 namespace Lumi {
-  class Spin : public Pattern {
+  class Spin : public LEDPattern {
     public:
-      using Pattern::Pattern;
-      void update(const uint8_t progress, const uint8_t variation);
+      using LEDPattern::LEDPattern;
+      void update(const uint8_t progress);
   };
 }
 #endif

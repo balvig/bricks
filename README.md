@@ -45,12 +45,15 @@ Depending on your needs, it could be used to:
 
 ### Software
 
+- [ ] More matrix animations
+- [ ] Play specific frame of matrix animations
+- [ ] Fix [weird TravisCI error](https://travis-ci.org/github/balvig/bricks/jobs/738226714)
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
-- [ ] More matrix options
 
 #### Nice to haves
+- [ ] Extract Lumi
 - [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 - [ ] Try using `qos=1` for sending messages
 
@@ -60,12 +63,12 @@ Depending on your needs, it could be used to:
   - [x] LED RGB
   - [x] Dash button
   - [x] Buzzer
-  - [ ] Matrix
+  - [x] Matrix
   - [ ] Realtime button
   - [ ] PIR
   - [ ] IR
 - [ ] Non-battery cases (find on Thingiverse)
-- [ ] Softer/slimmer cushion
+- [x] Softer/slimmer cushion
 - [ ] Sturdier PCB attachment
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
 - [ ] Wooden panels

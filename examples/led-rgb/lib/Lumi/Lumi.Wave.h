@@ -1,13 +1,13 @@
 #ifndef LUMI_WAVE_H
 #define LUMI_WAVE_H
 
-#include <Lumi.Pattern.h>
+#include <Lumi.LEDPattern.h>
 
 namespace Lumi {
-  class Wave : public Pattern {
+  class Wave : public LEDPattern {
     public:
-      using Pattern::Pattern;
-      void update(const uint8_t progress, const uint8_t variation);
+      using LEDPattern::LEDPattern;
+      void update(const uint8_t progress);
     private:
       CRGB clr1;
       CRGB clr2;
