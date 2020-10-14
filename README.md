@@ -64,6 +64,7 @@ Depending on your needs, it could be used to:
   - [ ] Realtime button
   - [ ] PIR
   - [ ] IR
+- [ ] Non-battery cases (find on Thingiverse)
 - [ ] Softer/slimmer cushion
 - [ ] Sturdier PCB attachment
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
