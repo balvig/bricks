@@ -20,12 +20,12 @@ if you want to host locally, take a look at the [`docker` directory](/docker).
 ### Battery shield
 - Connect A0 battery read jumper
 - Solder male/female headers to shield
-- Check battery power and `getBattery` skill using "LED" example
+- Check battery power and `battery` skill using "LED" example
 
 ### Double base
 
 - Connect D0 - RST (snip off)
 - Solder shield headers to double base
 - Add female headers for accessory
-- Test `setSleep` by adding D1 in accessory header
+- Test `sleep` by adding D1 in accessory header
 - Snip off

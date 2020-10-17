@@ -1,13 +1,13 @@
 #ifndef LUMI_OFF_H
 #define LUMI_OFF_H
 
-#include <Lumi.Pattern.h>
+#include <Lumi.LEDPattern.h>
 
 namespace Lumi {
-  class Off : public Pattern {
+  class Off : public LEDPattern {
     public:
-      using Pattern::Pattern;
-      void update(const uint8_t progress, const uint8_t variation);
+      using LEDPattern::LEDPattern;
+      void update(const uint8_t progress);
   };
 }
 #endif

@@ -1,21 +1,29 @@
 #ifndef LUMI_SEQUENCER_H
 #define LUMI_SEQUENCER_H
 
+#include <ArduinoLog.h>
+#include <RBD_Timer.h>
 #include <Lumi.Pattern.h>
+
+#define MAX_PATTERNS 10
 
 namespace Lumi {
   class Sequencer {
     public:
       Sequencer();
       void loop();
-      uint8_t currentPattern = 0;
-      uint8_t currentVariation = 0;
-      uint8_t currentDelay = 10;
-    protected:
-      Pattern *patterns[10];
+      void set(const char *input);
+      Pattern *patterns[MAX_PATTERNS];
     private:
-      virtual void update();
+      void setPattern(uint8_t pattern);
+      void setDelay(uint8_t delay);
+      void setValue(const char *value);
+      void update();
+      void rewind();
+      RBD::Timer timer;
+      uint8_t currentPattern = 0;
       uint8_t progress = 0;
+      bool playing = false;
   };
 }
 #endif

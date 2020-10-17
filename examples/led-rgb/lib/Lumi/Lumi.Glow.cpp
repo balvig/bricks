@@ -1,11 +1,12 @@
 #include <Lumi.Glow.h>
 
 namespace Lumi {
-  void Glow::update(const uint8_t progress, const uint8_t variation) {
+  void Glow::update(const uint8_t progress) {
     uint8_t brightness = sin8(progress);
 
-    for(int i = 0; i < NUM_LEDS; i++ ) {
-      leds[i] = ColorFromPalette(palette, variation, brightness);
+    for(int i = 0; i < numLeds; i++ ) {
+      leds[i] = ColorFromPalette(palette, currentIntValue, brightness);
     }
+    FastLED.show();
   }
 }

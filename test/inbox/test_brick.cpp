@@ -13,7 +13,7 @@ void setUp(void) {
 void test_battery() {
   const uint8_t macAddr[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
   Message message;
-  strcpy(message.key, "getBattery");
+  strcpy(message.key, "battery");
 
   gBrick.skills[0] = new BatterySkill();
   gBrick.process(macAddr, message);
@@ -22,7 +22,7 @@ void test_battery() {
 void test_list_skills() {
   gBrick.skills[0] = new BatterySkill();
 
-  TEST_ASSERT_EQUAL_STRING("getBattery", gBrick.listSkills().c_str());
+  TEST_ASSERT_EQUAL_STRING("battery", gBrick.listSkills().c_str());
 }
 
 void setup() {

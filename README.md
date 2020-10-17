@@ -48,7 +48,8 @@ Depending on your needs, it could be used to:
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
-- [ ] More matrix options
+- [ ] More matrix animations
+- [ ] Play specific frame of matrix animations
 
 #### Nice to haves
 - [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
