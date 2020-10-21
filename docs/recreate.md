@@ -1,9 +1,12 @@
 # Recreate (WIP)
 
-Easiest way to get up an running quickly is https://fred.sensetecnic.com/, but
-if you want to host locally, take a look at the [`docker` directory](/docker).
+## Building a Brick PCB
 
-## Parts
+This guide shows how to build a battery-driven Brick PCB based on the ubiquitous
+Wemos/LOLIN D1 Mini, that allows swapping out accessories (sensors,
+buttons, LEDs etc) as/when needed.
+
+### Parts
 
 - [LOLIN D1 Mini](https://www.aliexpress.com/item/32529101036.html)
 - [Dual Base](https://www.aliexpress.com/item/32642733925.html)
@@ -11,21 +14,66 @@ if you want to host locally, take a look at the [`docker` directory](/docker).
 - [900mAh Lipo](https://www.aliexpress.com/item/32952515649.html)
 - [Accessory Shield](https://docs.wemos.cc/en/latest/d1_mini_shiled/index.html)
 
-## Steps
+### Prepare D1 Mini
 
-### D1 Mini
+#### 1. Add male headers
 
-- Add male headers
+<img src=01.jpg width=40%> <img src=02.jpg width=40%>
 
-### Battery shield
-- Connect A0 battery read jumper
-- Solder male/female headers to shield
-- Check battery power and `getBattery` skill using "LED" example
+### Prepare Battery Shield
 
-### Double base
+#### 1. Connect A0-BAT jumper
 
-- Connect D0 - RST (snip off)
-- Solder shield headers to double base
-- Add female headers for accessory
-- Test `setSleep` by adding D1 in accessory header
-- Snip off
+<img src=03.jpg width=40%>
+
+#### 2. Solder male/female headers to shield
+
+<img src=04.jpg width=40%>
+
+#### 3. Check battery power
+
+- Connect a battery.
+- Flash the D1 Mini with the [LED example](examples/led).
+- Check reading from `getBattery`.
+
+### Assemble Dual Base
+
+#### 1. Connect D0/16 - RST on base
+
+<img src=05.jpg width=40%>
+
+- Enables wake up from sleep.
+- Use a cable or solder.
+- Snip off any protruding ends.
+
+#### 2. Solder shield headers to base
+
+<img src=06.jpg width=40%>
+
+#### 3. Test sleep wake up
+
+- Attach D1 Mini
+- Test `setSleep:5` and see if it wakes up in 5 sconds.
+
+#### 4. Add female headers for accessory
+
+<img src=07.jpg width=40%>
+
+## Building a Brick case (WIP)
+
+### Snip off headers
+
+### Cover up header "spikes"
+
+### Insert and connect battery
+
+### Insert base
+
+### Add screws
+
+### Close lid
+
+## Software (WIP)
+
+Easiest way to get up an running quickly is https://fred.sensetecnic.com/, but
+if you want to host locally, take a look at the [`docker` directory](/docker).
