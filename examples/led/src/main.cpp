@@ -25,7 +25,7 @@ void setup() {
 
   // Configure Brick
   gBrick.init("LED");
-  gBrick.skills[0] = new Skill("setPattern", &setPattern);
+  gBrick.skills[0] = new Skill("set", &setPattern);
 }
 
 void loop() {

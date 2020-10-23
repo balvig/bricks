@@ -17,11 +17,11 @@ http://www.nomnoml.com/
 ]
 
 [Out|
-[MQTT]-[<note>/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]
-[/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]->[Gateway Brick]
+[MQTT]-[<note>/bricks/out/aa:bb:cc:dd:ee:ff/set: 1]
+[/bricks/out/aa:bb:cc:dd:ee:ff/set: 1]->[Gateway Brick]
 
-[Gateway Brick]-[<note>setPattern: 1]
-[setPattern: 1]->[LED Brick|aa:bb:cc:dd:ee:ff]
+[Gateway Brick]-[<note>set: 1]
+[set: 1]->[LED Brick|aa:bb:cc:dd:ee:ff]
 ]
 ```
 
@@ -36,14 +36,14 @@ http://www.nomnoml.com/
 [Button Brick|00:11:22:33:44:55]-[<note>pressed]
 [pressed]->[Gateway Brick - in]
 
-[LED Brick|aa:bb:cc:dd:ee:ff]<-[<note>setPattern: 1]
-[setPattern: 1]-[Gateway Brick - out]
+[LED Brick|aa:bb:cc:dd:ee:ff]<-[<note>set: 1]
+[set: 1]-[Gateway Brick - out]
 
 [Gateway Brick - in]-[<note>/bricks/in/00:11:22:33:44:55/pressed]
 [/bricks/in/00:11:22:33:44:55/pressed]->[MQTT]
 
-[Gateway Brick - out]<-[<note>/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]
-[/bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]-[MQTT]
+[Gateway Brick - out]<-[<note>/bricks/out/aa:bb:cc:dd:ee:ff/set: 1]
+[/bricks/out/aa:bb:cc:dd:ee:ff/set: 1]-[MQTT]
 ```
 
 ---
@@ -55,6 +55,6 @@ http://www.nomnoml.com/
 #direction: right
 #fill: #fdf6e3; #fdf6e3
 
-[<note>bricks/in/00:11:22:33:44:55/pressed]->[<note>bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 1]
-[<note>bricks/in/00:11:22:33:44:55/released]->[<note>bricks/out/aa:bb:cc:dd:ee:ff/setPattern: 0]
+[<note>bricks/in/00:11:22:33:44:55/pressed]->[<note>bricks/out/aa:bb:cc:dd:ee:ff/set: 1]
+[<note>bricks/in/00:11:22:33:44:55/released]->[<note>bricks/out/aa:bb:cc:dd:ee:ff/set: 0]
 ```

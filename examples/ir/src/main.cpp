@@ -38,7 +38,7 @@ void setup() {
 
   // Configure Brick
   gBrick.init("IR Controller");
-  gBrick.skills[0] = new Skill("sendCode", &sendCode);
+  gBrick.skills[0] = new Skill("send", &sendCode);
 }
 
 void loop() {

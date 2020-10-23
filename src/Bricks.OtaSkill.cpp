@@ -1,7 +1,7 @@
 #include "Bricks.OtaSkill.h"
 
 namespace Bricks {
-  OtaSkill::OtaSkill() : Skill("setOta") {
+  OtaSkill::OtaSkill() : Skill("ota") {
   }
 
   void OtaSkill::callback(BRICKS_CALLBACK_SIGNATURE) {

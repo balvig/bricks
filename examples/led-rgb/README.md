@@ -9,6 +9,6 @@ For https://docs.wemos.cc/en/latest/d1_mini_shiled/rgb_led.html
 
 ## Skills
 
-| key        | description                         | values             |
-|------------|-------------------------------------|--------------------|
-| out/setLED | Set LED "<PATTERN>,<COLOR>,<DELAY>" | 0..4,0..255,0..255 |
+| key     | description                          | values             |
+|---------|--------------------------------------|--------------------|
+| out/set | Set LED "<PATTERN> <VALUE> <UPDATE>" | 0..4,0..255,0..255 |
