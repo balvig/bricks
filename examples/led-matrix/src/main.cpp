@@ -7,6 +7,7 @@ using namespace Bricks;
 #include <Lumi.Sequencer.h>
 #include <Lumi.Animation.h>
 #include <Lumi.Character.h>
+#include <Lumi.Count.h>
 #include <animations.h>
 
 MLED matrix(7);
@@ -37,8 +38,9 @@ void setup() {
 
   // Configure animations
   sequencer.patterns[0] = new Lumi::Character(matrix);
-  sequencer.patterns[1] = new Lumi::Animation(matrix, fireworksSize, fireworks); // TODO: simplify this
-  sequencer.patterns[2] = new Lumi::Animation(matrix, scanSize, scan); // TODO: simplify this
+  sequencer.patterns[1] = new Lumi::Count(matrix);
+  sequencer.patterns[2] = new Lumi::Animation(matrix, fireworksSize, fireworks); // TODO: simplify this
+  sequencer.patterns[3] = new Lumi::Animation(matrix, scanSize, scan); // TODO: simplify this
 }
 
 void loop() {
