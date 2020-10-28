@@ -38,6 +38,7 @@ void setup() {
   // Configure animations
   sequencer.patterns[0] = new Lumi::Character(matrix);
   sequencer.patterns[1] = new Lumi::Animation(matrix, fireworksSize, fireworks); // TODO: simplify this
+  sequencer.patterns[2] = new Lumi::Animation(matrix, scanSize, scan); // TODO: simplify this
 }
 
 void loop() {
