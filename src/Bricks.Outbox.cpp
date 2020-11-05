@@ -18,7 +18,7 @@ namespace Bricks {
 
     bool ok = WifiEspNow.send(macAddr, reinterpret_cast<const uint8_t*>(&message), sizeof(message));
     if(ok) {
-      Log.trace("ESPN: Sent message" CR);
+      Log.trace("ESPN: Message sent" CR);
     }
     else {
       Log.error("ESPN: Error sending message" CR);

@@ -8,11 +8,7 @@ namespace Bricks {
   SleepSkill::SleepSkill(const char *name) : Skill("sleep") {
     this->name = name;
     sendAwakeMessage();
-
-    if(Utils::wokeUpFromDeepSleep()) {
-      Log.trace("SLEE: Woke up from deep sleep");
-      readSleepTime();
-    }
+    readSleepTime();
   }
 
   void SleepSkill::callback(BRICKS_CALLBACK_SIGNATURE) {
@@ -57,6 +53,7 @@ namespace Bricks {
 #elif ESP32
     sleepTime = Bricks::rtcSleepTime;
 #endif
+    Log.trace("SLEE: Sleep time read: %d" CR, sleepTime);
   }
 
   void SleepSkill::writeSleepTime() {

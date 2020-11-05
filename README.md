@@ -45,16 +45,15 @@ Depending on your needs, it could be used to:
 
 ### Software
 
-- [ ] More matrix animations
-- [ ] Play specific frame of matrix animations
-- [ ] Fix [weird TravisCI error](https://travis-ci.org/github/balvig/bricks/jobs/738226714)
 - [ ] Write up making a custom brick
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
 
 #### Nice to haves
+- [ ] Fix [weird TravisCI error](https://travis-ci.org/github/balvig/bricks/jobs/738226714)
+- [ ] More matrix animations
+- [ ] Play specific frame of matrix animations
 - [ ] Extract Lumi
-- [ ] ESP32 suffers from random brownouts on boot. Should sleep care about reset reason?
 - [ ] Try using `qos=1` for sending messages
 
 ### Hardware
