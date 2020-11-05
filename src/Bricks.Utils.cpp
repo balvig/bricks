@@ -22,15 +22,6 @@ namespace Bricks {
 #endif
   }
 
-  bool Utils::wokeUpFromDeepSleep() {
-    int info = resetInfo();
-#ifdef ESP8266
-    return info == REASON_DEEP_SLEEP_AWAKE;
-#elif ESP32
-    return info != ESP_SLEEP_WAKEUP_UNDEFINED;
-#endif
-  }
-
   void Utils::getWakeupReason(char *reason) {
     switch(resetInfo()) {
 #ifdef ESP8266
