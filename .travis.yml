@@ -23,6 +23,7 @@ install:
   - pio update
   - touch examples/gateway/include/secrets.h
   - export PLATFORMIO_BUILD_FLAGS="'-DBRICKS_GATEWAY_MAC=\"00:00:00:00:00:00\"'"
+  - export PLATFORMIO_LIBDEPS_DIR="~/.platformio"
 
 script:
   - pio run --target "" --project-dir $EXAMPLE

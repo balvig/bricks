@@ -50,7 +50,6 @@ Depending on your needs, it could be used to:
 - [ ] Build something with PIR
 
 #### Nice to haves
-- [ ] Fix [weird TravisCI error](https://travis-ci.org/github/balvig/bricks/jobs/738226714)
 - [ ] More matrix animations
 - [ ] Play specific frame of matrix animations
 - [ ] Extract Lumi
