@@ -65,8 +65,5 @@ Depending on your needs, it could be used to:
   - [x] Matrix
   - [ ] PIR
   - [ ] IR
-- [ ] Non-battery cases (find on Thingiverse)
-  - [ ] Gateway
-  - [ ] With shield
 - [ ] Sturdier PCB attachment
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
