@@ -87,7 +87,7 @@ namespace Bricks {
         subscribe(BRICKS_MESSAGES_OUT "/#");
       }
       else {
-        Log.warning("MQTT: Failed [%s]. Retrying in 5 secs" CR, mqtt.state());
+        Log.warning("MQTT: Failed [%d]. Retrying in 5 secs" CR, mqtt.state());
         delay(5000);
       }
     }
