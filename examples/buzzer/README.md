@@ -2,6 +2,6 @@
 
 ## Skills
 
-| key      | description  | values |
-|----------|--------------|--------|
-| out/play | play song/fx | 0-2    |
+| in   | out      | description  | values |
+|------|----------|--------------|--------|
+| play | ack:play | play song/fx | 0-2    |

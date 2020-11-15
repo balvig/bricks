@@ -4,7 +4,7 @@ The Brick Brain.
 
 ## Skills
 
-| key   | description                        | values |
-|-------|------------------------------------|--------|
-| out/* | Sends events from MQTT as messages |        |
-| in/*  | Publishes message to MQTT          |        |
+| in | out |                                    | description | values |
+|----|-----|------------------------------------|-------------|--------|
+| *  |     | Publishes message to MQTT          |             |        |
+|    | *   | Sends events from MQTT as messages |             |        |

@@ -5,7 +5,7 @@ found.
 
 ## Skills
 
-| key      | description                | values                                       |
-|----------|----------------------------|----------------------------------------------|
-| out/scan | Scan for (x) seconds.      | 1-255                                        |
-| in/found | Sent when BLE device found | Name, MAC, RSSI `Tile,12:34:56:78:9a:bd,-82` |
+| in   | out      | description                | values                                       |
+|------|----------|----------------------------|----------------------------------------------|
+| scan | ack:scan | Scan for (x) seconds.      | 1-255                                        |
+|      | found    | Sent when BLE device found | Name, MAC, RSSI `Tile,12:34:56:78:9a:bd,-82` |

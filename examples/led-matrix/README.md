@@ -4,7 +4,7 @@
 
 ## Skills
 
-| key             | description              | values  |
-|-----------------|--------------------------|---------|
-| out/setValue    | Shows one character      | 0-9 A-Z |
-| out/setRotation | Sets rotation of display | 0-3     |
+| in          | out             | description              | values  |
+|-------------|-----------------|--------------------------|---------|
+| setValue    | ack:setValue    | Shows one character      | 0-9 A-Z |
+| setRotation | ack:setRotation | Sets rotation of display | 0-3     |

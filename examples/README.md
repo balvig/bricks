@@ -12,10 +12,10 @@
 
 ## Common skills
 
-| key         | description                                                        | values                     |
-|-------------|--------------------------------------------------------------------|----------------------------|
-| out/sleep   | Start sleep cycles lasting `value` seconds each                    | 0 (stop sleeping), 1-13612 |
-| out/ota     | `pio run -t upload --upload-port 192.168.4.1` when connected to AP |                            |
-| out/battery | Ask for battery value                                              |                            |
-| out/skills  | Get a list of actions the Brick responds to                        |                            |
-| in/awake    | Sent when woken up                                                 | <NAME> - <REASON>          |
+| in      | out         | description                                                        | values                     |
+|---------|-------------|--------------------------------------------------------------------|----------------------------|
+| sleep   | ack:sleep   | Start sleep cycles `value` seconds each                            | 0 (stop sleeping), 1-13612 |
+| ota     | ack:ota     | `pio run -t upload --upload-port 192.168.4.1` when connected to AP |                            |
+| battery | ack:battery | Ask for battery value                                              |                            |
+| skills  | ack:skills  | Get a list of actions the Brick responds to                        |                            |
+|         | awake       | Sent when woken up                                                 | <NAME> - <REASON>          |

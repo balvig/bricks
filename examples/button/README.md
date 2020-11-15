@@ -4,7 +4,7 @@ Sends `pressed/release` messages.
 
 ## Skills
 
-| key         | description     | values |
-|-------------|-----------------|--------|
-| in/pressed  | Button pressed  |        |
-| in/released | Button released |        |
+| in | out      | description     | values |
+|----|----------|-----------------|--------|
+|    | pressed  | Button pressed  |        |
+|    | released | Button released |        |

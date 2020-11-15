@@ -49,8 +49,6 @@ Depending on your needs, it could be used to:
 - [ ] Build something with PIR
 
 #### Nice to haves
-- [ ] More matrix animations
-- [ ] Play specific frame of matrix animations
 - [ ] Extract Lumi
 - [ ] Gateway connection debugging tools
 - [ ] Try using `qos=1` for sending messages
@@ -58,12 +56,9 @@ Depending on your needs, it could be used to:
 ### Hardware
 
 - [ ] Build Bricks suite
-  - [x] LED RGB
-  - [x] Dash button
-  - [x] Buzzer
-  - [x] Matrix
   - [ ] PIR
   - [ ] IR
-- [ ] Reset button slot
+- [ ] Update picture
+- [ ] Reset button
 - [ ] Sturdier PCB attachment
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
