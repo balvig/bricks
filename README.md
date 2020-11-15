@@ -53,6 +53,7 @@ Depending on your needs, it could be used to:
 - [ ] More matrix animations
 - [ ] Play specific frame of matrix animations
 - [ ] Extract Lumi
+- [ ] Gateway conncetion debugging tools
 - [ ] Try using `qos=1` for sending messages
 
 ### Hardware
@@ -64,5 +65,6 @@ Depending on your needs, it could be used to:
   - [x] Matrix
   - [ ] PIR
   - [ ] IR
+- [ ] Reset button slot
 - [ ] Sturdier PCB attachment
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
