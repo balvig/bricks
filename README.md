@@ -45,7 +45,6 @@ Depending on your needs, it could be used to:
 
 ### Software
 
-- [ ] Write up making a custom brick
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
 
@@ -53,7 +52,7 @@ Depending on your needs, it could be used to:
 - [ ] More matrix animations
 - [ ] Play specific frame of matrix animations
 - [ ] Extract Lumi
-- [ ] Gateway conncetion debugging tools
+- [ ] Gateway connection debugging tools
 - [ ] Try using `qos=1` for sending messages
 
 ### Hardware

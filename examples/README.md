@@ -2,7 +2,7 @@
 
 - [Gateway](gateway)
 - [Button](button)
-- [Dash Button](button-bash)
+- [Dash Button](button-dash)
 - [LED](led)
 - [LED RGB](led-rgb)
 - [LED 8x8 Matrix](led-matrix)
@@ -19,24 +19,3 @@
 | out/battery | Ask for battery value                                              |                            |
 | out/skills  | Get a list of actions the Brick responds to                        |                            |
 | in/awake    | Sent when woken up                                                 | <NAME> - <REASON>          |
-
-## Planned Bricks
-
-### Basic set
-
-- Gateway
-- Color LED
-- Button
-- Light sensor
-- PIR
-- BLE Scanner
-
-### Extended set
-
-- 8x8 Matrix
-- Ambient light
-- Temperature & Humidity
-- IR (send/receive)
-- Reed switch
-- Servo
-- LED strip
