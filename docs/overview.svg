@@ -1,0 +1,61 @@
+<svg version="1.1" baseProfile="full" width="605" height="372" viewbox="0 0 605 372" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold normal 12pt Helvetica, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <title >gateway</title>
+  <desc >#title: gateway
+#arrowSize:0.7
+#lineWidth: 1
+#fill: #fdf6e3; #fdf6e3
+
+
+[Internet]&lt;-[&lt;label&gt; MQTT]
+[MQTT]-&gt;[Gateway]
+
+[Gateway]&lt;-[&lt;label&gt; ESP-NOW]
+[ESP-NOW]-&gt;[LED|set]
+[ESP-NOW]-&gt;[8x8 Matrix|set]
+[ESP-NOW]-&gt;[Button|pressed/released]
+[ESP-NOW]-&gt;[Buzzer|play]
+[ESP-NOW]-&gt;[Sensor|status]</desc>
+  <rect x="0" y="0" height="372" width="605" style="stroke:none; fill:transparent;"></rect>
+  <path d="M305 44.5 L305 64.5 L305 84.5 L305 84.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M308.7 53.8 L305 49.2 L301.3 53.8 L305 44.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M305 115.5 L305 135.5 L305 155.5 L305 155.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M301.3 146.2 L305 150.8 L308.7 146.2 L305 155.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M305 186.5 L305 206.5 L305 226.5 L305 226.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M308.7 195.8 L305 191.2 L301.3 195.8 L305 186.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M259 248.1 L37.5 277.5 L37.5 297.5 L37.5 297.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M33.8 288.2 L37.5 292.8 L41.2 288.2 L37.5 297.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M259 252.4 L148.5 277.5 L148.5 297.5 L148.5 297.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M144.8 288.2 L148.5 292.8 L152.2 288.2 L148.5 297.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M305 257.5 L305 277.5 L305 297.5 L305 297.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M301.3 288.2 L305 292.8 L308.7 288.2 L305 297.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M351 253.4 L448.5 277.5 L448.5 297.5 L448.5 297.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M444.8 288.2 L448.5 292.8 L452.2 288.2 L448.5 297.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M351 248.5 L557.5 277.5 L557.5 297.5 L557.5 297.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <path d="M553.8 288.2 L557.5 292.8 L561.2 288.2 L557.5 297.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="13.5" y="297.5" height="62" width="48" data-name="LED" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="37.5" y="319" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="LED">LED</text>
+  <text x="21.5" y="350" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="LED">set</text>
+  <path d="M13.5 328.5 L61.5 328.5" data-name="LED" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="101.5" y="297.5" height="62" width="94" data-name="8x8 Matrix" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="148.5" y="319" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="8x8 Matrix">8x8 Matrix</text>
+  <text x="109.5" y="350" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="8x8 Matrix">set</text>
+  <path d="M101.5 328.5 L195.5 328.5" data-name="8x8 Matrix" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="235.5" y="297.5" height="62" width="139" data-name="Button" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="305" y="319" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Button">Button</text>
+  <text x="243.5" y="350" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Button">pressed/released</text>
+  <path d="M235.5 328.5 L374.5 328.5" data-name="Button" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="414.5" y="297.5" height="62" width="68" data-name="Buzzer" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="448.5" y="319" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Buzzer">Buzzer</text>
+  <text x="422.5" y="350" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Buzzer">play</text>
+  <path d="M414.5 328.5 L482.5 328.5" data-name="Buzzer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="522.5" y="297.5" height="62" width="70" data-name="Sensor" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="557.5" y="319" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Sensor">Sensor</text>
+  <text x="530.5" y="350" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Sensor">status</text>
+  <path d="M522.5 328.5 L592.5 328.5" data-name="Sensor" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1;"></path>
+  <rect x="267.5" y="13.5" height="31" width="75" data-name="Internet" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="305" y="35" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Internet">Internet</text>
+  <text x="282.5" y="106" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="MQTT">MQTT</text>
+  <rect x="264.5" y="155.5" height="31" width="82" data-name="Gateway" style="stroke:#33322E;fill:#fdf6e3;stroke-dasharray:none;stroke-width:1;"></rect>
+  <text x="305.5" y="177" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Gateway">Gateway</text>
+  <text x="267.5" y="248" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ESP-NOW">ESP-NOW</text>
+</svg>

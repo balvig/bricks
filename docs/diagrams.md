@@ -58,3 +58,23 @@ http://www.nomnoml.com/
 [<note>bricks/in/00:11:22:33:44:55/pressed]->[<note>bricks/out/aa:bb:cc:dd:ee:ff/set: 1]
 [<note>bricks/in/00:11:22:33:44:55/released]->[<note>bricks/out/aa:bb:cc:dd:ee:ff/set: 0]
 ```
+
+---
+
+```
+#title: gateway
+#arrowSize:0.7
+#lineWidth: 1
+#fill: #fdf6e3; #fdf6e3
+
+
+[Internet]<-[<label> MQTT]
+[MQTT]->[Gateway]
+
+[Gateway]<-[<label> ESP-NOW]
+[ESP-NOW]->[LED|set]
+[ESP-NOW]->[8x8 Matrix|set]
+[ESP-NOW]->[Button|pressed/released]
+[ESP-NOW]->[Buzzer|play]
+[ESP-NOW]->[Sensor|status]
+```

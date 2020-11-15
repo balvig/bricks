@@ -1,6 +1,16 @@
 # Creating Bricks
 
-To illustrate how Bricks works, this simple example will allow pressing
+The basic concept is as follows:
+
+- Only one Brick (the gateway) needs to connect directly to Wi-Fi.
+- All other Bricks use ESP-NOW to send/receive messages via the gateway.
+- Each Brick is pre-programmed with unique "skills" (ie "blink an LED", "play a sound" etc).
+
+<img src=/docs/overview.svg>
+
+## Example
+
+To illustrate how it works, this simple example will allow pressing
 a button Brick to turn on/off an LED Brick.
 
 <img src=/docs/example.gif width=400>
@@ -16,7 +26,7 @@ However, basically any combination of ESP8266/ESP32 boards and capabilities will
 
 One board will act as the _Gateway Brick_.
 
-The gateway receives messages from other Bricks via ESP-NOW and converts them into [MQTT](https://mqtt.org/), and vice versa:
+The gateway receives messages from other Bricks via ESP-NOW and converts them into [MQTT](https://mqtt.org/) and vice versa:
 
 <img src=/docs/gateway.svg>
 
@@ -44,7 +54,7 @@ Initialized [82:7d:3a:79:14:79]
 ## 2. Create an LED Brick
 
 The [LED Brick example](/examples/led) defaults to using the built-in LED, allowing it to
-be turned on/off by sending `set` messages with values of `1` or `0`.
+be turned on/off by sending `set` messages with payloads of `1` or `0`.
 
 ```bash
 export PLATFORMIO_BUILD_FLAGS="'-DBRICKS_GATEWAY_MAC=\"82:7d:3a:79:14:79\"'"
@@ -74,9 +84,8 @@ bricks/in/00:11:22:33:44:55/awake: Button - external system reset
 bricks/in/aa:bb:cc:dd:ee:ff/awake: LED - external system reset
 ```
 
-Use these MAC addresses to send/receive messages to/from specific
-Bricks.
+Use these MAC addresses to send/receive messages to/from specific Bricks.
 
-For this example, a Node-RED solution could be a simple as:
+For this example, a Node-RED solution could be as simple as:
 
 <img src=/docs/mqtt.svg>
