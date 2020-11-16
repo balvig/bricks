@@ -3,24 +3,10 @@
 using namespace Bricks;
 
 // Local
-#include <RBD_Timer.h>
-
-RBD::Timer timer;
 const int PIR = D3;
-const uint16_t DEFAULT_FREQUENCY = 1000;
 
-uint8_t previousStatus = 0;
-uint8_t currentStatus = 0;
-char status[1];
-
-void notifyChanges() {
-  currentStatus = digitalRead(PIR);
-
-  if(currentStatus != previousStatus) {
-    previousStatus = currentStatus;
-    sprintf(status, "%i", currentStatus);
-    gOutbox.send("status", (const char*)status);
-  }
+void scan(BRICKS_CALLBACK_SIGNATURE) {
+  sprintf(response, "%i", digitalRead(PIR));
 }
 
 void setup() {
@@ -30,16 +16,12 @@ void setup() {
 
   // Configure PIR
   pinMode(PIR, INPUT);
-  timer.setTimeout(DEFAULT_FREQUENCY);
-  timer.restart();
 
   // Configure Brick
   gBrick.init("PIR");
+  gBrick.skills[0] = new Skill("scan", &scan);
 }
 
 void loop() {
-  if(timer.onRestart()) {
-    notifyChanges();
-  }
   gBrick.loop();
 }
