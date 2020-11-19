@@ -47,6 +47,7 @@ Depending on your needs, it could be used to:
 
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
+- [ ] Build something with IR
 
 #### Nice to haves
 - [ ] Extract Lumi
