@@ -53,6 +53,7 @@ Depending on your needs, it could be used to:
 - [ ] Extract Lumi
 - [ ] Gateway connection debugging tools
 - [ ] Try using `qos=1` for sending messages
+- [ ] Run Node-RED on Raspberry PI
 
 ### Hardware
 
