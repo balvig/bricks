@@ -13,7 +13,7 @@ using namespace Bricks;
 const uint16_t RECEIVER_PIN = D4;
 const uint16_t SEND_PIN = D3;
 const uint16_t BUFFER = 1024;
-const uint8_t TIMEOUT = 50;
+const uint8_t TIMEOUT = 100;
 const uint16_t FREQUENCY = 38000;  // in Hz. e.g. 38kHz.
 
 IRrecv irrecv(RECEIVER_PIN, BUFFER, TIMEOUT);
@@ -25,6 +25,7 @@ IRcode *code;
 // Bricks callbacks
 void sendCode(BRICKS_CALLBACK_SIGNATURE) {
   code = codes[atoi(message.value)];
+  strcpy(response, code->key);
 }
 
 void setup() {
@@ -50,6 +51,7 @@ void loop() {
   else if(irrecv.decode(&results)) {
     Log.notice("IRED: Received signal" CR);
     Log.notice(resultToSourceCode(&results).c_str());
+    gOutbox.send("received", resultToHexidecimal(&results).c_str());
     irrecv.resume();
   }
   gBrick.loop();

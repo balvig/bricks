@@ -47,7 +47,7 @@ Depending on your needs, it could be used to:
 
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
-- [ ] Build something with IR
+- [ ] Fix random crazy sleep values
 
 #### Nice to haves
 - [ ] Extract Lumi
@@ -58,8 +58,7 @@ Depending on your needs, it could be used to:
 
 - [ ] Build Bricks suite
   - [ ] PIR
-  - [ ] IR
-- [ ] Update picture
 - [ ] Reset button
+- [ ] Update picture
 - [ ] Sturdier PCB attachment
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
