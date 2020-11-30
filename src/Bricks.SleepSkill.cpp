@@ -15,11 +15,11 @@ namespace Bricks {
     this->sleepTime = atoi(message.value);
     writeSleepTime();
 
-    if(sleepTime > 0) {
+    if(validSleepTime()) {
       sprintf(response, "Starting %u second sleep cycles", sleepTime);
     }
     else {
-      strcpy(response, "Stopping sleep cycles");
+      sprintf(response, "Stopping sleep (Rec: %u, Max: %u)", sleepTime, MAX_SLEEP_TIME);
     }
   }
 
@@ -32,7 +32,7 @@ namespace Bricks {
   void SleepSkill::sendAwakeMessage() {
     char reason[50];
     char message[100];
-    Bricks::Utils::getWakeupReason(reason);
+    Utils::getWakeupReason(reason);
 
     sprintf(message, "%s - %s", name, reason);
     gOutbox.send("awake", message);
@@ -44,7 +44,11 @@ namespace Bricks {
   }
 
   bool SleepSkill::awakeTimeout() {
-    return sleepTime > 0 && millis() >= TIMEOUT;
+    return validSleepTime() && millis() >= TIMEOUT;
+  }
+
+  bool SleepSkill::validSleepTime() {
+    return sleepTime > 0 && sleepTime <= MAX_SLEEP_TIME;
   }
 
   void SleepSkill::readSleepTime() {

@@ -18,6 +18,7 @@ namespace Bricks {
   class SleepSkill : public Skill {
     const uint32_t TIMEOUT = 2000;
     const uint32_t RTC_SLEEP_TIME_REGISTER = 65;
+    const uint32_t MAX_SLEEP_TIME = 10800; // seconds = 3 hours
 
     public:
       SleepSkill(const char *name = "New Brick");
@@ -27,6 +28,7 @@ namespace Bricks {
       void sendAwakeMessage();
       void deepSleep();
       bool awakeTimeout();
+      bool validSleepTime();
       void readSleepTime();
       void writeSleepTime();
       const char *name;
