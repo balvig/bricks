@@ -1,6 +1,6 @@
-#include <Lumi.LEDPattern.h>
+#include <Led.LEDPattern.h>
 
-namespace Lumi {
+namespace Led {
   LEDPattern::LEDPattern(CRGB *leds, const uint8_t numLeds) {
     this->leds = leds;
     this->numLeds = numLeds;

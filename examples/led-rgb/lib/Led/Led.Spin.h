@@ -1,9 +1,9 @@
-#ifndef LUMI_SPIN_H
-#define LUMI_SPIN_H
+#ifndef LED_SPIN_H
+#define LED_SPIN_H
 
-#include <Lumi.LEDPattern.h>
+#include <Led.LEDPattern.h>
 
-namespace Lumi {
+namespace Led {
   class Spin : public LEDPattern {
     public:
       using LEDPattern::LEDPattern;

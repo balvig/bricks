@@ -1,6 +1,6 @@
-#include <Lumi.Animation.h>
+#include <Matrix.Animation.h>
 
-namespace Lumi {
+namespace Matrix {
   Animation::Animation(MLED &matrix, const int numFrames, const uint8_t (*frames)[GRID_SIZE]) : matrix(matrix), frames(frames) {
     this->frameSize = (UINT8_MAX + 1.0) / numFrames;
   }

@@ -5,9 +5,9 @@ using namespace Bricks;
 // Local
 #include <WEMOS_Matrix_GFX.h>
 #include <Lumi.Sequencer.h>
-#include <Lumi.Animation.h>
-#include <Lumi.Character.h>
-#include <Lumi.Count.h>
+#include <Matrix.Animation.h>
+#include <Matrix.Character.h>
+#include <Matrix.Count.h>
 #include <animations.h>
 
 MLED matrix(7);
@@ -37,10 +37,10 @@ void setup() {
   matrix.setRotation(1); // Matrix will be sideways in Brick
 
   // Configure animations
-  sequencer.patterns[0] = new Lumi::Character(matrix);
-  sequencer.patterns[1] = new Lumi::Count(matrix);
-  sequencer.patterns[2] = new Lumi::Animation(matrix, fireworksSize, fireworks); // TODO: simplify this
-  sequencer.patterns[3] = new Lumi::Animation(matrix, scanSize, scan); // TODO: simplify this
+  sequencer.patterns[0] = new Matrix::Character(matrix);
+  sequencer.patterns[1] = new Matrix::Count(matrix);
+  sequencer.patterns[2] = new Matrix::Animation(matrix, fireworksSize, fireworks);
+  sequencer.patterns[3] = new Matrix::Animation(matrix, scanSize, scan);
 }
 
 void loop() {

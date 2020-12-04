@@ -1,6 +1,6 @@
-#include <Lumi.Count.h>
+#include <Matrix.Count.h>
 
-namespace Lumi {
+namespace Matrix {
   Count::Count(MLED &matrix) : matrix(matrix) {}
 
   void Count::update(const uint8_t progress) {

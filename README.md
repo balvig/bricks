@@ -47,12 +47,11 @@ Depending on your needs, it could be used to:
 
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
+- [ ] Lumi battery checks
 
 #### Nice to haves
 - [ ] Extract Lumi
-- [ ] Gateway connection debugging tools
-- [ ] Try using `qos=1` for sending messages
-- [ ] Run Node-RED on Raspberry PI
+- [ ] Run Node-RED on Raspberry Pi
 
 ### Hardware
 

@@ -1,6 +1,6 @@
-#include <Lumi.Glow.h>
+#include <Led.Glow.h>
 
-namespace Lumi {
+namespace Led {
   void Glow::update(const uint8_t progress) {
     uint8_t brightness = sin8(progress);
 

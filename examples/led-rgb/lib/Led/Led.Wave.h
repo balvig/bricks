@@ -1,9 +1,9 @@
-#ifndef LUMI_WAVE_H
-#define LUMI_WAVE_H
+#ifndef LED_WAVE_H
+#define LED_WAVE_H
 
-#include <Lumi.LEDPattern.h>
+#include <Led.LEDPattern.h>
 
-namespace Lumi {
+namespace Led {
   class Wave : public LEDPattern {
     public:
       using LEDPattern::LEDPattern;
