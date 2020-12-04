@@ -1,9 +1,9 @@
-#ifndef LUMI_GLOW_H
-#define LUMI_GLOW_H
+#ifndef LED_GLOW_H
+#define LED_GLOW_H
 
-#include <Lumi.LEDPattern.h>
+#include <Led.LEDPattern.h>
 
-namespace Lumi {
+namespace Led {
   class Glow : public LEDPattern {
     public:
       using LEDPattern::LEDPattern;

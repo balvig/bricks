@@ -1,9 +1,9 @@
-#ifndef LUMI_OFF_H
-#define LUMI_OFF_H
+#ifndef LED_OFF_H
+#define LED_OFF_H
 
-#include <Lumi.LEDPattern.h>
+#include <Led.LEDPattern.h>
 
-namespace Lumi {
+namespace Led {
   class Off : public LEDPattern {
     public:
       using LEDPattern::LEDPattern;

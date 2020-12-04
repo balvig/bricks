@@ -1,6 +1,6 @@
-#include <Lumi.Spin.h>
+#include <Led.Spin.h>
 
-namespace Lumi {
+namespace Led {
   void Spin::update(const uint8_t progress) {
     uint8_t segmentSize = UINT8_MAX / numLeds - 1;
 

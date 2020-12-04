@@ -1,6 +1,6 @@
-#include <Lumi.Character.h>
+#include <Matrix.Character.h>
 
-namespace Lumi {
+namespace Matrix {
   Character::Character(MLED &matrix) : matrix(matrix) {}
 
   void Character::update(const uint8_t progress) {

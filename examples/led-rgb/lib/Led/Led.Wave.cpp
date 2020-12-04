@@ -1,6 +1,6 @@
-#include <Lumi.Wave.h>
+#include <Led.Wave.h>
 
-namespace Lumi {
+namespace Led {
   // https://github.com/atuline/FastLED-Demos/blob/9f6efc456308968f612aa73034aa1ea47d2143ee/blendwave/blendwave.ino
   void Wave::update(const uint8_t progress) {
     speed = beatsin8(6,0,255);
