@@ -12,8 +12,8 @@ I come up with dumb gadget ideas all the time.
 key tray or if a message is posted to the coffee chat whenever I put the
 kettle on?"
 
-They're fun for a while, add spice to everyday life, and maybe even
-inspire _actual_ useful ideas, but mostly are disposable one-offs.
+They're fun for a while and maybe even inspire _actual_ useful ideas,
+but mostly are disposable one-offs.
 
 I'm a developer by profession, but spending days writing C++, flashing
 microcontrollers, soldering custom PCBs, and building enclosures for
