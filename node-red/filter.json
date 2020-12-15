@@ -65,7 +65,7 @@
             }
         ],
         "color": "#C7E9C0",
-        "icon": "node-red/join.svg"
+        "icon": "font-awesome/fa-filter"
     },
     {
         "id": "12814906.bf21d7",

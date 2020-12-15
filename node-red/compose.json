@@ -82,7 +82,7 @@
             }
         ],
         "color": "#C7E9C0",
-        "icon": "node-red/split.svg"
+        "icon": "font-awesome/fa-file-text"
     },
     {
         "id": "1b6bf0a5.50ff0f",

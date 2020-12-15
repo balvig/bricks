@@ -58,7 +58,7 @@
             }
         ],
         "color": "#C7E9C0",
-        "icon": "node-red/redis.png"
+        "icon": "font-awesome/fa-cube"
     },
     {
         "id": "726e72cd.52d94c",
