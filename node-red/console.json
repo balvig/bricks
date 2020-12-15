@@ -18,7 +18,7 @@
         ],
         "out": [
             {
-                "x": 480,
+                "x": 680,
                 "y": 140,
                 "wires": [
                     {
@@ -58,7 +58,7 @@
             }
         ],
         "color": "#C7E9C0",
-        "icon": "node-red/redis.png"
+        "icon": "font-awesome/fa-cube"
     },
     {
         "id": "726e72cd.52d94c",
@@ -102,7 +102,7 @@
         "y": 140,
         "wires": [
             [
-                "127382d8.f9bbbd"
+                "e00de14f.8bc2b"
             ]
         ],
         "info": "Why can't topic be `$(TOPIC_PREFIX)/in/#`"
@@ -112,7 +112,7 @@
         "type": "switch",
         "z": "828761ad.f21bd",
         "name": "Filter by MAC",
-        "property": "topic",
+        "property": "mac",
         "propertyType": "msg",
         "rules": [
             {
@@ -124,10 +124,26 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 320,
+        "x": 540,
         "y": 140,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "e00de14f.8bc2b",
+        "type": "function",
+        "z": "828761ad.f21bd",
+        "name": "Parse MAC / Key",
+        "func": "let parts = msg.topic.split(\"/\").reverse()\nmsg.key = parts[0]\nmsg.mac = parts[1]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "127382d8.f9bbbd"
+            ]
         ]
     },
     {
@@ -213,7 +229,7 @@
             }
         ],
         "color": "#C7E9C0",
-        "icon": "node-red/split.svg"
+        "icon": "font-awesome/fa-file-text"
     },
     {
         "id": "1b6bf0a5.50ff0f",
@@ -467,7 +483,7 @@
         "name": "UI Table",
         "order": 2,
         "width": "6",
-        "height": "5",
+        "height": "4",
         "format": "<html>\n    <head>\n        <link href=\"https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css\" rel=\"stylesheet\">\n    </head>\n    <body class=\"h-full\">\n        <table class=\"w-full text-xs\">\n          <tr ng-repeat=\"x in msg.payload\" class=\"align-top\">\n            <td class=\"font-bold w-20\">\n                {{msg.payload[$index].time}}\n                {{msg.payload[$index].direction}}\n            </td>\n            <td>\n                {{msg.payload[$index].action}}\n                <span class=\"text-gray-600\">{{msg.payload[$index].value}}</span>\n            </td>\n          </tr>\n        </table>        \n    </body>\n</html>",
         "storeOutMessages": true,
         "fwdInMessages": true,
@@ -668,7 +684,8 @@
         "z": "b926ce0c.749ff",
         "name": "",
         "links": [
-            "63f26d33.646b34"
+            "63f26d33.646b34",
+            "d1a1919b.08062"
         ],
         "x": 55,
         "y": 380,
