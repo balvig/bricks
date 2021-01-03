@@ -48,6 +48,7 @@ Depending on your needs, it could be used to:
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
 - [ ] Lumi battery checks
+- [ ] Permanent sleep
 
 #### Nice to haves
 - [ ] Extract Lumi
@@ -55,9 +56,8 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
-- [ ] Build Bricks suite
-  - [ ] PIR
-- [ ] Reset button
+- [ ] Bring display closer to lid
+- [ ] Bigger USB slot
+- [ ] Rebuild Bricks suite
 - [ ] Update picture
-- [ ] Sturdier PCB attachment
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
