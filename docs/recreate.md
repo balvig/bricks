@@ -53,7 +53,7 @@ buttons, LEDs etc) as/when needed.
 #### 3. Test sleep wake up
 
 - Attach D1 Mini
-- Test `setSleep:5` and see if it wakes up in 5 sconds.
+- Test `sleep:5` and see if it wakes up in 5 sconds.
 
 #### 4. Add female headers for accessory
 
