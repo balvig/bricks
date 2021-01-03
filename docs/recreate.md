@@ -75,5 +75,4 @@ buttons, LEDs etc) as/when needed.
 
 ## Software (WIP)
 
-Easiest way to get up an running quickly is https://fred.sensetecnic.com/, but
-if you want to host locally, take a look at the [`docker` directory](/docker).
+Easiest way to get up an running quickly with Node-RED and MQTT is [Fred](https://fred.sensetecnic.com/) for a hosted solution, or you could use [IOTstack](https://sensorsiot.github.io/IOTstack/Getting-Started/) or the minimal [docker image](/docker) on a Raspberry Pi or other local machine.
