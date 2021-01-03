@@ -56,8 +56,8 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
+- [ ] Test smaller battery
 - [ ] Bring display closer to lid
-- [ ] Bigger USB slot
 - [ ] Rebuild Bricks suite
 - [ ] Update picture
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)

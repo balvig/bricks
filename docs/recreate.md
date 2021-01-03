@@ -34,7 +34,7 @@ buttons, LEDs etc) as/when needed.
 
 - Connect a battery.
 - Flash the D1 Mini with the [LED example](examples/led).
-- Check reading from `getBattery`.
+- Check reading from `battery`.
 
 ### Assemble Dual Base
 
