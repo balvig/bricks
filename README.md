@@ -46,6 +46,7 @@ Depending on your needs, it could be used to:
 ### Software
 
 - [ ] Write up building a Brick
+- [ ] Send message when going to sleep?
 - [ ] Build something with PIR
 - [ ] Lumi battery checks
 - [ ] Permanent sleep
@@ -56,8 +57,7 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
-- [ ] Test smaller battery
-- [ ] Bring display closer to lid
 - [ ] Rebuild Bricks suite
 - [ ] Update picture
+- [ ] Test smaller battery?
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
