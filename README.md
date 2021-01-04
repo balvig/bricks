@@ -46,10 +46,10 @@ Depending on your needs, it could be used to:
 ### Software
 
 - [ ] Write up building a Brick
-- [ ] Send message when going to sleep?
 - [ ] Build something with PIR
 - [ ] Lumi battery checks
 - [ ] Permanent sleep
+- [ ] Get current commit version
 
 #### Nice to haves
 - [ ] Extract Lumi
