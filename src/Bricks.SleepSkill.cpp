@@ -25,6 +25,10 @@ namespace Bricks {
 
   void SleepSkill::loop() {
     if(awakeTimeout()) {
+      char message[50];
+      sprintf(message, "Going to sleep for %u second(s)", sleepTime);
+      gOutbox.send("sleeping", message);
+
       deepSleep();
     }
   }
