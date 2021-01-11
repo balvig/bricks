@@ -48,7 +48,6 @@ Depending on your needs, it could be used to:
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
 - [ ] Lumi battery checks
-- [ ] Permanent sleep
 
 #### Nice to haves
 - [ ] Extract Lumi

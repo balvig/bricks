@@ -2,6 +2,7 @@
 #define BRICKS_UTILS_H
 
 #include <Arduino.h>
+#include <ArduinoLog.h>
 
 #ifdef ESP8266
 extern "C" {

@@ -2,7 +2,7 @@
 
 namespace Bricks {
 #ifdef ESP32
-  RTC_DATA_ATTR uint32_t rtcSleepTime = 0;
+  RTC_DATA_ATTR int16_t rtcSleepTime = 0;
 #endif
 
   SleepSkill::SleepSkill(const char *name) : Skill("sleep") {
@@ -43,7 +43,6 @@ namespace Bricks {
   }
 
   void SleepSkill::deepSleep() {
-    Log.notice("SLEE: Going to sleep for %d second(s)" CR, sleepTime);
     Utils::deepSleep(sleepTime);
   }
 
@@ -52,7 +51,7 @@ namespace Bricks {
   }
 
   bool SleepSkill::validSleepTime() {
-    return sleepTime > 0 && sleepTime <= MAX_SLEEP_TIME;
+    return sleepTime >= 0 && sleepTime <= MAX_SLEEP_TIME;
   }
 
   void SleepSkill::readSleepTime() {
