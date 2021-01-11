@@ -49,7 +49,6 @@ Depending on your needs, it could be used to:
 - [ ] Build something with PIR
 - [ ] Lumi battery checks
 - [ ] Permanent sleep
-- [ ] Get current commit version
 
 #### Nice to haves
 - [ ] Extract Lumi
