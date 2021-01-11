@@ -18,5 +18,6 @@
 | ota     | ack:ota     | `pio run -t upload --upload-port 192.168.4.1` when connected to AP          |                            |
 | battery | ack:battery | Ask for battery value                                                       |                            |
 | skills  | ack:skills  | Get a list of actions the Brick responds to                                 |                            |
+| version | ack:version | Get commit hash                                                             |                            |
 |         | awake       | Sent when woken up                                                          | <NAME> - <REASON>          |
 |         | sleeping    | Sent when resuming sleep after 2 seconds of being awake during sleep cycles |                            |

@@ -20,6 +20,7 @@
 #include <Bricks.ListSkill.h>
 #include <Bricks.OtaSkill.h>
 #include <Bricks.SleepSkill.h>
+#include <Bricks.VersionSkill.h>
 
 #define MAX_SKILLS 10
 

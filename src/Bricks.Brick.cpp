@@ -3,6 +3,7 @@
 namespace Bricks {
   void Brick::init(const char *name) {
     initBase();
+    skills[5] = new VersionSkill();
     skills[6] = new OtaSkill();
     skills[7] = new ListSkill();
     skills[8] = new BatterySkill();
