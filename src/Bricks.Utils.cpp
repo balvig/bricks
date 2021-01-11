@@ -1,4 +1,3 @@
-
 #include "Bricks.Utils.h"
 
 namespace Bricks {
@@ -8,6 +7,8 @@ namespace Bricks {
   }
 
   void Utils::deepSleep(uint32_t sleepTime) {
+    Log.notice("UTIL: Going to sleep [%d]" CR, sleepTime * MICROSECONDS);
+
 #ifdef ESP8266
     ESP.deepSleep(sleepTime * MICROSECONDS);
 #elif ESP32
