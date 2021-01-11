@@ -16,17 +16,17 @@ namespace Bricks {
     writeSleepTime();
 
     if(validSleepTime()) {
-      sprintf(response, "Starting %u second sleep cycles", sleepTime);
+      sprintf(response, "Starting sleep cycles", sleepTime);
     }
     else {
-      sprintf(response, "Stopping sleep (Rec: %u, Max: %u)", sleepTime, MAX_SLEEP_TIME);
+      sprintf(response, "Stopping sleep (Rec: %d, Max: %d)", sleepTime, MAX_SLEEP_TIME);
     }
   }
 
   void SleepSkill::loop() {
     if(awakeTimeout()) {
       char message[50];
-      sprintf(message, "Going to sleep for %u second(s)", sleepTime);
+      sprintf(message, "Going to sleep (Time: %d)", sleepTime);
       gOutbox.send("sleeping", message);
 
       deepSleep();
