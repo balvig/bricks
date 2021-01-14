@@ -16,7 +16,7 @@ namespace Bricks {
     writeSleepTime();
 
     if(validSleepTime()) {
-      sprintf(response, "Starting sleep cycles", sleepTime);
+      sprintf(response, "Starting sleep cycles");
     }
     else {
       sprintf(response, "Stopping sleep (Rec: %d, Max: %d)", sleepTime, MAX_SLEEP_TIME);

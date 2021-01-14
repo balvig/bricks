@@ -18,7 +18,7 @@ extern "C" {
 
 #include <Bricks.Constants.h>
 
-#define MICROSECONDS 1000000
+#define MICROSECONDS 1000000ULL
 
 namespace Bricks {
   class Utils {
