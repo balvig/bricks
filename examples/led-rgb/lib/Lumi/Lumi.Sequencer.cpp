@@ -15,7 +15,7 @@ namespace Lumi {
 
   void Sequencer::set(const char *input) {
     unsigned int pattern = 0;
-    char value[3] = "";
+    char value[15] = "";
     unsigned int delay = 0;
 
     sscanf(input, "%u %s %u", &pattern, value, &delay);
