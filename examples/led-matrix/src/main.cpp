@@ -40,9 +40,10 @@ void setup() {
   // Configure animations
   sequencer.patterns[0] = new Matrix::Character(matrix);
   sequencer.patterns[1] = new Matrix::Count(matrix);
-  sequencer.patterns[2] = new Matrix::Animation(matrix, fireworksSize, fireworks);
-  sequencer.patterns[3] = new Matrix::Animation(matrix, scanSize, scan);
-  sequencer.patterns[4] = new Matrix::Graph(matrix);
+  sequencer.patterns[2] = new Matrix::Graph(matrix);
+  sequencer.patterns[3] = new Matrix::Animation(matrix, fireworksSize, fireworks);
+  sequencer.patterns[4] = new Matrix::Animation(matrix, scanSize, scan);
+  sequencer.patterns[5] = new Matrix::Animation(matrix, spinnerSize, spinner);
 }
 
 void loop() {

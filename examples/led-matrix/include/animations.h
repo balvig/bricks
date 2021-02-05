@@ -140,7 +140,48 @@ const uint8_t scanFrames[][GRID_SIZE] = {
     B00000000
   }};
 
+const uint8_t spinnerFrames[][GRID_SIZE] = {
+  {
+    B00000000,
+    B00000000,
+    B00000000,
+    B00010000,
+    B00000000,
+    B00000000,
+    B00000000,
+    B00000000
+  },{
+    B00000000,
+    B00000000,
+    B00000000,
+    B00001000,
+    B00000000,
+    B00000000,
+    B00000000,
+    B00000000
+  },{
+    B00000000,
+    B00000000,
+    B00000000,
+    B00000000,
+    B00001000,
+    B00000000,
+    B00000000,
+    B00000000
+  },{
+    B00000000,
+    B00000000,
+    B00000000,
+    B00000000,
+    B00010000,
+    B00000000,
+    B00000000,
+    B00000000
+  }};
+
 extern const uint8_t (*fireworks)[GRID_SIZE] = fireworksFrames;
 extern const uint8_t fireworksSize = sizeof(fireworksFrames) / sizeof(fireworksFrames[0]);
 extern const uint8_t (*scan)[GRID_SIZE] = scanFrames;
 extern const uint8_t scanSize = sizeof(scanFrames) / sizeof(scanFrames[0]);
+extern const uint8_t (*spinner)[GRID_SIZE] = spinnerFrames;
+extern const uint8_t spinnerSize = sizeof(spinnerFrames) / sizeof(spinnerFrames[0]);
