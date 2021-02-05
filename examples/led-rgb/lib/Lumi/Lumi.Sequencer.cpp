@@ -5,7 +5,7 @@ namespace Lumi {
 
   void Sequencer::loop() {
     if(playing && timer.onRestart()) {
-      if(progress > UINT8_MAX) {
+      if(progress > PROGRESS_MAX) {
         rewind();
       }
       update();
@@ -27,15 +27,16 @@ namespace Lumi {
 
   void Sequencer::setPattern(uint8_t pattern) {
     currentPattern = pattern;
-    rewind();
   }
 
   void Sequencer::setDelay(uint8_t delay) {
     if(delay > 0) {
+      rewind();
       playing = true;
       timer.setTimeout(delay);
     }
     else {
+      fastforward();
       playing = false;
       update();
     }
@@ -51,5 +52,9 @@ namespace Lumi {
 
   void Sequencer::rewind() {
     progress = 0;
+  }
+
+  void Sequencer::fastforward() {
+    progress = PROGRESS_MAX;
   }
 }

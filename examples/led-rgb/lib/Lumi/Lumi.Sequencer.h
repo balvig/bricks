@@ -19,9 +19,11 @@ namespace Lumi {
       void setValue(const char *value);
       void update();
       void rewind();
+      void fastforward();
       RBD::Timer timer;
       uint8_t currentPattern = 0;
       uint8_t progress = 0;
+      const uint8_t PROGRESS_MAX = UINT8_MAX;
       bool playing = false;
   };
 }

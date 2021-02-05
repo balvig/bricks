@@ -14,6 +14,7 @@ namespace Lumi {
     protected:
       char currentValue[15];
       uint8_t currentIntValue;
+      const uint8_t PROGRESS_MAX = UINT8_MAX;
   };
 }
 #endif
