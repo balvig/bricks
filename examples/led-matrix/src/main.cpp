@@ -8,6 +8,7 @@ using namespace Bricks;
 #include <Matrix.Animation.h>
 #include <Matrix.Character.h>
 #include <Matrix.Count.h>
+#include <Matrix.Graph.h>
 #include <animations.h>
 
 MLED matrix(7);
@@ -41,6 +42,7 @@ void setup() {
   sequencer.patterns[1] = new Matrix::Count(matrix);
   sequencer.patterns[2] = new Matrix::Animation(matrix, fireworksSize, fireworks);
   sequencer.patterns[3] = new Matrix::Animation(matrix, scanSize, scan);
+  sequencer.patterns[4] = new Matrix::Graph(matrix);
 }
 
 void loop() {

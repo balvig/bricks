@@ -12,7 +12,7 @@ namespace Lumi {
         currentIntValue = atoi(value);
       }
     protected:
-      char currentValue[3];
+      char currentValue[15];
       uint8_t currentIntValue;
   };
 }
