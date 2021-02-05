@@ -1,0 +1,730 @@
+[
+    {
+        "id": "a3a2426c.d3bf6",
+        "type": "subflow",
+        "name": "Filter",
+        "info": "# Filter\n\nUse this to filter input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this receives _everything_, then filters it.",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 60,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "12814906.bf21d7"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "46648d7a.45abd4",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "key",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Key"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "payload",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-align-left",
+                    "label": {
+                        "en-US": "Payload"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "font-awesome/fa-filter"
+    },
+    {
+        "id": "12814906.bf21d7",
+        "type": "switch",
+        "z": "a3a2426c.d3bf6",
+        "name": "Filter by key",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "key",
+                "vt": "env",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 40,
+        "wires": [
+            [
+                "46648d7a.45abd4"
+            ]
+        ]
+    },
+    {
+        "id": "46648d7a.45abd4",
+        "type": "switch",
+        "z": "a3a2426c.d3bf6",
+        "name": "Filter by payload",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "payload",
+                "vt": "env"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 410,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "828761ad.f21bd",
+        "type": "subflow",
+        "name": "Brick",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "ae27039.97d81"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 680,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "127382d8.f9bbbd",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "mac",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-address-card-o",
+                    "label": {
+                        "en-US": "MAC"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "TOPIC_PREFIX",
+                "type": "str",
+                "value": "accounts/balvig/bricks",
+                "ui": {
+                    "type": "hide",
+                    "opts": {}
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "font-awesome/fa-cube"
+    },
+    {
+        "id": "726e72cd.52d94c",
+        "type": "mqtt out",
+        "z": "828761ad.f21bd",
+        "name": "Bricks out",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "69cfef51.baf9",
+        "x": 440,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ae27039.97d81",
+        "type": "function",
+        "z": "828761ad.f21bd",
+        "name": "Compose topic",
+        "func": "msg.topic = [\n    env.get(\"TOPIC_PREFIX\"),\n    \"out\",\n    env.get(\"mac\") || msg.mac,\n    msg.key\n].join(\"/\")\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 240,
+        "y": 80,
+        "wires": [
+            [
+                "726e72cd.52d94c"
+            ]
+        ]
+    },
+    {
+        "id": "2ebfb91e.bd6c76",
+        "type": "mqtt in",
+        "z": "828761ad.f21bd",
+        "name": "Bricks in",
+        "topic": "accounts/balvig/bricks/in/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "e00de14f.8bc2b"
+            ]
+        ],
+        "info": "Why can't topic be `$(TOPIC_PREFIX)/in/#`"
+    },
+    {
+        "id": "127382d8.f9bbbd",
+        "type": "switch",
+        "z": "828761ad.f21bd",
+        "name": "Filter by MAC",
+        "property": "mac",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "mac",
+                "vt": "env"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 540,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e00de14f.8bc2b",
+        "type": "function",
+        "z": "828761ad.f21bd",
+        "name": "Parse MAC / Key",
+        "func": "let parts = msg.topic.split(\"/\").reverse()\nmsg.key = parts[0]\nmsg.mac = parts[1]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "127382d8.f9bbbd"
+            ]
+        ]
+    },
+    {
+        "id": "69cfef51.baf9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt.sensetecnic.com",
+        "port": "1883",
+        "clientid": "bricks-nodered",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "61a652c9.fcba9c",
+        "type": "subflow",
+        "name": "Compose",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 40,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "be545e24.9aa31"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 760,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "1b6bf0a5.50ff0f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "key",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Key"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "value",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-comment-o",
+                    "label": {
+                        "en-US": "Value"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "delay",
+                "type": "num",
+                "value": "0",
+                "ui": {
+                    "icon": "font-awesome/fa-clock-o",
+                    "label": {
+                        "en-US": "Delay (ms)"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "font-awesome/fa-file-text"
+    },
+    {
+        "id": "1b6bf0a5.50ff0f",
+        "type": "delay",
+        "z": "61a652c9.fcba9c",
+        "name": "Delay",
+        "pauseType": "delayv",
+        "timeout": "0",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 630,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "45b2f3b4.06b84c",
+        "type": "change",
+        "z": "61a652c9.fcba9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "delay",
+                "pt": "msg",
+                "to": "delay",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 40,
+        "wires": [
+            [
+                "1b6bf0a5.50ff0f"
+            ]
+        ]
+    },
+    {
+        "id": "be545e24.9aa31",
+        "type": "function",
+        "z": "61a652c9.fcba9c",
+        "name": "Set key & payload",
+        "func": "msg.key = env.get(\"key\") || msg.key\nmsg.payload = env.get(\"value\") || msg.payload\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 210,
+        "y": 40,
+        "wires": [
+            [
+                "45b2f3b4.06b84c"
+            ]
+        ]
+    },
+    {
+        "id": "a4e83a87.266498",
+        "type": "tab",
+        "label": "Covid Tracker",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2e4cf081.0b2b1",
+        "type": "http request",
+        "z": "a4e83a87.266498",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://data.covid19japan.com/summary/latest.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "96b6d956.214178"
+            ]
+        ]
+    },
+    {
+        "id": "96b6d956.214178",
+        "type": "function",
+        "z": "a4e83a87.266498",
+        "name": "Parse data",
+        "func": "function chunkArray(array, size) {\n   if(array.length <= size){\n       return [array]\n   }\n   return [array.slice(0,size), ...chunkArray(array.slice(size), size)]\n}\n\nconst GRID_SIZE = 8\nconst CHUNK_SIZE = 7\nconst dailyActive = msg.payload.prefectures[0].dailyActive \n\n\nconst chunks = chunkArray(dailyActive, CHUNK_SIZE)\n\nconst totals = chunks.map((chunk) => {\n    return chunk.reduce((a, b) => a + b, 0)\n})\n\nconst latest = totals.slice(-GRID_SIZE)\n\nconst max = latest.reduce(function(a, b) {\n    return Math.max(a, b);\n})\n\nconst min = latest.reduce(function(a, b) {\n    return Math.min(a, b);\n})\n\nconst span = max - min\nconst reduceBy = span / GRID_SIZE\n\nconst reducedLatest = latest.map((val) => {\n    return Math.round((val - min) / reduceBy)\n})\n\n//msg.payload = msg.payload.prefectures[0].dailyActive\nmsg.payload = \"2 \" + reducedLatest.join(\",\") + \" 1\"\n//msg.payload = reducedLatest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 510,
+        "y": 80,
+        "wires": [
+            [
+                "949e8a4.6526378",
+                "352b6fad.c5628"
+            ]
+        ]
+    },
+    {
+        "id": "949e8a4.6526378",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "a4e83a87.266498",
+        "name": "graph",
+        "env": [
+            {
+                "name": "key",
+                "value": "set",
+                "type": "str"
+            }
+        ],
+        "x": 670,
+        "y": 120,
+        "wires": [
+            [
+                "57609eab.39d3d"
+            ]
+        ]
+    },
+    {
+        "id": "ea09e9f2.a24cc8",
+        "type": "subflow:828761ad.f21bd",
+        "z": "a4e83a87.266498",
+        "name": "Matrix",
+        "env": [
+            {
+                "name": "mac",
+                "value": "da:f1:5b:14:76:24",
+                "type": "str"
+            }
+        ],
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "166f0d58.23aa83"
+            ]
+        ]
+    },
+    {
+        "id": "689be30a.28f15c",
+        "type": "subflow:a3a2426c.d3bf6",
+        "z": "a4e83a87.266498",
+        "name": "awake",
+        "env": [
+            {
+                "name": "key",
+                "value": "awake",
+                "type": "str"
+            }
+        ],
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "4ed43560.bd17bc",
+                "2e4cf081.0b2b1",
+                "6ecdf1b9.d154b"
+            ]
+        ]
+    },
+    {
+        "id": "4ed43560.bd17bc",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "a4e83a87.266498",
+        "name": "spinner",
+        "env": [
+            {
+                "name": "key",
+                "value": "set",
+                "type": "str"
+            },
+            {
+                "name": "value",
+                "value": "5 0 2",
+                "type": "str"
+            }
+        ],
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "57609eab.39d3d"
+            ]
+        ]
+    },
+    {
+        "id": "94943a54.cc8978",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "a4e83a87.266498",
+        "name": "off",
+        "env": [
+            {
+                "name": "key",
+                "value": "set",
+                "type": "str"
+            },
+            {
+                "name": "value",
+                "value": "0",
+                "type": "str"
+            }
+        ],
+        "x": 830,
+        "y": 80,
+        "wires": [
+            [
+                "57609eab.39d3d"
+            ]
+        ]
+    },
+    {
+        "id": "c5e622e6.cd4f9",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "a4e83a87.266498",
+        "name": "sleep",
+        "env": [
+            {
+                "name": "key",
+                "value": "sleep",
+                "type": "str"
+            },
+            {
+                "name": "value",
+                "value": "0",
+                "type": "str"
+            },
+            {
+                "name": "delay",
+                "value": "300",
+                "type": "num"
+            }
+        ],
+        "x": 830,
+        "y": 120,
+        "wires": [
+            [
+                "57609eab.39d3d"
+            ]
+        ]
+    },
+    {
+        "id": "352b6fad.c5628",
+        "type": "delay",
+        "z": "a4e83a87.266498",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "6",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 680,
+        "y": 80,
+        "wires": [
+            [
+                "94943a54.cc8978",
+                "c5e622e6.cd4f9"
+            ]
+        ]
+    },
+    {
+        "id": "6ecdf1b9.d154b",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "a4e83a87.266498",
+        "name": "stay awake",
+        "env": [
+            {
+                "name": "key",
+                "value": "sleep",
+                "type": "str"
+            },
+            {
+                "name": "value",
+                "value": "-1",
+                "type": "str"
+            }
+        ],
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "57609eab.39d3d"
+            ]
+        ]
+    },
+    {
+        "id": "b17bcc54.e82e1",
+        "type": "link in",
+        "z": "a4e83a87.266498",
+        "name": "",
+        "links": [
+            "57609eab.39d3d"
+        ],
+        "x": 75,
+        "y": 380,
+        "wires": [
+            [
+                "ea09e9f2.a24cc8"
+            ]
+        ]
+    },
+    {
+        "id": "c9ce3b18.708748",
+        "type": "link in",
+        "z": "a4e83a87.266498",
+        "name": "",
+        "links": [
+            "166f0d58.23aa83"
+        ],
+        "x": 75,
+        "y": 80,
+        "wires": [
+            [
+                "689be30a.28f15c"
+            ]
+        ]
+    },
+    {
+        "id": "166f0d58.23aa83",
+        "type": "link out",
+        "z": "a4e83a87.266498",
+        "name": "",
+        "links": [
+            "c9ce3b18.708748"
+        ],
+        "x": 255,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "57609eab.39d3d",
+        "type": "link out",
+        "z": "a4e83a87.266498",
+        "name": "",
+        "links": [
+            "b17bcc54.e82e1"
+        ],
+        "x": 975,
+        "y": 200,
+        "wires": []
+    }
+]
