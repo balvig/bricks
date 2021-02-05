@@ -23,8 +23,8 @@ That led to the idea of building a suite of pre-programmed IoT "Bricks":
 
 <img src=docs/bricks.jpg alt=Bricks width=50%>
 
-Individual LEDs, buttons, sensors, that could be pulled out when needed, were all internet-enabled,
-and whose behavior could easily be programmed ad hoc using modern program
+Individual LEDs, buttons, sensors, that can be pulled out when needed, are all internet-enabled,
+and whose behavior can easily be programmed ad hoc using modern program
 languages such as Ruby or JavaScript.
 
 You could say Bricks is a poor man's [Sony Mesh](https://meshprj.com/),
