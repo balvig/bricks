@@ -9,8 +9,8 @@
     "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS"
   },
   "dependencies": {
-    "node-red": "^1.1.2",
+    "node-red": "^1.2.9",
     "node-red-dashboard": "^2.26.2",
-    "node-red-node-sqlite": "^0.4.3"
+    "node-red-node-sqlite": "^0.4.4"
   }
 }
