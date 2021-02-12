@@ -1,0 +1,859 @@
+[
+    {
+        "id": "a3a2426c.d3bf6",
+        "type": "subflow",
+        "name": "Filter",
+        "info": "# Filter\n\nUse this to filter input from Bricks.\n\nUnfortunately can't set a dynamic topic for MQTT, so instead this receives _everything_, then filters it.",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 60,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "12814906.bf21d7"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "46648d7a.45abd4",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "key",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Key"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "payload",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-align-left",
+                    "label": {
+                        "en-US": "Payload"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "font-awesome/fa-filter"
+    },
+    {
+        "id": "12814906.bf21d7",
+        "type": "switch",
+        "z": "a3a2426c.d3bf6",
+        "name": "Filter by key",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "key",
+                "vt": "env",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 40,
+        "wires": [
+            [
+                "46648d7a.45abd4"
+            ]
+        ]
+    },
+    {
+        "id": "46648d7a.45abd4",
+        "type": "switch",
+        "z": "a3a2426c.d3bf6",
+        "name": "Filter by payload",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "payload",
+                "vt": "env"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 410,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "828761ad.f21bd",
+        "type": "subflow",
+        "name": "Brick",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "ae27039.97d81"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 680,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "127382d8.f9bbbd",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "mac",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-address-card-o",
+                    "label": {
+                        "en-US": "MAC"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "TOPIC_PREFIX",
+                "type": "str",
+                "value": "accounts/balvig/bricks",
+                "ui": {
+                    "type": "hide",
+                    "opts": {}
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "font-awesome/fa-cube"
+    },
+    {
+        "id": "726e72cd.52d94c",
+        "type": "mqtt out",
+        "z": "828761ad.f21bd",
+        "name": "Bricks out",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "69cfef51.baf9",
+        "x": 440,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ae27039.97d81",
+        "type": "function",
+        "z": "828761ad.f21bd",
+        "name": "Compose topic",
+        "func": "msg.topic = [\n    env.get(\"TOPIC_PREFIX\"),\n    \"out\",\n    env.get(\"mac\") || msg.mac,\n    msg.key\n].join(\"/\")\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 240,
+        "y": 80,
+        "wires": [
+            [
+                "726e72cd.52d94c"
+            ]
+        ]
+    },
+    {
+        "id": "2ebfb91e.bd6c76",
+        "type": "mqtt in",
+        "z": "828761ad.f21bd",
+        "name": "Bricks in",
+        "topic": "accounts/balvig/bricks/in/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "69cfef51.baf9",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "e00de14f.8bc2b"
+            ]
+        ],
+        "info": "Why can't topic be `$(TOPIC_PREFIX)/in/#`"
+    },
+    {
+        "id": "127382d8.f9bbbd",
+        "type": "switch",
+        "z": "828761ad.f21bd",
+        "name": "Filter by MAC",
+        "property": "mac",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "mac",
+                "vt": "env"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 540,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e00de14f.8bc2b",
+        "type": "function",
+        "z": "828761ad.f21bd",
+        "name": "Parse MAC / Key",
+        "func": "let parts = msg.topic.split(\"/\").reverse()\nmsg.key = parts[0]\nmsg.mac = parts[1]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "127382d8.f9bbbd"
+            ]
+        ]
+    },
+    {
+        "id": "69cfef51.baf9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt.sensetecnic.com",
+        "port": "1883",
+        "clientid": "bricks-nodered",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "61a652c9.fcba9c",
+        "type": "subflow",
+        "name": "Compose",
+        "info": "",
+        "category": "bricks",
+        "in": [
+            {
+                "x": 40,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "be545e24.9aa31"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 760,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "1b6bf0a5.50ff0f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "key",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-bolt",
+                    "label": {
+                        "en-US": "Key"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "value",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-comment-o",
+                    "label": {
+                        "en-US": "Value"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "delay",
+                "type": "num",
+                "value": "0",
+                "ui": {
+                    "icon": "font-awesome/fa-clock-o",
+                    "label": {
+                        "en-US": "Delay (ms)"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
+                        ]
+                    }
+                }
+            }
+        ],
+        "color": "#C7E9C0",
+        "icon": "font-awesome/fa-file-text"
+    },
+    {
+        "id": "1b6bf0a5.50ff0f",
+        "type": "delay",
+        "z": "61a652c9.fcba9c",
+        "name": "Delay",
+        "pauseType": "delayv",
+        "timeout": "0",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 630,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "45b2f3b4.06b84c",
+        "type": "change",
+        "z": "61a652c9.fcba9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "delay",
+                "pt": "msg",
+                "to": "delay",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 40,
+        "wires": [
+            [
+                "1b6bf0a5.50ff0f"
+            ]
+        ]
+    },
+    {
+        "id": "be545e24.9aa31",
+        "type": "function",
+        "z": "61a652c9.fcba9c",
+        "name": "Set key & payload",
+        "func": "msg.key = env.get(\"key\") || msg.key\nmsg.payload = env.get(\"value\") || msg.payload\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 210,
+        "y": 40,
+        "wires": [
+            [
+                "45b2f3b4.06b84c"
+            ]
+        ]
+    },
+    {
+        "id": "69f21afa.534774",
+        "type": "tab",
+        "label": "Github Inbox",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b7dc1639.f7cfe8",
+        "type": "http request",
+        "z": "69f21afa.534774",
+        "name": "GitHub API",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": true,
+        "url": "https://api.github.com/notifications",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "basic",
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "31981055.27314"
+            ]
+        ]
+    },
+    {
+        "id": "58b5028e.75b54c",
+        "type": "inject",
+        "z": "69f21afa.534774",
+        "name": "",
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 40,
+        "wires": [
+            [
+                "30d224c6.1fa53c"
+            ]
+        ]
+    },
+    {
+        "id": "336c9e38.661322",
+        "type": "function",
+        "z": "69f21afa.534774",
+        "name": "Set query",
+        "func": "msg.headers = {\n    Accept: \"application/vnd.github.v3+json\",\n    \"User-Agent\": \"NodeRED\"\n}\nmsg.payload = {\n    all: true,\n    participating: true\n  //  since: \"2020-10-27T15:00:00Z\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 260,
+        "y": 80,
+        "wires": [
+            [
+                "b7dc1639.f7cfe8"
+            ]
+        ]
+    },
+    {
+        "id": "31981055.27314",
+        "type": "json",
+        "z": "69f21afa.534774",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "c2492120.5c386"
+            ]
+        ]
+    },
+    {
+        "id": "c2492120.5c386",
+        "type": "function",
+        "z": "69f21afa.534774",
+        "name": "Since start of today",
+        "func": "let checkin = flow.get(\"checkin\")\n\nmsg.payload = msg.payload.filter(\n    noti => Date.parse(noti.last_read_at) >= checkin\n);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "d4c5592.efb7ea8"
+            ]
+        ]
+    },
+    {
+        "id": "abe5704d.04153",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "69f21afa.534774",
+        "name": "count",
+        "env": [
+            {
+                "name": "key",
+                "value": "set",
+                "type": "str"
+            }
+        ],
+        "x": 530,
+        "y": 240,
+        "wires": [
+            [
+                "535ee252.4b071c"
+            ]
+        ]
+    },
+    {
+        "id": "d4c5592.efb7ea8",
+        "type": "function",
+        "z": "69f21afa.534774",
+        "name": "LED values",
+        "func": "msg.payload = `1 ${msg.payload.length * 2}`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 270,
+        "y": 240,
+        "wires": [
+            [
+                "abe5704d.04153"
+            ]
+        ]
+    },
+    {
+        "id": "a3f8f007.fa766",
+        "type": "change",
+        "z": "69f21afa.534774",
+        "name": "Check in",
+        "rules": [
+            {
+                "t": "set",
+                "p": "checkin",
+                "pt": "flow",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 340,
+        "wires": [
+            [
+                "15a1d9bd.d63b86"
+            ]
+        ]
+    },
+    {
+        "id": "3f765ef8.35ad12",
+        "type": "change",
+        "z": "69f21afa.534774",
+        "name": "Check out",
+        "rules": [
+            {
+                "t": "set",
+                "p": "checkin",
+                "pt": "flow",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 380,
+        "wires": [
+            [
+                "aa4ae632.5ad288",
+                "391ea545.2a277a"
+            ]
+        ]
+    },
+    {
+        "id": "aa4ae632.5ad288",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "69f21afa.534774",
+        "name": "sleep",
+        "env": [
+            {
+                "name": "key",
+                "value": "sleep",
+                "type": "str"
+            },
+            {
+                "name": "value",
+                "value": "10800",
+                "type": "str"
+            },
+            {
+                "name": "delay",
+                "value": "300",
+                "type": "num"
+            }
+        ],
+        "x": 530,
+        "y": 360,
+        "wires": [
+            [
+                "535ee252.4b071c"
+            ]
+        ]
+    },
+    {
+        "id": "535ee252.4b071c",
+        "type": "subflow:828761ad.f21bd",
+        "z": "69f21afa.534774",
+        "name": "Matrix",
+        "env": [
+            {
+                "name": "mac",
+                "value": "da:f1:5b:14:76:24",
+                "type": "str"
+            }
+        ],
+        "x": 690,
+        "y": 240,
+        "wires": [
+            [
+                "4383dc3d.8e80b4"
+            ]
+        ]
+    },
+    {
+        "id": "4383dc3d.8e80b4",
+        "type": "subflow:a3a2426c.d3bf6",
+        "z": "69f21afa.534774",
+        "name": "awake",
+        "env": [
+            {
+                "name": "key",
+                "value": "awake",
+                "type": "str"
+            }
+        ],
+        "x": 830,
+        "y": 240,
+        "wires": [
+            [
+                "add656b9.c35a98"
+            ]
+        ]
+    },
+    {
+        "id": "15a1d9bd.d63b86",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "69f21afa.534774",
+        "name": "stop sleeping",
+        "env": [
+            {
+                "name": "key",
+                "value": "sleep",
+                "type": "str"
+            },
+            {
+                "name": "value",
+                "value": "-1",
+                "type": "str"
+            }
+        ],
+        "x": 860,
+        "y": 320,
+        "wires": [
+            [
+                "b473db48.858ee8",
+                "535ee252.4b071c"
+            ]
+        ]
+    },
+    {
+        "id": "add656b9.c35a98",
+        "type": "switch",
+        "z": "69f21afa.534774",
+        "name": "checked in",
+        "property": "checkin",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 850,
+        "y": 280,
+        "wires": [
+            [
+                "15a1d9bd.d63b86"
+            ]
+        ]
+    },
+    {
+        "id": "391ea545.2a277a",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "69f21afa.534774",
+        "name": "turn off",
+        "env": [
+            {
+                "name": "key",
+                "value": "set",
+                "type": "str"
+            },
+            {
+                "name": "value",
+                "value": "0",
+                "type": "str"
+            }
+        ],
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "535ee252.4b071c"
+            ]
+        ]
+    },
+    {
+        "id": "b473db48.858ee8",
+        "type": "subflow:61a652c9.fcba9c",
+        "z": "69f21afa.534774",
+        "name": "zoom",
+        "env": [
+            {
+                "name": "key",
+                "value": "set",
+                "type": "str"
+            },
+            {
+                "name": "value",
+                "value": "2 0 5",
+                "type": "str"
+            }
+        ],
+        "x": 830,
+        "y": 360,
+        "wires": [
+            [
+                "535ee252.4b071c"
+            ]
+        ]
+    },
+    {
+        "id": "30d224c6.1fa53c",
+        "type": "switch",
+        "z": "69f21afa.534774",
+        "name": "checked in",
+        "property": "checkin",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 270,
+        "y": 40,
+        "wires": [
+            [
+                "336c9e38.661322"
+            ]
+        ]
+    },
+    {
+        "id": "ae58d5fd.be79c8",
+        "type": "inject",
+        "z": "69f21afa.534774",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 340,
+        "wires": [
+            [
+                "a3f8f007.fa766"
+            ]
+        ]
+    },
+    {
+        "id": "210ed34d.0f1abc",
+        "type": "inject",
+        "z": "69f21afa.534774",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 380,
+        "wires": [
+            [
+                "3f765ef8.35ad12"
+            ]
+        ]
+    }
+]
