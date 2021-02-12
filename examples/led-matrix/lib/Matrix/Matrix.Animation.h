@@ -2,9 +2,8 @@
 #define MATRIX_ANIMATION_H
 
 #include <WEMOS_Matrix_GFX.h>
+#include <Matrix.Config.h>
 #include <Lumi.Pattern.h>
-
-#define GRID_SIZE 8
 
 namespace Matrix {
   class Animation : public Lumi::Pattern {

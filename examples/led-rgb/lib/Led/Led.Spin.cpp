@@ -2,7 +2,7 @@
 
 namespace Led {
   void Spin::update(const uint8_t progress) {
-    uint8_t segmentSize = UINT8_MAX / numLeds - 1;
+    uint8_t segmentSize = PROGRESS_MAX / numLeds - 1;
 
     leds[0] = CRGB(0, 0, 0);
 

@@ -51,6 +51,7 @@ Depending on your needs, it could be used to:
 #### Nice to haves
 - [ ] Extract Lumi
 - [ ] Run Node-RED on Raspberry Pi
+- [ ] DRY up `const uint8_t PROGRESS_MAX = UINT8_MAX`
 
 ### Hardware
 
