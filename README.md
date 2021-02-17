@@ -55,8 +55,8 @@ Depending on your needs, it could be used to:
 
 ### Hardware
 
+- [ ] More sturdy button placement
+- [ ] Avoid battery rattling about
 - [ ] Rebuild Bricks suite
-- [ ] Change cut to make controller/shield easier to remove
 - [ ] Update picture
-- [ ] Test smaller battery?
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)

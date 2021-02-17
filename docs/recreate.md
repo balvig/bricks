@@ -63,13 +63,15 @@ buttons, LEDs etc) as/when needed.
 
 ### Snip off headers
 
-### Cover up header "spikes"
-
 ### Insert and connect battery
 
 ### Insert base
 
 ### Add screws
+
+### Add button
+
+### Connect button wires
 
 ### Close lid
 
