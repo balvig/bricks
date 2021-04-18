@@ -50,7 +50,6 @@ Depending on your needs, it could be used to:
 
 #### Nice to haves
 - [ ] Extract Lumi
-- [ ] Run Node-RED on Raspberry Pi
 - [ ] DRY up `const uint8_t PROGRESS_MAX = UINT8_MAX`
 
 ### Hardware
@@ -58,5 +57,4 @@ Depending on your needs, it could be used to:
 - [ ] More sturdy button placement
 - [ ] Avoid battery rattling about
 - [ ] Rebuild Bricks suite
-- [ ] Update picture
 - [ ] Try out [Wemos D1 hack](https://www.youtube.com/watch?v=rfPwOtoGO4E)
