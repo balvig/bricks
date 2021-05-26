@@ -21,7 +21,7 @@ namespace Bricks {
       logMac(wifiMode);
     }
     else {
-      Log.error("ESPN: Error initializing" CR);
+      Log.errorln("ESPN: Error initializing");
     }
   }
 
@@ -31,7 +31,7 @@ namespace Bricks {
 
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(macAddr, macStr);
-    Log.notice("ESPN: <- %s [%s] [%s]" CR, macStr, message.key, message.value);
+    Log.noticeln("ESPN: <- %s [%s] [%s]", macStr, message.key, message.value);
 
     gBrick.process(macAddr, message);
   }
@@ -45,7 +45,7 @@ namespace Bricks {
   void Brick::process(BRICKS_PROCESS_SIGNATURE) {
     for(int i = MAX_SKILLS - 1; i >= 0; i--) {
       if(skills[i]->respondsTo(message.key)) {
-        Log.trace("BRIC: Skill found [%s]" CR, message.key);
+        Log.traceln("BRIC: Skill found [%s]", message.key);
         skills[i]->process(macAddr, message);
       }
     }
@@ -77,7 +77,7 @@ namespace Bricks {
     }
 
     macStr.toLowerCase();
-    Log.notice("ESPN: Initialized [%s]" CR, macStr.c_str());
+    Log.noticeln("ESPN: Initialized [%s]", macStr.c_str());
   }
 
   Brick gBrick = Brick();

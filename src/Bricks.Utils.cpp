@@ -7,7 +7,7 @@ namespace Bricks {
   }
 
   void Utils::deepSleep(uint32_t sleepTime) {
-    Log.notice("UTIL: Going to sleep [%d]" CR, sleepTime);
+    Log.noticeln("UTIL: Going to sleep [%d]", sleepTime);
 
 #ifdef ESP8266
     ESP.deepSleep(sleepTime * MICROSECONDS);

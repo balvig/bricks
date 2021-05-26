@@ -16,10 +16,10 @@ namespace Bricks {
 
   void OtaSkill::initOta() {
     ArduinoOTA.onStart([]() {
-      Log.notice("AOTA: Starting OTA" CR);
+      Log.noticeln("AOTA: Starting OTA");
     });
     ArduinoOTA.onEnd([]() {
-      Log.notice("AOTA: Done" CR);
+      Log.noticeln("AOTA: Done");
     });
     ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
       Log.trace("Progress: %u%%\r", (progress / (total / 100)));

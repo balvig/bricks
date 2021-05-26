@@ -44,12 +44,12 @@ void setup() {
 
 void loop() {
   if(code) {
-    Log.notice("IRED: Sending [%s]" CR, code->key);
+    Log.noticeln("IRED: Sending [%s]", code->key);
     irsend.sendRaw(code->timings, code->length, FREQUENCY);
     code = nullptr;
   }
   else if(irrecv.decode(&results)) {
-    Log.notice("IRED: Received signal" CR);
+    Log.noticeln("IRED: Received signal");
     Log.notice(resultToSourceCode(&results).c_str());
     gOutbox.send("received", resultToHexidecimal(&results).c_str());
     irrecv.resume();

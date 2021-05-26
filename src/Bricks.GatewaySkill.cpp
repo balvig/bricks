@@ -18,7 +18,7 @@ namespace Bricks {
       mqtt.loop();
     }
     else {
-      Log.warning("MQTT: disconnected" CR);
+      Log.warningln("MQTT: disconnected");
       connectMQTT();
     }
 #ifdef ESP32
@@ -29,7 +29,7 @@ namespace Bricks {
   void GatewaySkill::onEvent(char *topic, byte *bytes, unsigned int length) {
     bytes[length] = '\0';
     char *value = (char *) bytes;
-    Log.trace("MQTT: <- %s: %s" CR, topic, value);
+    Log.traceln("MQTT: <- %s: %s", topic, value);
 
     uint8_t macAddr[MAC_ADDR_SIZE];
     char key[KEY_SIZE];
@@ -56,23 +56,23 @@ namespace Bricks {
 
   void GatewaySkill::publish(const char *topic, const char *value) {
     if (mqtt.connected()) {
-      Log.trace("MQTT: -> %s: %s" CR, topic, value);
+      Log.traceln("MQTT: -> %s: %s", topic, value);
       mqtt.publish(topic, value);
     }
     else {
-      Log.error("MQTT: Publishing failed [disconnected]" CR);
+      Log.errorln("MQTT: Publishing failed [disconnected]");
     }
   }
 
   void GatewaySkill::connectWiFi() {
-    Log.notice("WIFI: Connecting to [%s]" CR, BRICKS_WIFI_SSID);
+    Log.noticeln("WIFI: Connecting to [%s]", BRICKS_WIFI_SSID);
     WiFi.begin(BRICKS_WIFI_SSID, BRICKS_WIFI_PASSWORD);
 
     while(WiFi.status() != WL_CONNECTED) {
       delay(500);
-      Log.trace("WIFI: Still connecting..." CR);
+      Log.traceln("WIFI: Still connecting...");
     }
-    Log.notice("WIFI: Connected [%s] [Channel %d]" CR, WiFi.localIP().toString().c_str(), WiFi.channel());
+    Log.noticeln("WIFI: Connected [%s] [Channel %d]", WiFi.localIP().toString().c_str(), WiFi.channel());
 
     if(WiFi.channel() != BRICKS_WIFI_CHANNEL) {
       Log.error("WIFI: Bricks currently requires WiFi on channel %d", BRICKS_WIFI_CHANNEL);
@@ -80,14 +80,14 @@ namespace Bricks {
   }
 
   void GatewaySkill::connectMQTT() {
-    Log.notice("MQTT: Connecting to [%s]" CR, BRICKS_MQTT_HOST);
+    Log.noticeln("MQTT: Connecting to [%s]", BRICKS_MQTT_HOST);
     while(!mqtt.connected()) {
       if(mqtt.connect(BRICKS_MQTT_CLIENT, BRICKS_MQTT_USER, BRICKS_MQTT_PASSWORD)) {
-        Log.notice("MQTT: Connected" CR);
+        Log.noticeln("MQTT: Connected");
         subscribe(BRICKS_MESSAGES_OUT "/#");
       }
       else {
-        Log.warning("MQTT: Failed [%d]. Retrying in 5 secs" CR, mqtt.state());
+        Log.warningln("MQTT: Failed [%d]. Retrying in 5 secs", mqtt.state());
         delay(5000);
       }
     }
@@ -95,6 +95,6 @@ namespace Bricks {
 
   void GatewaySkill::subscribe(const char *topic) {
     mqtt.subscribe(topic);
-    Log.trace("MQTT: Subscribed [%s]" CR, topic);
+    Log.traceln("MQTT: Subscribed [%s]", topic);
   }
 }

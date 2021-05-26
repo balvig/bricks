@@ -14,40 +14,40 @@ namespace Bricks {
 
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(macAddr, macStr);
-    Log.notice("ESPN: -> %s [%s] [%s]" CR, macStr, message.key, message.value);
+    Log.noticeln("ESPN: -> %s [%s] [%s]", macStr, message.key, message.value);
 
     bool ok = WifiEspNow.send(macAddr, reinterpret_cast<const uint8_t*>(&message), sizeof(message));
     if(ok) {
-      Log.trace("ESPN: Message sent" CR);
+      Log.traceln("ESPN: Message sent");
     }
     else {
-      Log.error("ESPN: Error sending message" CR);
+      Log.errorln("ESPN: Error sending message");
     }
   }
 
   void Outbox::send(const char* key, const char* value) {
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(gatewayMac, macStr);
-    Log.trace("ESPN: Using stored gateway MAC [%s]" CR, macStr);
+    Log.traceln("ESPN: Using stored gateway MAC [%s]", macStr);
 
     send(gatewayMac, key, value);
   }
 
   void Outbox::pair(const uint8_t *macAddr) {
     if(WifiEspNow.hasPeer(macAddr)) {
-      Log.trace("ESPN: Already paired" CR);
+      Log.traceln("ESPN: Already paired");
       return;
     }
 
     char macStr[MAC_STR_SIZE];
     Bricks::Utils::macToStr(macAddr, macStr);
-    Log.trace("ESPN: Pairing [%s]" CR, macStr);
+    Log.traceln("ESPN: Pairing [%s]", macStr);
 
     if(WifiEspNow.addPeer(macAddr, BRICKS_WIFI_CHANNEL)) {
-      Log.trace("ESPN: Paired" CR);
+      Log.traceln("ESPN: Paired");
     }
     else {
-      Log.error("ESPN: Pairing failed" CR);
+      Log.errorln("ESPN: Pairing failed");
     }
   }
 

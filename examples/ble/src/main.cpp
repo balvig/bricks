@@ -20,11 +20,11 @@ class BLECallbacks: public BLEAdvertisedDeviceCallbacks {
 };
 
 void scan(const uint8_t scanTime, const bool activeScan = false) {
-  Log.notice("BLES: Scanning for %d second(s)" CR, scanTime);
+  Log.noticeln("BLES: Scanning for %d second(s)", scanTime);
   pBLEScan->setActiveScan(activeScan);
   pBLEScan->start(scanTime, false);
   pBLEScan->clearResults();
-  Log.notice("BLES: Scan done" CR);
+  Log.noticeln("BLES: Scan done");
 }
 
 void passiveScan(BRICKS_CALLBACK_SIGNATURE) {

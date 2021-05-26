@@ -14,23 +14,23 @@ Servo hand;
 
 void setServoPower(bool powerOn) {
   if (powerOn) {
-    Log.notice("SERV: Power on" CR);
+    Log.noticeln("SERV: Power on");
     digitalWrite(SERVO_POWER_PIN, HIGH);
   }
   else {
-    Log.notice("SERV: Power off" CR);
+    Log.noticeln("SERV: Power off");
     digitalWrite(SERVO_POWER_PIN, LOW);
   }
 }
 
 void updateHand() {
   setServoPower(true);
-  Log.notice("SERV: Moving hand [%d]" CR, degrees);
+  Log.noticeln("SERV: Moving hand [%d]", degrees);
   hand.attach(HAND_PIN);
   hand.write(degrees);
-  Log.trace("SERV: Waiting..." CR);
+  Log.traceln("SERV: Waiting...");
   delay(1000);  // To avoid interrupting hand
-  Log.trace("SERV: Detaching" CR);
+  Log.traceln("SERV: Detaching");
   hand.detach();
   setServoPower(false);
   degrees = DONE;

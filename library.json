@@ -7,7 +7,7 @@
     "url": "https://github.com/balvig/bricks.git"
   },
   "dependencies": {
-    "ArduinoLog": "~1.0.3",
+    "ArduinoLog": "~1.1.1",
     "PubSubClient": "~2.8",
     "WifiEspNow": "~0.0.20190814"
   },
