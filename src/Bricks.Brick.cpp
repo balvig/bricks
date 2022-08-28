@@ -77,6 +77,7 @@ namespace Bricks {
     }
 
     macStr.toLowerCase();
+    delay(100); // Allow enough time for logging to come online
     Log.noticeln("ESPN: Initialized [%s]", macStr.c_str());
   }
 

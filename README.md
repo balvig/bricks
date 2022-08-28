@@ -47,6 +47,7 @@ Depending on your needs, it could be used to:
 
 - [ ] Write up building a Brick
 - [ ] Build something with PIR
+- [ ] Figure out why logging doesn't show up unless delayed
 
 #### Nice to haves
 - [ ] Extract Lumi
