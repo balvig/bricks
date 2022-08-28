@@ -1,4 +1,4 @@
 FROM nodered/node-red
 
-COPY data/package*.json ./
-RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
+WORKDIR /usr/src/node-red
+RUN npm install node-red-dashboard node-red-node-sqlite

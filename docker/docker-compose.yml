@@ -10,14 +10,12 @@ services:
     networks:
       - node-red-net
     volumes:
-      - type: bind
-        source: ./data
-        target: /data
+      - ./data:/data
     links:
       - "mqtt:mqtt"
 
   mqtt:
-    image: eclipse-mosquitto
+    image: eclipse-mosquitto:1.6.13
     ports:
       - "1883:1883"
     networks:
