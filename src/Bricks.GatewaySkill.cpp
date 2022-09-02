@@ -7,6 +7,7 @@ namespace Bricks {
 
     connectWiFi();
     connectMQTT();
+    publish("gateway", "online");
   }
 
   void GatewaySkill::callback(BRICKS_CALLBACK_SIGNATURE) {
