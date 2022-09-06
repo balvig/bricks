@@ -1,4 +1,7 @@
-version: "3.8"
+version: "2.1"
+
+volumes:
+  resin-data:
 
 services:
   node-red:
@@ -6,11 +9,11 @@ services:
     environment:
       - TZ=Asia/Tokyo
     ports:
-      - "1880:1880"
+      - "80:1880"
     networks:
       - node-red-net
     volumes:
-      - ./data:/data
+      - resin-data:/data
     links:
       - "mqtt:mqtt"
 
