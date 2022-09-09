@@ -1,6 +1,6 @@
 # Running Node-RED and an MQTT broker locally
 
-This Docker setup allows anyone to run a [Node-RED](https://nodered.org/) server and an MQTT broker ([Eclipse Mosquitto](https://mosquitto.org/)) – both vital parts of the Bricks ecosystem – on your personal computer (or on a server, or in the cloud, provided some tweaks).
+This Docker setup allows anyone to run a [Node-RED](https://nodered.org/) server and an MQTT broker ([Eclipse Mosquitto](https://mosquitto.org/)) – both vital parts of the Bricks ecosystem – on your personal computer (or a Raspberry Pi, using something like [Balena](https://balena.io/) f.ex.).
 
 ## Requirements
 
@@ -22,15 +22,6 @@ The two Docker containers defined in `docker compose.yml` are on the same networ
 
 - Use the server name `mqtt` when declaring an MQTT broker in Node-RED.
 - Use the host's ip address when configuring `BRICKS_MQTT_HOST` on the gateway brick.
-
-### Data
-
-Node-RED's data is bind mounted to the `data/` local directory, so that flows and configuration are persisted when the Docker containers are shut down.
-After running once, you will find the following files:
-
--  `data/settings.js`: Node-RED's settings file, that could be checked in if there are settings changes that need to be persisted
-- `data/flows.json`: an export of all the flows defined in Node-RED
-- `data/flows_cred.json`
 
 ### SQLite
 
