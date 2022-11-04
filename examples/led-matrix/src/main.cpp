@@ -20,7 +20,7 @@ void set(BRICKS_CALLBACK_SIGNATURE) {
   sequencer.set(message.value);
 }
 
-void rotate(BRICKS_CALLBACK_SIGNATURE) {
+void setRotation(BRICKS_CALLBACK_SIGNATURE) {
   matrix.setRotation(atoi(message.value));
 }
 
@@ -32,7 +32,7 @@ void setup() {
   // Configure Brick
   gBrick.init("LED 8x8 Matrix");
   gBrick.skills[0] = new Skill("set", &set);
-  gBrick.skills[1] = new Skill("rotate", &rotate);
+  gBrick.skills[1] = new Skill("setRotation", &setRotation);
 
   // Configure Matrix
   matrix.setRotation(1); // Matrix will be sideways in Brick
