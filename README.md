@@ -45,8 +45,8 @@ Depending on your needs, it could be used to:
 
 ### Software
 
+- [ ] Figure out how to get a static IP on Balena
 - [ ] Write up building a Brick
-- [ ] Build something with PIR
 - [ ] Figure out why logging doesn't show up unless delayed
 
 #### Nice to haves
