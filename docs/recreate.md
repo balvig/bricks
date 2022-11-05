@@ -77,4 +77,8 @@ buttons, LEDs etc) as/when needed.
 
 ## Software (WIP)
 
-Easiest way to get up an running quickly with Node-RED and MQTT is [Fred](https://fred.sensetecnic.com/) for a hosted solution, or you could use [IOTstack](https://sensorsiot.github.io/IOTstack/Getting-Started/) or the minimal [docker image](/docker) on a Raspberry Pi or other local machine.
+ A couple of ways to get up and running  with Node-RED and MQTT:
+
+- [FlowForge](https://flowforge.com/) for a hosted solution.
+- [Docker image](/docker) on a Raspberry Pi using f.ex. [Balena](https://balena.io/).
+- [IOTstack](https://sensorsiot.github.io/IOTstack/Getting-Started/) on a Raspberry Pi
