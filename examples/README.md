@@ -14,7 +14,7 @@
 
 | in      | out         | description                                                        | values                                     |
 |---------|-------------|--------------------------------------------------------------------|--------------------------------------------|
-| sleep   | ack:sleep   | Sleep for  `value` seconds each                                    | 0 (forever), 1-13612                       |
+| sleep   | ack:sleep   | Sleep for  `value` seconds each                                    | 0 (forever), 1-10800                       |
 | ota     | ack:ota     | `pio run -t upload --upload-port 192.168.4.1` when connected to AP | "Connect to 'Brick - OTA'"                 |
 | battery | ack:battery | Ask for battery value                                              | 0 - 950                                    |
 | skills  | ack:skills  | Get a list of actions the Brick responds to                        | "version ota skills battery sleep"         |
