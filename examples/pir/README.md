@@ -1,7 +1,7 @@
-# PIR Sensor (WIP)
+# PIR Sensor
 
 ## Skills
 
-| in   | out      | description        | values                      |
-|------|----------|--------------------|-----------------------------|
-| scan | ack:scan | Returns PIR status | 0: No detection 1: Detected |
+| in      | out         | description        | values                      |
+|---------|-------------|--------------------|-----------------------------|
+| scanPir | ack:scanPir | Returns PIR status | 0: No detection 1: Detected |
