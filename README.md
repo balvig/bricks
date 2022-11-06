@@ -48,6 +48,7 @@ Depending on your needs, it could be used to:
 - [ ] Figure out how to get a static IP on Balena
 - [ ] Write up building a Brick
 - [ ] Figure out why logging doesn't show up unless delayed
+- [ ] Switching from Char to Graph Matrix animation doesn't seem to work?
 
 #### Nice to haves
 - [ ] Extract Lumi
